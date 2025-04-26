@@ -23,10 +23,11 @@
 ### [4.1 ]()
 ## [5 Alte cerințe nefuncționale](5%20Alte%20cerințe%20nefuncționale/5.0%20Overview.md)
 ### [5.1 Cerințe de performanță](5%20Alte%20cerințe%20nefuncționale/5.1%20Cerințe%20de%20performanță.md)
-### [5.2 Cerințe de securitate](5%20Alte%20cerințe%20nefuncționale/5.2%20Cerințe%20de%20securitate.md)
-### [5.3 Atribute ale calității software-ului](5%20Alte%20cerințe%20nefuncționale/5.3%20Atribute%20ale%20calității%20software-ului.md)
-### [5.4 Alte cerințe nefuncționale](5%20Alte%20cerințe%20nefuncționale/5.4%20Alte%20cerințe%20nefuncționale.md)
-### [5.5 Reguli de business](5%20Alte%20cerințe%20nefuncționale/5.5%20Reguli%20de%20business.md)
+### [5.2 Cerințe de siguranță](5%20Alte%20cerințe%20nefuncționale/5.2%20Cerințe%20de%20siguranță.md)
+### [5.3 Cerințe de securitate](5%20Alte%20cerințe%20nefuncționale/5.3%20Cerințe%20de%20securitate.md)
+### [5.4 Atribute ale calității software-ului](5%20Alte%20cerințe%20nefuncționale/5.4%20Atribute%20ale%20calității%20software-ului.md)
+### [5.5 Alte cerințe nefuncționale](5%20Alte%20cerințe%20nefuncționale/5.5%20Alte%20cerințe%20nefuncționale.md)
+### [5.6 Reguli de business](5%20Alte%20cerințe%20nefuncționale/5.6%20Reguli%20de%20business.md)
 
 ## [6 Alte cerințe](6%20Alte%20cerințe/6.0%20Overview.md)
 
