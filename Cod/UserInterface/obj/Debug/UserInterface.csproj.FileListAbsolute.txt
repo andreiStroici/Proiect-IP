@@ -1,0 +1,10 @@
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\UserInterface.exe.config
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\UserInterface.exe
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\UserInterface.pdb
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.csproj.AssemblyReference.cache
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.Biblioteca.resources
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.Properties.Resources.resources
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.csproj.GenerateResource.cache
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.csproj.CoreCompileInputs.cache
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.exe
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.pdb
