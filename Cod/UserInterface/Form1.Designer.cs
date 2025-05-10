@@ -37,82 +37,80 @@
             this.labelRol = new System.Windows.Forms.Label();
             this.radioButtonBibliotecar = new System.Windows.Forms.RadioButton();
             this.radioButtonAdministrator = new System.Windows.Forms.RadioButton();
+            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
+            this.groupBoxLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // autentificareLabel
             // 
-            this.autentificareLabel.AllowDrop = true;
             this.autentificareLabel.AutoSize = true;
-            this.autentificareLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autentificareLabel.Location = new System.Drawing.Point(274, 69);
+            this.autentificareLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.autentificareLabel.Location = new System.Drawing.Point(210, 20);
             this.autentificareLabel.Name = "autentificareLabel";
-            this.autentificareLabel.Size = new System.Drawing.Size(198, 38);
+            this.autentificareLabel.Size = new System.Drawing.Size(269, 54);
             this.autentificareLabel.TabIndex = 0;
             this.autentificareLabel.Text = "Autentificare";
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(302, 302);
+            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonLogin.Location = new System.Drawing.Point(290, 290);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(120, 33);
-            this.buttonLogin.TabIndex = 1;
+            this.buttonLogin.Size = new System.Drawing.Size(120, 40);
+            this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(368, 159);
+            this.textBoxUsername.Location = new System.Drawing.Point(170, 30);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(165, 22);
-            this.textBoxUsername.TabIndex = 2;
+            this.textBoxUsername.Size = new System.Drawing.Size(200, 30);
+            this.textBoxUsername.TabIndex = 1;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(368, 199);
+            this.textBoxPassword.Location = new System.Drawing.Point(170, 65);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(165, 22);
+            this.textBoxPassword.Size = new System.Drawing.Size(200, 30);
             this.textBoxPassword.TabIndex = 3;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(209, 159);
+            this.labelUsername.Location = new System.Drawing.Point(30, 33);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(122, 20);
-            this.labelUsername.TabIndex = 4;
-            this.labelUsername.Text = "Nume utilizator";
+            this.labelUsername.Size = new System.Drawing.Size(133, 23);
+            this.labelUsername.TabIndex = 0;
+            this.labelUsername.Text = "Nume utilizator:";
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(235, 199);
+            this.labelPassword.Location = new System.Drawing.Point(30, 68);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(57, 20);
-            this.labelPassword.TabIndex = 5;
-            this.labelPassword.Text = "Parola";
+            this.labelPassword.Size = new System.Drawing.Size(61, 23);
+            this.labelPassword.TabIndex = 2;
+            this.labelPassword.Text = "Parola:";
             // 
             // labelRol
             // 
             this.labelRol.AutoSize = true;
-            this.labelRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRol.Location = new System.Drawing.Point(244, 242);
+            this.labelRol.Location = new System.Drawing.Point(30, 105);
             this.labelRol.Name = "labelRol";
-            this.labelRol.Size = new System.Drawing.Size(34, 20);
-            this.labelRol.TabIndex = 6;
-            this.labelRol.Text = "Rol";
+            this.labelRol.Size = new System.Drawing.Size(38, 23);
+            this.labelRol.TabIndex = 4;
+            this.labelRol.Text = "Rol:";
             // 
             // radioButtonBibliotecar
             // 
             this.radioButtonBibliotecar.AutoSize = true;
-            this.radioButtonBibliotecar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonBibliotecar.Location = new System.Drawing.Point(348, 242);
+            this.radioButtonBibliotecar.Location = new System.Drawing.Point(170, 103);
             this.radioButtonBibliotecar.Name = "radioButtonBibliotecar";
-            this.radioButtonBibliotecar.Size = new System.Drawing.Size(98, 22);
-            this.radioButtonBibliotecar.TabIndex = 7;
+            this.radioButtonBibliotecar.Size = new System.Drawing.Size(111, 27);
+            this.radioButtonBibliotecar.TabIndex = 5;
             this.radioButtonBibliotecar.TabStop = true;
             this.radioButtonBibliotecar.Text = "Bibliotecar";
             this.radioButtonBibliotecar.UseVisualStyleBackColor = true;
@@ -120,35 +118,54 @@
             // radioButtonAdministrator
             // 
             this.radioButtonAdministrator.AutoSize = true;
-            this.radioButtonAdministrator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonAdministrator.Location = new System.Drawing.Point(461, 242);
+            this.radioButtonAdministrator.Location = new System.Drawing.Point(170, 136);
             this.radioButtonAdministrator.Name = "radioButtonAdministrator";
-            this.radioButtonAdministrator.Size = new System.Drawing.Size(116, 22);
-            this.radioButtonAdministrator.TabIndex = 8;
+            this.radioButtonAdministrator.Size = new System.Drawing.Size(135, 27);
+            this.radioButtonAdministrator.TabIndex = 6;
             this.radioButtonAdministrator.TabStop = true;
             this.radioButtonAdministrator.Text = "Administrator";
             this.radioButtonAdministrator.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxLogin
+            // 
+            this.groupBoxLogin.Controls.Add(this.labelUsername);
+            this.groupBoxLogin.Controls.Add(this.textBoxUsername);
+            this.groupBoxLogin.Controls.Add(this.labelPassword);
+            this.groupBoxLogin.Controls.Add(this.textBoxPassword);
+            this.groupBoxLogin.Controls.Add(this.labelRol);
+            this.groupBoxLogin.Controls.Add(this.radioButtonBibliotecar);
+            this.groupBoxLogin.Controls.Add(this.radioButtonAdministrator);
+            this.groupBoxLogin.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBoxLogin.Location = new System.Drawing.Point(150, 90);
+            this.groupBoxLogin.Name = "groupBoxLogin";
+            this.groupBoxLogin.Size = new System.Drawing.Size(400, 170);
+            this.groupBoxLogin.TabIndex = 1;
+            this.groupBoxLogin.TabStop = false;
+            this.groupBoxLogin.Text = "Date autentificare";
             // 
             // Biblioteca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 384);
-            this.Controls.Add(this.radioButtonAdministrator);
-            this.Controls.Add(this.radioButtonBibliotecar);
-            this.Controls.Add(this.labelRol);
-            this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.labelUsername);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxUsername);
-            this.Controls.Add(this.buttonLogin);
+            this.ClientSize = new System.Drawing.Size(700, 360);
             this.Controls.Add(this.autentificareLabel);
+            this.Controls.Add(this.groupBoxLogin);
+            this.Controls.Add(this.buttonLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Biblioteca";
-            this.Text = "Bibliotecă";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Bibliotecă - Autentificare";
+            this.groupBoxLogin.ResumeLayout(false);
+            this.groupBoxLogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+        // Declare group box
+        private System.Windows.Forms.GroupBox groupBoxLogin;
+
 
         #endregion
         private System.Windows.Forms.Label autentificareLabel;
