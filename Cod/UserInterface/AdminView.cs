@@ -1,5 +1,19 @@
-﻿
-
+﻿/*************************************************************************
+ *                                                                       *
+ *  File:        AdminView.cs                                            *
+ *  Copyright:   (c) 2025, A. Denisa                                     *
+ *                                                                       *
+ *  Description: Interfața admin                                         *
+ *               Gestionează cărțile, angajații și abonații              *
+ *                                                                       *
+ *                                                                       *
+ *  This code and information is provided "as is" without warranty of    *
+ *  any kind, either expressed or implied, including but not limited     *
+ *  to the implied warranties of merchantability or fitness for a        *
+ *  particular purpose. You are free to use this source code in your     *
+ *  applications as long as the original copyright notice is included.   *
+ *                                                                       *      
+ ************************************************************************ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,22 +28,15 @@ namespace UserInterface
 {
     public partial class AdminView : Form
     {
+        /// <summary>
         public AdminView()
         {
             InitializeComponent();
         }
 
-        private void buttonGestiuneCautare_Click(object sender, EventArgs e)
-        {
-            this.textBoxGestiuneDate.Enabled = true;
-            this.buttonGestiuneValidare.Enabled = true;
-            this.radioButtonGestiuneA.Enabled = true;
-            this.radioButtonGestiuneB.Enabled = true;
-            this.radioButtonGestiuneE.Enabled = true;
-        }
-
         private void buttonDelogare_Click(object sender, EventArgs e)
-        { 
+        {
+            // Delogare și revenire la pagina principală
             Form form1 = new MainView();
             form1.Show();
             this.Hide();
@@ -38,6 +45,7 @@ namespace UserInterface
 
         private void radioButtonGestiuneAbonați_CheckedChanged(object sender, EventArgs e)
         {
+            // Activăm interfața pentru gestiunea abonaților după numărul de telefon
             if (radioButtonGestiuneAbonați.Checked)
             {
                 labelGestiuneAbonați.Enabled = true;
@@ -54,17 +62,10 @@ namespace UserInterface
 
         }
 
-        private void buttonAfișareAbonațiCăutare_Click(object sender, EventArgs e)
-        {
-            this.buttonGestiuneValidare.Enabled = true;
-            this.radioButtonGestiuneA.Enabled = true;
-            this.radioButtonGestiuneB.Enabled = true;
-            this.radioButtonGestiuneE.Enabled = true;
-        }
-
         private void radioButtonAfișareAbonați_CheckedChanged(object sender, EventArgs e)
         {
-            if(radioButtonAfișareAbonați.Checked)
+            // Activăm interfața pentru listarea abonaților problematici
+            if (radioButtonAfișareAbonați.Checked)
             {
                 labelAfișareAbonațiProbleme.Enabled = true;
                 buttonAfișareAbonațiCăutare.Enabled = true;
@@ -77,6 +78,23 @@ namespace UserInterface
                 labelGestiuneDate.Enabled = false;
                 textBoxGestiuneDate.Enabled = false;
             }
+        }
+
+        private void buttonGestiuneCautare_Click(object sender, EventArgs e)
+        {
+            this.textBoxGestiuneDate.Enabled = true;
+            this.buttonGestiuneValidare.Enabled = true;
+            this.radioButtonGestiuneA.Enabled = true;
+            this.radioButtonGestiuneB.Enabled = true;
+            this.radioButtonGestiuneE.Enabled = true;
+        }
+
+        private void buttonAfișareAbonațiCăutare_Click(object sender, EventArgs e)
+        {
+            this.buttonGestiuneValidare.Enabled = true;
+            this.radioButtonGestiuneA.Enabled = true;
+            this.radioButtonGestiuneB.Enabled = true;
+            this.radioButtonGestiuneE.Enabled = true;
         }
 
         private void buttonGestiuneValidare_Click(object sender, EventArgs e)

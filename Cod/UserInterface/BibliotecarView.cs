@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*************************************************************************
+ *                                                                       *
+ *  File:        BibliotecarView.cs                                      *
+ *  Copyright:   (c) 2025, A. Denisa                                     *
+ *                                                                       *
+ *  Description: Interfața bibliotecar                                   *
+ *               Gestionează abonați, împrumuturi și retururi de cărți   *
+ *                                                                       *
+ *                                                                       *
+ *  This code and information is provided "as is" without warranty of    *
+ *  any kind, either expressed or implied, including but not limited     *
+ *  to the implied warranties of merchantability or fitness for a        *
+ *  particular purpose. You are free to use this source code in your     *
+ *  applications as long as the original copyright notice is included.   *
+ *                                                                       *      
+ ************************************************************************ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +29,7 @@ namespace UserInterface
 {
     public partial class BibliotecarView : Form
     {
+        /// <summary>
         public BibliotecarView()
         {
             InitializeComponent();
@@ -19,16 +37,19 @@ namespace UserInterface
 
         private void buttonBibliotecarLogin_Click(object sender, EventArgs e)
         {
+            // Activează interfața pentru gestiunea serviciilor de împrumut și retur
             groupBoxServicii.Enabled = true;
         }
 
         private void buttonAngajatRegister_Click(object sender, EventArgs e)
         {
+            // Activează interfața pentru gestiunea serviciilor de împrumut și retur
             groupBoxServicii.Enabled = true;
         }
 
         private void buttonImprumutCautare_Click(object sender, EventArgs e)
         {
+            // Activează interfața pentru căutarea cărților disponibile (se efectuează căutări parțiale)
             labelImprumutSugestii.Enabled = true;
             comboBoxSugestii.Enabled = true;
             buttonImprumutValidare.Enabled = true;
@@ -37,6 +58,7 @@ namespace UserInterface
 
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
+            // Delogare și revenire la pagina principală
             Form mainView = new MainView();
             mainView.Show();
             this.Hide();
