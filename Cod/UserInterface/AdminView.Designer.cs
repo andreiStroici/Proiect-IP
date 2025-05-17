@@ -1,6 +1,6 @@
 ﻿namespace UserInterface
 {
-    partial class Form3
+    partial class AdminView
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,8 @@
             this.radioButtonAngajatAdministrator = new System.Windows.Forms.RadioButton();
             this.labelAngajatRol = new System.Windows.Forms.Label();
             this.tabPageAdminCarti = new System.Windows.Forms.TabPage();
+            this.comboBoxUpdateStatus = new System.Windows.Forms.ComboBox();
+            this.labelUpdateStatus = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.textBoxIDCarte = new System.Windows.Forms.TextBox();
             this.labelUpdateIDCarte = new System.Windows.Forms.Label();
@@ -62,31 +64,37 @@
             this.textBoxAddCarteTitlu = new System.Windows.Forms.TextBox();
             this.textBoxAddCarteISBN = new System.Windows.Forms.TextBox();
             this.tabPageAdminAbonati = new System.Windows.Forms.TabPage();
-            this.labelUpdateStatus = new System.Windows.Forms.Label();
-            this.comboBoxUpdateStatus = new System.Windows.Forms.ComboBox();
-            this.labelAbonați = new System.Windows.Forms.Label();
-            this.labelGestiuneAbonați = new System.Windows.Forms.Label();
-            this.textBoxGestiuneTelefon = new System.Windows.Forms.TextBox();
-            this.buttonGestiuneCautare = new System.Windows.Forms.Button();
-            this.labelGestiuneDate = new System.Windows.Forms.Label();
-            this.textBoxGestiuneDate = new System.Windows.Forms.TextBox();
-            this.radioButtonGestiuneA = new System.Windows.Forms.RadioButton();
-            this.radioButtonGestiuneE = new System.Windows.Forms.RadioButton();
-            this.radioButtonGestiuneB = new System.Windows.Forms.RadioButton();
             this.buttonGestiuneValidare = new System.Windows.Forms.Button();
+            this.radioButtonGestiuneB = new System.Windows.Forms.RadioButton();
+            this.radioButtonGestiuneE = new System.Windows.Forms.RadioButton();
+            this.radioButtonGestiuneA = new System.Windows.Forms.RadioButton();
+            this.textBoxGestiuneDate = new System.Windows.Forms.TextBox();
+            this.labelGestiuneDate = new System.Windows.Forms.Label();
+            this.buttonGestiuneCautare = new System.Windows.Forms.Button();
+            this.labelGestiuneAbonațiTelefon = new System.Windows.Forms.Label();
+            this.textBoxGestiuneTelefon = new System.Windows.Forms.TextBox();
+            this.labelGestiuneAbonați = new System.Windows.Forms.Label();
             this.buttonDelogare = new System.Windows.Forms.Button();
+            this.labelAfișareAbonațiProbleme = new System.Windows.Forms.Label();
+            this.comboBoxAbonațiProbleme = new System.Windows.Forms.ComboBox();
+            this.buttonAfișareAbonațiCăutare = new System.Windows.Forms.Button();
+            this.radioButtonGestiuneAbonați = new System.Windows.Forms.RadioButton();
+            this.radioButtonAfișareAbonați = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelAfișareAbonați = new System.Windows.Forms.Label();
             this.groupBoxAbonatii.SuspendLayout();
             this.tabControlAdministrator.SuspendLayout();
             this.tabPageAdminAngajati.SuspendLayout();
             this.tabPageAdminCarti.SuspendLayout();
             this.tabPageAdminAbonati.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelAngajatInregistrare
             // 
             this.labelAngajatInregistrare.AutoSize = true;
             this.labelAngajatInregistrare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatInregistrare.Location = new System.Drawing.Point(293, 83);
+            this.labelAngajatInregistrare.Location = new System.Drawing.Point(372, 159);
             this.labelAngajatInregistrare.Name = "labelAngajatInregistrare";
             this.labelAngajatInregistrare.Size = new System.Drawing.Size(240, 25);
             this.labelAngajatInregistrare.TabIndex = 1;
@@ -97,7 +105,7 @@
             this.labelAngajatParola.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatParola.AutoSize = true;
             this.labelAngajatParola.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatParola.Location = new System.Drawing.Point(251, 169);
+            this.labelAngajatParola.Location = new System.Drawing.Point(330, 245);
             this.labelAngajatParola.Name = "labelAngajatParola";
             this.labelAngajatParola.Size = new System.Drawing.Size(57, 20);
             this.labelAngajatParola.TabIndex = 7;
@@ -108,7 +116,7 @@
             this.labelAngajatUsername.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatUsername.AutoSize = true;
             this.labelAngajatUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatUsername.Location = new System.Drawing.Point(251, 136);
+            this.labelAngajatUsername.Location = new System.Drawing.Point(330, 212);
             this.labelAngajatUsername.Name = "labelAngajatUsername";
             this.labelAngajatUsername.Size = new System.Drawing.Size(122, 20);
             this.labelAngajatUsername.TabIndex = 8;
@@ -116,23 +124,24 @@
             // 
             // buttonAngajatRegister
             // 
-            this.buttonAngajatRegister.Location = new System.Drawing.Point(359, 240);
+            this.buttonAngajatRegister.Location = new System.Drawing.Point(438, 316);
             this.buttonAngajatRegister.Name = "buttonAngajatRegister";
             this.buttonAngajatRegister.Size = new System.Drawing.Size(101, 38);
             this.buttonAngajatRegister.TabIndex = 16;
             this.buttonAngajatRegister.Text = "Înregistrare";
             this.buttonAngajatRegister.UseVisualStyleBackColor = true;
+            this.buttonAngajatRegister.Click += new System.EventHandler(this.buttonAngajatRegister_Click);
             // 
             // textBoxAngajatUsername
             // 
-            this.textBoxAngajatUsername.Location = new System.Drawing.Point(419, 132);
+            this.textBoxAngajatUsername.Location = new System.Drawing.Point(498, 208);
             this.textBoxAngajatUsername.Name = "textBoxAngajatUsername";
             this.textBoxAngajatUsername.Size = new System.Drawing.Size(165, 22);
             this.textBoxAngajatUsername.TabIndex = 10;
             // 
             // textBoxAngajatParola
             // 
-            this.textBoxAngajatParola.Location = new System.Drawing.Point(419, 162);
+            this.textBoxAngajatParola.Location = new System.Drawing.Point(498, 238);
             this.textBoxAngajatParola.Name = "textBoxAngajatParola";
             this.textBoxAngajatParola.Size = new System.Drawing.Size(165, 22);
             this.textBoxAngajatParola.TabIndex = 11;
@@ -142,7 +151,7 @@
             this.groupBoxAbonatii.Controls.Add(this.tabControlAdministrator);
             this.groupBoxAbonatii.Location = new System.Drawing.Point(0, 0);
             this.groupBoxAbonatii.Name = "groupBoxAbonatii";
-            this.groupBoxAbonatii.Size = new System.Drawing.Size(841, 430);
+            this.groupBoxAbonatii.Size = new System.Drawing.Size(972, 561);
             this.groupBoxAbonatii.TabIndex = 53;
             this.groupBoxAbonatii.TabStop = false;
             // 
@@ -155,7 +164,7 @@
             this.tabControlAdministrator.Location = new System.Drawing.Point(3, 18);
             this.tabControlAdministrator.Name = "tabControlAdministrator";
             this.tabControlAdministrator.SelectedIndex = 0;
-            this.tabControlAdministrator.Size = new System.Drawing.Size(835, 409);
+            this.tabControlAdministrator.Size = new System.Drawing.Size(966, 540);
             this.tabControlAdministrator.TabIndex = 58;
             // 
             // tabPageAdminAngajati
@@ -172,7 +181,7 @@
             this.tabPageAdminAngajati.Location = new System.Drawing.Point(4, 25);
             this.tabPageAdminAngajati.Name = "tabPageAdminAngajati";
             this.tabPageAdminAngajati.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAdminAngajati.Size = new System.Drawing.Size(827, 380);
+            this.tabPageAdminAngajati.Size = new System.Drawing.Size(958, 511);
             this.tabPageAdminAngajati.TabIndex = 0;
             this.tabPageAdminAngajati.Text = "Angajați";
             this.tabPageAdminAngajati.UseVisualStyleBackColor = true;
@@ -180,7 +189,7 @@
             // radioButtonAngajatBibliotecar
             // 
             this.radioButtonAngajatBibliotecar.AutoSize = true;
-            this.radioButtonAngajatBibliotecar.Location = new System.Drawing.Point(481, 201);
+            this.radioButtonAngajatBibliotecar.Location = new System.Drawing.Point(560, 277);
             this.radioButtonAngajatBibliotecar.Name = "radioButtonAngajatBibliotecar";
             this.radioButtonAngajatBibliotecar.Size = new System.Drawing.Size(92, 20);
             this.radioButtonAngajatBibliotecar.TabIndex = 57;
@@ -191,7 +200,7 @@
             // radioButtonAngajatAdministrator
             // 
             this.radioButtonAngajatAdministrator.AutoSize = true;
-            this.radioButtonAngajatAdministrator.Location = new System.Drawing.Point(359, 201);
+            this.radioButtonAngajatAdministrator.Location = new System.Drawing.Point(438, 277);
             this.radioButtonAngajatAdministrator.Name = "radioButtonAngajatAdministrator";
             this.radioButtonAngajatAdministrator.Size = new System.Drawing.Size(106, 20);
             this.radioButtonAngajatAdministrator.TabIndex = 56;
@@ -204,7 +213,7 @@
             this.labelAngajatRol.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatRol.AutoSize = true;
             this.labelAngajatRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatRol.Location = new System.Drawing.Point(251, 201);
+            this.labelAngajatRol.Location = new System.Drawing.Point(330, 277);
             this.labelAngajatRol.Name = "labelAngajatRol";
             this.labelAngajatRol.Size = new System.Drawing.Size(34, 20);
             this.labelAngajatRol.TabIndex = 55;
@@ -237,23 +246,46 @@
             this.tabPageAdminCarti.Location = new System.Drawing.Point(4, 25);
             this.tabPageAdminCarti.Name = "tabPageAdminCarti";
             this.tabPageAdminCarti.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAdminCarti.Size = new System.Drawing.Size(827, 380);
+            this.tabPageAdminCarti.Size = new System.Drawing.Size(958, 511);
             this.tabPageAdminCarti.TabIndex = 1;
             this.tabPageAdminCarti.Text = "Cărți";
             this.tabPageAdminCarti.UseVisualStyleBackColor = true;
             // 
+            // comboBoxUpdateStatus
+            // 
+            this.comboBoxUpdateStatus.FormattingEnabled = true;
+            this.comboBoxUpdateStatus.Items.AddRange(new object[] {
+            "Disponibilă",
+            "Indisponibilă"});
+            this.comboBoxUpdateStatus.Location = new System.Drawing.Point(704, 358);
+            this.comboBoxUpdateStatus.Name = "comboBoxUpdateStatus";
+            this.comboBoxUpdateStatus.Size = new System.Drawing.Size(196, 24);
+            this.comboBoxUpdateStatus.TabIndex = 34;
+            // 
+            // labelUpdateStatus
+            // 
+            this.labelUpdateStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.labelUpdateStatus.AutoSize = true;
+            this.labelUpdateStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUpdateStatus.Location = new System.Drawing.Point(582, 358);
+            this.labelUpdateStatus.Name = "labelUpdateStatus";
+            this.labelUpdateStatus.Size = new System.Drawing.Size(57, 20);
+            this.labelUpdateStatus.TabIndex = 33;
+            this.labelUpdateStatus.Text = "Status";
+            // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(552, 325);
+            this.buttonUpdate.Location = new System.Drawing.Point(671, 396);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(101, 38);
             this.buttonUpdate.TabIndex = 32;
             this.buttonUpdate.Text = "Modifică";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // textBoxIDCarte
             // 
-            this.textBoxIDCarte.Location = new System.Drawing.Point(585, 250);
+            this.textBoxIDCarte.Location = new System.Drawing.Point(704, 321);
             this.textBoxIDCarte.Name = "textBoxIDCarte";
             this.textBoxIDCarte.Size = new System.Drawing.Size(196, 22);
             this.textBoxIDCarte.TabIndex = 31;
@@ -263,7 +295,7 @@
             this.labelUpdateIDCarte.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelUpdateIDCarte.AutoSize = true;
             this.labelUpdateIDCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUpdateIDCarte.Location = new System.Drawing.Point(463, 250);
+            this.labelUpdateIDCarte.Location = new System.Drawing.Point(582, 321);
             this.labelUpdateIDCarte.Name = "labelUpdateIDCarte";
             this.labelUpdateIDCarte.Size = new System.Drawing.Size(72, 20);
             this.labelUpdateIDCarte.TabIndex = 30;
@@ -273,7 +305,7 @@
             // 
             this.labelUpdateCarte.AutoSize = true;
             this.labelUpdateCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUpdateCarte.Location = new System.Drawing.Point(518, 198);
+            this.labelUpdateCarte.Location = new System.Drawing.Point(637, 269);
             this.labelUpdateCarte.Name = "labelUpdateCarte";
             this.labelUpdateCarte.Size = new System.Drawing.Size(211, 25);
             this.labelUpdateCarte.TabIndex = 29;
@@ -281,16 +313,17 @@
             // 
             // buttonDeleteCarte
             // 
-            this.buttonDeleteCarte.Location = new System.Drawing.Point(554, 125);
+            this.buttonDeleteCarte.Location = new System.Drawing.Point(673, 196);
             this.buttonDeleteCarte.Name = "buttonDeleteCarte";
             this.buttonDeleteCarte.Size = new System.Drawing.Size(101, 38);
             this.buttonDeleteCarte.TabIndex = 28;
             this.buttonDeleteCarte.Text = "Șterge";
             this.buttonDeleteCarte.UseVisualStyleBackColor = true;
+            this.buttonDeleteCarte.Click += new System.EventHandler(this.buttonDeleteCarte_Click);
             // 
             // textBoxDeleteIDCarte
             // 
-            this.textBoxDeleteIDCarte.Location = new System.Drawing.Point(587, 88);
+            this.textBoxDeleteIDCarte.Location = new System.Drawing.Point(706, 159);
             this.textBoxDeleteIDCarte.Name = "textBoxDeleteIDCarte";
             this.textBoxDeleteIDCarte.Size = new System.Drawing.Size(196, 22);
             this.textBoxDeleteIDCarte.TabIndex = 27;
@@ -300,7 +333,7 @@
             this.labelDeleteIDCarte.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelDeleteIDCarte.AutoSize = true;
             this.labelDeleteIDCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDeleteIDCarte.Location = new System.Drawing.Point(465, 88);
+            this.labelDeleteIDCarte.Location = new System.Drawing.Point(584, 159);
             this.labelDeleteIDCarte.Name = "labelDeleteIDCarte";
             this.labelDeleteIDCarte.Size = new System.Drawing.Size(72, 20);
             this.labelDeleteIDCarte.TabIndex = 26;
@@ -310,7 +343,7 @@
             // 
             this.labelDelete.AutoSize = true;
             this.labelDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDelete.Location = new System.Drawing.Point(540, 38);
+            this.labelDelete.Location = new System.Drawing.Point(659, 109);
             this.labelDelete.Name = "labelDelete";
             this.labelDelete.Size = new System.Drawing.Size(149, 25);
             this.labelDelete.TabIndex = 25;
@@ -321,7 +354,7 @@
             this.labelAddCarteGen.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAddCarteGen.AutoSize = true;
             this.labelAddCarteGen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddCarteGen.Location = new System.Drawing.Point(24, 237);
+            this.labelAddCarteGen.Location = new System.Drawing.Point(62, 308);
             this.labelAddCarteGen.Name = "labelAddCarteGen";
             this.labelAddCarteGen.Size = new System.Drawing.Size(40, 20);
             this.labelAddCarteGen.TabIndex = 23;
@@ -329,7 +362,7 @@
             // 
             // textBoxAddCarteGen
             // 
-            this.textBoxAddCarteGen.Location = new System.Drawing.Point(192, 237);
+            this.textBoxAddCarteGen.Location = new System.Drawing.Point(230, 308);
             this.textBoxAddCarteGen.Name = "textBoxAddCarteGen";
             this.textBoxAddCarteGen.Size = new System.Drawing.Size(196, 22);
             this.textBoxAddCarteGen.TabIndex = 24;
@@ -339,7 +372,7 @@
             this.labelAddCarteEditura.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAddCarteEditura.AutoSize = true;
             this.labelAddCarteEditura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddCarteEditura.Location = new System.Drawing.Point(24, 198);
+            this.labelAddCarteEditura.Location = new System.Drawing.Point(62, 269);
             this.labelAddCarteEditura.Name = "labelAddCarteEditura";
             this.labelAddCarteEditura.Size = new System.Drawing.Size(62, 20);
             this.labelAddCarteEditura.TabIndex = 18;
@@ -350,7 +383,7 @@
             this.labelAddCarteAutor.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAddCarteAutor.AutoSize = true;
             this.labelAddCarteAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddCarteAutor.Location = new System.Drawing.Point(24, 161);
+            this.labelAddCarteAutor.Location = new System.Drawing.Point(62, 232);
             this.labelAddCarteAutor.Name = "labelAddCarteAutor";
             this.labelAddCarteAutor.Size = new System.Drawing.Size(49, 20);
             this.labelAddCarteAutor.TabIndex = 19;
@@ -358,32 +391,33 @@
             // 
             // textBoxAddCarteEditura
             // 
-            this.textBoxAddCarteEditura.Location = new System.Drawing.Point(192, 198);
+            this.textBoxAddCarteEditura.Location = new System.Drawing.Point(230, 269);
             this.textBoxAddCarteEditura.Name = "textBoxAddCarteEditura";
             this.textBoxAddCarteEditura.Size = new System.Drawing.Size(196, 22);
             this.textBoxAddCarteEditura.TabIndex = 21;
             // 
             // textBoxAddCarteAutor
             // 
-            this.textBoxAddCarteAutor.Location = new System.Drawing.Point(192, 161);
+            this.textBoxAddCarteAutor.Location = new System.Drawing.Point(230, 232);
             this.textBoxAddCarteAutor.Name = "textBoxAddCarteAutor";
             this.textBoxAddCarteAutor.Size = new System.Drawing.Size(196, 22);
             this.textBoxAddCarteAutor.TabIndex = 20;
             // 
             // buttonAdaugaCarte
             // 
-            this.buttonAdaugaCarte.Location = new System.Drawing.Point(156, 298);
+            this.buttonAdaugaCarte.Location = new System.Drawing.Point(194, 369);
             this.buttonAdaugaCarte.Name = "buttonAdaugaCarte";
             this.buttonAdaugaCarte.Size = new System.Drawing.Size(101, 38);
             this.buttonAdaugaCarte.TabIndex = 17;
             this.buttonAdaugaCarte.Text = "Adaugă";
             this.buttonAdaugaCarte.UseVisualStyleBackColor = true;
+            this.buttonAdaugaCarte.Click += new System.EventHandler(this.buttonAdaugaCarte_Click);
             // 
             // labelAddCarte
             // 
             this.labelAddCarte.AutoSize = true;
             this.labelAddCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddCarte.Location = new System.Drawing.Point(120, 38);
+            this.labelAddCarte.Location = new System.Drawing.Point(158, 109);
             this.labelAddCarte.Name = "labelAddCarte";
             this.labelAddCarte.Size = new System.Drawing.Size(160, 25);
             this.labelAddCarte.TabIndex = 12;
@@ -394,7 +428,7 @@
             this.labelAddCarteTitlu.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAddCarteTitlu.AutoSize = true;
             this.labelAddCarteTitlu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddCarteTitlu.Location = new System.Drawing.Point(24, 125);
+            this.labelAddCarteTitlu.Location = new System.Drawing.Point(62, 196);
             this.labelAddCarteTitlu.Name = "labelAddCarteTitlu";
             this.labelAddCarteTitlu.Size = new System.Drawing.Size(41, 20);
             this.labelAddCarteTitlu.TabIndex = 13;
@@ -405,7 +439,7 @@
             this.labelAddCarteISBN.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAddCarteISBN.AutoSize = true;
             this.labelAddCarteISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddCarteISBN.Location = new System.Drawing.Point(24, 92);
+            this.labelAddCarteISBN.Location = new System.Drawing.Point(62, 163);
             this.labelAddCarteISBN.Name = "labelAddCarteISBN";
             this.labelAddCarteISBN.Size = new System.Drawing.Size(48, 20);
             this.labelAddCarteISBN.TabIndex = 14;
@@ -413,20 +447,25 @@
             // 
             // textBoxAddCarteTitlu
             // 
-            this.textBoxAddCarteTitlu.Location = new System.Drawing.Point(192, 125);
+            this.textBoxAddCarteTitlu.Location = new System.Drawing.Point(230, 196);
             this.textBoxAddCarteTitlu.Name = "textBoxAddCarteTitlu";
             this.textBoxAddCarteTitlu.Size = new System.Drawing.Size(196, 22);
             this.textBoxAddCarteTitlu.TabIndex = 16;
             // 
             // textBoxAddCarteISBN
             // 
-            this.textBoxAddCarteISBN.Location = new System.Drawing.Point(192, 88);
+            this.textBoxAddCarteISBN.Location = new System.Drawing.Point(230, 159);
             this.textBoxAddCarteISBN.Name = "textBoxAddCarteISBN";
             this.textBoxAddCarteISBN.Size = new System.Drawing.Size(196, 22);
             this.textBoxAddCarteISBN.TabIndex = 15;
             // 
             // tabPageAdminAbonati
             // 
+            this.tabPageAdminAbonati.Controls.Add(this.labelAfișareAbonați);
+            this.tabPageAdminAbonati.Controls.Add(this.panel1);
+            this.tabPageAdminAbonati.Controls.Add(this.buttonAfișareAbonațiCăutare);
+            this.tabPageAdminAbonati.Controls.Add(this.comboBoxAbonațiProbleme);
+            this.tabPageAdminAbonati.Controls.Add(this.labelAfișareAbonațiProbleme);
             this.tabPageAdminAbonati.Controls.Add(this.buttonGestiuneValidare);
             this.tabPageAdminAbonati.Controls.Add(this.radioButtonGestiuneB);
             this.tabPageAdminAbonati.Controls.Add(this.radioButtonGestiuneE);
@@ -434,130 +473,33 @@
             this.tabPageAdminAbonati.Controls.Add(this.textBoxGestiuneDate);
             this.tabPageAdminAbonati.Controls.Add(this.labelGestiuneDate);
             this.tabPageAdminAbonati.Controls.Add(this.buttonGestiuneCautare);
-            this.tabPageAdminAbonati.Controls.Add(this.labelGestiuneAbonați);
+            this.tabPageAdminAbonati.Controls.Add(this.labelGestiuneAbonațiTelefon);
             this.tabPageAdminAbonati.Controls.Add(this.textBoxGestiuneTelefon);
-            this.tabPageAdminAbonati.Controls.Add(this.labelAbonați);
+            this.tabPageAdminAbonati.Controls.Add(this.labelGestiuneAbonați);
             this.tabPageAdminAbonati.Location = new System.Drawing.Point(4, 25);
             this.tabPageAdminAbonati.Name = "tabPageAdminAbonati";
             this.tabPageAdminAbonati.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAdminAbonati.Size = new System.Drawing.Size(827, 380);
+            this.tabPageAdminAbonati.Size = new System.Drawing.Size(958, 511);
             this.tabPageAdminAbonati.TabIndex = 2;
             this.tabPageAdminAbonati.Text = "Abonați";
             this.tabPageAdminAbonati.UseVisualStyleBackColor = true;
             // 
-            // labelUpdateStatus
+            // buttonGestiuneValidare
             // 
-            this.labelUpdateStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.labelUpdateStatus.AutoSize = true;
-            this.labelUpdateStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUpdateStatus.Location = new System.Drawing.Point(463, 287);
-            this.labelUpdateStatus.Name = "labelUpdateStatus";
-            this.labelUpdateStatus.Size = new System.Drawing.Size(57, 20);
-            this.labelUpdateStatus.TabIndex = 33;
-            this.labelUpdateStatus.Text = "Status";
-            // 
-            // comboBoxUpdateStatus
-            // 
-            this.comboBoxUpdateStatus.FormattingEnabled = true;
-            this.comboBoxUpdateStatus.Items.AddRange(new object[] {
-            "Disponibilă",
-            "Indisponibilă"});
-            this.comboBoxUpdateStatus.Location = new System.Drawing.Point(585, 287);
-            this.comboBoxUpdateStatus.Name = "comboBoxUpdateStatus";
-            this.comboBoxUpdateStatus.Size = new System.Drawing.Size(196, 24);
-            this.comboBoxUpdateStatus.TabIndex = 34;
-            // 
-            // labelAbonați
-            // 
-            this.labelAbonați.AutoSize = true;
-            this.labelAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAbonați.Location = new System.Drawing.Point(301, 38);
-            this.labelAbonați.Name = "labelAbonați";
-            this.labelAbonați.Size = new System.Drawing.Size(175, 25);
-            this.labelAbonați.TabIndex = 13;
-            this.labelAbonați.Text = "Gestiune abonați";
-            // 
-            // labelGestiuneAbonați
-            // 
-            this.labelGestiuneAbonați.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.labelGestiuneAbonați.AutoSize = true;
-            this.labelGestiuneAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGestiuneAbonați.Location = new System.Drawing.Point(217, 87);
-            this.labelGestiuneAbonați.Name = "labelGestiuneAbonați";
-            this.labelGestiuneAbonați.Size = new System.Drawing.Size(137, 20);
-            this.labelGestiuneAbonați.TabIndex = 14;
-            this.labelGestiuneAbonați.Text = "Număr de telefon";
-            // 
-            // textBoxGestiuneTelefon
-            // 
-            this.textBoxGestiuneTelefon.Location = new System.Drawing.Point(399, 85);
-            this.textBoxGestiuneTelefon.Name = "textBoxGestiuneTelefon";
-            this.textBoxGestiuneTelefon.Size = new System.Drawing.Size(165, 22);
-            this.textBoxGestiuneTelefon.TabIndex = 15;
-            // 
-            // buttonGestiuneCautare
-            // 
-            this.buttonGestiuneCautare.Location = new System.Drawing.Point(321, 130);
-            this.buttonGestiuneCautare.Name = "buttonGestiuneCautare";
-            this.buttonGestiuneCautare.Size = new System.Drawing.Size(123, 33);
-            this.buttonGestiuneCautare.TabIndex = 55;
-            this.buttonGestiuneCautare.Text = "Căutare";
-            this.buttonGestiuneCautare.UseVisualStyleBackColor = true;
-            this.buttonGestiuneCautare.Click += new System.EventHandler(this.buttonGestiuneCautare_Click);
-            // 
-            // labelGestiuneDate
-            // 
-            this.labelGestiuneDate.AutoSize = true;
-            this.labelGestiuneDate.Enabled = false;
-            this.labelGestiuneDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGestiuneDate.Location = new System.Drawing.Point(217, 199);
-            this.labelGestiuneDate.Name = "labelGestiuneDate";
-            this.labelGestiuneDate.Size = new System.Drawing.Size(156, 20);
-            this.labelGestiuneDate.TabIndex = 56;
-            this.labelGestiuneDate.Text = "Date despre abonat";
-            // 
-            // textBoxGestiuneDate
-            // 
-            this.textBoxGestiuneDate.Enabled = false;
-            this.textBoxGestiuneDate.Location = new System.Drawing.Point(399, 185);
-            this.textBoxGestiuneDate.Multiline = true;
-            this.textBoxGestiuneDate.Name = "textBoxGestiuneDate";
-            this.textBoxGestiuneDate.ReadOnly = true;
-            this.textBoxGestiuneDate.Size = new System.Drawing.Size(343, 49);
-            this.textBoxGestiuneDate.TabIndex = 57;
-            // 
-            // radioButtonGestiuneA
-            // 
-            this.radioButtonGestiuneA.AutoSize = true;
-            this.radioButtonGestiuneA.Enabled = false;
-            this.radioButtonGestiuneA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonGestiuneA.Location = new System.Drawing.Point(145, 261);
-            this.radioButtonGestiuneA.Name = "radioButtonGestiuneA";
-            this.radioButtonGestiuneA.Size = new System.Drawing.Size(162, 24);
-            this.radioButtonGestiuneA.TabIndex = 58;
-            this.radioButtonGestiuneA.TabStop = true;
-            this.radioButtonGestiuneA.Text = "Aplicare restricție";
-            this.radioButtonGestiuneA.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonGestiuneE
-            // 
-            this.radioButtonGestiuneE.AutoSize = true;
-            this.radioButtonGestiuneE.Enabled = false;
-            this.radioButtonGestiuneE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonGestiuneE.Location = new System.Drawing.Point(346, 261);
-            this.radioButtonGestiuneE.Name = "radioButtonGestiuneE";
-            this.radioButtonGestiuneE.Size = new System.Drawing.Size(171, 24);
-            this.radioButtonGestiuneE.TabIndex = 59;
-            this.radioButtonGestiuneE.TabStop = true;
-            this.radioButtonGestiuneE.Text = "Eliminare restricție";
-            this.radioButtonGestiuneE.UseVisualStyleBackColor = true;
+            this.buttonGestiuneValidare.Enabled = false;
+            this.buttonGestiuneValidare.Location = new System.Drawing.Point(447, 459);
+            this.buttonGestiuneValidare.Name = "buttonGestiuneValidare";
+            this.buttonGestiuneValidare.Size = new System.Drawing.Size(124, 34);
+            this.buttonGestiuneValidare.TabIndex = 61;
+            this.buttonGestiuneValidare.Text = "Validare";
+            this.buttonGestiuneValidare.Click += new System.EventHandler(this.buttonGestiuneValidare_Click);
             // 
             // radioButtonGestiuneB
             // 
             this.radioButtonGestiuneB.AutoSize = true;
             this.radioButtonGestiuneB.Enabled = false;
             this.radioButtonGestiuneB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonGestiuneB.Location = new System.Drawing.Point(562, 261);
+            this.radioButtonGestiuneB.Location = new System.Drawing.Point(652, 429);
             this.radioButtonGestiuneB.Name = "radioButtonGestiuneB";
             this.radioButtonGestiuneB.Size = new System.Drawing.Size(143, 24);
             this.radioButtonGestiuneB.TabIndex = 60;
@@ -565,32 +507,196 @@
             this.radioButtonGestiuneB.Text = "Blocare abonat";
             this.radioButtonGestiuneB.UseVisualStyleBackColor = true;
             // 
-            // buttonGestiuneValidare
+            // radioButtonGestiuneE
             // 
-            this.buttonGestiuneValidare.Enabled = false;
-            this.buttonGestiuneValidare.Location = new System.Drawing.Point(321, 312);
-            this.buttonGestiuneValidare.Name = "buttonGestiuneValidare";
-            this.buttonGestiuneValidare.Size = new System.Drawing.Size(124, 34);
-            this.buttonGestiuneValidare.TabIndex = 61;
-            this.buttonGestiuneValidare.Text = "Validare";
+            this.radioButtonGestiuneE.AutoSize = true;
+            this.radioButtonGestiuneE.Enabled = false;
+            this.radioButtonGestiuneE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonGestiuneE.Location = new System.Drawing.Point(436, 429);
+            this.radioButtonGestiuneE.Name = "radioButtonGestiuneE";
+            this.radioButtonGestiuneE.Size = new System.Drawing.Size(171, 24);
+            this.radioButtonGestiuneE.TabIndex = 59;
+            this.radioButtonGestiuneE.TabStop = true;
+            this.radioButtonGestiuneE.Text = "Eliminare restricție";
+            this.radioButtonGestiuneE.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonGestiuneA
+            // 
+            this.radioButtonGestiuneA.AutoSize = true;
+            this.radioButtonGestiuneA.Enabled = false;
+            this.radioButtonGestiuneA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonGestiuneA.Location = new System.Drawing.Point(235, 429);
+            this.radioButtonGestiuneA.Name = "radioButtonGestiuneA";
+            this.radioButtonGestiuneA.Size = new System.Drawing.Size(162, 24);
+            this.radioButtonGestiuneA.TabIndex = 58;
+            this.radioButtonGestiuneA.TabStop = true;
+            this.radioButtonGestiuneA.Text = "Aplicare restricție";
+            this.radioButtonGestiuneA.UseVisualStyleBackColor = true;
+            // 
+            // textBoxGestiuneDate
+            // 
+            this.textBoxGestiuneDate.Enabled = false;
+            this.textBoxGestiuneDate.Location = new System.Drawing.Point(192, 261);
+            this.textBoxGestiuneDate.Multiline = true;
+            this.textBoxGestiuneDate.Name = "textBoxGestiuneDate";
+            this.textBoxGestiuneDate.ReadOnly = true;
+            this.textBoxGestiuneDate.Size = new System.Drawing.Size(361, 85);
+            this.textBoxGestiuneDate.TabIndex = 57;
+            // 
+            // labelGestiuneDate
+            // 
+            this.labelGestiuneDate.AutoSize = true;
+            this.labelGestiuneDate.Enabled = false;
+            this.labelGestiuneDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGestiuneDate.Location = new System.Drawing.Point(10, 261);
+            this.labelGestiuneDate.Name = "labelGestiuneDate";
+            this.labelGestiuneDate.Size = new System.Drawing.Size(156, 20);
+            this.labelGestiuneDate.TabIndex = 56;
+            this.labelGestiuneDate.Text = "Date despre abonat";
+            // 
+            // buttonGestiuneCautare
+            // 
+            this.buttonGestiuneCautare.Enabled = false;
+            this.buttonGestiuneCautare.Location = new System.Drawing.Point(114, 179);
+            this.buttonGestiuneCautare.Name = "buttonGestiuneCautare";
+            this.buttonGestiuneCautare.Size = new System.Drawing.Size(123, 33);
+            this.buttonGestiuneCautare.TabIndex = 55;
+            this.buttonGestiuneCautare.Text = "Căutare";
+            this.buttonGestiuneCautare.UseVisualStyleBackColor = true;
+            this.buttonGestiuneCautare.Click += new System.EventHandler(this.buttonGestiuneCautare_Click);
+            // 
+            // labelGestiuneAbonațiTelefon
+            // 
+            this.labelGestiuneAbonațiTelefon.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.labelGestiuneAbonațiTelefon.AutoSize = true;
+            this.labelGestiuneAbonațiTelefon.Enabled = false;
+            this.labelGestiuneAbonațiTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGestiuneAbonațiTelefon.Location = new System.Drawing.Point(10, 136);
+            this.labelGestiuneAbonațiTelefon.Name = "labelGestiuneAbonațiTelefon";
+            this.labelGestiuneAbonațiTelefon.Size = new System.Drawing.Size(137, 20);
+            this.labelGestiuneAbonațiTelefon.TabIndex = 14;
+            this.labelGestiuneAbonațiTelefon.Text = "Număr de telefon";
+            // 
+            // textBoxGestiuneTelefon
+            // 
+            this.textBoxGestiuneTelefon.Enabled = false;
+            this.textBoxGestiuneTelefon.Location = new System.Drawing.Point(192, 134);
+            this.textBoxGestiuneTelefon.Name = "textBoxGestiuneTelefon";
+            this.textBoxGestiuneTelefon.Size = new System.Drawing.Size(165, 22);
+            this.textBoxGestiuneTelefon.TabIndex = 15;
+            // 
+            // labelGestiuneAbonați
+            // 
+            this.labelGestiuneAbonați.AutoSize = true;
+            this.labelGestiuneAbonați.Enabled = false;
+            this.labelGestiuneAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGestiuneAbonați.Location = new System.Drawing.Point(94, 87);
+            this.labelGestiuneAbonați.Name = "labelGestiuneAbonați";
+            this.labelGestiuneAbonați.Size = new System.Drawing.Size(175, 25);
+            this.labelGestiuneAbonați.TabIndex = 13;
+            this.labelGestiuneAbonați.Text = "Gestiune abonați";
             // 
             // buttonDelogare
             // 
-            this.buttonDelogare.Location = new System.Drawing.Point(7, 438);
+            this.buttonDelogare.Location = new System.Drawing.Point(7, 560);
             this.buttonDelogare.Name = "buttonDelogare";
             this.buttonDelogare.Size = new System.Drawing.Size(134, 34);
             this.buttonDelogare.TabIndex = 58;
             this.buttonDelogare.Text = "Delogare";
             this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
             // 
-            // Form3
+            // labelAfișareAbonațiProbleme
+            // 
+            this.labelAfișareAbonațiProbleme.AutoSize = true;
+            this.labelAfișareAbonațiProbleme.Enabled = false;
+            this.labelAfișareAbonațiProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAfișareAbonațiProbleme.Location = new System.Drawing.Point(614, 87);
+            this.labelAfișareAbonațiProbleme.Name = "labelAfișareAbonațiProbleme";
+            this.labelAfișareAbonațiProbleme.Size = new System.Drawing.Size(281, 25);
+            this.labelAfișareAbonațiProbleme.TabIndex = 62;
+            this.labelAfișareAbonațiProbleme.Text = "Afișare abonați cu probleme";
+            // 
+            // comboBoxAbonațiProbleme
+            // 
+            this.comboBoxAbonațiProbleme.Enabled = false;
+            this.comboBoxAbonațiProbleme.FormattingEnabled = true;
+            this.comboBoxAbonațiProbleme.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxAbonațiProbleme.Location = new System.Drawing.Point(619, 188);
+            this.comboBoxAbonațiProbleme.Name = "comboBoxAbonațiProbleme";
+            this.comboBoxAbonațiProbleme.Size = new System.Drawing.Size(308, 24);
+            this.comboBoxAbonațiProbleme.TabIndex = 63;
+            // 
+            // buttonAfișareAbonațiCăutare
+            // 
+            this.buttonAfișareAbonațiCăutare.Enabled = false;
+            this.buttonAfișareAbonațiCăutare.Location = new System.Drawing.Point(699, 136);
+            this.buttonAfișareAbonațiCăutare.Name = "buttonAfișareAbonațiCăutare";
+            this.buttonAfișareAbonațiCăutare.Size = new System.Drawing.Size(123, 33);
+            this.buttonAfișareAbonațiCăutare.TabIndex = 64;
+            this.buttonAfișareAbonațiCăutare.Text = "Căutare";
+            this.buttonAfișareAbonațiCăutare.UseVisualStyleBackColor = true;
+            this.buttonAfișareAbonațiCăutare.Click += new System.EventHandler(this.buttonAfișareAbonațiCăutare_Click);
+            // 
+            // radioButtonGestiuneAbonați
+            // 
+            this.radioButtonGestiuneAbonați.AutoSize = true;
+            this.radioButtonGestiuneAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonGestiuneAbonați.Location = new System.Drawing.Point(25, 16);
+            this.radioButtonGestiuneAbonați.Name = "radioButtonGestiuneAbonați";
+            this.radioButtonGestiuneAbonați.Size = new System.Drawing.Size(140, 22);
+            this.radioButtonGestiuneAbonați.TabIndex = 65;
+            this.radioButtonGestiuneAbonați.TabStop = true;
+            this.radioButtonGestiuneAbonați.Text = "Selectare abonat";
+            this.radioButtonGestiuneAbonați.UseVisualStyleBackColor = true;
+            this.radioButtonGestiuneAbonați.CheckedChanged += new System.EventHandler(this.radioButtonGestiuneAbonați_CheckedChanged);
+            // 
+            // radioButtonAfișareAbonați
+            // 
+            this.radioButtonAfișareAbonați.AutoSize = true;
+            this.radioButtonAfișareAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonAfișareAbonați.Location = new System.Drawing.Point(625, 16);
+            this.radioButtonAfișareAbonați.Name = "radioButtonAfișareAbonați";
+            this.radioButtonAfișareAbonați.Size = new System.Drawing.Size(126, 22);
+            this.radioButtonAfișareAbonați.TabIndex = 66;
+            this.radioButtonAfișareAbonați.TabStop = true;
+            this.radioButtonAfișareAbonați.Text = "Afișare abonați";
+            this.radioButtonAfișareAbonați.UseVisualStyleBackColor = true;
+            this.radioButtonAfișareAbonați.CheckedChanged += new System.EventHandler(this.radioButtonAfișareAbonați_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButtonAfișareAbonați);
+            this.panel1.Controls.Add(this.radioButtonGestiuneAbonați);
+            this.panel1.Location = new System.Drawing.Point(74, 22);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(821, 41);
+            this.panel1.TabIndex = 67;
+            // 
+            // labelAfișareAbonați
+            // 
+            this.labelAfișareAbonați.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.labelAfișareAbonați.AutoSize = true;
+            this.labelAfișareAbonați.Enabled = false;
+            this.labelAfișareAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAfișareAbonați.Location = new System.Drawing.Point(533, 188);
+            this.labelAfișareAbonați.Name = "labelAfișareAbonați";
+            this.labelAfișareAbonați.Size = new System.Drawing.Size(65, 20);
+            this.labelAfișareAbonați.TabIndex = 68;
+            this.labelAfișareAbonați.Text = "Abonați";
+            // 
+            // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 484);
+            this.ClientSize = new System.Drawing.Size(975, 595);
             this.Controls.Add(this.buttonDelogare);
             this.Controls.Add(this.groupBoxAbonatii);
-            this.Name = "Form3";
+            this.Name = "AdminView";
             this.Text = "Administrator";
             this.groupBoxAbonatii.ResumeLayout(false);
             this.tabControlAdministrator.ResumeLayout(false);
@@ -600,6 +706,8 @@
             this.tabPageAdminCarti.PerformLayout();
             this.tabPageAdminAbonati.ResumeLayout(false);
             this.tabPageAdminAbonati.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -643,8 +751,8 @@
         private System.Windows.Forms.TabPage tabPageAdminAbonati;
         private System.Windows.Forms.ComboBox comboBoxUpdateStatus;
         private System.Windows.Forms.Label labelUpdateStatus;
-        private System.Windows.Forms.Label labelAbonați;
         private System.Windows.Forms.Label labelGestiuneAbonați;
+        private System.Windows.Forms.Label labelGestiuneAbonațiTelefon;
         private System.Windows.Forms.TextBox textBoxGestiuneTelefon;
         private System.Windows.Forms.Button buttonGestiuneCautare;
         private System.Windows.Forms.TextBox textBoxGestiuneDate;
@@ -654,5 +762,12 @@
         private System.Windows.Forms.RadioButton radioButtonGestiuneE;
         private System.Windows.Forms.Button buttonGestiuneValidare;
         private System.Windows.Forms.Button buttonDelogare;
+        private System.Windows.Forms.Label labelAfișareAbonațiProbleme;
+        private System.Windows.Forms.Button buttonAfișareAbonațiCăutare;
+        private System.Windows.Forms.ComboBox comboBoxAbonațiProbleme;
+        private System.Windows.Forms.RadioButton radioButtonAfișareAbonați;
+        private System.Windows.Forms.RadioButton radioButtonGestiuneAbonați;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelAfișareAbonați;
     }
 }

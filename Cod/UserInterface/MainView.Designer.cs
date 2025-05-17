@@ -1,6 +1,6 @@
 ﻿namespace UserInterface
 {
-    partial class Biblioteca
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.

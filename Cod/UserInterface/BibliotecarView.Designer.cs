@@ -1,6 +1,6 @@
 ﻿namespace UserInterface
 {
-    partial class Form2
+    partial class BibliotecarView
     {
         /// <summary>
         /// Required designer variable.
@@ -49,21 +49,19 @@
             this.labelReturIDImprumut = new System.Windows.Forms.Label();
             this.labelRetur = new System.Windows.Forms.Label();
             this.buttonImprumutValidare = new System.Windows.Forms.Button();
-            this.textBoxImprumutPerioada = new System.Windows.Forms.TextBox();
             this.textBoxImprumutAutor = new System.Windows.Forms.TextBox();
             this.textBoxImprumutTitlu = new System.Windows.Forms.TextBox();
-            this.labelImprumutPerioada = new System.Windows.Forms.Label();
             this.labelImprumutAutor = new System.Windows.Forms.Label();
             this.labelImprumutTitlu = new System.Windows.Forms.Label();
             this.labelImprumut = new System.Windows.Forms.Label();
             this.groupBoxAbonat = new System.Windows.Forms.GroupBox();
+            this.buttonDelogare = new System.Windows.Forms.Button();
             this.labelAbonati = new System.Windows.Forms.Label();
             this.groupBoxServicii = new System.Windows.Forms.GroupBox();
             this.comboBoxSugestii = new System.Windows.Forms.ComboBox();
             this.labelImprumutSugestii = new System.Windows.Forms.Label();
             this.buttonImprumutCautare = new System.Windows.Forms.Button();
             this.labelServicii = new System.Windows.Forms.Label();
-            this.buttonDelogare = new System.Windows.Forms.Button();
             this.groupBoxAbonat.SuspendLayout();
             this.groupBoxServicii.SuspendLayout();
             this.SuspendLayout();
@@ -218,16 +216,17 @@
             // 
             // buttonRetur
             // 
-            this.buttonRetur.Location = new System.Drawing.Point(235, 615);
+            this.buttonRetur.Location = new System.Drawing.Point(235, 565);
             this.buttonRetur.Name = "buttonRetur";
             this.buttonRetur.Size = new System.Drawing.Size(124, 37);
             this.buttonRetur.TabIndex = 52;
             this.buttonRetur.Text = "Validare";
             this.buttonRetur.UseVisualStyleBackColor = true;
+            this.buttonRetur.Click += new System.EventHandler(this.buttonRetur_Click);
             // 
             // textBoxReturIDCarte
             // 
-            this.textBoxReturIDCarte.Location = new System.Drawing.Point(236, 556);
+            this.textBoxReturIDCarte.Location = new System.Drawing.Point(236, 506);
             this.textBoxReturIDCarte.Name = "textBoxReturIDCarte";
             this.textBoxReturIDCarte.Size = new System.Drawing.Size(237, 22);
             this.textBoxReturIDCarte.TabIndex = 51;
@@ -236,7 +235,7 @@
             // 
             this.labelReturIDImprumut.AutoSize = true;
             this.labelReturIDImprumut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelReturIDImprumut.Location = new System.Drawing.Point(101, 558);
+            this.labelReturIDImprumut.Location = new System.Drawing.Point(101, 508);
             this.labelReturIDImprumut.Name = "labelReturIDImprumut";
             this.labelReturIDImprumut.Size = new System.Drawing.Size(72, 20);
             this.labelReturIDImprumut.TabIndex = 50;
@@ -246,7 +245,7 @@
             // 
             this.labelRetur.AutoSize = true;
             this.labelRetur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetur.Location = new System.Drawing.Point(191, 501);
+            this.labelRetur.Location = new System.Drawing.Point(191, 451);
             this.labelRetur.Name = "labelRetur";
             this.labelRetur.Size = new System.Drawing.Size(160, 25);
             this.labelRetur.TabIndex = 49;
@@ -255,19 +254,12 @@
             // buttonImprumutValidare
             // 
             this.buttonImprumutValidare.Enabled = false;
-            this.buttonImprumutValidare.Location = new System.Drawing.Point(235, 412);
+            this.buttonImprumutValidare.Location = new System.Drawing.Point(235, 358);
             this.buttonImprumutValidare.Name = "buttonImprumutValidare";
             this.buttonImprumutValidare.Size = new System.Drawing.Size(124, 34);
             this.buttonImprumutValidare.TabIndex = 48;
             this.buttonImprumutValidare.Text = "Validare";
-            // 
-            // textBoxImprumutPerioada
-            // 
-            this.textBoxImprumutPerioada.Enabled = false;
-            this.textBoxImprumutPerioada.Location = new System.Drawing.Point(343, 349);
-            this.textBoxImprumutPerioada.Name = "textBoxImprumutPerioada";
-            this.textBoxImprumutPerioada.Size = new System.Drawing.Size(130, 22);
-            this.textBoxImprumutPerioada.TabIndex = 47;
+            this.buttonImprumutValidare.Click += new System.EventHandler(this.buttonImprumutValidare_Click);
             // 
             // textBoxImprumutAutor
             // 
@@ -282,17 +274,6 @@
             this.textBoxImprumutTitlu.Name = "textBoxImprumutTitlu";
             this.textBoxImprumutTitlu.Size = new System.Drawing.Size(238, 22);
             this.textBoxImprumutTitlu.TabIndex = 44;
-            // 
-            // labelImprumutPerioada
-            // 
-            this.labelImprumutPerioada.AutoSize = true;
-            this.labelImprumutPerioada.Enabled = false;
-            this.labelImprumutPerioada.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelImprumutPerioada.Location = new System.Drawing.Point(101, 353);
-            this.labelImprumutPerioada.Name = "labelImprumutPerioada";
-            this.labelImprumutPerioada.Size = new System.Drawing.Size(217, 20);
-            this.labelImprumutPerioada.TabIndex = 46;
-            this.labelImprumutPerioada.Text = "Perioadă de împrumut (zile)";
             // 
             // labelImprumutAutor
             // 
@@ -352,6 +333,15 @@
             this.groupBoxAbonat.TabIndex = 53;
             this.groupBoxAbonat.TabStop = false;
             // 
+            // buttonDelogare
+            // 
+            this.buttonDelogare.Location = new System.Drawing.Point(6, 638);
+            this.buttonDelogare.Name = "buttonDelogare";
+            this.buttonDelogare.Size = new System.Drawing.Size(134, 34);
+            this.buttonDelogare.TabIndex = 57;
+            this.buttonDelogare.Text = "Delogare";
+            this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
+            // 
             // labelAbonati
             // 
             this.labelAbonati.AutoSize = true;
@@ -374,13 +364,11 @@
             this.groupBoxServicii.Controls.Add(this.buttonRetur);
             this.groupBoxServicii.Controls.Add(this.labelImprumutAutor);
             this.groupBoxServicii.Controls.Add(this.textBoxReturIDCarte);
-            this.groupBoxServicii.Controls.Add(this.labelImprumutPerioada);
             this.groupBoxServicii.Controls.Add(this.labelReturIDImprumut);
             this.groupBoxServicii.Controls.Add(this.textBoxImprumutTitlu);
             this.groupBoxServicii.Controls.Add(this.labelRetur);
             this.groupBoxServicii.Controls.Add(this.textBoxImprumutAutor);
             this.groupBoxServicii.Controls.Add(this.buttonImprumutValidare);
-            this.groupBoxServicii.Controls.Add(this.textBoxImprumutPerioada);
             this.groupBoxServicii.Enabled = false;
             this.groupBoxServicii.Location = new System.Drawing.Point(513, 0);
             this.groupBoxServicii.Name = "groupBoxServicii";
@@ -436,22 +424,13 @@
             this.labelServicii.Text = "Servicii";
             this.labelServicii.UseMnemonic = false;
             // 
-            // buttonDelogare
-            // 
-            this.buttonDelogare.Location = new System.Drawing.Point(6, 638);
-            this.buttonDelogare.Name = "buttonDelogare";
-            this.buttonDelogare.Size = new System.Drawing.Size(134, 34);
-            this.buttonDelogare.TabIndex = 57;
-            this.buttonDelogare.Text = "Delogare";
-            this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
-            // 
-            // Form2
+            // BibliotecarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 678);
             this.Controls.Add(this.groupBoxAbonat);
-            this.Name = "Form2";
+            this.Name = "BibliotecarView";
             this.Text = "Bibliotecar";
             this.groupBoxAbonat.ResumeLayout(false);
             this.groupBoxAbonat.PerformLayout();
@@ -483,10 +462,8 @@
         private System.Windows.Forms.Label labelReturIDImprumut;
         private System.Windows.Forms.Label labelRetur;
         private System.Windows.Forms.Button buttonImprumutValidare;
-        private System.Windows.Forms.TextBox textBoxImprumutPerioada;
         private System.Windows.Forms.TextBox textBoxImprumutAutor;
         private System.Windows.Forms.TextBox textBoxImprumutTitlu;
-        private System.Windows.Forms.Label labelImprumutPerioada;
         private System.Windows.Forms.Label labelImprumutAutor;
         private System.Windows.Forms.Label labelImprumutTitlu;
         private System.Windows.Forms.Label labelImprumut;

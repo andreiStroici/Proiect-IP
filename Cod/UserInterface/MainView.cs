@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
-    public partial class Biblioteca : Form
+    public partial class MainView : Form
     {
-        public Biblioteca()
+        public MainView()
         {
             InitializeComponent();
         }
@@ -47,7 +47,7 @@ namespace UserInterface
             {
                 //MessageBox.Show("Autentificare reușită ca Bibliotecar!");
                 // Deschideți fereastra corespunzătoare pentru bibliotecar
-                Form form2 = new Form2();
+                Form form2 = new BibliotecarView();
                 form2.Show();
 
                 form2.BeginInvoke((MethodInvoker)delegate {
@@ -63,7 +63,7 @@ namespace UserInterface
             {
                 //MessageBox.Show("Autentificare reușită ca Administrator!");
                 // Deschideți fereastra corespunzătoare pentru administrator
-                Form form3 = new Form3();
+                Form form3 = new AdminView();
                 form3.Show();
 
                 form3.BeginInvoke((MethodInvoker)delegate {

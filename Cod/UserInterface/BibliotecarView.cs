@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
-    public partial class Form2 : Form
+    public partial class BibliotecarView : Form
     {
-        public Form2()
+        public BibliotecarView()
         {
             InitializeComponent();
         }
@@ -32,17 +32,25 @@ namespace UserInterface
             labelImprumutSugestii.Enabled = true;
             comboBoxSugestii.Enabled = true;
             buttonImprumutValidare.Enabled = true;
-            labelImprumutPerioada.Enabled = true;
-            textBoxImprumutPerioada.Enabled = true;
 
         }
 
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
-            Form form1 = new Biblioteca();
-            form1.Show();
+            Form mainView = new MainView();
+            mainView.Show();
             this.Hide();
             this.Controls.Clear();
+        }
+
+        private void buttonImprumutValidare_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException("Implementează butonul de validare al împrumutului!");
+        }
+
+        private void buttonRetur_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException("Implementează butonul de validare al returului!");
         }
     }
 }
