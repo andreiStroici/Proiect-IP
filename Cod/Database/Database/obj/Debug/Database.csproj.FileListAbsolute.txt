@@ -1,0 +1,16 @@
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\Database.dll.config
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\Database.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\Database.pdb
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\EntityFramework.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\EntityFramework.SqlServer.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\System.Data.SQLite.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\System.Data.SQLite.EF6.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\System.Data.SQLite.Linq.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\EntityFramework.xml
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\EntityFramework.SqlServer.xml
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\bin\Debug\System.Data.SQLite.xml
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\obj\Debug\Database.csproj.AssemblyReference.cache
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\obj\Debug\Database.csproj.Up2Date
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\obj\Debug\Database.dll
+D:\An 3\sem 2\IP\IP_PROIECT\Proiect-IP\Cod\Database\Database\obj\Debug\Database.pdb
