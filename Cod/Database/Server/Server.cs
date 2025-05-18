@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
+using Database;
 
 namespace Server
 {
@@ -31,6 +32,7 @@ namespace Server
             _ipAddress = ipAddress;
             _port = port;
             _listener = new TcpListener(_ipAddress, _port);
+            _database = Database.Database.GetDatabase();
         }
 
         public void Start()
@@ -67,21 +69,20 @@ namespace Server
                     {
                         case "login":
                             // Handle login
-                            Console.WriteLine("Login operation received.");
                             Database.Utilizator utilizator = new Database.Utilizator(
-                                receivedObj.data[0]["nume"], receivedObj.data[0]["hashParola"], 
-                                receivedObj.data[0]["rol"]);
-                            //bool r = _database.Login(utilizator);
-                            //if(r)
-                            //{
-                            //    Console.WriteLine("Login successful.");
-                            //    writer.WriteLine(JsonConvert.SerializeObject(new { status = "success" }));
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine("Login failed.");
-                            //    writer.WriteLine(JsonConvert.SerializeObject(new { status = "failed" }));
-                            //}
+                                receivedObj.data[0]["username"], receivedObj.data[0]["password"], 
+                                receivedObj.data[0]["role"]);
+                            bool r = _database.Login(utilizator);
+                            if (r)
+                            {
+                                Console.WriteLine("Login successful.");
+                                writer.WriteLine(JsonConvert.SerializeObject(new { status = "success" }));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Login failed.");
+                                writer.WriteLine(JsonConvert.SerializeObject(new { status = "failed" }));
+                            }
                             break;
                     }
 
@@ -89,7 +90,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Error: {ex.StackTrace}\n{ex.Message}");
             }
             finally
             {
