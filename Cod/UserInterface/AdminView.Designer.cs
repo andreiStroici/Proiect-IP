@@ -41,6 +41,7 @@
             this.radioButtonAngajatAdministrator = new System.Windows.Forms.RadioButton();
             this.labelAngajatRol = new System.Windows.Forms.Label();
             this.tabPageAdminCarti = new System.Windows.Forms.TabPage();
+            this.comboBoxStergereCarti = new System.Windows.Forms.ComboBox();
             this.comboBoxUpdateStatus = new System.Windows.Forms.ComboBox();
             this.labelUpdateStatus = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.labelUpdateIDCarte = new System.Windows.Forms.Label();
             this.labelUpdateCarte = new System.Windows.Forms.Label();
             this.buttonDeleteCarte = new System.Windows.Forms.Button();
+            this.textBoxDeleteIDCarte = new System.Windows.Forms.TextBox();
             this.labelDeleteISBNCarte = new System.Windows.Forms.Label();
             this.labelDelete = new System.Windows.Forms.Label();
             this.labelAddCarteGen = new System.Windows.Forms.Label();
@@ -81,8 +83,7 @@
             this.textBoxGestiuneTelefon = new System.Windows.Forms.TextBox();
             this.labelGestiuneAbonați = new System.Windows.Forms.Label();
             this.buttonDelogare = new System.Windows.Forms.Button();
-            this.textBoxDeleteIDCarte = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonStergereCauta = new System.Windows.Forms.Button();
             this.groupBoxAbonatii.SuspendLayout();
             this.tabControlAdministrator.SuspendLayout();
             this.tabPageAdminAngajati.SuspendLayout();
@@ -222,7 +223,8 @@
             // 
             // tabPageAdminCarti
             // 
-            this.tabPageAdminCarti.Controls.Add(this.comboBox1);
+            this.tabPageAdminCarti.Controls.Add(this.buttonStergereCauta);
+            this.tabPageAdminCarti.Controls.Add(this.comboBoxStergereCarti);
             this.tabPageAdminCarti.Controls.Add(this.comboBoxUpdateStatus);
             this.tabPageAdminCarti.Controls.Add(this.labelUpdateStatus);
             this.tabPageAdminCarti.Controls.Add(this.buttonUpdate);
@@ -253,13 +255,28 @@
             this.tabPageAdminCarti.Text = "Cărți";
             this.tabPageAdminCarti.UseVisualStyleBackColor = true;
             // 
+            // comboBoxStergereCarti
+            // 
+            this.comboBoxStergereCarti.Enabled = false;
+            this.comboBoxStergereCarti.FormattingEnabled = true;
+            this.comboBoxStergereCarti.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxStergereCarti.Location = new System.Drawing.Point(595, 180);
+            this.comboBoxStergereCarti.Name = "comboBoxStergereCarti";
+            this.comboBoxStergereCarti.Size = new System.Drawing.Size(314, 24);
+            this.comboBoxStergereCarti.TabIndex = 35;
+            // 
             // comboBoxUpdateStatus
             // 
             this.comboBoxUpdateStatus.FormattingEnabled = true;
             this.comboBoxUpdateStatus.Items.AddRange(new object[] {
             "Disponibilă",
             "Indisponibilă"});
-            this.comboBoxUpdateStatus.Location = new System.Drawing.Point(704, 358);
+            this.comboBoxUpdateStatus.Location = new System.Drawing.Point(701, 392);
             this.comboBoxUpdateStatus.Name = "comboBoxUpdateStatus";
             this.comboBoxUpdateStatus.Size = new System.Drawing.Size(196, 24);
             this.comboBoxUpdateStatus.TabIndex = 34;
@@ -269,7 +286,7 @@
             this.labelUpdateStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelUpdateStatus.AutoSize = true;
             this.labelUpdateStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUpdateStatus.Location = new System.Drawing.Point(582, 358);
+            this.labelUpdateStatus.Location = new System.Drawing.Point(579, 392);
             this.labelUpdateStatus.Name = "labelUpdateStatus";
             this.labelUpdateStatus.Size = new System.Drawing.Size(57, 20);
             this.labelUpdateStatus.TabIndex = 33;
@@ -277,7 +294,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(671, 396);
+            this.buttonUpdate.Location = new System.Drawing.Point(668, 430);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(101, 38);
             this.buttonUpdate.TabIndex = 32;
@@ -287,7 +304,7 @@
             // 
             // textBoxIDCarte
             // 
-            this.textBoxIDCarte.Location = new System.Drawing.Point(704, 321);
+            this.textBoxIDCarte.Location = new System.Drawing.Point(701, 355);
             this.textBoxIDCarte.Name = "textBoxIDCarte";
             this.textBoxIDCarte.Size = new System.Drawing.Size(196, 22);
             this.textBoxIDCarte.TabIndex = 31;
@@ -297,7 +314,7 @@
             this.labelUpdateIDCarte.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelUpdateIDCarte.AutoSize = true;
             this.labelUpdateIDCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUpdateIDCarte.Location = new System.Drawing.Point(582, 321);
+            this.labelUpdateIDCarte.Location = new System.Drawing.Point(579, 355);
             this.labelUpdateIDCarte.Name = "labelUpdateIDCarte";
             this.labelUpdateIDCarte.Size = new System.Drawing.Size(72, 20);
             this.labelUpdateIDCarte.TabIndex = 30;
@@ -307,7 +324,7 @@
             // 
             this.labelUpdateCarte.AutoSize = true;
             this.labelUpdateCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUpdateCarte.Location = new System.Drawing.Point(637, 269);
+            this.labelUpdateCarte.Location = new System.Drawing.Point(634, 303);
             this.labelUpdateCarte.Name = "labelUpdateCarte";
             this.labelUpdateCarte.Size = new System.Drawing.Size(211, 25);
             this.labelUpdateCarte.TabIndex = 29;
@@ -316,13 +333,21 @@
             // buttonDeleteCarte
             // 
             this.buttonDeleteCarte.Enabled = false;
-            this.buttonDeleteCarte.Location = new System.Drawing.Point(690, 178);
+            this.buttonDeleteCarte.Location = new System.Drawing.Point(690, 224);
             this.buttonDeleteCarte.Name = "buttonDeleteCarte";
             this.buttonDeleteCarte.Size = new System.Drawing.Size(101, 38);
             this.buttonDeleteCarte.TabIndex = 28;
             this.buttonDeleteCarte.Text = "Șterge";
             this.buttonDeleteCarte.UseVisualStyleBackColor = true;
             this.buttonDeleteCarte.Click += new System.EventHandler(this.buttonDeleteCarte_Click);
+            // 
+            // textBoxDeleteIDCarte
+            // 
+            this.textBoxDeleteIDCarte.Location = new System.Drawing.Point(713, 77);
+            this.textBoxDeleteIDCarte.Name = "textBoxDeleteIDCarte";
+            this.textBoxDeleteIDCarte.Size = new System.Drawing.Size(196, 22);
+            this.textBoxDeleteIDCarte.TabIndex = 27;
+            this.textBoxDeleteIDCarte.TextChanged += new System.EventHandler(this.textBoxDeleteIDCarte_Enter);
             // 
             // labelDeleteISBNCarte
             // 
@@ -685,25 +710,15 @@
             this.buttonDelogare.Text = "Delogare";
             this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
             // 
-            // textBoxDeleteIDCarte
+            // buttonStergereCauta
             // 
-            this.textBoxDeleteIDCarte.Location = new System.Drawing.Point(713, 77);
-            this.textBoxDeleteIDCarte.Name = "textBoxDeleteIDCarte";
-            this.textBoxDeleteIDCarte.Size = new System.Drawing.Size(196, 22);
-            this.textBoxDeleteIDCarte.TabIndex = 27;
-            this.textBoxDeleteIDCarte.TextChanged += new System.EventHandler(this.textBoxDeleteIDCarte_TextChanged);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Disponibilă",
-            "Indisponibilă"});
-            this.comboBox1.Location = new System.Drawing.Point(636, 125);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(273, 24);
-            this.comboBox1.TabIndex = 35;
+            this.buttonStergereCauta.Enabled = false;
+            this.buttonStergereCauta.Location = new System.Drawing.Point(690, 119);
+            this.buttonStergereCauta.Name = "buttonStergereCauta";
+            this.buttonStergereCauta.Size = new System.Drawing.Size(101, 38);
+            this.buttonStergereCauta.TabIndex = 36;
+            this.buttonStergereCauta.Text = "Caută";
+            this.buttonStergereCauta.UseVisualStyleBackColor = true;
             // 
             // AdminView
             // 
@@ -785,6 +800,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelAfișareAbonați;
         private System.Windows.Forms.TextBox textBoxDeleteIDCarte;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxStergereCarti;
+        private System.Windows.Forms.Button buttonStergereCauta;
     }
 }

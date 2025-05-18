@@ -143,9 +143,12 @@ namespace UserInterface
             throw new NotImplementedException("Implementează butonul de actualizare a cărții!");
         }
 
-        private void textBoxDeleteIDCarte_TextChanged(object sender, EventArgs e)
+        private void textBoxDeleteIDCarte_Enter(object sender, EventArgs e)
         {
             // acest eveniment se apelează când o celulă nu mai este controlul selectat activ din fereastră
+            // listează toate cărțile cu ISBN-ul introdus
+            buttonDeleteCarte.Enabled = true;
+            comboBoxStergereCarti.Enabled = true;
         }
     }
 }
