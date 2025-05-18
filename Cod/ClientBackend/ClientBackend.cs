@@ -17,7 +17,7 @@ namespace ClientBackend
         public ClientBackend()
         {
             _port = new TcpListener(System.Net.IPAddress.Any, 8081);
-            string subnet = "192.168.1.";
+            string subnet = "192.168.56.";
             int port = 12345;
 
             for (int i = 1; i <= 254; i++)
@@ -25,6 +25,7 @@ namespace ClientBackend
                 string ip = subnet + i;
                 try
                 {
+                    Console.WriteLine($"Trying to connect to {ip} on port {port}...");
                     _server = new TcpClient();
                     var task = _server.ConnectAsync(ip, port);
                     if (task.Wait(50))
@@ -85,6 +86,7 @@ namespace ClientBackend
                                 Console.WriteLine("Invalid login format. Use: login|username|password");
                                 writer.WriteLine("Invalid login format. Use: login|username|password");
                             }
+                            Console.WriteLine("Finalizare logare");
                             break;
                     }
                 }

@@ -36,7 +36,7 @@ namespace UserInterface
         public MainView()
         {
             InitializeComponent();
-            _connectionToClientBackend = new ConnectionToClientBackend();
+            _connectionToClientBackend = new ConnectionToClientBackend(true);
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace UserInterface
 
             string relativePath = @"..\..\..\ClientBackend\bin\Debug\ClientBackend.exe";
             string workerPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), relativePath));
-            bool showConsole = false;
+            bool showConsole = true;
 
             var startInfo = new ProcessStartInfo
             {

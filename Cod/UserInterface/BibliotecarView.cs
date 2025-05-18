@@ -35,7 +35,7 @@ namespace UserInterface
         public BibliotecarView()
         {
             InitializeComponent();
-            _connectionToClientBackend = new ConnectionToClientBackend();
+            _connectionToClientBackend = new ConnectionToClientBackend(false);
         }
 
         private void buttonBibliotecarLogin_Click(object sender, EventArgs e)

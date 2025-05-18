@@ -28,10 +28,12 @@ namespace UserInterface
 {
     public partial class AdminView : Form
     {
+        private ConnectionToClientBackend _connectionToClientBackend;
         /// <summary>
         public AdminView()
         {
             InitializeComponent();
+            _connectionToClientBackend = new ConnectionToClientBackend(false);
         }
 
         private void buttonDelogare_Click(object sender, EventArgs e)
