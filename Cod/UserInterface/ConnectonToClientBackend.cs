@@ -38,12 +38,15 @@ namespace UserInterface
         /// <summary>
         /// constructor for the ProxyUser class
         /// </summary>
-        public ConnectionToClientBackend()
+        public ConnectionToClientBackend(bool delay)
         {
             // conect to the client backend
             try
             {
-                System.Threading.Thread.Sleep(13000); // wait for the client backend to start
+                if (delay)
+                {
+                    System.Threading.Thread.Sleep(13000); // wait for the client backend to start
+                }
                 _client = new TcpClient("127.0.0.1", 8081); // IP-ul și portul serverului
                 _stream = _client.GetStream();
             }

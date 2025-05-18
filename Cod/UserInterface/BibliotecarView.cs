@@ -41,7 +41,7 @@ namespace UserInterface
         {
             this.mainView = mainView;
             InitializeComponent();
-            _connectionToClientBackend = new ConnectionToClientBackend();
+            _connectionToClientBackend = new ConnectionToClientBackend(false);
         }
         /// <summary>
         /// Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare a unui abonat

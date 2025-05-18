@@ -29,7 +29,7 @@
             stream for the proxy user
             </summary>
         </member>
-        <member name="M:UserInterface.ConnectionToClientBackend.#ctor">
+        <member name="M:UserInterface.ConnectionToClientBackend.#ctor(System.Boolean)">
             <summary>
             constructor for the ProxyUser class
             </summary>
