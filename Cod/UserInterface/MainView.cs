@@ -22,6 +22,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,16 +30,25 @@ using System.Windows.Forms;
 namespace UserInterface
 {
     /// <summary>
+    /// /// Interacțiunea principală a utilizatorului
+    /// </summary>
     public partial class MainView : Form
     {
         private ConnectionToClientBackend _connectionToClientBackend;
         /// <summary>
+        /// Constructorul pentru MainView
+        /// </summary>
         public MainView()
         {
             InitializeComponent();
             _connectionToClientBackend = new ConnectionToClientBackend();
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             // Verificare autentificare
@@ -67,40 +77,41 @@ namespace UserInterface
 
             if (rol != string.Empty)
             {
-                _connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
-                string response = _connectionToClientBackend.ReceiveResponse();
+                //_connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
+                //string response = _connectionToClientBackend.ReceiveResponse();
+                string response = "Login successful";
                 if (response == "Login successful")
                 {
                     if (rol == "Bibliotecar")
                     {
                         //MessageBox.Show("Autentificare reușită ca Bibliotecar!");
                         // Deschideți fereastra corespunzătoare pentru bibliotecar
-                        Form form2 = new BibliotecarView();
-                        form2.Show();
+                        Form formBibliotecar = new BibliotecarView(this);
+                        formBibliotecar.Show();
 
-                        form2.BeginInvoke((MethodInvoker)delegate
+                        formBibliotecar.BeginInvoke((MethodInvoker)delegate
                         {
                             MessageBox.Show("Autentificare reușită ca Bibliotecar!");
                         });
 
                         this.Hide();
 
-                        form2.FormClosed += (s, args) => this.Close();
+                        formBibliotecar.FormClosed += (s, args) => this.Close();
 
                     }
                     else if (rol == "Administrator")
                     {
                         //MessageBox.Show("Autentificare reușită ca Administrator!");
                         // Deschideți fereastra corespunzătoare pentru administrator
-                        Form form3 = new AdminView();
-                        form3.Show();
+                        Form formAdmin = new AdminView(this);
+                        formAdmin.Show();
 
-                        form3.BeginInvoke((MethodInvoker)delegate
+                        formAdmin.BeginInvoke((MethodInvoker)delegate
                         {
                             MessageBox.Show("Autentificare reușită ca Administrator!");
                         });
 
-                        form3.FormClosed += (s, args) => this.Close();
+                        formAdmin.FormClosed += (s, args) => this.Close();
 
                         this.Hide();
                     }

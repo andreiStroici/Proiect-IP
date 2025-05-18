@@ -26,23 +26,39 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
+    /// <summary>
+    /// Interfața pentru admin
+    /// </summary>
     public partial class AdminView : Form
     {
+        private Form mainView;
         /// <summary>
-        public AdminView()
+        /// Constructorul pentru AdminView
+        /// </summary>
+        public AdminView(Form mainView)
         {
             InitializeComponent();
+            this.mainView = mainView;
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de delogare
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
             // Delogare și revenire la pagina principală
-            Form form1 = new MainView();
-            form1.Show();
+            mainView.Show();
             this.Hide();
             this.Controls.Clear();
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonGestiuneAbonați_CheckedChanged(object sender, EventArgs e)
         {
             // Activăm interfața pentru gestiunea abonaților după numărul de telefon
@@ -62,6 +78,11 @@ namespace UserInterface
 
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților problematici
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonAfișareAbonați_CheckedChanged(object sender, EventArgs e)
         {
             // Activăm interfața pentru listarea abonaților problematici
@@ -80,6 +101,11 @@ namespace UserInterface
             }
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGestiuneCautare_Click(object sender, EventArgs e)
         {
             this.textBoxGestiuneDate.Enabled = true;
@@ -89,6 +115,11 @@ namespace UserInterface
             this.radioButtonGestiuneE.Enabled = true;
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților cu probleme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAfișareAbonațiCăutare_Click(object sender, EventArgs e)
         {
             this.buttonGestiuneValidare.Enabled = true;
@@ -97,6 +128,11 @@ namespace UserInterface
             this.radioButtonGestiuneE.Enabled = true;
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de validare a modificării statusului unui abonat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGestiuneValidare_Click(object sender, EventArgs e)
         {
             if(radioButtonAfișareAbonați.Checked)
@@ -123,32 +159,52 @@ namespace UserInterface
             }
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul înregistrează un nou angajat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
         private void buttonAngajatRegister_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException("Implementează butonul de înregistrare al angajatului!");
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul adaugă o carte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
         private void buttonAdaugaCarte_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException("Implementează butonul de adăugare a cărții!");
         }
 
-        private void buttonDeleteCarte_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException("Implementează butonul de ștergere a cărții!");
-        }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException("Implementează butonul de actualizare a cărții!");
-        }
-
-        private void textBoxDeleteIDCarte_Enter(object sender, EventArgs e)
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul caută cărți de șters după ISBN
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonȘtergereCarteCăutare_Click(object sender, EventArgs e)
         {
             // acest eveniment se apelează când o celulă nu mai este controlul selectat activ din fereastră
             // listează toate cărțile cu ISBN-ul introdus
             buttonDeleteCarte.Enabled = true;
             comboBoxStergereCarti.Enabled = true;
+        }
+
+
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul validează ștergerea
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void buttonDeleteCarte_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException("Implementează butonul de ștergere a cărții!");
         }
     }
 }

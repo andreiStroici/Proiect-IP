@@ -38,3 +38,6 @@ G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\bin\Debug\UserI
 G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\bin\Debug\Newtonsoft.Json.dll
 G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\bin\Debug\Newtonsoft.Json.xml
 G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Debug\UserInte.9C7395B8.Up2Date
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\Newtonsoft.Json.dll
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\Newtonsoft.Json.xml
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInte.9C7395B8.Up2Date

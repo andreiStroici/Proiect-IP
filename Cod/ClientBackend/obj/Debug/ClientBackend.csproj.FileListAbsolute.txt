@@ -8,3 +8,13 @@ G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\Clien
 G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.dll
 G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.xml
 G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBa.0829D276.Up2Date
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBackend.exe
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBackend.pdb
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\bin\Debug\ClientBackend.exe.config
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\bin\Debug\ClientBackend.exe
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\bin\Debug\ClientBackend.pdb
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.dll
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.xml
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.AssemblyReference.cache
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.CoreCompileInputs.cache
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBa.0829D276.Up2Date

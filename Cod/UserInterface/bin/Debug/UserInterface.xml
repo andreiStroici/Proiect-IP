@@ -49,8 +49,23 @@
             close the connection with backend
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:UserInterface.MainView" -->
-        <!-- Badly formed XML comment ignored for member "M:UserInterface.MainView.#ctor" -->
+        <member name="T:UserInterface.MainView">
+            <summary>
+            /// Interacțiunea principală a utilizatorului
+            </summary>
+        </member>
+        <member name="M:UserInterface.MainView.#ctor">
+            <summary>
+            Constructorul pentru MainView
+            </summary>
+        </member>
+        <member name="M:UserInterface.MainView.buttonLogin_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:UserInterface.MainView.components">
             <summary>
             Required designer variable.
@@ -68,8 +83,67 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:UserInterface.BibliotecarView" -->
-        <!-- Badly formed XML comment ignored for member "M:UserInterface.BibliotecarView.#ctor" -->
+        <member name="T:UserInterface.BibliotecarView">
+            <summary>
+            Interfața pentru bibliotecar
+            </summary>    
+        </member>
+        <member name="M:UserInterface.BibliotecarView.#ctor(System.Windows.Forms.Form)">
+            <summary>
+            Constructorul pentru BibliotecarView
+            </summary>        
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonBibliotecarLogin_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare a unui abonat
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonAngajatRegister_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de înregistrare a unui abonat
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonImprumutCautare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de căutare parțială
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonDelogare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de delogare
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonImprumutValidare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de validare a împrumutului
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonRetur_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de validare a returului
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.buttonReturnareCăutare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de căutare a cărților returnate
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:UserInterface.BibliotecarView.components">
             <summary>
             Required designer variable.
@@ -87,7 +161,89 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:UserInterface.AdminView.#ctor" -->
+        <member name="T:UserInterface.AdminView">
+            <summary>
+            Interfața pentru admin
+            </summary>
+        </member>
+        <member name="M:UserInterface.AdminView.#ctor">
+            <summary>
+            Constructorul pentru AdminView
+            </summary>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonDelogare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul face clic pe butonul de delogare
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.radioButtonGestiuneAbonați_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.radioButtonAfișareAbonați_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților problematici
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonGestiuneCautare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonAfișareAbonațiCăutare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților cu probleme
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonGestiuneValidare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul face clic pe butonul de validare a modificării statusului unui abonat
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonAngajatRegister_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul înregistrează un nou angajat
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonAdaugaCarte_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul adaugă o carte
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonȘtergereCarteCăutare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul caută cărți de șters după ISBN
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UserInterface.AdminView.buttonDeleteCarte_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul validează ștergerea
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
         <member name="F:UserInterface.AdminView.components">
             <summary>
             Required designer variable.

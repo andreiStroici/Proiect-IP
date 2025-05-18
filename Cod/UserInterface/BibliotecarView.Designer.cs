@@ -34,17 +34,17 @@
             this.labelInregistrareAdresa = new System.Windows.Forms.Label();
             this.labelAngajatParola = new System.Windows.Forms.Label();
             this.labelAngajatUsername = new System.Windows.Forms.Label();
-            this.buttonAngajatRegister = new System.Windows.Forms.Button();
+            this.buttonBibliotecarRegister = new System.Windows.Forms.Button();
             this.buttonBibliotecarLogin = new System.Windows.Forms.Button();
             this.labelAutentificareTelefon = new System.Windows.Forms.Label();
             this.labelAutentificare = new System.Windows.Forms.Label();
-            this.textBoxAngajatUsername = new System.Windows.Forms.TextBox();
-            this.textBoxAngajatParola = new System.Windows.Forms.TextBox();
-            this.textBoxInregistrareAdresa = new System.Windows.Forms.TextBox();
-            this.textBoxInregistrareTelefon = new System.Windows.Forms.TextBox();
-            this.textBoxInregistrareEmail = new System.Windows.Forms.TextBox();
+            this.textBoxAbonatNume = new System.Windows.Forms.TextBox();
+            this.textBoxAbonatPrenume = new System.Windows.Forms.TextBox();
+            this.textBoxAbonatAdresa = new System.Windows.Forms.TextBox();
+            this.textBoxAbonatTelefon = new System.Windows.Forms.TextBox();
+            this.textBoxAbonatEmail = new System.Windows.Forms.TextBox();
             this.textBoxAutentificareTelefon = new System.Windows.Forms.TextBox();
-            this.buttonRetur = new System.Windows.Forms.Button();
+            this.buttonReturnareValidare = new System.Windows.Forms.Button();
             this.labelRetur = new System.Windows.Forms.Label();
             this.buttonImprumutValidare = new System.Windows.Forms.Button();
             this.textBoxImprumutAutor = new System.Windows.Forms.TextBox();
@@ -56,14 +56,14 @@
             this.buttonDelogare = new System.Windows.Forms.Button();
             this.labelAbonati = new System.Windows.Forms.Label();
             this.groupBoxServicii = new System.Windows.Forms.GroupBox();
+            this.panelServiciuReturnare = new System.Windows.Forms.Panel();
+            this.buttonReturnareCăutare = new System.Windows.Forms.Button();
+            this.labelReturnareCarti = new System.Windows.Forms.Label();
+            this.comboBoxReturnare = new System.Windows.Forms.ComboBox();
             this.comboBoxSugestii = new System.Windows.Forms.ComboBox();
             this.labelImprumutSugestii = new System.Windows.Forms.Label();
             this.buttonImprumutCautare = new System.Windows.Forms.Button();
             this.labelServicii = new System.Windows.Forms.Label();
-            this.panelServiciuReturnare = new System.Windows.Forms.Panel();
-            this.comboBoxReturnare = new System.Windows.Forms.ComboBox();
-            this.labelReturnareCarti = new System.Windows.Forms.Label();
-            this.buttonReturnareCăutare = new System.Windows.Forms.Button();
             this.groupBoxAbonat.SuspendLayout();
             this.groupBoxServicii.SuspendLayout();
             this.panelServiciuReturnare.SuspendLayout();
@@ -134,15 +134,15 @@
             this.labelAngajatUsername.TabIndex = 8;
             this.labelAngajatUsername.Text = "Nume";
             // 
-            // buttonAngajatRegister
+            // buttonBibliotecarRegister
             // 
-            this.buttonAngajatRegister.Location = new System.Drawing.Point(173, 562);
-            this.buttonAngajatRegister.Name = "buttonAngajatRegister";
-            this.buttonAngajatRegister.Size = new System.Drawing.Size(113, 40);
-            this.buttonAngajatRegister.TabIndex = 16;
-            this.buttonAngajatRegister.Text = "Înregistrare";
-            this.buttonAngajatRegister.UseVisualStyleBackColor = true;
-            this.buttonAngajatRegister.Click += new System.EventHandler(this.buttonAngajatRegister_Click);
+            this.buttonBibliotecarRegister.Location = new System.Drawing.Point(173, 562);
+            this.buttonBibliotecarRegister.Name = "buttonBibliotecarRegister";
+            this.buttonBibliotecarRegister.Size = new System.Drawing.Size(113, 40);
+            this.buttonBibliotecarRegister.TabIndex = 16;
+            this.buttonBibliotecarRegister.Text = "Înregistrare";
+            this.buttonBibliotecarRegister.UseVisualStyleBackColor = true;
+            this.buttonBibliotecarRegister.Click += new System.EventHandler(this.buttonAngajatRegister_Click);
             // 
             // buttonBibliotecarLogin
             // 
@@ -175,40 +175,40 @@
             this.labelAutentificare.TabIndex = 0;
             this.labelAutentificare.Text = "Autentificare";
             // 
-            // textBoxAngajatUsername
+            // textBoxAbonatNume
             // 
-            this.textBoxAngajatUsername.Location = new System.Drawing.Point(248, 381);
-            this.textBoxAngajatUsername.Name = "textBoxAngajatUsername";
-            this.textBoxAngajatUsername.Size = new System.Drawing.Size(165, 22);
-            this.textBoxAngajatUsername.TabIndex = 10;
+            this.textBoxAbonatNume.Location = new System.Drawing.Point(248, 381);
+            this.textBoxAbonatNume.Name = "textBoxAbonatNume";
+            this.textBoxAbonatNume.Size = new System.Drawing.Size(165, 22);
+            this.textBoxAbonatNume.TabIndex = 10;
             // 
-            // textBoxAngajatParola
+            // textBoxAbonatPrenume
             // 
-            this.textBoxAngajatParola.Location = new System.Drawing.Point(248, 411);
-            this.textBoxAngajatParola.Name = "textBoxAngajatParola";
-            this.textBoxAngajatParola.Size = new System.Drawing.Size(165, 22);
-            this.textBoxAngajatParola.TabIndex = 11;
+            this.textBoxAbonatPrenume.Location = new System.Drawing.Point(248, 411);
+            this.textBoxAbonatPrenume.Name = "textBoxAbonatPrenume";
+            this.textBoxAbonatPrenume.Size = new System.Drawing.Size(165, 22);
+            this.textBoxAbonatPrenume.TabIndex = 11;
             // 
-            // textBoxInregistrareAdresa
+            // textBoxAbonatAdresa
             // 
-            this.textBoxInregistrareAdresa.Location = new System.Drawing.Point(248, 449);
-            this.textBoxInregistrareAdresa.Name = "textBoxInregistrareAdresa";
-            this.textBoxInregistrareAdresa.Size = new System.Drawing.Size(165, 22);
-            this.textBoxInregistrareAdresa.TabIndex = 12;
+            this.textBoxAbonatAdresa.Location = new System.Drawing.Point(248, 449);
+            this.textBoxAbonatAdresa.Name = "textBoxAbonatAdresa";
+            this.textBoxAbonatAdresa.Size = new System.Drawing.Size(165, 22);
+            this.textBoxAbonatAdresa.TabIndex = 12;
             // 
-            // textBoxInregistrareTelefon
+            // textBoxAbonatTelefon
             // 
-            this.textBoxInregistrareTelefon.Location = new System.Drawing.Point(248, 479);
-            this.textBoxInregistrareTelefon.Name = "textBoxInregistrareTelefon";
-            this.textBoxInregistrareTelefon.Size = new System.Drawing.Size(165, 22);
-            this.textBoxInregistrareTelefon.TabIndex = 13;
+            this.textBoxAbonatTelefon.Location = new System.Drawing.Point(248, 479);
+            this.textBoxAbonatTelefon.Name = "textBoxAbonatTelefon";
+            this.textBoxAbonatTelefon.Size = new System.Drawing.Size(165, 22);
+            this.textBoxAbonatTelefon.TabIndex = 13;
             // 
-            // textBoxInregistrareEmail
+            // textBoxAbonatEmail
             // 
-            this.textBoxInregistrareEmail.Location = new System.Drawing.Point(248, 514);
-            this.textBoxInregistrareEmail.Name = "textBoxInregistrareEmail";
-            this.textBoxInregistrareEmail.Size = new System.Drawing.Size(165, 22);
-            this.textBoxInregistrareEmail.TabIndex = 14;
+            this.textBoxAbonatEmail.Location = new System.Drawing.Point(248, 514);
+            this.textBoxAbonatEmail.Name = "textBoxAbonatEmail";
+            this.textBoxAbonatEmail.Size = new System.Drawing.Size(165, 22);
+            this.textBoxAbonatEmail.TabIndex = 14;
             // 
             // textBoxAutentificareTelefon
             // 
@@ -217,16 +217,16 @@
             this.textBoxAutentificareTelefon.Size = new System.Drawing.Size(165, 22);
             this.textBoxAutentificareTelefon.TabIndex = 9;
             // 
-            // buttonRetur
+            // buttonReturnareValidare
             // 
-            this.buttonRetur.Enabled = false;
-            this.buttonRetur.Location = new System.Drawing.Point(212, 170);
-            this.buttonRetur.Name = "buttonRetur";
-            this.buttonRetur.Size = new System.Drawing.Size(124, 37);
-            this.buttonRetur.TabIndex = 52;
-            this.buttonRetur.Text = "Validare";
-            this.buttonRetur.UseVisualStyleBackColor = true;
-            this.buttonRetur.Click += new System.EventHandler(this.buttonRetur_Click);
+            this.buttonReturnareValidare.Enabled = false;
+            this.buttonReturnareValidare.Location = new System.Drawing.Point(212, 170);
+            this.buttonReturnareValidare.Name = "buttonReturnareValidare";
+            this.buttonReturnareValidare.Size = new System.Drawing.Size(124, 37);
+            this.buttonReturnareValidare.TabIndex = 52;
+            this.buttonReturnareValidare.Text = "Validare";
+            this.buttonReturnareValidare.UseVisualStyleBackColor = true;
+            this.buttonReturnareValidare.Click += new System.EventHandler(this.buttonRetur_Click);
             // 
             // labelRetur
             // 
@@ -298,14 +298,14 @@
             this.groupBoxAbonat.Controls.Add(this.labelAbonati);
             this.groupBoxAbonat.Controls.Add(this.groupBoxServicii);
             this.groupBoxAbonat.Controls.Add(this.labelAutentificare);
-            this.groupBoxAbonat.Controls.Add(this.textBoxAngajatParola);
-            this.groupBoxAbonat.Controls.Add(this.textBoxAngajatUsername);
-            this.groupBoxAbonat.Controls.Add(this.textBoxInregistrareAdresa);
+            this.groupBoxAbonat.Controls.Add(this.textBoxAbonatPrenume);
+            this.groupBoxAbonat.Controls.Add(this.textBoxAbonatNume);
+            this.groupBoxAbonat.Controls.Add(this.textBoxAbonatAdresa);
             this.groupBoxAbonat.Controls.Add(this.labelAutentificareTelefon);
-            this.groupBoxAbonat.Controls.Add(this.textBoxInregistrareTelefon);
+            this.groupBoxAbonat.Controls.Add(this.textBoxAbonatTelefon);
             this.groupBoxAbonat.Controls.Add(this.buttonBibliotecarLogin);
-            this.groupBoxAbonat.Controls.Add(this.textBoxInregistrareEmail);
-            this.groupBoxAbonat.Controls.Add(this.buttonAngajatRegister);
+            this.groupBoxAbonat.Controls.Add(this.textBoxAbonatEmail);
+            this.groupBoxAbonat.Controls.Add(this.buttonBibliotecarRegister);
             this.groupBoxAbonat.Controls.Add(this.textBoxAutentificareTelefon);
             this.groupBoxAbonat.Controls.Add(this.labelAngajatUsername);
             this.groupBoxAbonat.Controls.Add(this.labelAngajatParola);
@@ -360,6 +360,55 @@
             this.groupBoxServicii.TabIndex = 54;
             this.groupBoxServicii.TabStop = false;
             // 
+            // panelServiciuReturnare
+            // 
+            this.panelServiciuReturnare.Controls.Add(this.buttonReturnareCăutare);
+            this.panelServiciuReturnare.Controls.Add(this.labelReturnareCarti);
+            this.panelServiciuReturnare.Controls.Add(this.comboBoxReturnare);
+            this.panelServiciuReturnare.Controls.Add(this.labelRetur);
+            this.panelServiciuReturnare.Controls.Add(this.buttonReturnareValidare);
+            this.panelServiciuReturnare.Enabled = false;
+            this.panelServiciuReturnare.Location = new System.Drawing.Point(23, 418);
+            this.panelServiciuReturnare.Name = "panelServiciuReturnare";
+            this.panelServiciuReturnare.Size = new System.Drawing.Size(523, 248);
+            this.panelServiciuReturnare.TabIndex = 58;
+            // 
+            // buttonReturnareCăutare
+            // 
+            this.buttonReturnareCăutare.Location = new System.Drawing.Point(212, 74);
+            this.buttonReturnareCăutare.Name = "buttonReturnareCăutare";
+            this.buttonReturnareCăutare.Size = new System.Drawing.Size(123, 33);
+            this.buttonReturnareCăutare.TabIndex = 59;
+            this.buttonReturnareCăutare.Text = "Căutare";
+            this.buttonReturnareCăutare.UseVisualStyleBackColor = true;
+            this.buttonReturnareCăutare.Click += new System.EventHandler(this.buttonReturnareCăutare_Click);
+            // 
+            // labelReturnareCarti
+            // 
+            this.labelReturnareCarti.AutoSize = true;
+            this.labelReturnareCarti.Enabled = false;
+            this.labelReturnareCarti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReturnareCarti.Location = new System.Drawing.Point(53, 129);
+            this.labelReturnareCarti.Name = "labelReturnareCarti";
+            this.labelReturnareCarti.Size = new System.Drawing.Size(135, 20);
+            this.labelReturnareCarti.TabIndex = 58;
+            this.labelReturnareCarti.Text = "Cărți nereturnate";
+            // 
+            // comboBoxReturnare
+            // 
+            this.comboBoxReturnare.Enabled = false;
+            this.comboBoxReturnare.FormattingEnabled = true;
+            this.comboBoxReturnare.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxReturnare.Location = new System.Drawing.Point(212, 129);
+            this.comboBoxReturnare.Name = "comboBoxReturnare";
+            this.comboBoxReturnare.Size = new System.Drawing.Size(238, 24);
+            this.comboBoxReturnare.TabIndex = 57;
+            // 
             // comboBoxSugestii
             // 
             this.comboBoxSugestii.Enabled = false;
@@ -408,55 +457,6 @@
             this.labelServicii.Text = "Servicii";
             this.labelServicii.UseMnemonic = false;
             // 
-            // panelServiciuReturnare
-            // 
-            this.panelServiciuReturnare.Controls.Add(this.buttonReturnareCăutare);
-            this.panelServiciuReturnare.Controls.Add(this.labelReturnareCarti);
-            this.panelServiciuReturnare.Controls.Add(this.comboBoxReturnare);
-            this.panelServiciuReturnare.Controls.Add(this.labelRetur);
-            this.panelServiciuReturnare.Controls.Add(this.buttonRetur);
-            this.panelServiciuReturnare.Enabled = false;
-            this.panelServiciuReturnare.Location = new System.Drawing.Point(23, 418);
-            this.panelServiciuReturnare.Name = "panelServiciuReturnare";
-            this.panelServiciuReturnare.Size = new System.Drawing.Size(523, 248);
-            this.panelServiciuReturnare.TabIndex = 58;
-            // 
-            // comboBoxReturnare
-            // 
-            this.comboBoxReturnare.Enabled = false;
-            this.comboBoxReturnare.FormattingEnabled = true;
-            this.comboBoxReturnare.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.comboBoxReturnare.Location = new System.Drawing.Point(212, 129);
-            this.comboBoxReturnare.Name = "comboBoxReturnare";
-            this.comboBoxReturnare.Size = new System.Drawing.Size(238, 24);
-            this.comboBoxReturnare.TabIndex = 57;
-            // 
-            // labelReturnareCarti
-            // 
-            this.labelReturnareCarti.AutoSize = true;
-            this.labelReturnareCarti.Enabled = false;
-            this.labelReturnareCarti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelReturnareCarti.Location = new System.Drawing.Point(53, 129);
-            this.labelReturnareCarti.Name = "labelReturnareCarti";
-            this.labelReturnareCarti.Size = new System.Drawing.Size(135, 20);
-            this.labelReturnareCarti.TabIndex = 58;
-            this.labelReturnareCarti.Text = "Cărți nereturnate";
-            // 
-            // buttonReturnareCăutare
-            // 
-            this.buttonReturnareCăutare.Location = new System.Drawing.Point(212, 74);
-            this.buttonReturnareCăutare.Name = "buttonReturnareCăutare";
-            this.buttonReturnareCăutare.Size = new System.Drawing.Size(123, 33);
-            this.buttonReturnareCăutare.TabIndex = 59;
-            this.buttonReturnareCăutare.Text = "Căutare";
-            this.buttonReturnareCăutare.UseVisualStyleBackColor = true;
-            this.buttonReturnareCăutare.Click += new System.EventHandler(this.buttonReturnareCăutare_Click);
-            // 
             // BibliotecarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -476,23 +476,18 @@
         }
 
         #endregion
-        //private System.Windows.Forms.Label labelInregistrare;
+
         private System.Windows.Forms.Label labelInregistrareTelefon;
         private System.Windows.Forms.Label labelInregistrareEmail;
         private System.Windows.Forms.Label labelInregistrareAdresa;
-        //private System.Windows.Forms.Label labelInregistrarePrenume;
-        //private System.Windows.Forms.Label labelInregistrareNume;
-        //private System.Windows.Forms.Button buttonBibliotecarRegister;
         private System.Windows.Forms.Button buttonBibliotecarLogin;
         private System.Windows.Forms.Label labelAutentificareTelefon;
         private System.Windows.Forms.Label labelAutentificare;
-        //private System.Windows.Forms.TextBox textBoxInregistrareNume;
-        //private System.Windows.Forms.TextBox textBoxInregistrarePrenume;
-        private System.Windows.Forms.TextBox textBoxInregistrareAdresa;
-        private System.Windows.Forms.TextBox textBoxInregistrareTelefon;
-        private System.Windows.Forms.TextBox textBoxInregistrareEmail;
+        private System.Windows.Forms.TextBox textBoxAbonatAdresa;
+        private System.Windows.Forms.TextBox textBoxAbonatTelefon;
+        private System.Windows.Forms.TextBox textBoxAbonatEmail;
         private System.Windows.Forms.TextBox textBoxAutentificareTelefon;
-        private System.Windows.Forms.Button buttonRetur;
+        private System.Windows.Forms.Button buttonReturnareValidare;
         private System.Windows.Forms.Label labelRetur;
         private System.Windows.Forms.Button buttonImprumutValidare;
         private System.Windows.Forms.TextBox textBoxImprumutAutor;
@@ -506,13 +501,9 @@
         private System.Windows.Forms.Label labelAngajatInregistrare;
         private System.Windows.Forms.Label labelAngajatParola;
         private System.Windows.Forms.Label labelAngajatUsername;
-        private System.Windows.Forms.Button buttonAngajatRegister;
-        private System.Windows.Forms.TextBox textBoxAngajatUsername;
-        private System.Windows.Forms.TextBox textBoxAngajatParola;
-        //private System.Windows.Forms.GroupBox groupBoxAbonatii;
-        //private System.Windows.Forms.RadioButton radioButtonAngajatBibliotecar;
-        //private System.Windows.Forms.RadioButton radioButtonAngajatAdministrator;
-        //private System.Windows.Forms.Label labelAngajatRol;
+        private System.Windows.Forms.Button buttonBibliotecarRegister;
+        private System.Windows.Forms.TextBox textBoxAbonatNume;
+        private System.Windows.Forms.TextBox textBoxAbonatPrenume;
         private System.Windows.Forms.Label labelAbonati;
         private System.Windows.Forms.Label labelImprumutSugestii;
         private System.Windows.Forms.Button buttonImprumutCautare;

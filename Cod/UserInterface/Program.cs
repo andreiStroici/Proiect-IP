@@ -19,23 +19,23 @@ namespace UserInterface
 
             string relativePath = @"..\..\..\ClientBackend\bin\Debug\ClientBackend.exe";
             string workerPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), relativePath));
-            bool showConsole = false;
+            bool showConsole = true;
 
-            var startInfo = new ProcessStartInfo
-            {
-                FileName = workerPath,
-                UseShellExecute = false,
-                CreateNoWindow = !showConsole,
-                WindowStyle = showConsole ? ProcessWindowStyle.Normal : ProcessWindowStyle.Hidden
-            };
+            //var startInfo = new ProcessStartInfo
+            //{
+            //    FileName = workerPath,
+            //    UseShellExecute = false,
+            //    CreateNoWindow = !showConsole,
+            //    WindowStyle = showConsole ? ProcessWindowStyle.Normal : ProcessWindowStyle.Hidden
+            //};
 
-            Process proc = Process.Start(startInfo);
+            //Process proc = Process.Start(startInfo);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainView());
 
-            proc.Kill();
+            //proc.Kill();
         }
     }
 }
