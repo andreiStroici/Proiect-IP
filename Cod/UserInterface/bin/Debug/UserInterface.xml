@@ -4,6 +4,51 @@
         <name>UserInterface</name>
     </assembly>
     <members>
+        <member name="T:UserInterface.ConnectionToClientBackend">
+            <summary>
+            This class will be used to create a proxy user for the system.
+            </summary>
+        </member>
+        <member name="F:UserInterface.ConnectionToClientBackend._content">
+            <summary>
+            this attribute will keep the content of the proxy user
+            </summary>
+        </member>
+        <member name="F:UserInterface.ConnectionToClientBackend._operation">
+            <summary>
+            this attribute will keep the operation of the proxy user
+            </summary>
+        </member>
+        <member name="F:UserInterface.ConnectionToClientBackend._client">
+            <summary>
+            TCP client for the proxy user
+            </summary>
+        </member>
+        <member name="F:UserInterface.ConnectionToClientBackend._stream">
+            <summary>
+            stream for the proxy user
+            </summary>
+        </member>
+        <member name="M:UserInterface.ConnectionToClientBackend.#ctor">
+            <summary>
+            constructor for the ProxyUser class
+            </summary>
+        </member>
+        <member name="M:UserInterface.ConnectionToClientBackend.SendRequest(System.String,System.String)">
+            <summary>
+            this method will send the request to the client backend
+            </summary>
+        </member>
+        <member name="M:UserInterface.ConnectionToClientBackend.ReceiveResponse">
+            <summary>
+            receive a message from backedn
+            </summary>
+        </member>
+        <member name="M:UserInterface.ConnectionToClientBackend.CloseConnection">
+            <summary>
+            close the connection with backend
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:UserInterface.MainView" -->
         <!-- Badly formed XML comment ignored for member "M:UserInterface.MainView.#ctor" -->
         <member name="F:UserInterface.MainView.components">

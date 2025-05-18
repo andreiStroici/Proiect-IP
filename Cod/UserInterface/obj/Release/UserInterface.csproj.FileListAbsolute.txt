@@ -1,0 +1,12 @@
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\bin\Release\UserInterface.exe.config
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\bin\Release\UserInterface.exe
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\bin\Release\UserInterface.pdb
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.csproj.AssemblyReference.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.MainView.resources
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.BibliotecarView.resources
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.AdminView.resources
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.Properties.Resources.resources
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.csproj.GenerateResource.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.csproj.CoreCompileInputs.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.exe
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\UserInterface\obj\Release\UserInterface.pdb

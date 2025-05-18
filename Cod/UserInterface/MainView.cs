@@ -21,6 +21,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,10 +31,12 @@ namespace UserInterface
     /// <summary>
     public partial class MainView : Form
     {
+        private ConnectionToClientBackend _connectionToClientBackend;
         /// <summary>
         public MainView()
         {
             InitializeComponent();
+            _connectionToClientBackend = new ConnectionToClientBackend();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -62,36 +65,50 @@ namespace UserInterface
                 return;
             }
 
-            if (rol == "Bibliotecar")
+            if (rol != string.Empty)
             {
-                //MessageBox.Show("Autentificare reușită ca Bibliotecar!");
-                // Deschideți fereastra corespunzătoare pentru bibliotecar
-                Form form2 = new BibliotecarView();
-                form2.Show();
+                _connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
+                string response = _connectionToClientBackend.ReceiveResponse();
+                if (response == "Login successful")
+                {
+                    if (rol == "Bibliotecar")
+                    {
+                        //MessageBox.Show("Autentificare reușită ca Bibliotecar!");
+                        // Deschideți fereastra corespunzătoare pentru bibliotecar
+                        Form form2 = new BibliotecarView();
+                        form2.Show();
 
-                form2.BeginInvoke((MethodInvoker)delegate {
-                    MessageBox.Show("Autentificare reușită ca Bibliotecar!");
-                });
+                        form2.BeginInvoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show("Autentificare reușită ca Bibliotecar!");
+                        });
 
-                this.Hide();
+                        this.Hide();
 
-                form2.FormClosed += (s, args) => this.Close();
+                        form2.FormClosed += (s, args) => this.Close();
 
-            }
-            else if (rol == "Administrator")
-            {
-                //MessageBox.Show("Autentificare reușită ca Administrator!");
-                // Deschideți fereastra corespunzătoare pentru administrator
-                Form form3 = new AdminView();
-                form3.Show();
+                    }
+                    else if (rol == "Administrator")
+                    {
+                        //MessageBox.Show("Autentificare reușită ca Administrator!");
+                        // Deschideți fereastra corespunzătoare pentru administrator
+                        Form form3 = new AdminView();
+                        form3.Show();
 
-                form3.BeginInvoke((MethodInvoker)delegate {
-                    MessageBox.Show("Autentificare reușită ca Administrator!");
-                });
+                        form3.BeginInvoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show("Autentificare reușită ca Administrator!");
+                        });
 
-                form3.FormClosed += (s, args) => this.Close();
+                        form3.FormClosed += (s, args) => this.Close();
 
-                this.Hide();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Autentificare eșuată.{response}");
+                }
             }
             else
             {

@@ -1,0 +1,10 @@
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\ClientBackend.exe.config
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\ClientBackend.exe
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\ClientBackend.pdb
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.AssemblyReference.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.CoreCompileInputs.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.exe
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.pdb
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.dll
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.xml
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBa.0829D276.Up2Date

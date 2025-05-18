@@ -30,10 +30,12 @@ namespace UserInterface
     /// <summary>
     public partial class BibliotecarView : Form
     {
+        private ConnectionToClientBackend _connectionToClientBackend;
         /// <summary>
         public BibliotecarView()
         {
             InitializeComponent();
+            _connectionToClientBackend = new ConnectionToClientBackend();
         }
 
         private void buttonBibliotecarLogin_Click(object sender, EventArgs e)
@@ -47,6 +49,12 @@ namespace UserInterface
         {
             // Activează interfața pentru gestiunea serviciilor de împrumut și retur
             groupBoxServicii.Enabled = true;
+            string name = textBoxAngajatUsername.Text;
+            string password = textBoxAngajatParola.Text;  
+            string adresa = textBoxInregistrareAdresa.Text;
+            string telefon = textBoxInregistrareTelefon.Text;
+            string email = textBoxInregistrareEmail.Text;
+            _connectionToClientBackend.SendRequest("register", $"{name}|{password}|{adresa}|{telefon}|{email}");
         }
 
         private void buttonImprumutCautare_Click(object sender, EventArgs e)

@@ -1,0 +1,15 @@
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Server.exe.config
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Server.exe
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Server.pdb
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\obj\Debug\Server.exe
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\obj\Debug\Server.pdb
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Newtonsoft.Json.dll
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Newtonsoft.Json.xml
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\obj\Debug\Server.csproj.Up2Date
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Database.dll
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\System.Data.SQLite.dll
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Database.pdb
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\Database.dll.config
+G:\Anul III\Semestrul II\IP\Proiect\Proiect-IP\Cod\Database\Server\bin\Debug\System.Data.SQLite.xml
