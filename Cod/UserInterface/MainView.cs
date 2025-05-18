@@ -55,14 +55,18 @@ namespace UserInterface
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
             string rol;
+            textBoxUsername.Clear();
+            textBoxPassword.Clear();
 
             if (radioButtonAdministrator.Checked)
             {
                 rol = "Administrator";
+                radioButtonAdministrator.Checked = false;
             }
             else if (radioButtonBibliotecar.Checked)
             {
                 rol = "Bibliotecar";
+                radioButtonBibliotecar.Checked = false;
             }
             else
             {
@@ -75,11 +79,12 @@ namespace UserInterface
                 return;
             }
 
+
             if (rol != string.Empty)
             {
-                //_connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
-                //string response = _connectionToClientBackend.ReceiveResponse();
-                string response = "Login successful";
+                _connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
+                string response = _connectionToClientBackend.ReceiveResponse();
+                //string response = "Login successful";
                 if (response == "Login successful")
                 {
                     if (rol == "Bibliotecar")
