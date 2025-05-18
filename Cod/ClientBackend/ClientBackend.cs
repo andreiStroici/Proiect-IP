@@ -17,7 +17,7 @@ namespace ClientBackend
         public ClientBackend()
         {
             _port = new TcpListener(System.Net.IPAddress.Any, 8081);
-            string subnet = "192.168.56.";
+            string subnet = "192.168.137.";
             int port = 12345;
 
             for (int i = 1; i <= 254; i++)

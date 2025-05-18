@@ -166,7 +166,7 @@
             Interfața pentru admin
             </summary>
         </member>
-        <member name="M:UserInterface.AdminView.#ctor">
+        <member name="M:UserInterface.AdminView.#ctor(System.Windows.Forms.Form)">
             <summary>
             Constructorul pentru AdminView
             </summary>

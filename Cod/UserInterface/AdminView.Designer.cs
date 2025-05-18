@@ -41,6 +41,7 @@
             this.radioButtonAngajatAdministrator = new System.Windows.Forms.RadioButton();
             this.labelAngajatRol = new System.Windows.Forms.Label();
             this.tabPageAdminCarti = new System.Windows.Forms.TabPage();
+            this.buttonȘtergereCarteCăutare = new System.Windows.Forms.Button();
             this.comboBoxStergereCarti = new System.Windows.Forms.ComboBox();
             this.buttonDeleteCarte = new System.Windows.Forms.Button();
             this.textBoxDeleteIDCarte = new System.Windows.Forms.TextBox();
@@ -77,7 +78,6 @@
             this.textBoxGestiuneTelefon = new System.Windows.Forms.TextBox();
             this.labelGestiuneAbonați = new System.Windows.Forms.Label();
             this.buttonDelogare = new System.Windows.Forms.Button();
-            this.buttonȘtergereCarteCăutare = new System.Windows.Forms.Button();
             this.groupBoxAbonatii.SuspendLayout();
             this.tabControlAdministrator.SuspendLayout();
             this.tabPageAdminAngajati.SuspendLayout();
@@ -243,6 +243,16 @@
             this.tabPageAdminCarti.Text = "Cărți";
             this.tabPageAdminCarti.UseVisualStyleBackColor = true;
             // 
+            // buttonȘtergereCarteCăutare
+            // 
+            this.buttonȘtergereCarteCăutare.Location = new System.Drawing.Point(701, 251);
+            this.buttonȘtergereCarteCăutare.Name = "buttonȘtergereCarteCăutare";
+            this.buttonȘtergereCarteCăutare.Size = new System.Drawing.Size(101, 38);
+            this.buttonȘtergereCarteCăutare.TabIndex = 36;
+            this.buttonȘtergereCarteCăutare.Text = "Căutare";
+            this.buttonȘtergereCarteCăutare.UseVisualStyleBackColor = true;
+            this.buttonȘtergereCarteCăutare.Click += new System.EventHandler(this.buttonȘtergereCarteCăutare_Click);
+            // 
             // comboBoxStergereCarti
             // 
             this.comboBoxStergereCarti.Enabled = false;
@@ -257,6 +267,7 @@
             this.comboBoxStergereCarti.Name = "comboBoxStergereCarti";
             this.comboBoxStergereCarti.Size = new System.Drawing.Size(314, 24);
             this.comboBoxStergereCarti.TabIndex = 35;
+            this.comboBoxStergereCarti.SelectedIndexChanged += new System.EventHandler(this.comboBoxStergereCarti_SelectedIndexChanged);
             // 
             // buttonDeleteCarte
             // 
@@ -636,17 +647,6 @@
             this.buttonDelogare.TabIndex = 58;
             this.buttonDelogare.Text = "Delogare";
             this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
-            // 
-            // buttonȘtergereCarteCăutare
-            // 
-            this.buttonȘtergereCarteCăutare.Enabled = false;
-            this.buttonȘtergereCarteCăutare.Location = new System.Drawing.Point(701, 251);
-            this.buttonȘtergereCarteCăutare.Name = "buttonȘtergereCarteCăutare";
-            this.buttonȘtergereCarteCăutare.Size = new System.Drawing.Size(101, 38);
-            this.buttonȘtergereCarteCăutare.TabIndex = 36;
-            this.buttonȘtergereCarteCăutare.Text = "Căutare";
-            this.buttonȘtergereCarteCăutare.UseVisualStyleBackColor = true;
-            this.buttonȘtergereCarteCăutare.Click += new System.EventHandler(this.buttonȘtergereCarteCăutare_Click);
             // 
             // AdminView
             // 

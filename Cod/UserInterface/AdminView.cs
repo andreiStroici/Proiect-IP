@@ -91,6 +91,7 @@ namespace UserInterface
                 labelAfișareAbonațiProbleme.Enabled = true;
                 buttonAfișareAbonațiCăutare.Enabled = true;
                 comboBoxAbonațiProbleme.Enabled = true;
+                labelAfișareAbonați.Enabled = true;
 
                 labelGestiuneAbonați.Enabled = false;
                 textBoxGestiuneTelefon.Enabled = false;
@@ -113,6 +114,8 @@ namespace UserInterface
             this.radioButtonGestiuneA.Enabled = true;
             this.radioButtonGestiuneB.Enabled = true;
             this.radioButtonGestiuneE.Enabled = true;
+
+            this.comboBoxAbonațiProbleme.TabIndex = 0;
         }
 
         /// <summary>
@@ -205,6 +208,11 @@ namespace UserInterface
         private void buttonDeleteCarte_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException("Implementează butonul de ștergere a cărții!");
+        }
+
+        private void comboBoxStergereCarti_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
