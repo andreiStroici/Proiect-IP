@@ -105,14 +105,14 @@ namespace ClientBackend
         private void sendMessage(string message)
         {
             NetworkStream stream = _server.GetStream();
-            StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
+            StreamWriter writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true };
             writer.WriteLine(message);
         }
 
         private string WaitForMessage()
         {
             NetworkStream stream = _server.GetStream();
-            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            StreamReader reader = new StreamReader(stream, new UTF8Encoding(false));
 
             string message = reader.ReadLine();
 
@@ -127,9 +127,7 @@ namespace ClientBackend
             // For example, you might want to check the credentials against a database or an in-memory store
             var data = new List<Dictionary<string, string>>
             {
-                new Dictionary<string, string> { { "username", username } },
-                new Dictionary<string, string> { { "password", password } },
-                new Dictionary<string, string> { { "role", role } }
+                new Dictionary<string, string> { { "username", username }, { "password", password }, { "role", role }}
             };
 
             var obj = new
@@ -139,16 +137,16 @@ namespace ClientBackend
             };
             string json = JsonConvert.SerializeObject(obj);
             sendMessage(json);
-            //string response = WaitForMessage();
-            //if(response == "Login successful")
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-            return username == password;
+            string response = WaitForMessage();
+            if (response == "Login successful")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }
