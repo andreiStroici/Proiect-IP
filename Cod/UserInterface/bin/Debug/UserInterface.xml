@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UserInterface</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "T:UserInterface.MainView" -->
+        <!-- Badly formed XML comment ignored for member "M:UserInterface.MainView.#ctor" -->
+        <member name="F:UserInterface.MainView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:UserInterface.MainView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:UserInterface.MainView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:UserInterface.BibliotecarView" -->
+        <!-- Badly formed XML comment ignored for member "M:UserInterface.BibliotecarView.#ctor" -->
+        <member name="F:UserInterface.BibliotecarView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:UserInterface.AdminView.#ctor" -->
+        <member name="F:UserInterface.AdminView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:UserInterface.AdminView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:UserInterface.AdminView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:UserInterface.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:UserInterface.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:UserInterface.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:UserInterface.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

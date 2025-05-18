@@ -45,8 +45,6 @@
             this.textBoxInregistrareEmail = new System.Windows.Forms.TextBox();
             this.textBoxAutentificareTelefon = new System.Windows.Forms.TextBox();
             this.buttonRetur = new System.Windows.Forms.Button();
-            this.textBoxReturIDCarte = new System.Windows.Forms.TextBox();
-            this.labelReturIDImprumut = new System.Windows.Forms.Label();
             this.labelRetur = new System.Windows.Forms.Label();
             this.buttonImprumutValidare = new System.Windows.Forms.Button();
             this.textBoxImprumutAutor = new System.Windows.Forms.TextBox();
@@ -62,8 +60,13 @@
             this.labelImprumutSugestii = new System.Windows.Forms.Label();
             this.buttonImprumutCautare = new System.Windows.Forms.Button();
             this.labelServicii = new System.Windows.Forms.Label();
+            this.panelServiciuReturnare = new System.Windows.Forms.Panel();
+            this.comboBoxReturnare = new System.Windows.Forms.ComboBox();
+            this.labelReturnareCarti = new System.Windows.Forms.Label();
+            this.buttonReturnareCăutare = new System.Windows.Forms.Button();
             this.groupBoxAbonat.SuspendLayout();
             this.groupBoxServicii.SuspendLayout();
+            this.panelServiciuReturnare.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelAngajatInregistrare
@@ -216,7 +219,8 @@
             // 
             // buttonRetur
             // 
-            this.buttonRetur.Location = new System.Drawing.Point(235, 565);
+            this.buttonRetur.Enabled = false;
+            this.buttonRetur.Location = new System.Drawing.Point(212, 170);
             this.buttonRetur.Name = "buttonRetur";
             this.buttonRetur.Size = new System.Drawing.Size(124, 37);
             this.buttonRetur.TabIndex = 52;
@@ -224,28 +228,11 @@
             this.buttonRetur.UseVisualStyleBackColor = true;
             this.buttonRetur.Click += new System.EventHandler(this.buttonRetur_Click);
             // 
-            // textBoxReturIDCarte
-            // 
-            this.textBoxReturIDCarte.Location = new System.Drawing.Point(236, 506);
-            this.textBoxReturIDCarte.Name = "textBoxReturIDCarte";
-            this.textBoxReturIDCarte.Size = new System.Drawing.Size(237, 22);
-            this.textBoxReturIDCarte.TabIndex = 51;
-            // 
-            // labelReturIDImprumut
-            // 
-            this.labelReturIDImprumut.AutoSize = true;
-            this.labelReturIDImprumut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelReturIDImprumut.Location = new System.Drawing.Point(101, 508);
-            this.labelReturIDImprumut.Name = "labelReturIDImprumut";
-            this.labelReturIDImprumut.Size = new System.Drawing.Size(72, 20);
-            this.labelReturIDImprumut.TabIndex = 50;
-            this.labelReturIDImprumut.Text = "ID Carte";
-            // 
             // labelRetur
             // 
             this.labelRetur.AutoSize = true;
             this.labelRetur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetur.Location = new System.Drawing.Point(191, 451);
+            this.labelRetur.Location = new System.Drawing.Point(190, 27);
             this.labelRetur.Name = "labelRetur";
             this.labelRetur.Size = new System.Drawing.Size(160, 25);
             this.labelRetur.TabIndex = 49;
@@ -355,18 +342,15 @@
             // 
             // groupBoxServicii
             // 
+            this.groupBoxServicii.Controls.Add(this.panelServiciuReturnare);
             this.groupBoxServicii.Controls.Add(this.comboBoxSugestii);
             this.groupBoxServicii.Controls.Add(this.labelImprumutSugestii);
             this.groupBoxServicii.Controls.Add(this.buttonImprumutCautare);
             this.groupBoxServicii.Controls.Add(this.labelServicii);
             this.groupBoxServicii.Controls.Add(this.labelImprumut);
             this.groupBoxServicii.Controls.Add(this.labelImprumutTitlu);
-            this.groupBoxServicii.Controls.Add(this.buttonRetur);
             this.groupBoxServicii.Controls.Add(this.labelImprumutAutor);
-            this.groupBoxServicii.Controls.Add(this.textBoxReturIDCarte);
-            this.groupBoxServicii.Controls.Add(this.labelReturIDImprumut);
             this.groupBoxServicii.Controls.Add(this.textBoxImprumutTitlu);
-            this.groupBoxServicii.Controls.Add(this.labelRetur);
             this.groupBoxServicii.Controls.Add(this.textBoxImprumutAutor);
             this.groupBoxServicii.Controls.Add(this.buttonImprumutValidare);
             this.groupBoxServicii.Enabled = false;
@@ -424,6 +408,55 @@
             this.labelServicii.Text = "Servicii";
             this.labelServicii.UseMnemonic = false;
             // 
+            // panelServiciuReturnare
+            // 
+            this.panelServiciuReturnare.Controls.Add(this.buttonReturnareCăutare);
+            this.panelServiciuReturnare.Controls.Add(this.labelReturnareCarti);
+            this.panelServiciuReturnare.Controls.Add(this.comboBoxReturnare);
+            this.panelServiciuReturnare.Controls.Add(this.labelRetur);
+            this.panelServiciuReturnare.Controls.Add(this.buttonRetur);
+            this.panelServiciuReturnare.Enabled = false;
+            this.panelServiciuReturnare.Location = new System.Drawing.Point(23, 418);
+            this.panelServiciuReturnare.Name = "panelServiciuReturnare";
+            this.panelServiciuReturnare.Size = new System.Drawing.Size(523, 248);
+            this.panelServiciuReturnare.TabIndex = 58;
+            // 
+            // comboBoxReturnare
+            // 
+            this.comboBoxReturnare.Enabled = false;
+            this.comboBoxReturnare.FormattingEnabled = true;
+            this.comboBoxReturnare.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxReturnare.Location = new System.Drawing.Point(212, 129);
+            this.comboBoxReturnare.Name = "comboBoxReturnare";
+            this.comboBoxReturnare.Size = new System.Drawing.Size(238, 24);
+            this.comboBoxReturnare.TabIndex = 57;
+            // 
+            // labelReturnareCarti
+            // 
+            this.labelReturnareCarti.AutoSize = true;
+            this.labelReturnareCarti.Enabled = false;
+            this.labelReturnareCarti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReturnareCarti.Location = new System.Drawing.Point(53, 129);
+            this.labelReturnareCarti.Name = "labelReturnareCarti";
+            this.labelReturnareCarti.Size = new System.Drawing.Size(135, 20);
+            this.labelReturnareCarti.TabIndex = 58;
+            this.labelReturnareCarti.Text = "Cărți nereturnate";
+            // 
+            // buttonReturnareCăutare
+            // 
+            this.buttonReturnareCăutare.Location = new System.Drawing.Point(212, 74);
+            this.buttonReturnareCăutare.Name = "buttonReturnareCăutare";
+            this.buttonReturnareCăutare.Size = new System.Drawing.Size(123, 33);
+            this.buttonReturnareCăutare.TabIndex = 59;
+            this.buttonReturnareCăutare.Text = "Căutare";
+            this.buttonReturnareCăutare.UseVisualStyleBackColor = true;
+            this.buttonReturnareCăutare.Click += new System.EventHandler(this.buttonReturnareCăutare_Click);
+            // 
             // BibliotecarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,6 +469,8 @@
             this.groupBoxAbonat.PerformLayout();
             this.groupBoxServicii.ResumeLayout(false);
             this.groupBoxServicii.PerformLayout();
+            this.panelServiciuReturnare.ResumeLayout(false);
+            this.panelServiciuReturnare.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -458,8 +493,6 @@
         private System.Windows.Forms.TextBox textBoxInregistrareEmail;
         private System.Windows.Forms.TextBox textBoxAutentificareTelefon;
         private System.Windows.Forms.Button buttonRetur;
-        private System.Windows.Forms.TextBox textBoxReturIDCarte;
-        private System.Windows.Forms.Label labelReturIDImprumut;
         private System.Windows.Forms.Label labelRetur;
         private System.Windows.Forms.Button buttonImprumutValidare;
         private System.Windows.Forms.TextBox textBoxImprumutAutor;
@@ -486,5 +519,9 @@
         private System.Windows.Forms.Label labelServicii;
         private System.Windows.Forms.ComboBox comboBoxSugestii;
         private System.Windows.Forms.Button buttonDelogare;
+        private System.Windows.Forms.Panel panelServiciuReturnare;
+        private System.Windows.Forms.Button buttonReturnareCăutare;
+        private System.Windows.Forms.Label labelReturnareCarti;
+        private System.Windows.Forms.ComboBox comboBoxReturnare;
     }
 }

@@ -48,8 +48,7 @@
             this.labelUpdateIDCarte = new System.Windows.Forms.Label();
             this.labelUpdateCarte = new System.Windows.Forms.Label();
             this.buttonDeleteCarte = new System.Windows.Forms.Button();
-            this.textBoxDeleteIDCarte = new System.Windows.Forms.TextBox();
-            this.labelDeleteIDCarte = new System.Windows.Forms.Label();
+            this.labelDeleteISBNCarte = new System.Windows.Forms.Label();
             this.labelDelete = new System.Windows.Forms.Label();
             this.labelAddCarteGen = new System.Windows.Forms.Label();
             this.textBoxAddCarteGen = new System.Windows.Forms.TextBox();
@@ -64,6 +63,13 @@
             this.textBoxAddCarteTitlu = new System.Windows.Forms.TextBox();
             this.textBoxAddCarteISBN = new System.Windows.Forms.TextBox();
             this.tabPageAdminAbonati = new System.Windows.Forms.TabPage();
+            this.labelAfișareAbonați = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButtonAfișareAbonați = new System.Windows.Forms.RadioButton();
+            this.radioButtonGestiuneAbonați = new System.Windows.Forms.RadioButton();
+            this.buttonAfișareAbonațiCăutare = new System.Windows.Forms.Button();
+            this.comboBoxAbonațiProbleme = new System.Windows.Forms.ComboBox();
+            this.labelAfișareAbonațiProbleme = new System.Windows.Forms.Label();
             this.buttonGestiuneValidare = new System.Windows.Forms.Button();
             this.radioButtonGestiuneB = new System.Windows.Forms.RadioButton();
             this.radioButtonGestiuneE = new System.Windows.Forms.RadioButton();
@@ -75,13 +81,8 @@
             this.textBoxGestiuneTelefon = new System.Windows.Forms.TextBox();
             this.labelGestiuneAbonați = new System.Windows.Forms.Label();
             this.buttonDelogare = new System.Windows.Forms.Button();
-            this.labelAfișareAbonațiProbleme = new System.Windows.Forms.Label();
-            this.comboBoxAbonațiProbleme = new System.Windows.Forms.ComboBox();
-            this.buttonAfișareAbonațiCăutare = new System.Windows.Forms.Button();
-            this.radioButtonGestiuneAbonați = new System.Windows.Forms.RadioButton();
-            this.radioButtonAfișareAbonați = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labelAfișareAbonați = new System.Windows.Forms.Label();
+            this.textBoxDeleteIDCarte = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBoxAbonatii.SuspendLayout();
             this.tabControlAdministrator.SuspendLayout();
             this.tabPageAdminAngajati.SuspendLayout();
@@ -221,6 +222,7 @@
             // 
             // tabPageAdminCarti
             // 
+            this.tabPageAdminCarti.Controls.Add(this.comboBox1);
             this.tabPageAdminCarti.Controls.Add(this.comboBoxUpdateStatus);
             this.tabPageAdminCarti.Controls.Add(this.labelUpdateStatus);
             this.tabPageAdminCarti.Controls.Add(this.buttonUpdate);
@@ -229,7 +231,7 @@
             this.tabPageAdminCarti.Controls.Add(this.labelUpdateCarte);
             this.tabPageAdminCarti.Controls.Add(this.buttonDeleteCarte);
             this.tabPageAdminCarti.Controls.Add(this.textBoxDeleteIDCarte);
-            this.tabPageAdminCarti.Controls.Add(this.labelDeleteIDCarte);
+            this.tabPageAdminCarti.Controls.Add(this.labelDeleteISBNCarte);
             this.tabPageAdminCarti.Controls.Add(this.labelDelete);
             this.tabPageAdminCarti.Controls.Add(this.labelAddCarteGen);
             this.tabPageAdminCarti.Controls.Add(this.textBoxAddCarteGen);
@@ -313,7 +315,8 @@
             // 
             // buttonDeleteCarte
             // 
-            this.buttonDeleteCarte.Location = new System.Drawing.Point(673, 196);
+            this.buttonDeleteCarte.Enabled = false;
+            this.buttonDeleteCarte.Location = new System.Drawing.Point(690, 178);
             this.buttonDeleteCarte.Name = "buttonDeleteCarte";
             this.buttonDeleteCarte.Size = new System.Drawing.Size(101, 38);
             this.buttonDeleteCarte.TabIndex = 28;
@@ -321,29 +324,22 @@
             this.buttonDeleteCarte.UseVisualStyleBackColor = true;
             this.buttonDeleteCarte.Click += new System.EventHandler(this.buttonDeleteCarte_Click);
             // 
-            // textBoxDeleteIDCarte
+            // labelDeleteISBNCarte
             // 
-            this.textBoxDeleteIDCarte.Location = new System.Drawing.Point(706, 159);
-            this.textBoxDeleteIDCarte.Name = "textBoxDeleteIDCarte";
-            this.textBoxDeleteIDCarte.Size = new System.Drawing.Size(196, 22);
-            this.textBoxDeleteIDCarte.TabIndex = 27;
-            // 
-            // labelDeleteIDCarte
-            // 
-            this.labelDeleteIDCarte.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.labelDeleteIDCarte.AutoSize = true;
-            this.labelDeleteIDCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDeleteIDCarte.Location = new System.Drawing.Point(584, 159);
-            this.labelDeleteIDCarte.Name = "labelDeleteIDCarte";
-            this.labelDeleteIDCarte.Size = new System.Drawing.Size(72, 20);
-            this.labelDeleteIDCarte.TabIndex = 26;
-            this.labelDeleteIDCarte.Text = "ID Carte";
+            this.labelDeleteISBNCarte.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.labelDeleteISBNCarte.AutoSize = true;
+            this.labelDeleteISBNCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeleteISBNCarte.Location = new System.Drawing.Point(591, 77);
+            this.labelDeleteISBNCarte.Name = "labelDeleteISBNCarte";
+            this.labelDeleteISBNCarte.Size = new System.Drawing.Size(48, 20);
+            this.labelDeleteISBNCarte.TabIndex = 26;
+            this.labelDeleteISBNCarte.Text = "ISBN";
             // 
             // labelDelete
             // 
             this.labelDelete.AutoSize = true;
             this.labelDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDelete.Location = new System.Drawing.Point(659, 109);
+            this.labelDelete.Location = new System.Drawing.Point(666, 27);
             this.labelDelete.Name = "labelDelete";
             this.labelDelete.Size = new System.Drawing.Size(149, 25);
             this.labelDelete.TabIndex = 25;
@@ -484,6 +480,90 @@
             this.tabPageAdminAbonati.Text = "Abonați";
             this.tabPageAdminAbonati.UseVisualStyleBackColor = true;
             // 
+            // labelAfișareAbonați
+            // 
+            this.labelAfișareAbonați.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.labelAfișareAbonați.AutoSize = true;
+            this.labelAfișareAbonați.Enabled = false;
+            this.labelAfișareAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAfișareAbonați.Location = new System.Drawing.Point(533, 188);
+            this.labelAfișareAbonați.Name = "labelAfișareAbonați";
+            this.labelAfișareAbonați.Size = new System.Drawing.Size(65, 20);
+            this.labelAfișareAbonați.TabIndex = 68;
+            this.labelAfișareAbonați.Text = "Abonați";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButtonAfișareAbonați);
+            this.panel1.Controls.Add(this.radioButtonGestiuneAbonați);
+            this.panel1.Location = new System.Drawing.Point(74, 22);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(821, 41);
+            this.panel1.TabIndex = 67;
+            // 
+            // radioButtonAfișareAbonați
+            // 
+            this.radioButtonAfișareAbonați.AutoSize = true;
+            this.radioButtonAfișareAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonAfișareAbonați.Location = new System.Drawing.Point(625, 16);
+            this.radioButtonAfișareAbonați.Name = "radioButtonAfișareAbonați";
+            this.radioButtonAfișareAbonați.Size = new System.Drawing.Size(126, 22);
+            this.radioButtonAfișareAbonați.TabIndex = 66;
+            this.radioButtonAfișareAbonați.TabStop = true;
+            this.radioButtonAfișareAbonați.Text = "Afișare abonați";
+            this.radioButtonAfișareAbonați.UseVisualStyleBackColor = true;
+            this.radioButtonAfișareAbonați.CheckedChanged += new System.EventHandler(this.radioButtonAfișareAbonați_CheckedChanged);
+            // 
+            // radioButtonGestiuneAbonați
+            // 
+            this.radioButtonGestiuneAbonați.AutoSize = true;
+            this.radioButtonGestiuneAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonGestiuneAbonați.Location = new System.Drawing.Point(25, 16);
+            this.radioButtonGestiuneAbonați.Name = "radioButtonGestiuneAbonați";
+            this.radioButtonGestiuneAbonați.Size = new System.Drawing.Size(140, 22);
+            this.radioButtonGestiuneAbonați.TabIndex = 65;
+            this.radioButtonGestiuneAbonați.TabStop = true;
+            this.radioButtonGestiuneAbonați.Text = "Selectare abonat";
+            this.radioButtonGestiuneAbonați.UseVisualStyleBackColor = true;
+            this.radioButtonGestiuneAbonați.CheckedChanged += new System.EventHandler(this.radioButtonGestiuneAbonați_CheckedChanged);
+            // 
+            // buttonAfișareAbonațiCăutare
+            // 
+            this.buttonAfișareAbonațiCăutare.Enabled = false;
+            this.buttonAfișareAbonațiCăutare.Location = new System.Drawing.Point(699, 136);
+            this.buttonAfișareAbonațiCăutare.Name = "buttonAfișareAbonațiCăutare";
+            this.buttonAfișareAbonațiCăutare.Size = new System.Drawing.Size(123, 33);
+            this.buttonAfișareAbonațiCăutare.TabIndex = 64;
+            this.buttonAfișareAbonațiCăutare.Text = "Căutare";
+            this.buttonAfișareAbonațiCăutare.UseVisualStyleBackColor = true;
+            this.buttonAfișareAbonațiCăutare.Click += new System.EventHandler(this.buttonAfișareAbonațiCăutare_Click);
+            // 
+            // comboBoxAbonațiProbleme
+            // 
+            this.comboBoxAbonațiProbleme.Enabled = false;
+            this.comboBoxAbonațiProbleme.FormattingEnabled = true;
+            this.comboBoxAbonațiProbleme.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxAbonațiProbleme.Location = new System.Drawing.Point(619, 188);
+            this.comboBoxAbonațiProbleme.Name = "comboBoxAbonațiProbleme";
+            this.comboBoxAbonațiProbleme.Size = new System.Drawing.Size(308, 24);
+            this.comboBoxAbonațiProbleme.TabIndex = 63;
+            // 
+            // labelAfișareAbonațiProbleme
+            // 
+            this.labelAfișareAbonațiProbleme.AutoSize = true;
+            this.labelAfișareAbonațiProbleme.Enabled = false;
+            this.labelAfișareAbonațiProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAfișareAbonațiProbleme.Location = new System.Drawing.Point(614, 87);
+            this.labelAfișareAbonațiProbleme.Name = "labelAfișareAbonațiProbleme";
+            this.labelAfișareAbonațiProbleme.Size = new System.Drawing.Size(281, 25);
+            this.labelAfișareAbonațiProbleme.TabIndex = 62;
+            this.labelAfișareAbonațiProbleme.Text = "Afișare abonați cu probleme";
+            // 
             // buttonGestiuneValidare
             // 
             this.buttonGestiuneValidare.Enabled = false;
@@ -605,89 +685,25 @@
             this.buttonDelogare.Text = "Delogare";
             this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
             // 
-            // labelAfișareAbonațiProbleme
+            // textBoxDeleteIDCarte
             // 
-            this.labelAfișareAbonațiProbleme.AutoSize = true;
-            this.labelAfișareAbonațiProbleme.Enabled = false;
-            this.labelAfișareAbonațiProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAfișareAbonațiProbleme.Location = new System.Drawing.Point(614, 87);
-            this.labelAfișareAbonațiProbleme.Name = "labelAfișareAbonațiProbleme";
-            this.labelAfișareAbonațiProbleme.Size = new System.Drawing.Size(281, 25);
-            this.labelAfișareAbonațiProbleme.TabIndex = 62;
-            this.labelAfișareAbonațiProbleme.Text = "Afișare abonați cu probleme";
+            this.textBoxDeleteIDCarte.Location = new System.Drawing.Point(713, 77);
+            this.textBoxDeleteIDCarte.Name = "textBoxDeleteIDCarte";
+            this.textBoxDeleteIDCarte.Size = new System.Drawing.Size(196, 22);
+            this.textBoxDeleteIDCarte.TabIndex = 27;
+            this.textBoxDeleteIDCarte.TextChanged += new System.EventHandler(this.textBoxDeleteIDCarte_TextChanged);
             // 
-            // comboBoxAbonațiProbleme
+            // comboBox1
             // 
-            this.comboBoxAbonațiProbleme.Enabled = false;
-            this.comboBoxAbonațiProbleme.FormattingEnabled = true;
-            this.comboBoxAbonațiProbleme.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.comboBoxAbonațiProbleme.Location = new System.Drawing.Point(619, 188);
-            this.comboBoxAbonațiProbleme.Name = "comboBoxAbonațiProbleme";
-            this.comboBoxAbonațiProbleme.Size = new System.Drawing.Size(308, 24);
-            this.comboBoxAbonațiProbleme.TabIndex = 63;
-            // 
-            // buttonAfișareAbonațiCăutare
-            // 
-            this.buttonAfișareAbonațiCăutare.Enabled = false;
-            this.buttonAfișareAbonațiCăutare.Location = new System.Drawing.Point(699, 136);
-            this.buttonAfișareAbonațiCăutare.Name = "buttonAfișareAbonațiCăutare";
-            this.buttonAfișareAbonațiCăutare.Size = new System.Drawing.Size(123, 33);
-            this.buttonAfișareAbonațiCăutare.TabIndex = 64;
-            this.buttonAfișareAbonațiCăutare.Text = "Căutare";
-            this.buttonAfișareAbonațiCăutare.UseVisualStyleBackColor = true;
-            this.buttonAfișareAbonațiCăutare.Click += new System.EventHandler(this.buttonAfișareAbonațiCăutare_Click);
-            // 
-            // radioButtonGestiuneAbonați
-            // 
-            this.radioButtonGestiuneAbonați.AutoSize = true;
-            this.radioButtonGestiuneAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonGestiuneAbonați.Location = new System.Drawing.Point(25, 16);
-            this.radioButtonGestiuneAbonați.Name = "radioButtonGestiuneAbonați";
-            this.radioButtonGestiuneAbonați.Size = new System.Drawing.Size(140, 22);
-            this.radioButtonGestiuneAbonați.TabIndex = 65;
-            this.radioButtonGestiuneAbonați.TabStop = true;
-            this.radioButtonGestiuneAbonați.Text = "Selectare abonat";
-            this.radioButtonGestiuneAbonați.UseVisualStyleBackColor = true;
-            this.radioButtonGestiuneAbonați.CheckedChanged += new System.EventHandler(this.radioButtonGestiuneAbonați_CheckedChanged);
-            // 
-            // radioButtonAfișareAbonați
-            // 
-            this.radioButtonAfișareAbonați.AutoSize = true;
-            this.radioButtonAfișareAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonAfișareAbonați.Location = new System.Drawing.Point(625, 16);
-            this.radioButtonAfișareAbonați.Name = "radioButtonAfișareAbonați";
-            this.radioButtonAfișareAbonați.Size = new System.Drawing.Size(126, 22);
-            this.radioButtonAfișareAbonați.TabIndex = 66;
-            this.radioButtonAfișareAbonați.TabStop = true;
-            this.radioButtonAfișareAbonați.Text = "Afișare abonați";
-            this.radioButtonAfișareAbonați.UseVisualStyleBackColor = true;
-            this.radioButtonAfișareAbonați.CheckedChanged += new System.EventHandler(this.radioButtonAfișareAbonați_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.radioButtonAfișareAbonați);
-            this.panel1.Controls.Add(this.radioButtonGestiuneAbonați);
-            this.panel1.Location = new System.Drawing.Point(74, 22);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(821, 41);
-            this.panel1.TabIndex = 67;
-            // 
-            // labelAfișareAbonați
-            // 
-            this.labelAfișareAbonați.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.labelAfișareAbonați.AutoSize = true;
-            this.labelAfișareAbonați.Enabled = false;
-            this.labelAfișareAbonați.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAfișareAbonați.Location = new System.Drawing.Point(533, 188);
-            this.labelAfișareAbonați.Name = "labelAfișareAbonați";
-            this.labelAfișareAbonați.Size = new System.Drawing.Size(65, 20);
-            this.labelAfișareAbonați.TabIndex = 68;
-            this.labelAfișareAbonați.Text = "Abonați";
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Disponibilă",
+            "Indisponibilă"});
+            this.comboBox1.Location = new System.Drawing.Point(636, 125);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(273, 24);
+            this.comboBox1.TabIndex = 35;
             // 
             // AdminView
             // 
@@ -741,8 +757,7 @@
         private System.Windows.Forms.TextBox textBoxAddCarteTitlu;
         private System.Windows.Forms.TextBox textBoxAddCarteISBN;
         private System.Windows.Forms.Button buttonDeleteCarte;
-        private System.Windows.Forms.TextBox textBoxDeleteIDCarte;
-        private System.Windows.Forms.Label labelDeleteIDCarte;
+        private System.Windows.Forms.Label labelDeleteISBNCarte;
         private System.Windows.Forms.Label labelDelete;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.TextBox textBoxIDCarte;
@@ -769,5 +784,7 @@
         private System.Windows.Forms.RadioButton radioButtonGestiuneAbonați;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelAfișareAbonați;
+        private System.Windows.Forms.TextBox textBoxDeleteIDCarte;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

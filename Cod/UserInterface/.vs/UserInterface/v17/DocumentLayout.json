@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\adminview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\bibliotecarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:bibliotecarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\userinterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\bibliotecarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:bibliotecarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\bibliotecarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:bibliotecarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\userinterface\\adminview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,20 +50,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "BibliotecarView.cs",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\BibliotecarView.cs",
               "RelativeDocumentMoniker": "BibliotecarView.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\BibliotecarView.cs",
               "RelativeToolTip": "BibliotecarView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAqwCgAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T11:37:09.037Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BibliotecarView.cs [Design]",
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\BibliotecarView.cs",
+              "RelativeDocumentMoniker": "BibliotecarView.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\BibliotecarView.cs [Design]",
+              "RelativeToolTip": "BibliotecarView.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T11:36:06.627Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -75,8 +87,7 @@
               "RelativeToolTip": "MainView.Designer.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAYwEUAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T12:41:29.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T12:41:29.313Z"
             },
             {
               "$type": "Document",
@@ -87,18 +98,17 @@
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\MainView.cs [Design]",
               "RelativeToolTip": "MainView.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T11:40:12.629Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-10T11:40:12.629Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "AdminView.Designer.cs",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.Designer.cs",
               "RelativeDocumentMoniker": "AdminView.Designer.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.Designer.cs",
               "RelativeToolTip": "AdminView.Designer.cs",
-              "ViewState": "AgIAANICAAAAAAAAAAAAANwCAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAN4CAAAAAAAAAAAAAOwCAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T12:09:24.367Z",
               "EditorCaption": ""
@@ -113,8 +123,7 @@
               "RelativeToolTip": "MainView.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T12:11:35.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T12:11:35.365Z"
             },
             {
               "$type": "Document",
@@ -131,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "AdminView.cs [Design]",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.cs",
               "RelativeDocumentMoniker": "AdminView.cs",
@@ -143,32 +152,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "AdminView.cs",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.cs",
               "RelativeDocumentMoniker": "AdminView.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.cs",
               "RelativeToolTip": "AdminView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABMAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAQwJMAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T11:48:21.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BibliotecarView.cs [Design]",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\BibliotecarView.cs",
-              "RelativeDocumentMoniker": "BibliotecarView.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\BibliotecarView.cs [Design]",
-              "RelativeToolTip": "BibliotecarView.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T11:36:06.627Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -176,8 +173,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T07:14:06.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T07:14:06.902Z"
             }
           ]
         }

@@ -27,6 +27,7 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
+    /// <summary>
     public partial class BibliotecarView : Form
     {
         /// <summary>
@@ -39,6 +40,7 @@ namespace UserInterface
         {
             // Activează interfața pentru gestiunea serviciilor de împrumut și retur
             groupBoxServicii.Enabled = true;
+            panelServiciuReturnare.Enabled = true;
         }
 
         private void buttonAngajatRegister_Click(object sender, EventArgs e)
@@ -67,12 +69,22 @@ namespace UserInterface
 
         private void buttonImprumutValidare_Click(object sender, EventArgs e)
         {
+            panelServiciuReturnare.Enabled = true;
             throw new NotImplementedException("Implementează butonul de validare al împrumutului!");
         }
 
         private void buttonRetur_Click(object sender, EventArgs e)
         {
+            // Validare retur
             throw new NotImplementedException("Implementează butonul de validare al returului!");
+        }
+
+        private void buttonReturnareCăutare_Click(object sender, EventArgs e)
+        {
+            // folosind id-ul clientului, returnează în comboBoxReturnare cărțile împrumutate
+            labelReturnareCarti.Enabled = true;
+            comboBoxReturnare.Enabled = true;
+            buttonRetur.Enabled = true;
         }
     }
 }

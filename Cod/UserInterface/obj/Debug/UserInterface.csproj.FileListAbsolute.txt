@@ -21,3 +21,4 @@ E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\UserInter
 E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.MainView.resources
 E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.BibliotecarView.resources
 E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\obj\Debug\UserInterface.AdminView.resources
+E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\UserInterface\bin\Debug\UserInterface.xml
