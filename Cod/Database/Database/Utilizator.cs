@@ -19,7 +19,7 @@ namespace Database
         public Utilizator(string nume, string hashParola, string rol)
         {
             Nume = nume;
-            HashParola = hashParola;
+            HashParola = Cryptography.Encrypt(hashParola, "secret");
             Rol = rol;
          
         }

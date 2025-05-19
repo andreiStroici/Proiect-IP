@@ -79,11 +79,12 @@ namespace UserInterface
                 return;
             }
 
-
+            Console.WriteLine("rol: " + rol);
             if (rol != string.Empty)
             {
                 _connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
                 string response = _connectionToClientBackend.ReceiveResponse();
+                Console.WriteLine("response:" + response);
                 //string response = "Login successful";
                 if (response == "Login successful")
                 {

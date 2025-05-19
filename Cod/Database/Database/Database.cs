@@ -36,6 +36,7 @@ namespace Database
                 _connection = new SQLiteConnection(_filename);
                 _connection.Open();
                 Console.WriteLine("Conectarea la baza de date a fost realizata cu succes!");
+                
             }
             catch (SQLiteException e)
             {
@@ -885,10 +886,7 @@ namespace Database
         /// <returns></returns>
         public bool Login(Utilizator utilizator)
         {
-            using (var connection = new SQLiteConnection(_connection))
-            {
-               
-                string query = @"
+            string query = @"
                         SELECT COUNT(*)
                         FROM Utilizator U
                         JOIN Rol R ON U.id_rol = R.id_rol
@@ -897,25 +895,39 @@ namespace Database
                           AND R.nume_rol = @nume_rol;
                                                 ";
 
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
-                    command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
-                    command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
 
-                    long count = (long)command.ExecuteScalar();
-                    if(count == 1)
-                    {
-                        Console.WriteLine("Utilizator autentificat cu succes");
-                        return true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Utilizator nu a reusit sa se autentifice");
-                        return false;
-                    }
-                    
+            if (_connection.State != System.Data.ConnectionState.Open)
+            {
+                Console.WriteLine("Conexiunea nu este deschisa. O deschid...");
+                _connection.Open();
+            }
+
+            using (var command = new SQLiteCommand(query, _connection))
+            {
+
+                Console.WriteLine("Parola: " + utilizator.HashParola);
+                Console.WriteLine("Rol: " + utilizator.Rol);
+                Console.WriteLine("Nume: " + utilizator.Nume);
+
+                command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
+                command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
+                command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
+
+                long count = (long)command.ExecuteScalar();
+                Console.WriteLine("count: " + count);
+
+                if (count == 1)
+                {
+                      Console.WriteLine("Utilizator autentificat cu succes");
+                      return true;
                 }
+                else
+                {
+                      Console.WriteLine("Utilizator nu a reusit sa se autentifice");
+                      return false;
+                }
+
+                
             }
         }
 
@@ -925,13 +937,12 @@ namespace Database
         /// <param name="utilizator"></param>
         public bool InsertUser(Utilizator utilizator)
         {
-            using (var connection = new SQLiteConnection(_connection))
-            {
+            
                
                 string getRoleIdQuery = "SELECT id_rol FROM Rol WHERE nume_rol = @rol";
                 int idRol;
 
-                using (var cmdRol = new SQLiteCommand(getRoleIdQuery, connection))
+                using (var cmdRol = new SQLiteCommand(getRoleIdQuery, _connection))
                 {
                     cmdRol.Parameters.AddWithValue("@rol", utilizator.Rol);
                     object result = cmdRol.ExecuteScalar();
@@ -953,7 +964,7 @@ namespace Database
                                 INSERT INTO Utilizator (nume_user, hash_parola, id_rol)
                                 VALUES (@nume, @parola, @id_rol);";
 
-                    using (var cmdInsert = new SQLiteCommand(insertQuery, connection))
+                    using (var cmdInsert = new SQLiteCommand(insertQuery, _connection))
                     {
                         cmdInsert.Parameters.AddWithValue("@nume", utilizator.Nume);
                         cmdInsert.Parameters.AddWithValue("@parola", utilizator.HashParola);
@@ -971,7 +982,7 @@ namespace Database
                 }
                 
                 
-            }
+            
         }
 
     }

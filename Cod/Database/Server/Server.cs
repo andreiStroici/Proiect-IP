@@ -70,9 +70,11 @@ namespace Server
                         case "login":
                             // Handle login
                             Database.Utilizator utilizator = new Database.Utilizator(
-                                receivedObj.data[0]["username"], receivedObj.data[0]["password"], 
+                                receivedObj.data[0]["username"], receivedObj.data[0]["password"],
                                 receivedObj.data[0]["role"]);
+                            
                             bool r = _database.Login(utilizator);
+                            Console.WriteLine("r: " + r);
                             if (r)
                             {
                                 Console.WriteLine("Login successful.");

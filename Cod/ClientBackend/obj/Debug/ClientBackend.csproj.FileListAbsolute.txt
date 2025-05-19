@@ -18,3 +18,13 @@ E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\bin\Debug\Newtonsof
 E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.AssemblyReference.cache
 E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.CoreCompileInputs.cache
 E:\Anul III\Semestrul II\IP\Proiect\Github\Cod\ClientBackend\obj\Debug\ClientBa.0829D276.Up2Date
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\bin\Debug\ClientBackend.exe.config
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\bin\Debug\ClientBackend.exe
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\bin\Debug\ClientBackend.pdb
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.dll
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\bin\Debug\Newtonsoft.Json.xml
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.AssemblyReference.cache
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.csproj.CoreCompileInputs.cache
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBa.0829D276.Up2Date
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.exe
+D:\An 3\sem 2\Proiect-IP\Cod\ClientBackend\obj\Debug\ClientBackend.pdb
