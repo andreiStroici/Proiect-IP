@@ -78,12 +78,12 @@ namespace Server
                             if (r)
                             {
                                 Console.WriteLine("Login successful.");
-                                writer.WriteLine(JsonConvert.SerializeObject(new { status = "success" }));
+                                writer.WriteLine("Login successful");
                             }
                             else
                             {
                                 Console.WriteLine("Login failed.");
-                                writer.WriteLine(JsonConvert.SerializeObject(new { status = "failed" }));
+                                writer.WriteLine("Login failed.");
                             }
                             break;
                     }

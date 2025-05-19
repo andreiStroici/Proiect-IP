@@ -68,6 +68,7 @@ namespace ClientBackend
 
                     Console.WriteLine("Received: " + message);
                     string[] parts = message.Split('|');
+
                     switch (parts[0])
                     {
                         case "login":
@@ -138,7 +139,7 @@ namespace ClientBackend
             string json = JsonConvert.SerializeObject(obj);
             sendMessage(json);
             string response = WaitForMessage();
-            if (response == "Login successful")
+            if (response.Trim() == "Login successful")
             {
                 return true;
             }

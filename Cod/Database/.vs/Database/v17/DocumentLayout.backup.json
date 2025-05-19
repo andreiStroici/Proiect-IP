@@ -1,32 +1,32 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\",
+  "WorkspaceRootPath": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|d:\\an 3\\sem 2\\proiect-ip\\cod\\database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Database||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -37,15 +37,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Cryptography.cs",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Cryptography.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Cryptography.cs",
               "RelativeDocumentMoniker": "Database\\Cryptography.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Cryptography.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Cryptography.cs",
               "RelativeToolTip": "Database\\Cryptography.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -55,9 +63,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Carte.cs",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Carte.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Carte.cs",
               "RelativeDocumentMoniker": "Database\\Carte.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Carte.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Carte.cs",
               "RelativeToolTip": "Database\\Carte.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -67,9 +75,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Database",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.csproj",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Database.csproj",
               "RelativeDocumentMoniker": "Database\\Database.csproj",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.csproj",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Database.csproj",
               "RelativeToolTip": "Database\\Database.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-05-18T16:46:13.493Z"
@@ -78,37 +86,35 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Utilizator.cs",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Utilizator.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Utilizator.cs",
               "RelativeDocumentMoniker": "Database\\Utilizator.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Utilizator.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Utilizator.cs",
               "RelativeToolTip": "Database\\Utilizator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T19:38:26.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T19:38:26.713Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Database.cs",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
               "RelativeDocumentMoniker": "Database\\Database.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
               "RelativeToolTip": "Database\\Database.cs",
               "ViewState": "AgIAAH0DAAAAAAAAAAAuwJkDAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T19:38:26.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T19:38:26.738Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Server.cs",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
               "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAqwEkAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAIAywFIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T19:38:26.831Z",
               "EditorCaption": ""
@@ -117,14 +123,27 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Program.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Program.cs",
               "RelativeDocumentMoniker": "Server\\Program.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Program.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T19:38:26.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T19:38:26.832Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
