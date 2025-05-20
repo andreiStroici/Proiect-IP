@@ -24,6 +24,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace UserInterface
 {
@@ -312,9 +313,16 @@ namespace UserInterface
             string autor = textBoxAddCarteAutor.Text;
             string editura = textBoxAddCarteEditura.Text;
             string gen = textBoxAddCarteGen.Text;
+            string pattern = "^97[89]\d{ 10}$";
             if (string.IsNullOrEmpty(ISBN) || string.IsNullOrEmpty(titlu) || string.IsNullOrEmpty(autor) || string.IsNullOrEmpty(editura) || string.IsNullOrEmpty(gen))
             {
                 MessageBox.Show("Introduceti toate datele cărții.");
+                return;
+            }
+
+            if(!Regex.IsMatch(ISBN, pattern))
+            {
+                MessageBox.Show("Nu este acceptat acest format de ISBN!");
                 return;
             }
 
@@ -348,9 +356,17 @@ namespace UserInterface
         {
             comboBoxStergereCarti.Items.Clear();
             string ISBN = textBoxDeleteIDCarte.Text;
+
+            string pattern = "^97[89]\d{ 10}$";
             if (string.IsNullOrEmpty(ISBN))
             {
                 MessageBox.Show("Introduceti un ISBN valid.");
+                return;
+            }
+
+            if(!Regex.IsMatch(ISBN, pattern))
+            {
+                MessageBox.Show("Nu este acceptat acest format de ISBN!");
                 return;
             }
 

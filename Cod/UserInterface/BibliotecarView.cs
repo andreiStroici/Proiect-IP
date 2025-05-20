@@ -124,6 +124,28 @@ namespace UserInterface
             string adresa = textBoxAbonatAdresa.Text;
             string telefon = textBoxAbonatTelefon.Text;
             string email = textBoxAbonatEmail.Text;
+
+            string patternEmail = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            string patternTelefon = @"^07\d{8}$";
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(adresa) ||
+                string.IsNullOrEmpty(telefon) || string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Vă rugăm să completați toate câmpurile!");
+                return;
+            }
+
+            if (!Regex.IsMatch(telefon, patternTelefon))
+            {
+                MessageBox.Show("Nu este acceptat acest format de număr de telefon!");
+                return;
+            }
+
+            if (!Regex.IsMatch(email, patternEmail))
+            {
+                MessageBox.Show("Nu este acceptat acest format de email!");
+                return;
+            }
+
             _connectionToClientBackend.SendRequest("register", $"{name}|{password}|{adresa}|{telefon}|{email}");
         }
 
