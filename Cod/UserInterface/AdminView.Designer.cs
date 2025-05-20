@@ -267,7 +267,6 @@
             this.comboBoxStergereCarti.Name = "comboBoxStergereCarti";
             this.comboBoxStergereCarti.Size = new System.Drawing.Size(314, 24);
             this.comboBoxStergereCarti.TabIndex = 35;
-            this.comboBoxStergereCarti.SelectedIndexChanged += new System.EventHandler(this.comboBoxStergereCarti_SelectedIndexChanged);
             // 
             // buttonDeleteCarte
             // 
@@ -583,7 +582,7 @@
             this.textBoxGestiuneDate.Multiline = true;
             this.textBoxGestiuneDate.Name = "textBoxGestiuneDate";
             this.textBoxGestiuneDate.ReadOnly = true;
-            this.textBoxGestiuneDate.Size = new System.Drawing.Size(361, 85);
+            this.textBoxGestiuneDate.Size = new System.Drawing.Size(342, 143);
             this.textBoxGestiuneDate.TabIndex = 57;
             // 
             // labelGestiuneDate
