@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\",
   "Documents": [
     {
@@ -27,7 +28,41 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+=======
+  "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\database\\database\\abonat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\abonat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\imprumut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\imprumut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
       "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,15 +72,52 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 5,
           "Children": [
             {
+=======
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "Abonat.cs",
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Abonat.cs",
+              "RelativeDocumentMoniker": "Database\\Abonat.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Abonat.cs",
+              "RelativeToolTip": "Database\\Abonat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T17:57:42.097Z",
+              "EditorCaption": ""
+            },
+            {
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Imprumut.cs",
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Imprumut.cs",
+              "RelativeDocumentMoniker": "Database\\Imprumut.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Imprumut.cs",
+              "RelativeToolTip": "Database\\Imprumut.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T15:17:44.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Cryptography.cs",
+<<<<<<< HEAD
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Cryptography.cs",
               "RelativeDocumentMoniker": "Database\\Cryptography.cs",
               "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Cryptography.cs",
+=======
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Cryptography.cs",
+              "RelativeDocumentMoniker": "Database\\Cryptography.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Cryptography.cs",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "RelativeToolTip": "Database\\Cryptography.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -53,19 +125,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Carte.cs",
+<<<<<<< HEAD
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Carte.cs",
               "RelativeDocumentMoniker": "Database\\Carte.cs",
               "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Carte.cs",
+=======
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Carte.cs",
+              "RelativeDocumentMoniker": "Database\\Carte.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Carte.cs",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "RelativeToolTip": "Database\\Carte.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T19:38:26.712Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+<<<<<<< HEAD
               "Title": "Database",
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.csproj",
               "RelativeDocumentMoniker": "Database\\Database.csproj",
@@ -81,6 +160,12 @@
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Utilizator.cs",
               "RelativeDocumentMoniker": "Database\\Utilizator.cs",
               "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Utilizator.cs",
+=======
+              "Title": "Utilizator.cs",
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Utilizator.cs",
+              "RelativeDocumentMoniker": "Database\\Utilizator.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Utilizator.cs",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "RelativeToolTip": "Database\\Utilizator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -88,36 +173,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Database.cs",
+<<<<<<< HEAD
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
               "RelativeDocumentMoniker": "Database\\Database.cs",
               "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+=======
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Database.cs",
+              "RelativeDocumentMoniker": "Database\\Database.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Database.cs",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "RelativeToolTip": "Database\\Database.cs",
-              "ViewState": "AgIAAH0DAAAAAAAAAAAuwJkDAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAEkDAAAAAAAAAAAmwG4DAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T19:38:26.738Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Server.cs",
+<<<<<<< HEAD
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
               "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
               "RelativeToolTip": "Server\\Server.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAqwFIAAAAgAAAAAAAAAA==",
+=======
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
+              "RelativeDocumentMoniker": "Server\\Server.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
+              "RelativeToolTip": "Server\\Server.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAswGQAAAANAAAAAAAAAA==",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T19:38:26.831Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
+<<<<<<< HEAD
               "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Program.cs",
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\Database\\Server\\Program.cs",
+=======
+              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Server\\Program.cs",
+              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Program.cs",
+>>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "RelativeToolTip": "Server\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
