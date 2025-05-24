@@ -194,7 +194,7 @@
             // 
             this.labelAngajatStergere.AutoSize = true;
             this.labelAngajatStergere.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatStergere.Location = new System.Drawing.Point(548, 163);
+            this.labelAngajatStergere.Location = new System.Drawing.Point(518, 163);
             this.labelAngajatStergere.Name = "labelAngajatStergere";
             this.labelAngajatStergere.Size = new System.Drawing.Size(380, 25);
             this.labelAngajatStergere.TabIndex = 58;
@@ -205,7 +205,7 @@
             this.labelAngajatStergereUsername.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatStergereUsername.AutoSize = true;
             this.labelAngajatStergereUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatStergereUsername.Location = new System.Drawing.Point(574, 216);
+            this.labelAngajatStergereUsername.Location = new System.Drawing.Point(544, 216);
             this.labelAngajatStergereUsername.Name = "labelAngajatStergereUsername";
             this.labelAngajatStergereUsername.Size = new System.Drawing.Size(122, 20);
             this.labelAngajatStergereUsername.TabIndex = 60;
@@ -213,7 +213,7 @@
             // 
             // buttonAngajatDelete
             // 
-            this.buttonAngajatDelete.Location = new System.Drawing.Point(683, 263);
+            this.buttonAngajatDelete.Location = new System.Drawing.Point(665, 281);
             this.buttonAngajatDelete.Name = "buttonAngajatDelete";
             this.buttonAngajatDelete.Size = new System.Drawing.Size(101, 38);
             this.buttonAngajatDelete.TabIndex = 63;
@@ -223,7 +223,7 @@
             // 
             // textBoxAngajatStergereUsername
             // 
-            this.textBoxAngajatStergereUsername.Location = new System.Drawing.Point(742, 212);
+            this.textBoxAngajatStergereUsername.Location = new System.Drawing.Point(712, 212);
             this.textBoxAngajatStergereUsername.Name = "textBoxAngajatStergereUsername";
             this.textBoxAngajatStergereUsername.Size = new System.Drawing.Size(165, 22);
             this.textBoxAngajatStergereUsername.TabIndex = 61;
@@ -700,6 +700,7 @@
             this.ClientSize = new System.Drawing.Size(975, 595);
             this.Controls.Add(this.buttonDelogare);
             this.Controls.Add(this.groupBoxAbonatii);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AdminView";
             this.Text = "Administrator";
             this.groupBoxAbonatii.ResumeLayout(false);

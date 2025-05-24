@@ -1,15 +1,5 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "WorkspaceRootPath": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\ClientBackend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|d:\\an 3\\sem 2\\proiect-ip\\cod\\clientbackend\\clientbackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|solutionrelative:clientbackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|D:\\An 3\\sem 2\\Proiect-IP\\Cod\\ClientBackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-=======
   "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\",
   "Documents": [
     {
@@ -18,7 +8,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
->>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
       "RelativeMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -35,40 +24,26 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ClientBackend.cs",
-<<<<<<< HEAD
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\ClientBackend\\ClientBackend.cs",
-              "RelativeDocumentMoniker": "ClientBackend.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\ClientBackend\\ClientBackend.cs",
-              "RelativeToolTip": "ClientBackend.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwAsAAAAbAAAAAAAAAA==",
-=======
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\ClientBackend.cs",
               "RelativeDocumentMoniker": "ClientBackend.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\ClientBackend.cs",
               "RelativeToolTip": "ClientBackend.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAgwBUAAAAAAAAAAAAAAA==",
->>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwFYAAABoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:46:44.083Z",
+              "WhenOpened": "2025-05-24T13:58:13.152Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-<<<<<<< HEAD
-              "DocumentMoniker": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\ClientBackend\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\An 3\\sem 2\\Proiect-IP\\Cod\\ClientBackend\\Program.cs",
-=======
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\Program.cs",
->>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:46:44.284Z"
+              "WhenOpened": "2025-05-24T13:58:13.248Z"
             }
           ]
         }

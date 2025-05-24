@@ -56,6 +56,8 @@
             this.buttonDelogare = new System.Windows.Forms.Button();
             this.labelAbonati = new System.Windows.Forms.Label();
             this.groupBoxServicii = new System.Windows.Forms.GroupBox();
+            this.radioButtonImprumutSalaLectura = new System.Windows.Forms.RadioButton();
+            this.radioButtonÎmprumutAcasă = new System.Windows.Forms.RadioButton();
             this.panelServiciuReturnare = new System.Windows.Forms.Panel();
             this.labelReturnareCarti = new System.Windows.Forms.Label();
             this.comboBoxReturnare = new System.Windows.Forms.ComboBox();
@@ -63,8 +65,6 @@
             this.labelImprumutSugestii = new System.Windows.Forms.Label();
             this.buttonImprumutCautare = new System.Windows.Forms.Button();
             this.labelServicii = new System.Windows.Forms.Label();
-            this.radioButtonÎmprumutAcasă = new System.Windows.Forms.RadioButton();
-            this.radioButtonImprumutSalaLectura = new System.Windows.Forms.RadioButton();
             this.groupBoxAbonat.SuspendLayout();
             this.groupBoxServicii.SuspendLayout();
             this.panelServiciuReturnare.SuspendLayout();
@@ -363,6 +363,30 @@
             this.groupBoxServicii.TabIndex = 54;
             this.groupBoxServicii.TabStop = false;
             // 
+            // radioButtonImprumutSalaLectura
+            // 
+            this.radioButtonImprumutSalaLectura.AutoSize = true;
+            this.radioButtonImprumutSalaLectura.Enabled = false;
+            this.radioButtonImprumutSalaLectura.Location = new System.Drawing.Point(332, 346);
+            this.radioButtonImprumutSalaLectura.Name = "radioButtonImprumutSalaLectura";
+            this.radioButtonImprumutSalaLectura.Size = new System.Drawing.Size(118, 20);
+            this.radioButtonImprumutSalaLectura.TabIndex = 60;
+            this.radioButtonImprumutSalaLectura.TabStop = true;
+            this.radioButtonImprumutSalaLectura.Text = "Sala de lectură";
+            this.radioButtonImprumutSalaLectura.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonÎmprumutAcasă
+            // 
+            this.radioButtonÎmprumutAcasă.AutoSize = true;
+            this.radioButtonÎmprumutAcasă.Enabled = false;
+            this.radioButtonÎmprumutAcasă.Location = new System.Drawing.Point(162, 346);
+            this.radioButtonÎmprumutAcasă.Name = "radioButtonÎmprumutAcasă";
+            this.radioButtonÎmprumutAcasă.Size = new System.Drawing.Size(67, 20);
+            this.radioButtonÎmprumutAcasă.TabIndex = 59;
+            this.radioButtonÎmprumutAcasă.TabStop = true;
+            this.radioButtonÎmprumutAcasă.Text = "Acasă";
+            this.radioButtonÎmprumutAcasă.UseVisualStyleBackColor = true;
+            // 
             // panelServiciuReturnare
             // 
             this.panelServiciuReturnare.Controls.Add(this.labelReturnareCarti);
@@ -449,36 +473,13 @@
             this.labelServicii.Text = "Servicii";
             this.labelServicii.UseMnemonic = false;
             // 
-            // radioButtonÎmprumutAcasă
-            // 
-            this.radioButtonÎmprumutAcasă.AutoSize = true;
-            this.radioButtonÎmprumutAcasă.Enabled = false;
-            this.radioButtonÎmprumutAcasă.Location = new System.Drawing.Point(162, 346);
-            this.radioButtonÎmprumutAcasă.Name = "radioButtonÎmprumutAcasă";
-            this.radioButtonÎmprumutAcasă.Size = new System.Drawing.Size(67, 20);
-            this.radioButtonÎmprumutAcasă.TabIndex = 59;
-            this.radioButtonÎmprumutAcasă.TabStop = true;
-            this.radioButtonÎmprumutAcasă.Text = "Acasă";
-            this.radioButtonÎmprumutAcasă.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonImprumutSalaLectura
-            // 
-            this.radioButtonImprumutSalaLectura.AutoSize = true;
-            this.radioButtonImprumutSalaLectura.Enabled = false;
-            this.radioButtonImprumutSalaLectura.Location = new System.Drawing.Point(332, 346);
-            this.radioButtonImprumutSalaLectura.Name = "radioButtonImprumutSalaLectura";
-            this.radioButtonImprumutSalaLectura.Size = new System.Drawing.Size(118, 20);
-            this.radioButtonImprumutSalaLectura.TabIndex = 60;
-            this.radioButtonImprumutSalaLectura.TabStop = true;
-            this.radioButtonImprumutSalaLectura.Text = "Sala de lectură";
-            this.radioButtonImprumutSalaLectura.UseVisualStyleBackColor = true;
-            // 
             // BibliotecarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 678);
             this.Controls.Add(this.groupBoxAbonat);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "BibliotecarView";
             this.Text = "Bibliotecar";
             this.groupBoxAbonat.ResumeLayout(false);

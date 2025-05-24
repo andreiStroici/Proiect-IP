@@ -143,7 +143,7 @@
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Date autentificare";
             // 
-            // Biblioteca
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,9 +151,9 @@
             this.Controls.Add(this.autentificareLabel);
             this.Controls.Add(this.groupBoxLogin);
             this.Controls.Add(this.buttonLogin);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Biblioteca";
+            this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bibliotecă - Autentificare";
             this.groupBoxLogin.ResumeLayout(false);

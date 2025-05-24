@@ -26,17 +26,11 @@
               "Title": "ClientBackend.cs",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\ClientBackend.cs",
               "RelativeDocumentMoniker": "ClientBackend.cs",
-<<<<<<< HEAD
-              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\ClientBackend.cs",
-              "RelativeToolTip": "ClientBackend.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAIwIwAAAAvAAAAAAAAAA==",
-=======
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\ClientBackend.cs",
               "RelativeToolTip": "ClientBackend.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAgwBUAAAAAAAAAAAAAAA==",
->>>>>>> ed3a46dd80c810a954878d2e376e3e8eb45da7dc
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwFYAAABoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:46:44.083Z",
+              "WhenOpened": "2025-05-24T13:58:13.152Z",
               "EditorCaption": ""
             },
             {
@@ -49,7 +43,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:46:44.284Z"
+              "WhenOpened": "2025-05-24T13:58:13.248Z"
             }
           ]
         }
