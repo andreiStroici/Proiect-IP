@@ -425,5 +425,31 @@ namespace UserInterface
                 return;
             }
         }
+
+        private void buttonAngajatDelete_Click(object sender, EventArgs e)
+        {
+            string username = textBoxAngajatStergereUsername.Text;
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Introduceti un nume de utilizator valid.");
+                return;
+            }
+
+            // TODO: Trimiteți cererea de ștergere a angajatului cu numele de utilizator introdus către server
+            // VERIFICAȚI SĂ FIE BIBLIOTECAR
+
+            _connectionToClientBackend.SendRequest("deleteEmployee", $"{username}");
+            string response = "";
+            if (response == "Successful")
+            {
+                MessageBox.Show("Angajat șters cu succes!");
+            }
+            else
+            {
+                MessageBox.Show("Eroare la ștergerea angajatului: " + response);
+                return;
+            }
+
+        }
     }
 }

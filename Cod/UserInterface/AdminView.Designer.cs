@@ -37,6 +37,10 @@
             this.groupBoxAbonatii = new System.Windows.Forms.GroupBox();
             this.tabControlAdministrator = new System.Windows.Forms.TabControl();
             this.tabPageAdminAngajati = new System.Windows.Forms.TabPage();
+            this.labelAngajatStergere = new System.Windows.Forms.Label();
+            this.labelAngajatStergereUsername = new System.Windows.Forms.Label();
+            this.buttonAngajatDelete = new System.Windows.Forms.Button();
+            this.textBoxAngajatStergereUsername = new System.Windows.Forms.TextBox();
             this.radioButtonAngajatBibliotecar = new System.Windows.Forms.RadioButton();
             this.radioButtonAngajatAdministrator = new System.Windows.Forms.RadioButton();
             this.labelAngajatRol = new System.Windows.Forms.Label();
@@ -90,7 +94,7 @@
             // 
             this.labelAngajatInregistrare.AutoSize = true;
             this.labelAngajatInregistrare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatInregistrare.Location = new System.Drawing.Point(372, 159);
+            this.labelAngajatInregistrare.Location = new System.Drawing.Point(105, 163);
             this.labelAngajatInregistrare.Name = "labelAngajatInregistrare";
             this.labelAngajatInregistrare.Size = new System.Drawing.Size(240, 25);
             this.labelAngajatInregistrare.TabIndex = 1;
@@ -101,7 +105,7 @@
             this.labelAngajatParola.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatParola.AutoSize = true;
             this.labelAngajatParola.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatParola.Location = new System.Drawing.Point(330, 245);
+            this.labelAngajatParola.Location = new System.Drawing.Point(63, 249);
             this.labelAngajatParola.Name = "labelAngajatParola";
             this.labelAngajatParola.Size = new System.Drawing.Size(57, 20);
             this.labelAngajatParola.TabIndex = 7;
@@ -112,7 +116,7 @@
             this.labelAngajatUsername.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatUsername.AutoSize = true;
             this.labelAngajatUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatUsername.Location = new System.Drawing.Point(330, 212);
+            this.labelAngajatUsername.Location = new System.Drawing.Point(63, 216);
             this.labelAngajatUsername.Name = "labelAngajatUsername";
             this.labelAngajatUsername.Size = new System.Drawing.Size(122, 20);
             this.labelAngajatUsername.TabIndex = 8;
@@ -120,7 +124,7 @@
             // 
             // buttonAngajatRegister
             // 
-            this.buttonAngajatRegister.Location = new System.Drawing.Point(438, 316);
+            this.buttonAngajatRegister.Location = new System.Drawing.Point(171, 320);
             this.buttonAngajatRegister.Name = "buttonAngajatRegister";
             this.buttonAngajatRegister.Size = new System.Drawing.Size(101, 38);
             this.buttonAngajatRegister.TabIndex = 16;
@@ -130,14 +134,14 @@
             // 
             // textBoxAngajatUsername
             // 
-            this.textBoxAngajatUsername.Location = new System.Drawing.Point(498, 208);
+            this.textBoxAngajatUsername.Location = new System.Drawing.Point(231, 212);
             this.textBoxAngajatUsername.Name = "textBoxAngajatUsername";
             this.textBoxAngajatUsername.Size = new System.Drawing.Size(165, 22);
             this.textBoxAngajatUsername.TabIndex = 10;
             // 
             // textBoxAngajatParola
             // 
-            this.textBoxAngajatParola.Location = new System.Drawing.Point(498, 238);
+            this.textBoxAngajatParola.Location = new System.Drawing.Point(231, 242);
             this.textBoxAngajatParola.Name = "textBoxAngajatParola";
             this.textBoxAngajatParola.Size = new System.Drawing.Size(165, 22);
             this.textBoxAngajatParola.TabIndex = 11;
@@ -165,6 +169,10 @@
             // 
             // tabPageAdminAngajati
             // 
+            this.tabPageAdminAngajati.Controls.Add(this.labelAngajatStergere);
+            this.tabPageAdminAngajati.Controls.Add(this.labelAngajatStergereUsername);
+            this.tabPageAdminAngajati.Controls.Add(this.buttonAngajatDelete);
+            this.tabPageAdminAngajati.Controls.Add(this.textBoxAngajatStergereUsername);
             this.tabPageAdminAngajati.Controls.Add(this.radioButtonAngajatBibliotecar);
             this.tabPageAdminAngajati.Controls.Add(this.labelAngajatInregistrare);
             this.tabPageAdminAngajati.Controls.Add(this.radioButtonAngajatAdministrator);
@@ -182,10 +190,48 @@
             this.tabPageAdminAngajati.Text = "Angajați";
             this.tabPageAdminAngajati.UseVisualStyleBackColor = true;
             // 
+            // labelAngajatStergere
+            // 
+            this.labelAngajatStergere.AutoSize = true;
+            this.labelAngajatStergere.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAngajatStergere.Location = new System.Drawing.Point(548, 163);
+            this.labelAngajatStergere.Name = "labelAngajatStergere";
+            this.labelAngajatStergere.Size = new System.Drawing.Size(380, 25);
+            this.labelAngajatStergere.TabIndex = 58;
+            this.labelAngajatStergere.Text = "Eliminare angajat (bibliotecar) existent";
+            // 
+            // labelAngajatStergereUsername
+            // 
+            this.labelAngajatStergereUsername.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.labelAngajatStergereUsername.AutoSize = true;
+            this.labelAngajatStergereUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAngajatStergereUsername.Location = new System.Drawing.Point(574, 216);
+            this.labelAngajatStergereUsername.Name = "labelAngajatStergereUsername";
+            this.labelAngajatStergereUsername.Size = new System.Drawing.Size(122, 20);
+            this.labelAngajatStergereUsername.TabIndex = 60;
+            this.labelAngajatStergereUsername.Text = "Nume utilizator";
+            // 
+            // buttonAngajatDelete
+            // 
+            this.buttonAngajatDelete.Location = new System.Drawing.Point(683, 263);
+            this.buttonAngajatDelete.Name = "buttonAngajatDelete";
+            this.buttonAngajatDelete.Size = new System.Drawing.Size(101, 38);
+            this.buttonAngajatDelete.TabIndex = 63;
+            this.buttonAngajatDelete.Text = "Eliminare";
+            this.buttonAngajatDelete.UseVisualStyleBackColor = true;
+            this.buttonAngajatDelete.Click += new System.EventHandler(this.buttonAngajatDelete_Click);
+            // 
+            // textBoxAngajatStergereUsername
+            // 
+            this.textBoxAngajatStergereUsername.Location = new System.Drawing.Point(742, 212);
+            this.textBoxAngajatStergereUsername.Name = "textBoxAngajatStergereUsername";
+            this.textBoxAngajatStergereUsername.Size = new System.Drawing.Size(165, 22);
+            this.textBoxAngajatStergereUsername.TabIndex = 61;
+            // 
             // radioButtonAngajatBibliotecar
             // 
             this.radioButtonAngajatBibliotecar.AutoSize = true;
-            this.radioButtonAngajatBibliotecar.Location = new System.Drawing.Point(560, 277);
+            this.radioButtonAngajatBibliotecar.Location = new System.Drawing.Point(293, 281);
             this.radioButtonAngajatBibliotecar.Name = "radioButtonAngajatBibliotecar";
             this.radioButtonAngajatBibliotecar.Size = new System.Drawing.Size(92, 20);
             this.radioButtonAngajatBibliotecar.TabIndex = 57;
@@ -196,7 +242,7 @@
             // radioButtonAngajatAdministrator
             // 
             this.radioButtonAngajatAdministrator.AutoSize = true;
-            this.radioButtonAngajatAdministrator.Location = new System.Drawing.Point(438, 277);
+            this.radioButtonAngajatAdministrator.Location = new System.Drawing.Point(171, 281);
             this.radioButtonAngajatAdministrator.Name = "radioButtonAngajatAdministrator";
             this.radioButtonAngajatAdministrator.Size = new System.Drawing.Size(106, 20);
             this.radioButtonAngajatAdministrator.TabIndex = 56;
@@ -209,7 +255,7 @@
             this.labelAngajatRol.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelAngajatRol.AutoSize = true;
             this.labelAngajatRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAngajatRol.Location = new System.Drawing.Point(330, 277);
+            this.labelAngajatRol.Location = new System.Drawing.Point(63, 281);
             this.labelAngajatRol.Name = "labelAngajatRol";
             this.labelAngajatRol.Size = new System.Drawing.Size(34, 20);
             this.labelAngajatRol.TabIndex = 55;
@@ -723,5 +769,9 @@
         private System.Windows.Forms.TextBox textBoxDeleteIDCarte;
         private System.Windows.Forms.ComboBox comboBoxStergereCarti;
         private System.Windows.Forms.Button buttonȘtergereCarteCăutare;
+        private System.Windows.Forms.Label labelAngajatStergere;
+        private System.Windows.Forms.Label labelAngajatStergereUsername;
+        private System.Windows.Forms.Button buttonAngajatDelete;
+        private System.Windows.Forms.TextBox textBoxAngajatStergereUsername;
     }
 }
