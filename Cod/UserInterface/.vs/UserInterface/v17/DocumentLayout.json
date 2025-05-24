@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\userinterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\userinterface\\adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|solutionrelative:adminview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{51B63DD9-513D-458E-993E-A5AA7EE29B06}|UserInterface.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\connectontoclientbackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -79,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminView.cs [Design]",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.cs",
               "RelativeDocumentMoniker": "AdminView.cs",
@@ -114,13 +114,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AdminView.cs",
               "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.cs",
               "RelativeDocumentMoniker": "AdminView.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\UserInterface\\AdminView.cs",
               "RelativeToolTip": "AdminView.cs",
-              "ViewState": "AgIAAJ4BAAAAAAAAAAAqwLYBAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAACUBAAAAAAAAAAArwDMBAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T13:06:44.873Z",
               "EditorCaption": ""

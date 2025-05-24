@@ -137,13 +137,6 @@
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonReturnareCăutare_Click(System.Object,System.EventArgs)">
-            <summary>
-            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de căutare a cărților returnate
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
         <member name="F:UserInterface.BibliotecarView.components">
             <summary>
             Required designer variable.

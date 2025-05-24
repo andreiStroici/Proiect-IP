@@ -313,7 +313,7 @@ namespace UserInterface
             string autor = textBoxAddCarteAutor.Text;
             string editura = textBoxAddCarteEditura.Text;
             string gen = textBoxAddCarteGen.Text;
-            string pattern = "^97[89]\d{ 10}$";
+            string pattern = "^97[89]\\d{ 10}$";
             if (string.IsNullOrEmpty(ISBN) || string.IsNullOrEmpty(titlu) || string.IsNullOrEmpty(autor) || string.IsNullOrEmpty(editura) || string.IsNullOrEmpty(gen))
             {
                 MessageBox.Show("Introduceti toate datele cărții.");
@@ -357,7 +357,7 @@ namespace UserInterface
             comboBoxStergereCarti.Items.Clear();
             string ISBN = textBoxDeleteIDCarte.Text;
 
-            string pattern = "^97[89]\d{ 10}$";
+            string pattern = "^97[89]\\d{ 10}$";
             if (string.IsNullOrEmpty(ISBN))
             {
                 MessageBox.Show("Introduceti un ISBN valid.");
