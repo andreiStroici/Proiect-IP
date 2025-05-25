@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -60,6 +61,7 @@ namespace ClientBackend
             StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
             try
             {
+                string username = "";
                 while (true)
                 {
                     string message = reader.ReadLine();
@@ -68,7 +70,7 @@ namespace ClientBackend
 
                     Console.WriteLine("Received: " + message);
                     string[] parts = message.Split('|');
-
+                    
                     switch (parts[0])
                     {
                         case "login":
@@ -76,7 +78,7 @@ namespace ClientBackend
                             if (parts.Length == 4)
                             {
                                 string role = parts[1];
-                                string username = parts[2];
+                                username = parts[2];
                                 string password = parts[3];
                                 bool success = login(username, password, role);
                                 Console.WriteLine($"Login attempt for user: {username} with password: {password}");
@@ -88,6 +90,16 @@ namespace ClientBackend
                                 writer.WriteLine("Invalid login format. Use: login|username|password");
                             }
                             Console.WriteLine("Finalizare logare");
+                            break;
+
+                        case "logout":
+                            var obj = new
+                            {
+                                operation = "logout",
+                                data = new Dictionary<string, string> { { "username", username } }
+                            };
+                            string json = JsonConvert.SerializeObject(obj);
+                            sendMessage(json);
                             break;
                     }
                 }

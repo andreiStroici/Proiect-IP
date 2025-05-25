@@ -44,6 +44,8 @@ namespace UserInterface
             InitializeComponent();
             _connectionToClientBackend = new ConnectionToClientBackend(false);
             this._mainView = mainView;
+
+
         }
 
         /// <summary>
@@ -53,6 +55,8 @@ namespace UserInterface
         /// <param name="e"></param>
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
+            _connectionToClientBackend.SendRequest("logout", "");
+  
             // Delogare și revenire la pagina principală
             this._mainView.Show();
             this.Hide();
@@ -80,7 +84,6 @@ namespace UserInterface
                 buttonAfișareAbonațiCăutare.Enabled = false;
                 comboBoxAbonațiProbleme.Enabled = false;
             }
-
         }
 
         /// <summary>

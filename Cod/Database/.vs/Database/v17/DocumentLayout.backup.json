@@ -94,9 +94,10 @@
               "RelativeDocumentMoniker": "Database\\Database.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Database.cs",
               "RelativeToolTip": "Database\\Database.cs",
-              "ViewState": "AgIAAH0DAAAAAAAAAAAuwJkDAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAACwDAAAAAAAAAAAiwIsDAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:20.912Z"
+              "WhenOpened": "2025-05-24T13:58:20.912Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -106,7 +107,7 @@
               "RelativeDocumentMoniker": "Server\\Server.cs",
               "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
               "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAqwDUAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAAwGIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T13:58:21.045Z",
               "EditorCaption": ""

@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
 using Database;
+using System.Diagnostics.Contracts;
 
 namespace Server
 {
@@ -16,6 +17,7 @@ namespace Server
     {
         public string operation { get; set; }
         public List<Dictionary<string, string>> data { get; set; }
+
     }
 
     public class Server
@@ -26,6 +28,7 @@ namespace Server
         private readonly IPAddress _ipAddress;
         private readonly int _port;
         private Database.Database _database;
+        volatile private Dictionary<string, string> connectedClients = new Dictionary<string, string>();
 
         public Server(IPAddress ipAddress, int port)
         {
@@ -79,11 +82,24 @@ namespace Server
                             {
                                 Console.WriteLine("Login successful.");
                                 writer.WriteLine("Login successful");
+                                connectedClients[utilizator.Nume] = utilizator.Rol;
                             }
                             else
                             {
                                 Console.WriteLine("Login failed.");
                                 writer.WriteLine("Login failed.");
+                            }
+                            break;
+                        case "logout":
+                            // Handle logout
+                            if (receivedObj.data.Count > 0 && connectedClients.ContainsKey(receivedObj.data[0]["username"]))
+                            {
+                                connectedClients.Remove(receivedObj.data[0]["username"]);
+                                Console.WriteLine("Logout successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Logout failed."); 
                             }
                             break;
                     }
@@ -92,7 +108,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.StackTrace}\n{ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             finally
             {
