@@ -68,7 +68,7 @@ namespace ClientBackend
                     if (message == null)
                         break;
 
-                    Console.WriteLine("Received: " + message);
+                    Console.WriteLine("Received: " + message + "\t" + username);
                     string[] parts = message.Split('|');
                     
                     switch (parts[0])
@@ -92,11 +92,16 @@ namespace ClientBackend
                             Console.WriteLine("Finalizare logare");
                             break;
 
+                    
                         case "logout":
+                            var logoutData = new List<Dictionary<string, string>> {
+                                new Dictionary<string, string> { { "username", username } }
+                            };
+
                             var obj = new
                             {
                                 operation = "logout",
-                                data = new Dictionary<string, string> { { "username", username } }
+                                data = logoutData
                             };
                             string json = JsonConvert.SerializeObject(obj);
                             sendMessage(json);

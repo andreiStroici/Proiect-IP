@@ -80,9 +80,16 @@ namespace Server
                             Console.WriteLine("r: " + r);
                             if (r)
                             {
-                                Console.WriteLine("Login successful.");
-                                writer.WriteLine("Login successful");
-                                connectedClients[utilizator.Nume] = utilizator.Rol;
+                                if (connectedClients.ContainsKey(utilizator.Nume) == false)
+                                {
+                                    Console.WriteLine("Login successful.");
+                                    writer.WriteLine("Login successful");
+                                    connectedClients[utilizator.Nume] = utilizator.Rol;
+                                }
+                                else
+                                {
+                                    writer.WriteLine("Login failed.");
+                                }
                             }
                             else
                             {

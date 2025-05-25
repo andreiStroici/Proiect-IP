@@ -69,7 +69,7 @@ namespace UserInterface
             }
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON (RETURNEAZĂ UN ABONAT)
-            _connectionToClientBackend.SendRequest("loginAbonat", $"{numarTelefon}");
+            _connectionToClientBackend.SendRequest("loginAbonat", $"{numarTelefon}\n");
             string response = _connectionToClientBackend.ReceiveResponse();
 
             if (response != "Abonat: Login Successful")
@@ -98,7 +98,7 @@ namespace UserInterface
 
             // tot aici vom trimite către comboboxul de returnare cărți toate acele împrumuturi nefinalizate (cărți nereturnate)
             // TODO: AM NEVOIE DE LISTA DE CĂRȚI NERETURNATE ÎN FUNCȚIE DE ID-UL CLIENTULUI
-            _connectionToClientBackend.SendRequest("getImprumuturi", $"{this._abonatId}");
+            _connectionToClientBackend.SendRequest("getImprumuturi", $"{this._abonatId}\n");
 
             response = "";
             if(response != "Successul")
@@ -146,7 +146,7 @@ namespace UserInterface
                 return;
             }
 
-            _connectionToClientBackend.SendRequest("register", $"{name}|{password}|{adresa}|{telefon}|{email}");
+            _connectionToClientBackend.SendRequest("register", $"{name}|{password}|{adresa}|{telefon}|{email}\n");
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace UserInterface
             }
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ CĂRȚILE DISPONIBILE ÎN FUNCȚIE DE TITLU SAU AUTOR (RETURNEAZĂ O LISTĂ)
-            _connectionToClientBackend.SendRequest("searchBooks", $"{titlu}|{autor}");
+            _connectionToClientBackend.SendRequest("searchBooks", $"{titlu}|{autor}\n");
 
             string response = ""; // response = _connectionToClientBackend.ReceiveResponse();
 
@@ -201,6 +201,7 @@ namespace UserInterface
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
             // Delogare și revenire la pagina principală
+            _connectionToClientBackend.SendRequest("logout", "\n");
             this._mainView.Show();
             this.Hide();
             this.Controls.Clear();
@@ -239,7 +240,7 @@ namespace UserInterface
             }
 
             // TODO: TRIMITE ÎMPRUMUTUL CĂTRE SERVER ȘI INDISPONIBILIZEAZĂ CARTEA ÎMPRUMUTATĂ
-            _connectionToClientBackend.SendRequest("imprumut", $"{this._abonatId}|{idCarte}|{locatie}");
+            _connectionToClientBackend.SendRequest("imprumut", $"{this._abonatId}|{idCarte}|{locatie}\n");
             string response = "";
             if(response == "Successful")
             {
@@ -284,7 +285,7 @@ namespace UserInterface
             string dataCurenta = DateTime.Now.ToString("yyyy-MM-dd");
 
             // TODO: TRIMITE RETURUL CĂTRE SERVER CU DATA CURENTĂ CA DATĂ DE RESTITUIRE
-            _connectionToClientBackend.SendRequest("returnare", $"{this._abonatId}|{idCarte}|{dataCurenta}");
+            _connectionToClientBackend.SendRequest("returnare", $"{this._abonatId}|{idCarte}|{dataCurenta}\n");
 
             string response = "";
             if (response == "Successful")

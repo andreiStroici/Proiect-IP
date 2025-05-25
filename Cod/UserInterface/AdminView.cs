@@ -55,7 +55,7 @@ namespace UserInterface
         /// <param name="e"></param>
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
-            _connectionToClientBackend.SendRequest("logout", "");
+            _connectionToClientBackend.SendRequest("logout", "\n");
   
             // Delogare și revenire la pagina principală
             this._mainView.Show();
@@ -132,7 +132,7 @@ namespace UserInterface
             }
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON, RETURNEAZĂ ABONAT
-            _connectionToClientBackend.SendRequest("loginAbonat", $"{numarTelefon}");
+            _connectionToClientBackend.SendRequest("loginAbonat", $"{numarTelefon}\n");
             this._abonatId = 0; // = id;    
             string response = _connectionToClientBackend.ReceiveResponse();
 
@@ -161,7 +161,7 @@ namespace UserInterface
         {
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ ÎNTÂRZIEREA ÎMPRUMUTULUI
-            _connectionToClientBackend.SendRequest("getAbonatiProbleme", $"");
+            _connectionToClientBackend.SendRequest("getAbonatiProbleme", $"\n");
             string response = _connectionToClientBackend.ReceiveResponse();
 
             if (response != "Successful")
@@ -212,7 +212,7 @@ namespace UserInterface
             {
                 // aplicare restricții
                 // TODO: IMPLEMENTEAZĂ ACEST REQUEST: APLICA RESTRICȚII (SCHIMBĂ STATUS ÎN "restrictionat")
-                _connectionToClientBackend.SendRequest("applyRestrictions", $"{_abonatId}");
+                _connectionToClientBackend.SendRequest("applyRestrictions", $"{_abonatId}\n");
 
                 string response = _connectionToClientBackend.ReceiveResponse();
                 if (response == "Successful")
@@ -229,7 +229,7 @@ namespace UserInterface
             {
                 // eliminare restricții
                 // TODO: IMPLEMENTEAZĂ ACEST REQUEST: ELIMINARE RESTRICȚII (SCHIMBĂ STATUS ÎN "fara restrictii")
-                _connectionToClientBackend.SendRequest("removeRestrictions", $"{_abonatId}");
+                _connectionToClientBackend.SendRequest("removeRestrictions", $"{_abonatId}\n");
                 string response = _connectionToClientBackend.ReceiveResponse();
                 if (response == "Successful")
                 {
@@ -245,7 +245,7 @@ namespace UserInterface
             {
                 // blocare abonat
                 // TODO: IMPLEMENTEAZĂ ACEST REQUEST: BLOCARE ABONAT (SCHIMBĂ STATUS ÎN "blocat")
-                _connectionToClientBackend.SendRequest("blockAbonat", $"{_abonatId}");
+                _connectionToClientBackend.SendRequest("blockAbonat", $"{_abonatId}\n");
                 string response = _connectionToClientBackend.ReceiveResponse();
                 if (response == "Successful")
                 {
@@ -285,7 +285,7 @@ namespace UserInterface
             string rol = radioButtonAngajatAdministrator.Checked ? "Administrator" : "Bibliotecar";
 
             // TODO: Trimiteți datele angajatului către server pentru a fi înregistrate cu verificare dacă există deja un angajat cu acel nume de utilizator
-            _connectionToClientBackend.SendRequest("registerEmployee", $"{username}|{password}|{rol}");
+            _connectionToClientBackend.SendRequest("registerEmployee", $"{username}|{password}|{rol}\n");
 
 
             string response = "";
@@ -330,7 +330,7 @@ namespace UserInterface
             }
 
             // TODO: Trimiteți datele cărții către server pentru a fi adăugate în baza de date, cu verificare dacă există deja o carte cu acel ISBN
-            _connectionToClientBackend.SendRequest("addBook", $"{ISBN}|{titlu}|{autor}|{editura}|{gen}");
+            _connectionToClientBackend.SendRequest("addBook", $"{ISBN}|{titlu}|{autor}|{editura}|{gen}\n");
             
             string response = "";
             if (response == "Successful")
@@ -374,7 +374,7 @@ namespace UserInterface
             }
 
             // TODO: Trimiteți cererea de căutare a cărților cu ISBN-ul introdus către server și obțineți lista de cărți pentru a le adăuga în comboBoxStergereCarti
-            _connectionToClientBackend.SendRequest("searchBook", $"{ISBN}");
+            _connectionToClientBackend.SendRequest("searchBook", $"{ISBN}\n");
             // listează toate cărțile cu ISBN-ul introdus
 
             string response = "";
@@ -416,7 +416,7 @@ namespace UserInterface
             string carteId = carte.Split(' ')[0]; // presupunem că id-ul este primul element din string
 
             // TODO: Trimiteți cererea de ștergere a cărții cu id-ul selectat către server
-            _connectionToClientBackend.SendRequest("deleteBook", $"{carteId}");
+            _connectionToClientBackend.SendRequest("deleteBook", $"{carteId}\n");
             string response = "";
             if(response == "Successful")
             {
@@ -441,7 +441,7 @@ namespace UserInterface
             // TODO: Trimiteți cererea de ștergere a angajatului cu numele de utilizator introdus către server
             // VERIFICAȚI SĂ FIE BIBLIOTECAR
 
-            _connectionToClientBackend.SendRequest("deleteEmployee", $"{username}");
+            _connectionToClientBackend.SendRequest("deleteEmployee", $"{username}\n");
             string response = "";
             if (response == "Successful")
             {
