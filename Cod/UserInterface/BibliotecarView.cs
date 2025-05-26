@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.Win32;
 
 namespace UserInterface
 {
@@ -51,7 +52,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonBibliotecarLogin_Click(object sender, EventArgs e)
+        private void buttonAbonatLogin_Click(object sender, EventArgs e)
         {
 
             string numarTelefon = textBoxAutentificareTelefon.Text;
@@ -70,9 +71,11 @@ namespace UserInterface
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON (RETURNEAZĂ UN ABONAT)
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
-            string response = _connectionToClientBackend.ReceiveResponse();
+            string r = _connectionToClientBackend.ReceiveResponse();
+            MessageBox.Show(r);
+            string[] response = r.Split('|');//_connectionToClientBackend.ReceiveResponse().Split('|');
 
-            if (response != "Subscriber: Login Successful")
+            if (response != "Subscriber Login successful")
             {
                 MessageBox.Show("Autentificare eșuată! Nu există niciun abonat cu acest număr de telefon.");
                 return;
@@ -117,10 +120,10 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAngajatRegister_Click(object sender, EventArgs e)
+        private void buttonAbonatRegister_Click(object sender, EventArgs e)
         {
             string name = textBoxAbonatNume.Text;
-            string password = textBoxAbonatPrenume.Text;  
+            string password = textBoxAbonatPrenume.Text;
             string adresa = textBoxAbonatAdresa.Text;
             string telefon = textBoxAbonatTelefon.Text;
             string email = textBoxAbonatEmail.Text;
@@ -147,14 +150,21 @@ namespace UserInterface
             }
 
             _connectionToClientBackend.SendRequest("registerSubscriber", $"{name}|{password}|{adresa}|{telefon}|{email}\n");
-
-
-            textBoxAbonatNume.Clear();
-            textBoxAbonatPrenume.Clear();
-            textBoxAbonatAdresa.Clear();
-            textBoxAbonatTelefon.Clear();
-            textBoxAbonatEmail.Clear();
-
+            string response = _connectionToClientBackend.ReceiveResponse();
+            MessageBox.Show(response);
+            if (response == "Subscriber Register successful")
+            {
+                MessageBox.Show("Înregistrarea a fost efectuată cu succes!");
+                textBoxAbonatNume.Clear();
+                textBoxAbonatPrenume.Clear();
+                textBoxAbonatAdresa.Clear();
+                textBoxAbonatTelefon.Clear();
+                textBoxAbonatEmail.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Înregistrarea a eșuat! Vă rugăm să încercați din nou.");
+            }
         }
 
         /// <summary>

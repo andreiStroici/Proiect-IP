@@ -93,14 +93,14 @@
             Constructorul pentru BibliotecarView
             </summary>        
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonBibliotecarLogin_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.buttonAbonatLogin_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare a unui abonat
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonAngajatRegister_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.buttonAbonatRegister_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de înregistrare a unui abonat
             </summary>

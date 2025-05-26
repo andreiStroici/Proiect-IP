@@ -34,8 +34,8 @@
             this.labelInregistrareAdresa = new System.Windows.Forms.Label();
             this.labelAngajatParola = new System.Windows.Forms.Label();
             this.labelAngajatUsername = new System.Windows.Forms.Label();
-            this.buttonBibliotecarRegister = new System.Windows.Forms.Button();
-            this.buttonBibliotecarLogin = new System.Windows.Forms.Button();
+            this.buttonAbonatRegister = new System.Windows.Forms.Button();
+            this.buttonAbonatLogin = new System.Windows.Forms.Button();
             this.labelAutentificareTelefon = new System.Windows.Forms.Label();
             this.labelAutentificare = new System.Windows.Forms.Label();
             this.textBoxAbonatNume = new System.Windows.Forms.TextBox();
@@ -107,7 +107,7 @@
             this.labelInregistrareAdresa.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.labelInregistrareAdresa.AutoSize = true;
             this.labelInregistrareAdresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInregistrareAdresa.Location = new System.Drawing.Point(80, 451);
+            this.labelInregistrareAdresa.Location = new System.Drawing.Point(80, 449);
             this.labelInregistrareAdresa.Name = "labelInregistrareAdresa";
             this.labelInregistrareAdresa.Size = new System.Drawing.Size(62, 20);
             this.labelInregistrareAdresa.TabIndex = 5;
@@ -135,25 +135,25 @@
             this.labelAngajatUsername.TabIndex = 8;
             this.labelAngajatUsername.Text = "Nume";
             // 
-            // buttonBibliotecarRegister
+            // buttonAbonatRegister
             // 
-            this.buttonBibliotecarRegister.Location = new System.Drawing.Point(173, 562);
-            this.buttonBibliotecarRegister.Name = "buttonBibliotecarRegister";
-            this.buttonBibliotecarRegister.Size = new System.Drawing.Size(113, 40);
-            this.buttonBibliotecarRegister.TabIndex = 16;
-            this.buttonBibliotecarRegister.Text = "Înregistrare";
-            this.buttonBibliotecarRegister.UseVisualStyleBackColor = true;
-            this.buttonBibliotecarRegister.Click += new System.EventHandler(this.buttonAngajatRegister_Click);
+            this.buttonAbonatRegister.Location = new System.Drawing.Point(173, 562);
+            this.buttonAbonatRegister.Name = "buttonAbonatRegister";
+            this.buttonAbonatRegister.Size = new System.Drawing.Size(113, 40);
+            this.buttonAbonatRegister.TabIndex = 16;
+            this.buttonAbonatRegister.Text = "Înregistrare";
+            this.buttonAbonatRegister.UseVisualStyleBackColor = true;
+            this.buttonAbonatRegister.Click += new System.EventHandler(this.buttonAbonatRegister_Click);
             // 
-            // buttonBibliotecarLogin
+            // buttonAbonatLogin
             // 
-            this.buttonBibliotecarLogin.Location = new System.Drawing.Point(173, 209);
-            this.buttonBibliotecarLogin.Name = "buttonBibliotecarLogin";
-            this.buttonBibliotecarLogin.Size = new System.Drawing.Size(113, 38);
-            this.buttonBibliotecarLogin.TabIndex = 15;
-            this.buttonBibliotecarLogin.Text = "Conectare";
-            this.buttonBibliotecarLogin.UseVisualStyleBackColor = true;
-            this.buttonBibliotecarLogin.Click += new System.EventHandler(this.buttonBibliotecarLogin_Click);
+            this.buttonAbonatLogin.Location = new System.Drawing.Point(173, 209);
+            this.buttonAbonatLogin.Name = "buttonAbonatLogin";
+            this.buttonAbonatLogin.Size = new System.Drawing.Size(113, 38);
+            this.buttonAbonatLogin.TabIndex = 15;
+            this.buttonAbonatLogin.Text = "Conectare";
+            this.buttonAbonatLogin.UseVisualStyleBackColor = true;
+            this.buttonAbonatLogin.Click += new System.EventHandler(this.buttonAbonatLogin_Click);
             // 
             // labelAutentificareTelefon
             // 
@@ -192,7 +192,7 @@
             // 
             // textBoxAbonatAdresa
             // 
-            this.textBoxAbonatAdresa.Location = new System.Drawing.Point(248, 449);
+            this.textBoxAbonatAdresa.Location = new System.Drawing.Point(248, 447);
             this.textBoxAbonatAdresa.Name = "textBoxAbonatAdresa";
             this.textBoxAbonatAdresa.Size = new System.Drawing.Size(165, 22);
             this.textBoxAbonatAdresa.TabIndex = 12;
@@ -304,9 +304,9 @@
             this.groupBoxAbonat.Controls.Add(this.textBoxAbonatAdresa);
             this.groupBoxAbonat.Controls.Add(this.labelAutentificareTelefon);
             this.groupBoxAbonat.Controls.Add(this.textBoxAbonatTelefon);
-            this.groupBoxAbonat.Controls.Add(this.buttonBibliotecarLogin);
+            this.groupBoxAbonat.Controls.Add(this.buttonAbonatLogin);
             this.groupBoxAbonat.Controls.Add(this.textBoxAbonatEmail);
-            this.groupBoxAbonat.Controls.Add(this.buttonBibliotecarRegister);
+            this.groupBoxAbonat.Controls.Add(this.buttonAbonatRegister);
             this.groupBoxAbonat.Controls.Add(this.textBoxAutentificareTelefon);
             this.groupBoxAbonat.Controls.Add(this.labelAngajatUsername);
             this.groupBoxAbonat.Controls.Add(this.labelAngajatParola);
@@ -497,7 +497,7 @@
         private System.Windows.Forms.Label labelInregistrareTelefon;
         private System.Windows.Forms.Label labelInregistrareEmail;
         private System.Windows.Forms.Label labelInregistrareAdresa;
-        private System.Windows.Forms.Button buttonBibliotecarLogin;
+        private System.Windows.Forms.Button buttonAbonatLogin;
         private System.Windows.Forms.Label labelAutentificareTelefon;
         private System.Windows.Forms.Label labelAutentificare;
         private System.Windows.Forms.TextBox textBoxAbonatAdresa;
@@ -518,7 +518,7 @@
         private System.Windows.Forms.Label labelAngajatInregistrare;
         private System.Windows.Forms.Label labelAngajatParola;
         private System.Windows.Forms.Label labelAngajatUsername;
-        private System.Windows.Forms.Button buttonBibliotecarRegister;
+        private System.Windows.Forms.Button buttonAbonatRegister;
         private System.Windows.Forms.TextBox textBoxAbonatNume;
         private System.Windows.Forms.TextBox textBoxAbonatPrenume;
         private System.Windows.Forms.Label labelAbonati;

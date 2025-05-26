@@ -83,7 +83,7 @@ namespace Server
                                 if (connectedClients.ContainsKey(utilizator.Nume) == false)
                                 {
                                     Console.WriteLine("Login successful.");
-                                    writer.WriteLine("Login successful");
+                                    writer.WriteLine("Login successful.");
                                     connectedClients[utilizator.Nume] = utilizator.Rol;
                                 }
                                 else
