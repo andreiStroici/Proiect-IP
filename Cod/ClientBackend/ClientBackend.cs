@@ -195,7 +195,7 @@ namespace ClientBackend
 
             var data = new List<Dictionary<string, string>>
             {
-                new Dictionary<string, string> { { "nume", lastname }, { "prenume", firstname }, { "adresa", address }, { "telefon", phoneNumber } }
+                new Dictionary<string, string> { { "nume", lastname }, { "prenume", firstname }, { "adresa", address }, { "telefon", phoneNumber }, { "email", email } }
             };
 
             var obj = new
@@ -205,6 +205,7 @@ namespace ClientBackend
             };
 
             string json = JsonConvert.SerializeObject(obj);
+            Console.WriteLine(json);
             sendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Subscriber Register successful")
