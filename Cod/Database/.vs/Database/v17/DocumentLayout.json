@@ -1,30 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\",
+  "WorkspaceRootPath": "D:\\An 3\\Proiect-IP\\Cod\\Database\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\Proiect-IP\\Cod\\Database\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|D:\\An 3\\Proiect-IP\\Cod\\Database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\utilizator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|d:\\an 3\\proiect-ip\\cod\\database\\database\\imprumut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\imprumut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\carte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|D:\\An 3\\Proiect-IP\\Cod\\Database\\database\\abonat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\abonat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,80 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Cryptography.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Cryptography.cs",
-              "RelativeDocumentMoniker": "Database\\Cryptography.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Cryptography.cs",
-              "RelativeToolTip": "Database\\Cryptography.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Imprumut.cs",
+              "DocumentMoniker": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Database\\Imprumut.cs",
+              "RelativeDocumentMoniker": "Database\\Imprumut.cs",
+              "ToolTip": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Database\\Imprumut.cs",
+              "RelativeToolTip": "Database\\Imprumut.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:20.704Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Carte.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Carte.cs",
-              "RelativeDocumentMoniker": "Database\\Carte.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Carte.cs",
-              "RelativeToolTip": "Database\\Carte.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:20.908Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Utilizator.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Utilizator.cs",
-              "RelativeDocumentMoniker": "Database\\Utilizator.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Utilizator.cs",
-              "RelativeToolTip": "Database\\Utilizator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:20.908Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Database.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Database.cs",
-              "RelativeDocumentMoniker": "Database\\Database.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Database\\Database.cs",
-              "RelativeToolTip": "Database\\Database.cs",
-              "ViewState": "AgIAACwDAAAAAAAAAAAiwIsDAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:20.912Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Server.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
-              "RelativeDocumentMoniker": "Server\\Server.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
-              "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAYwGQAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:21.045Z",
+              "WhenOpened": "2025-05-26T13:19:15.93Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Program.cs",
-              "RelativeDocumentMoniker": "Server\\Program.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Program.cs",
-              "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Abonat.cs",
+              "DocumentMoniker": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Database\\Abonat.cs",
+              "RelativeDocumentMoniker": "Database\\Abonat.cs",
+              "ToolTip": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Database\\Abonat.cs",
+              "RelativeToolTip": "Database\\Abonat.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwEoAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T13:58:21.128Z"
+              "WhenOpened": "2025-05-26T12:26:33.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Database.cs",
+              "DocumentMoniker": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+              "RelativeDocumentMoniker": "Database\\Database.cs",
+              "ToolTip": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+              "RelativeToolTip": "Database\\Database.cs",
+              "ViewState": "AgIAADEDAAAAAAAAAAAQwB4EAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:58:20.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Server.cs",
+              "DocumentMoniker": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
+              "RelativeDocumentMoniker": "Server\\Server.cs",
+              "ToolTip": "D:\\An 3\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
+              "RelativeToolTip": "Server\\Server.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAswHEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:58:21.045Z",
+              "EditorCaption": ""
             }
           ]
         }
