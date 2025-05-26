@@ -99,14 +99,19 @@ namespace Server
                             break;
                         case "logout":
                             // Handle logout
-                            if (receivedObj.data.Count > 0 && connectedClients.ContainsKey(receivedObj.data[0]["username"]))
+                            if (receivedObj.data.Count > 0)
                             {
-                                connectedClients.Remove(receivedObj.data[0]["username"]);
-                                Console.WriteLine("Logout successful.");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Logout failed."); 
+                                var firstKey = connectedClients.Keys.First();
+                                bool removed = connectedClients.Remove(firstKey);
+                                if (removed)
+                                {
+
+                                    Console.WriteLine("Logout successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Logout failed.");
+                                }
                             }
                             break;
                     }

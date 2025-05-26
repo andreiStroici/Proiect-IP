@@ -55,9 +55,9 @@ namespace UserInterface
         /// <param name="e"></param>
         private void buttonDelogare_Click(object sender, EventArgs e)
         {
-            _connectionToClientBackend.SendRequest("logout", "\n");
-  
             // Delogare și revenire la pagina principală
+            _connectionToClientBackend.SendRequest("logout", "\n");
+            
             this._mainView.Show();
             this.Hide();
             this.Controls.Clear();

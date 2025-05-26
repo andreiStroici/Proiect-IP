@@ -202,6 +202,7 @@ namespace UserInterface
         {
             // Delogare și revenire la pagina principală
             _connectionToClientBackend.SendRequest("logout", "\n");
+
             this._mainView.Show();
             this.Hide();
             this.Controls.Clear();
