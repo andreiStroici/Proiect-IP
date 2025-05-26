@@ -149,7 +149,7 @@ namespace Server
                             else
                             {
                                 Console.WriteLine("Subscriber found.");
-                                writer.WriteLine($"Subscriber Login successful|{abonat.Status}");
+                                writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}");
                             }
                             break;
                     }

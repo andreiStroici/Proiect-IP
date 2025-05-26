@@ -110,7 +110,6 @@ namespace ClientBackend
 
                         case "registerSubscriber":
                             Console.WriteLine("Register subscriber request received");
-                            // registerSubscriber|z|aa|a|0766539060|vda@gmail.com
                             if (parts.Length == 6)
                             {
                                 string lastname = parts[1];
@@ -212,7 +211,7 @@ namespace ClientBackend
             Console.WriteLine(json);
             sendMessage(json);
             string response = WaitForMessage();
-            if (response.Trim() == "Subscriber Register successful")
+            if (response.Trim() == "Subscriber Register successful.")
             {
                 return true;
             }
