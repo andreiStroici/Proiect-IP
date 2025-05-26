@@ -1,8 +1,39 @@
-Cod/ClientBackend/.vs
-Cod/ClientBackend/bin
-Cod/ClientBacked/obj
-Cod/Database/.vs
-Cod/Database/Database/obj
-Cod/UserInterface/.vs
-Cod/UserInterface/bin
-Cod/UserInterface/obj
+# Fișiere și directoare generate de Visual Studio / MSBuild
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+*.pdb
+*.exe
+*.log
+*.vspscc
+*.vssscc
+*.dbmdl
+*.dbschema
+*.bak
+*.FileListAbsolute.txt
+*.CoreCompileInputs.cache
+*.AssemblyReference.cache
+*.Up2Date
+*.DesignTimeResolveAssemblyReferencesInput.cache
+
+# Directoare speciale
+.vs/
+packages/
+TestResults/
+
+# Fișiere temporare
+*.tmp
+*.temp
+
+# Fișiere de configurare locală
+*.csproj.user
+*.DotSettings.user
+
+# Fisiere de compilare framework specifice
+*.AssemblyAttributes.cs
+
+Cod\Database\.vs\Database\v17
