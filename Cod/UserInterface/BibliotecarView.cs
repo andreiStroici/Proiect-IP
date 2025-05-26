@@ -71,18 +71,16 @@ namespace UserInterface
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON (RETURNEAZĂ UN ABONAT)
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
-            string r = _connectionToClientBackend.ReceiveResponse();
-            MessageBox.Show(r);
-            string[] response = r.Split('|');//_connectionToClientBackend.ReceiveResponse().Split('|');
+            string[] response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
-            if (response != "Subscriber Login successful")
+            if (response[0] != "Subscriber Login successful")
             {
                 MessageBox.Show("Autentificare eșuată! Nu există niciun abonat cu acest număr de telefon.");
                 return;
             }
 
             // tot aici fac o interogare pe statusul abonatului, dacă e blocat afișez messageBox și păstrez câmpurile blocate
-            string status = ""; // status = abonat.status
+            string status = response[1]; // status = abonat.status
             if(status == "blocat")
             {
                 MessageBox.Show("Abonatul este blocat! Nu poate efectua împrumuturi.");
@@ -103,8 +101,8 @@ namespace UserInterface
             // TODO: AM NEVOIE DE LISTA DE CĂRȚI NERETURNATE ÎN FUNCȚIE DE ID-UL CLIENTULUI
             _connectionToClientBackend.SendRequest("getImprumuturi", $"{this._abonatId}\n");
 
-            response = "";
-            if(response != "Successul")
+            response[1] = "";
+            if (response[1] != "Successul")
             {
                 MessageBox.Show("Nu am găsit nicio carte împrumutată!");
                 return;

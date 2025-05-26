@@ -129,6 +129,10 @@ namespace ClientBackend
                             }
                             Console.WriteLine("Finalizare inregistrare abonat");
                             break;
+                        case "loginSubscriber":
+                            string response = loginSubscriber(parts[1]);
+                            writer.WriteLine(response);
+                            break;
                     }
                 }
             }
@@ -179,7 +183,7 @@ namespace ClientBackend
             string json = JsonConvert.SerializeObject(obj);
             sendMessage(json);
             string response = WaitForMessage();
-            if (response.Trim() == "Login successful")
+            if (response.Trim() == "Login successful.")
             {
                 return true;
             }
@@ -216,6 +220,28 @@ namespace ClientBackend
             {
                 return false;
             }
+        }
+
+        private string loginSubscriber(string username)
+        {
+            Console.WriteLine($"Logging in subscriber: {username}");
+
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "username", username } }
+            };
+
+            var obj = new
+            {
+                operation = "loginSubscriber",
+                data = data
+            };
+
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
         }
     }
 }
