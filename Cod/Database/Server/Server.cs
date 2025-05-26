@@ -58,6 +58,7 @@ namespace Server
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream, Encoding.UTF8);
             StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
+            string username = string.Empty;
 
             try
             {
@@ -75,7 +76,7 @@ namespace Server
                             Database.Utilizator utilizator = new Database.Utilizator(
                                 receivedObj.data[0]["username"], receivedObj.data[0]["password"],
                                 receivedObj.data[0]["role"]);
-                            
+                            username = receivedObj.data[0]["username"];
                             bool r = _database.Login(utilizator);
                             Console.WriteLine("r: " + r);
                             if (r)
@@ -83,7 +84,7 @@ namespace Server
                                 if (connectedClients.ContainsKey(utilizator.Nume) == false)
                                 {
                                     Console.WriteLine("Login successful.");
-                                    writer.WriteLine("Login successful");
+                                    writer.WriteLine("Login successful.");
                                     connectedClients[utilizator.Nume] = utilizator.Rol;
                                 }
                                 else
@@ -138,6 +139,19 @@ namespace Server
                                 writer.WriteLine("Subscriber registration failed.");
                             }
                             break;
+                        case "loginSubscriber":
+                            abonat = _database.GetAbonatByPhone(receivedObj.data[0]["username"]);
+                            if (abonat == null)
+                            {
+                                Console.WriteLine("Subscriber not found.");
+                                writer.WriteLine("Subscriber Login failed");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Subscriber found.");
+                                writer.WriteLine($"Subscriber Login successful|{abonat.Status}");
+                            }
+                            break;
                     }
 
                 }
@@ -150,6 +164,11 @@ namespace Server
             {
                 client.Close();
                 Console.WriteLine("Client disconnected.");
+                if (!string.IsNullOrEmpty(username) && connectedClients.ContainsKey(username))
+                {
+                    connectedClients.Remove(username);
+                    Console.WriteLine($"Client {username} removed from connected clients.");
+                }
             }
         }
     }

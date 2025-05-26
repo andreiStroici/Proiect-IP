@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\",
+  "WorkspaceRootPath": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\clientbackend\\clientbackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\clientbackend\\clientbackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|solutionrelative:clientbackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{363A18B4-F922-4E78-AABA-728B894C75CE}|ClientBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,17 +18,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ClientBackend.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\ClientBackend.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\ClientBackend.cs",
               "RelativeDocumentMoniker": "ClientBackend.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\ClientBackend.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\ClientBackend.cs",
               "RelativeToolTip": "ClientBackend.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAcwMYAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAswIUAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T13:58:13.152Z",
               "EditorCaption": ""
@@ -37,13 +45,27 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\Program.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\ClientBackend\\Program.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\ClientBackend\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T13:58:13.248Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
