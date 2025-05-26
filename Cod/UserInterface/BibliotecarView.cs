@@ -69,10 +69,10 @@ namespace UserInterface
             }
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON (RETURNEAZĂ UN ABONAT)
-            _connectionToClientBackend.SendRequest("loginAbonat", $"{numarTelefon}\n");
+            _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
             string response = _connectionToClientBackend.ReceiveResponse();
 
-            if (response != "Abonat: Login Successful")
+            if (response != "Subscriber: Login Successful")
             {
                 MessageBox.Show("Autentificare eșuată! Nu există niciun abonat cu acest număr de telefon.");
                 return;
@@ -146,7 +146,15 @@ namespace UserInterface
                 return;
             }
 
-            _connectionToClientBackend.SendRequest("register", $"{name}|{password}|{adresa}|{telefon}|{email}\n");
+            _connectionToClientBackend.SendRequest("registerSubscriber", $"{name}|{password}|{adresa}|{telefon}|{email}\n");
+
+
+            textBoxAbonatNume.Clear();
+            textBoxAbonatPrenume.Clear();
+            textBoxAbonatAdresa.Clear();
+            textBoxAbonatTelefon.Clear();
+            textBoxAbonatEmail.Clear();
+
         }
 
         /// <summary>

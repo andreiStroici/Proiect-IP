@@ -70,7 +70,7 @@ namespace ClientBackend
 
                     Console.WriteLine("Received: " + message + "\t" + username);
                     string[] parts = message.Split('|');
-                    
+
                     switch (parts[0])
                     {
                         case "login":
@@ -92,8 +92,9 @@ namespace ClientBackend
                             Console.WriteLine("Finalizare logare");
                             break;
 
-                    
+
                         case "logout":
+                            Console.WriteLine("Logout request received.");
                             var logoutData = new List<Dictionary<string, string>> {
                                 new Dictionary<string, string> { { "username", username } }
                             };
@@ -105,6 +106,28 @@ namespace ClientBackend
                             };
                             string json = JsonConvert.SerializeObject(obj);
                             sendMessage(json);
+                            break;
+
+                        case "registerSubscriber":
+                            Console.WriteLine("Register subscriber request received");
+                            // registerSubscriber|z|aa|a|0766539060|vda@gmail.com
+                            if (parts.Length == 6)
+                            {
+                                string lastname = parts[1];
+                                string firstname = parts[2];
+                                string address = parts[3];
+                                string phoneNumber = parts[4];
+                                string email = parts[5];
+                                bool success = registerSubscriber(lastname, firstname, address, phoneNumber, email);
+                                Console.WriteLine($"Register subscriber attempt for: {lastname} {firstname}, Address: {address}, Phone: {phoneNumber}, Email: {email}");
+                                writer.WriteLine(success ? "Subscriber Register successful" : "Subscriber Register failed");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid registerSubscriber format. Use: registerSubscriber|lastname|firstname|address|phoneNumber|email");
+                                writer.WriteLine("Invalid registerSubscriber format. Use: registerSubscriber|lastname|firstname|address|phoneNumber|email");
+                            }
+                            Console.WriteLine("Finalizare inregistrare abonat");
                             break;
                     }
                 }
@@ -164,7 +187,34 @@ namespace ClientBackend
             {
                 return false;
             }
-            
+        }
+
+        private bool registerSubscriber(string lastname, string firstname, string address, string phoneNumber, string email)
+        {
+            Console.WriteLine($"Register subscriber with info: Lastname: {lastname}, Firstname: {firstname}, Address: {address}, PhoneNumber: {phoneNumber}, Email: {email}");
+
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "nume", lastname }, { "prenume", firstname }, { "adresa", address }, { "telefon", phoneNumber } }
+            };
+
+            var obj = new
+            {
+                operation = "registerSubscriber",
+                data = data
+            };
+
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            if (response.Trim() == "Subscriber Register successful")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
