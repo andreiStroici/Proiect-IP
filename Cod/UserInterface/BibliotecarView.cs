@@ -70,9 +70,7 @@ namespace UserInterface
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON (RETURNEAZĂ UN ABONAT)
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
-            string r = _connectionToClientBackend.ReceiveResponse();
-            MessageBox.Show(r);
-            string[] response = r.Split('|');//_connectionToClientBackend.ReceiveResponse().Split('|');
+            string[] response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
             if (response[0] != "Subscriber Login successful")
             {
