@@ -114,6 +114,30 @@ namespace Server
                                 }
                             }
                             break;
+
+                        case "registerSubscriber":
+                            // Handle subscriber registration
+                            Database.Abonat abonat = new Database.Abonat(
+                                receivedObj.data[0]["nume"],
+                                receivedObj.data[0]["prenume"],
+                                receivedObj.data[0]["adresa"],
+                                receivedObj.data[0]["telefon"],
+                                receivedObj.data[0]["email"]
+                            );
+
+                            r = _database.InsertClient(abonat);
+                            Console.WriteLine("r: " + r);
+                            if (r)
+                            {
+                                Console.WriteLine("Subscriber Register successful.");
+                                writer.WriteLine("Subscriber Register successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Subscriber registration failed.");
+                                writer.WriteLine("Subscriber registration failed.");
+                            }
+                            break;
                     }
 
                 }
