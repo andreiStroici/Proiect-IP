@@ -277,19 +277,12 @@ namespace Server
                             }
                             break;
                         case "addBook":
-                            Console.WriteLine
-                                ($"Adding book: {receivedObj.data[0]["title"]}\t" +
-                                $"{receivedObj.data[0]["author"]}\t" +
-                                $"{receivedObj.data[0]["publisher"]}\t" +
-                                $"{receivedObj.data[0]["isbn"]}" +
-                                $"{receivedObj.data[0]["genre"]}");
-                            idCarte = int.Parse(receivedObj.data[0]["idCarte"].Trim());
                             string title = receivedObj.data[0]["title"].Trim();
                             string author = receivedObj.data[0]["author"].Trim();
                             string publisher = receivedObj.data[0]["publisher"].Trim();
                             string genre = receivedObj.data[0]["genre"].Trim();
                             string isbn = receivedObj.data[0]["isbn"].Trim();
-                            int addBookResult = _database.InsertBook(new Carte(idCarte, isbn, title, author,
+                            int addBookResult = _database.InsertBook(new Carte(isbn, title, author,
                                 genre, publisher));
                             if (addBookResult != -1)
                             {
@@ -302,8 +295,55 @@ namespace Server
                                 writer.WriteLine("Book addition failed.");
                             }
                             break;
+                        case "searchBook":
+                            Console.WriteLine("Searching book: " + receivedObj.data[0]["isbn"]);
+                            List<Carte> bookSearch = _database.GetCartiByIsbn(receivedObj.data[0]["isbn"]);
+                            if (bookSearch.Count == 0)
+                            {
+                                Console.WriteLine("No books found with the given ISBN.");
+                                writer.WriteLine("No books found with the given ISBN.");
+                            }
+                            else
+                            {
+                                string responseSearch = "";
+                                foreach (var item in bookSearch)
+                                {
+                                    responseSearch += $"{item.IdCarte}~{item.Titlu}~{item.Autor}~{item.Editura}|";
+                                }
+                                writer.WriteLine(responseSearch);
+                            }
+                            break;
                         case "deleteBook":
+                            Console.WriteLine($"Deleting book: {receivedObj.data[0]["idBook"]}");
+                            int bookIdToDelete = int.Parse(receivedObj.data[0]["idBook"].Trim());
+                            bool deleteBookResult = _database.DeleteBook(bookIdToDelete);
 
+                            if (deleteBookResult)
+                            {
+                                writer.WriteLine("Book deleted successful.");
+                                Console.WriteLine("Book deleted successful.");
+                            }
+                            else
+                            {
+                                writer.WriteLine("Book deletion failed.");
+                                Console.WriteLine("Book deletion failed.");
+                            }
+                            break;
+                        case "searchAbonat":
+                            Console.WriteLine("Searching subscriber: " + receivedObj.data[0]["phone"]);
+                            //Abonat abonati = _database.GetAbonatByPhone(receivedObj.data[0]["phone"]);
+                            //if (abonati != null) 
+                            //{
+                            //    Console.WriteLine($"Subscriber found: {abonati.IdAbonat} {abonati.Nume} {abonati.Prenume}");
+                            //    writer.WriteLine($"{abonati.IdAbonat}~{abonati.Nume}~{abonati.Prenume}~{abonati.Adresa}~{abonati.Telefon}~{abonati.Email}");
+                            //}
+                            //else
+                            //{
+                            //    Console.WriteLine("No subscriber found with the given phone number.");
+                            //    writer.WriteLine("No subscriber found with the given phone number.");
+                            //}
+                            break;
+                        case "":
                             break;
                     }
 
