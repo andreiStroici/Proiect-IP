@@ -538,16 +538,11 @@ namespace Database
         /// </summary>
         /// <param name="telefon"></param>
         /// <returns></returns>
-        public List<Carte> GetLoanedBooks(string telefon)
+        public List<Carte> GetLoanedBooks(int idAbonat)
         {
             var books = new List<Carte>();
 
-            Abonat a = GetAbonatByPhone(telefon);
-            if (a == null)
-            {
-                Console.WriteLine("Abonatul nu a fost gasit.");
-                return null;
-            }
+          
 
             string query = @"
                             SELECT Carte.id_carte, Isbn.id_isbn, Isbn.titlu, Isbn.autor, Isbn.gen, Isbn.editura, Carte.status
@@ -561,7 +556,7 @@ namespace Database
             {
                 using (var cmd = new SQLiteCommand(query, _connection))
                 {
-                    cmd.Parameters.AddWithValue("@id_abonat", a.IdAbonat);
+                    cmd.Parameters.AddWithValue("@id_abonat", idAbonat);
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -629,7 +624,11 @@ namespace Database
                                 reader["editura"].ToString(),
                                 "disponibil"
                             );
-                            listaCarti.Add(carte);
+                            if (IsCartedisponibil(carte.IdCarte))
+                            {
+                                listaCarti.Add(carte);
+                            }
+                            
                         }
                     }
                 }
