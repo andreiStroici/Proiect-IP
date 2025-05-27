@@ -43,7 +43,7 @@ namespace Database
 
         public string StatusDisponibilitate { get; set; }
 
-        public Carte(int idCarte, string isbn, string titlu, string autor, string gen, string editura, string statusDisponibilitate = "disponibila")
+        public Carte(int idCarte, string isbn, string titlu, string autor, string gen, string editura, string statusDisponibilitate = "disponibil")
         {
             IdCarte = idCarte;
             Isbn = isbn;
@@ -54,7 +54,7 @@ namespace Database
             StatusDisponibilitate = statusDisponibilitate;
         }
 
-        public Carte(string isbn, string titlu, string autor, string gen, string editura, string statusDisponibilitate = "disponibila")
+        public Carte(string isbn, string titlu, string autor, string gen, string editura, string statusDisponibilitate = "disponibil")
         {
             Isbn = isbn;
             Titlu = titlu;
