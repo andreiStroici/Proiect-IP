@@ -244,6 +244,67 @@ namespace Server
                                 writer.WriteLine("Status not found.");
                             }
                             break;
+                        case "registerEmployee":
+                            Console.WriteLine($"Registering employee:{receivedObj.data[0]["username"]}\t" +
+                                $"{receivedObj.data[0]["password"]}\t" +
+                                $"{receivedObj.data[0]["role"]}");
+                            bool validate = _database.InsertUser(new Utilizator(receivedObj.data[0]["username"],
+                                receivedObj.data[0]["password"], receivedObj.data[0]["role"]));
+                            if (validate) 
+                            {
+                                writer.WriteLine("Employee registered successful.");
+                                Console.WriteLine("Employee registered successful.");
+                            }
+                            else
+                            {
+                                writer.WriteLine("Employee registration failed.");
+                                Console.WriteLine("Employee registration failed.");
+                            }
+                            break;
+                        case "deleteLibrarian":
+                            Console.WriteLine($"Deleting librarian: {receivedObj.data[0]["username"]}");
+                            string usernameToDelete = receivedObj.data[0]["username"];
+                            bool deleteResult = _database.DeleteUser(usernameToDelete);
+                            if (deleteResult) 
+                            {
+                                writer.WriteLine("Librarian deleted successful.");
+                                Console.WriteLine("Librarian deleted successful.");
+                            }
+                            else
+                            {
+                                writer.WriteLine("Librarian deletion failed.");
+                                Console.WriteLine("Librarian deletion failed.");
+                            }
+                            break;
+                        case "addBook":
+                            Console.WriteLine
+                                ($"Adding book: {receivedObj.data[0]["title"]}\t" +
+                                $"{receivedObj.data[0]["author"]}\t" +
+                                $"{receivedObj.data[0]["publisher"]}\t" +
+                                $"{receivedObj.data[0]["isbn"]}" +
+                                $"{receivedObj.data[0]["genre"]}");
+                            idCarte = int.Parse(receivedObj.data[0]["idCarte"].Trim());
+                            string title = receivedObj.data[0]["title"].Trim();
+                            string author = receivedObj.data[0]["author"].Trim();
+                            string publisher = receivedObj.data[0]["publisher"].Trim();
+                            string genre = receivedObj.data[0]["genre"].Trim();
+                            string isbn = receivedObj.data[0]["isbn"].Trim();
+                            int addBookResult = _database.InsertBook(new Carte(idCarte, isbn, title, author,
+                                genre, publisher));
+                            if (addBookResult != -1)
+                            {
+                                Console.WriteLine("Book added successful.");
+                                writer.WriteLine("Book added successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Book addition failed.");
+                                writer.WriteLine("Book addition failed.");
+                            }
+                            break;
+                        case "deleteBook":
+
+                            break;
                     }
 
                 }
