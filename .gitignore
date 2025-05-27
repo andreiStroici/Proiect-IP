@@ -1,5 +1,4 @@
 # Fișiere și directoare generate de Visual Studio / MSBuild
-bin/
 obj/
 *.user
 *.suo
