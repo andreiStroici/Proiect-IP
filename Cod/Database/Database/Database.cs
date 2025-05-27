@@ -1168,5 +1168,18 @@ namespace Database
                 return false;
             }
         }
+
+        public void Close()
+        {
+            if (_connection.State == System.Data.ConnectionState.Open)
+                _connection.Close();
+        }
+
+        public void Open()
+        {
+            if (_connection.State != System.Data.ConnectionState.Open)
+                _connection.Open();
+        }
+
     }
 }
