@@ -149,7 +149,9 @@ namespace Server
                             else
                             {
                                 Console.WriteLine("Subscriber found.");
-                                writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}");
+                                writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}|" +
+                                    $"{abonat.Nume}|{abonat.Prenume}|{abonat.Adresa}|{abonat.Email}|{abonat.Telefon}|" +
+                                    $"{abonat.LimitaCarti}");
                             }
                             break;
                         case "searchBooks":
@@ -277,19 +279,12 @@ namespace Server
                             }
                             break;
                         case "addBook":
-                            Console.WriteLine
-                                ($"Adding book: {receivedObj.data[0]["title"]}\t" +
-                                $"{receivedObj.data[0]["author"]}\t" +
-                                $"{receivedObj.data[0]["publisher"]}\t" +
-                                $"{receivedObj.data[0]["isbn"]}" +
-                                $"{receivedObj.data[0]["genre"]}");
-                            idCarte = int.Parse(receivedObj.data[0]["idCarte"].Trim());
                             string title = receivedObj.data[0]["title"].Trim();
                             string author = receivedObj.data[0]["author"].Trim();
                             string publisher = receivedObj.data[0]["publisher"].Trim();
                             string genre = receivedObj.data[0]["genre"].Trim();
                             string isbn = receivedObj.data[0]["isbn"].Trim();
-                            int addBookResult = _database.InsertBook(new Carte(idCarte, isbn, title, author,
+                            int addBookResult = _database.InsertBook(new Carte(isbn, title, author,
                                 genre, publisher));
                             if (addBookResult != -1)
                             {
@@ -302,8 +297,75 @@ namespace Server
                                 writer.WriteLine("Book addition failed.");
                             }
                             break;
+                        case "searchBook":
+                            Console.WriteLine("Searching book: " + receivedObj.data[0]["isbn"]);
+                            List<Carte> bookSearch = _database.GetCartiByIsbn(receivedObj.data[0]["isbn"]);
+                            if (bookSearch.Count == 0)
+                            {
+                                Console.WriteLine("No books found with the given ISBN.");
+                                writer.WriteLine("No books found with the given ISBN.");
+                            }
+                            else
+                            {
+                                string responseSearch = "";
+                                foreach (var item in bookSearch)
+                                {
+                                    responseSearch += $"{item.IdCarte}~{item.Titlu}~{item.Autor}~{item.Editura}|";
+                                }
+                                writer.WriteLine(responseSearch);
+                            }
+                            break;
                         case "deleteBook":
+                            Console.WriteLine($"Deleting book: {receivedObj.data[0]["idBook"]}");
+                            int bookIdToDelete = int.Parse(receivedObj.data[0]["idBook"].Trim());
+                            bool deleteBookResult = _database.DeleteBook(bookIdToDelete);
 
+                            if (deleteBookResult)
+                            {
+                                writer.WriteLine("Book deleted successful.");
+                                Console.WriteLine("Book deleted successful.");
+                            }
+                            else
+                            {
+                                writer.WriteLine("Book deletion failed.");
+                                Console.WriteLine("Book deletion failed.");
+                            }
+                            break;
+                        case "searchSubscribers":
+                            Console.WriteLine("Searching subscriber: ");
+                            List<Abonat> abonati = _database.GetAbonatiCuRestrictiiSauBlocati();
+                            if (abonati.Count == 0)
+                            {
+                                Console.WriteLine("No subscribers found with restrictions or blocked.");
+                                writer.WriteLine("No subscribers found with restrictions or blocked.");
+                            }
+                            else
+                            {
+                                string responseAbonati = "";
+                                foreach (var item in abonati)
+                                {
+                                    responseAbonati += $"{item.IdAbonat}~{item.Nume}~{item.Prenume}~" +
+                                        $"{item.Adresa}~{item.Telefon}~{item.Email}~{item.Status}~{item.LimitaCarti}|";
+                                }
+                                Console.WriteLine($"Found {abonati.Count} subscribers with restrictions or blocked.");
+                                writer.WriteLine(responseAbonati);
+                            }
+                            break;
+                        case "updateStatus":
+                            Console.WriteLine("Updating status for subscriber: " + receivedObj.data[0]["subscriberId"]
+                                + "\t" + receivedObj.data[0]["status"]);
+                            int subscriberIdUpdate = int.Parse(receivedObj.data[0]["subscriberId"].Trim());
+                            bool result = _database.UpdateStatusAbonat(subscriberIdUpdate, receivedObj.data[0]["status"]);
+                            if (result)
+                            {
+                                Console.WriteLine("Status updated successful.");
+                                writer.WriteLine("Status updated successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Status update failed.");
+                                writer.WriteLine("Status update failed.");
+                            }
                             break;
                     }
 

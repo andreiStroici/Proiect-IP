@@ -93,8 +93,6 @@ namespace ClientBackend
                             }
                             Console.WriteLine("Finalizare logare");
                             break;
-
-
                         case "logout":
                             Console.WriteLine("Logout request received.");
                             var logoutData = new List<Dictionary<string, string>> {
@@ -109,7 +107,6 @@ namespace ClientBackend
                             string json = JsonConvert.SerializeObject(obj);
                             sendMessage(json);
                             break;
-
                         case "registerSubscriber":
                             Console.WriteLine("Register subscriber request received");
                             if (parts.Length == 6)
@@ -306,7 +303,6 @@ namespace ClientBackend
                                 writer.WriteLine("Invalid deleteEmployee format. Use: deleteEmployee|username");
                             }
                             break;
-
                         case "addBook":
                             Console.WriteLine("Add book request received");
                             if (parts.Length == 6)
@@ -318,8 +314,115 @@ namespace ClientBackend
                                 string genre = parts[5];
                                 Console.WriteLine($"Add book attempt for ISBN: {ISBN}, title: {title}, author: {author}, publisher: {publisher}, genre: {genre}");
                                 bool success = addBook(ISBN, title, author, publisher, genre);
+                                if (success)
+                                {
+                                    Console.WriteLine("Book added successful.");
+                                    writer.WriteLine("Book added successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Book addition failed.");
+                                    writer.WriteLine("Book addition failed.");
+                                }
                             }
+                            else
+                            {
+                                Console.WriteLine("Invalid addBook format. Use: addBook|isbn|title|author|publisher|genre");
+                                writer.WriteLine("Invalid addBook format. Use: addBook|isbn|title|author|publisher|genre");
+                            }
+                            break;
+                        case "searchBook":
+                            Console.WriteLine("Search book request received.");
+                            if (parts.Length == 2)
+                            {
+                                string isbn = parts[1];
+                                
+                                Console.WriteLine($"Searching attempt for book with ISBN: {isbn}");
+                                response = searchBook(isbn);
 
+                                if (response != "No books found with the given ISBN.")
+                                {
+
+                                    List<string> lines = response.Split('|').ToList();
+                                    lines.RemoveAt(lines.Count - 1); // Remove the last empty line if exists1
+
+                                    var books = lines.Select(line => line.Split('~')).Select(part => (part[0], part[1], part[2], part[3]));
+                                    books = books.OrderBy(x => x.Item2)
+                                        .ThenBy(x => x.Item3)
+                                        .ThenBy(x => x.Item4)
+                                        .ThenBy(x => x.Item1);
+                                    response = string.Join("|", books.Select(b => $"{b.Item1}~{b.Item2}~{b.Item3}~{b.Item4}"));
+                                    Console.WriteLine("Books found: " + response);
+                                    writer.WriteLine(response);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No books found.");
+                                    writer.WriteLine("No books found.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid searchBook format. Use: searchBook|isbn");
+                                writer.WriteLine("Invalid searchBook format. Use: searchBook|isbn");
+                            }
+                            break;
+                        case "deleteBook":
+                            Console.WriteLine("Delete book request received.");
+                            if (parts.Length == 2)
+                            {
+                                int idBook = int.Parse(parts[1]);
+                                Console.WriteLine($"Delete book attempt for ID: {idBook}");
+
+                                bool success = deleteBook(idBook);
+                                if (success)
+                                {
+                                    Console.WriteLine("Book deleted successful.");
+                                    writer.WriteLine("Book deleted successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Book deletion failed.");
+                                    writer.WriteLine("Book deletion failed.");
+
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid deleteBook format. Use: deleteBook|idBook");
+                                writer.WriteLine("Invalid deleteBook format. Use: deleteBook|idBook");
+                            }
+                            break;
+                        case "searchSubscribers":
+                            Console.WriteLine("Search subscribers request received.");
+                            response = searchSubscribers();
+                            writer.WriteLine(response);
+                            break;
+                        case "updateStatus":
+                            Console.WriteLine("Update status request received.");
+                            if (parts.Length == 3)
+                            {
+                                int subscriberId = int.Parse(parts[1]);
+                                string status = parts[2];
+
+                                bool success = updateStatus(subscriberId, status);
+                                if (success)
+                                {
+                                    Console.WriteLine("Status updated successful.");
+                                    writer.WriteLine("Status updated successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Status update failed.");
+                                    writer.WriteLine("Status update failed.");
+                                }
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid updateStatus format. Use: updateStatus|subscriberId|status");
+                                writer.WriteLine("Invalid updateStatus format. Use: updateStatus|subscriberId|status");
+                            }
                             break;
                     }
                 }
@@ -608,7 +711,99 @@ namespace ClientBackend
             string json = JsonConvert.SerializeObject(obj);
             sendMessage(json);
             string response = WaitForMessage();
-            return true;
+            if (response == "Book added successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private string searchBook(string isbn)
+        {
+            Console.WriteLine("Searching book with ISBN: " + isbn);
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "isbn", isbn } }
+            };
+            var obj = new
+            {
+                operation = "searchBook",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
+        }
+
+        private bool deleteBook(int id)
+        {
+            Console.WriteLine("Deleting book with ID: " + id);
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "idBook", id.ToString() } }
+            };
+            var obj = new
+            {
+                operation = "deleteBook",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            if(response == "Book deleted successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private string searchSubscribers()
+        {
+            Console.WriteLine("Searching subscribers");
+            var data = new List<Dictionary<string, string>>();
+            var obj = new
+            {
+                operation = "searchSubscribers",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
+        }
+
+        private bool updateStatus(int id, string status)
+        {
+            Console.WriteLine($"Updating status for SubscriberId: {id} to Status: {status}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "subscriberId", id.ToString() }, { "status", status } }
+            };
+            var obj = new
+            {
+                operation = "updateStatus",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            if (response.Trim() == "Status updated successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

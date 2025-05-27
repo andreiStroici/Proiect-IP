@@ -6,13 +6,11 @@ obj/
 *.userosscache
 *.sln.docstates
 *.cache
-*.pdb
+
 *.exe
 *.log
 *.vspscc
 *.vssscc
-*.dbmdl
-*.dbschema
 *.bak
 *.FileListAbsolute.txt
 *.CoreCompileInputs.cache
