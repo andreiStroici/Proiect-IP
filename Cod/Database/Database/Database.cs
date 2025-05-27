@@ -607,7 +607,7 @@ namespace Database
                                 FROM Carte
                                 JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
                                 WHERE Isbn.titlu LIKE @cuvantTitlu 
-                                  OR Isbn.autor LIKE @cuvantAutor
+                                  AND Isbn.autor LIKE @cuvantAutor
                                   AND Carte.status = 'disponibil'";
 
                 var listaCarti = new List<Carte>();
