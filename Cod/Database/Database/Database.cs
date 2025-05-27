@@ -220,27 +220,35 @@ namespace Database
                             JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
                             WHERE Isbn.id_isbn = @isbn";
 
-            using (var cmd = new SQLiteCommand(query, _connection))
+            try
             {
-                cmd.Parameters.AddWithValue("@isbn", isbn);
-
-                using (var reader = cmd.ExecuteReader())
+                using (var cmd = new SQLiteCommand(query, _connection))
                 {
-                    while (reader.Read())
-                    {
-                        int idCarte = reader.GetInt32(0);
-                        string idIsbn = reader.GetString(1);
-                        string titlu = reader.GetString(2);
-                        string autor = reader.GetString(3);
-                        string gen = reader.GetString(4);
-                        string editura = reader.GetString(5);
-                        string status = reader.GetString(6);
+                    cmd.Parameters.AddWithValue("@isbn", isbn);
 
-                        var carte = new Carte(idCarte, idIsbn, titlu, autor, gen, editura, status);
-                        carti.Add(carte);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int idCarte = reader.GetInt32(0);
+                            string idIsbn = reader.GetString(1);
+                            string titlu = reader.GetString(2);
+                            string autor = reader.GetString(3);
+                            string gen = reader.GetString(4);
+                            string editura = reader.GetString(5);
+                            string status = reader.GetString(6);
+
+                            var carte = new Carte(idCarte, idIsbn, titlu, autor, gen, editura, status);
+                            carti.Add(carte);
+                        }
                     }
                 }
             }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine("Eroare la obtinerea cartilor prin ISBN: " + ex.Message);
+            }
+            
 
             return carti;
         }
@@ -650,9 +658,41 @@ namespace Database
                             FROM Carte c
                             WHERE c.status = 'disponibil'";
 
+            try
+            {
+                using (var cmd = new SQLiteCommand(query, _connection))
+                {
+                    cmd.Parameters.AddWithValue("@idCarte", idCarte);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && Convert.ToInt32(result) > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine("Eroare la verificarea statusului cartii: " + ex.Message);
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idClient"></param>
+        /// <returns></returns>
+        private bool isIdClientValid(int idClient)
+        {
+            string query = @"
+                            SELECT COUNT(*) 
+                            FROM Abonat c
+                            WHERE c.id_abonat = @idClient";
+
             using (var cmd = new SQLiteCommand(query, _connection))
             {
-                cmd.Parameters.AddWithValue("@idCarte", idCarte);
+                cmd.Parameters.AddWithValue("@idClient", idClient);
                 var result = cmd.ExecuteScalar();
                 if (result != null && Convert.ToInt32(result) > 0)
                     return true;
@@ -731,6 +771,12 @@ namespace Database
             if(!IsCartedisponibil(idCarte))
             {
                 Console.WriteLine("Cartea nu este disponibila pentru imprumut.");
+                return false;
+            }
+
+            if(!isIdClientValid(idAbonat))
+            {
+                Console.WriteLine("Id ul abonatului nu este valid");
                 return false;
             }
             
@@ -933,7 +979,7 @@ namespace Database
         /// <param name="abonat"></param>
         /// <param name="mesaj"></param>
         /// <returns></returns>
-        public bool UpdateStatusAbonat(Abonat abonat, string mesaj)
+        public bool UpdateStatusAbonat(int idAbonat, string mesaj)
         {
             try
             {
@@ -942,7 +988,7 @@ namespace Database
                 using (var cmd = new SQLiteCommand(updateStatus, _connection))
                 {
                     cmd.Parameters.AddWithValue("@status", mesaj.ToLower());
-                    cmd.Parameters.AddWithValue("@idAbonat", abonat.IdAbonat);
+                    cmd.Parameters.AddWithValue("@idAbonat", idAbonat);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
@@ -964,9 +1010,9 @@ namespace Database
         /// </summary>
         /// <param name="abonat"></param>
         /// <returns></returns>
-        public bool UnRestrictAbonat(Abonat abonat)
+        public bool UnRestrictAbonat(int idAbonat)
         {
-            return UpdateStatusAbonat(abonat, "fara restrictii");
+            return UpdateStatusAbonat(idAbonat, "fara restrictii");
         }
 
         /// <summary>
@@ -974,9 +1020,9 @@ namespace Database
         /// </summary>
         /// <param name="abonat"></param>
         /// <returns></returns>
-        public bool BlocareAbonat(Abonat abonat)
+        public bool BlocareAbonat(int idAbonat)
         {
-            return UpdateStatusAbonat(abonat, "blocat");
+            return UpdateStatusAbonat(idAbonat, "blocat");
         }
 
         /// <summary>
@@ -984,9 +1030,9 @@ namespace Database
         /// </summary>
         /// <param name="abonat"></param>
         /// <returns></returns>
-        public bool RestrictAbonat(Abonat abonat)
+        public bool RestrictAbonat(int idAbonat)
         {
-            return UpdateStatusAbonat(abonat, "cu restrictii");
+            return UpdateStatusAbonat(idAbonat, "cu restrictii");
         }
 
 
