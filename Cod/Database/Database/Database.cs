@@ -380,16 +380,6 @@ namespace Database
         /// <returns></returns>
         public bool InsertClient(Abonat abonat)
         {
-            if (!Regex.IsMatch(abonat.Telefon, @"^(\+407|07)[0-9]{8}$"))
-            {
-                Console.WriteLine("Format pentru telefon invalid");
-                return false;
-            }
-            if (!Regex.IsMatch(abonat.Email, @"^[a-z0-9._%-]+@[a-z0-9._%-]+\.[a-z]{2,4}$"))
-            {
-                Console.WriteLine("Format pentru email invalid");
-                return false;
-            }
 
             try
             {
@@ -786,6 +776,11 @@ namespace Database
         /// <returns></returns>
         public bool InsertLoan(int idAbonat, int idCarte, string locatie)
         {
+            if(!IsCartedisponibil(idCarte))
+            {
+                Console.WriteLine("Cartea nu este disponibila pentru imprumut.");
+                return false;
+            }
             
             using (var transaction = _connection.BeginTransaction())
             {
