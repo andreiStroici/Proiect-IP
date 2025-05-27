@@ -149,7 +149,9 @@ namespace Server
                             else
                             {
                                 Console.WriteLine("Subscriber found.");
-                                writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}");
+                                writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}|" +
+                                    $"{abonat.Nume}|{abonat.Prenume}|{abonat.Adresa}|{abonat.Email}|{abonat.Telefon}|" +
+                                    $"{abonat.LimitaCarti}");
                             }
                             break;
                         case "searchBooks":
@@ -329,21 +331,41 @@ namespace Server
                                 Console.WriteLine("Book deletion failed.");
                             }
                             break;
-                        case "searchAbonat":
-                            Console.WriteLine("Searching subscriber: " + receivedObj.data[0]["phone"]);
-                            //Abonat abonati = _database.GetAbonatByPhone(receivedObj.data[0]["phone"]);
-                            //if (abonati != null) 
-                            //{
-                            //    Console.WriteLine($"Subscriber found: {abonati.IdAbonat} {abonati.Nume} {abonati.Prenume}");
-                            //    writer.WriteLine($"{abonati.IdAbonat}~{abonati.Nume}~{abonati.Prenume}~{abonati.Adresa}~{abonati.Telefon}~{abonati.Email}");
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine("No subscriber found with the given phone number.");
-                            //    writer.WriteLine("No subscriber found with the given phone number.");
-                            //}
+                        case "searchSubscribers":
+                            Console.WriteLine("Searching subscriber: ");
+                            List<Abonat> abonati = _database.GetAbonatiCuRestrictiiSauBlocati();
+                            if (abonati.Count == 0)
+                            {
+                                Console.WriteLine("No subscribers found with restrictions or blocked.");
+                                writer.WriteLine("No subscribers found with restrictions or blocked.");
+                            }
+                            else
+                            {
+                                string responseAbonati = "";
+                                foreach (var item in abonati)
+                                {
+                                    responseAbonati += $"{item.IdAbonat}~{item.Nume}~{item.Prenume}~" +
+                                        $"{item.Adresa}~{item.Telefon}~{item.Email}~{item.Status}~{item.LimitaCarti}|";
+                                }
+                                Console.WriteLine($"Found {abonati.Count} subscribers with restrictions or blocked.");
+                                writer.WriteLine(responseAbonati);
+                            }
                             break;
-                        case "":
+                        case "updateStatus":
+                            Console.WriteLine("Updating status for subscriber: " + receivedObj.data[0]["subscriberId"]
+                                + "\t" + receivedObj.data[0]["status"]);
+                            int subscriberIdUpdate = int.Parse(receivedObj.data[0]["subscriberId"].Trim());
+                            bool result = _database.UpdateStatusAbonat(subscriberIdUpdate, receivedObj.data[0]["status"]);
+                            if (result)
+                            {
+                                Console.WriteLine("Status updated successful.");
+                                writer.WriteLine("Status updated successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Status update failed.");
+                                writer.WriteLine("Status update failed.");
+                            }
                             break;
                     }
 
