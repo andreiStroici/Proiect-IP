@@ -393,6 +393,37 @@ namespace ClientBackend
                                 writer.WriteLine("Invalid deleteBook format. Use: deleteBook|idBook");
                             }
                             break;
+                        case "searchSubscribers":
+                            Console.WriteLine("Search subscribers request received.");
+                            response = searchSubscribers();
+                            writer.WriteLine(response);
+                            break;
+                        case "updateStatus":
+                            Console.WriteLine("Update status request received.");
+                            if (parts.Length == 3)
+                            {
+                                int subscriberId = int.Parse(parts[1]);
+                                string status = parts[2];
+
+                                bool success = updateStatus(subscriberId, status);
+                                if (success)
+                                {
+                                    Console.WriteLine("Status updated successful.");
+                                    writer.WriteLine("Status updated successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Status update failed.");
+                                    writer.WriteLine("Status update failed.");
+                                }
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid updateStatus format. Use: updateStatus|subscriberId|status");
+                                writer.WriteLine("Invalid updateStatus format. Use: updateStatus|subscriberId|status");
+                            }
+                            break;
                     }
                 }
             }
@@ -725,6 +756,47 @@ namespace ClientBackend
             sendMessage(json);
             string response = WaitForMessage();
             if(response == "Book deleted successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private string searchSubscribers()
+        {
+            Console.WriteLine("Searching subscribers");
+            var data = new List<Dictionary<string, string>>();
+            var obj = new
+            {
+                operation = "searchSubscribers",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
+        }
+
+        private bool updateStatus(int id, string status)
+        {
+            Console.WriteLine($"Updating status for SubscriberId: {id} to Status: {status}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "subscriberId", id.ToString() }, { "status", status } }
+            };
+            var obj = new
+            {
+                operation = "updateStatus",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            if (response.Trim() == "Status updated successful.")
             {
                 return true;
             }

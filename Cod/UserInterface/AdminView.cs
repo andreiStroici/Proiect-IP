@@ -117,8 +117,9 @@ namespace UserInterface
         /// <param name="e"></param>
         private void buttonGestiuneCautare_Click(object sender, EventArgs e)
         {
+            textBoxGestiuneDate.Clear();
             string numarTelefon = textBoxGestiuneTelefon.Text;
-            string pattern = @"^07\d{8}$";
+            string pattern = @"^(\+407|07)[0-9]{8}$";
 
             if (string.IsNullOrEmpty(numarTelefon))
             {
@@ -131,23 +132,37 @@ namespace UserInterface
                 return;
             }
 
-            // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ NUMĂR DE TELEFON, RETURNEAZĂ ABONAT
-            _connectionToClientBackend.SendRequest("loginAbonat", $"{numarTelefon}\n");
-            this._abonatId = 0; // = id;    
-            string response = _connectionToClientBackend.ReceiveResponse();
+            _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
+            string r = _connectionToClientBackend.ReceiveResponse();
+            MessageBox.Show(r);
+            string[] response = r.Split('|');
 
-            if (response != "Abonat: Login Successful")
+            if (response[0] != "Subscriber Login successful")
             {
                 MessageBox.Show("Autentificare eșuată! Nu există niciun abonat cu acest număr de telefon.");
                 return;
             }
 
+            textBoxGestiuneTelefon.Clear();
+
+            _abonatId = int.Parse(response[1]);
+            string status = response[2];
+            string nume = response[3];
+            string prenume = response[4];
+            string adresa = response[5];
+            string email = response[6];
+            string telefon = response[7];
+            string limitaCarti = response[8];
 
             this.textBoxGestiuneDate.Enabled = true;
+
+            this.textBoxGestiuneDate.Text = $"ID: {this._abonatId}\nNume: {nume}\n Prenume: {prenume}\n Status: {status}\n Limită număr de cărți împrumutate simultan: {limitaCarti}";
+            
             this.buttonGestiuneValidare.Enabled = true;
             this.radioButtonGestiuneA.Enabled = true;
             this.radioButtonGestiuneB.Enabled = true;
             this.radioButtonGestiuneE.Enabled = true;
+            
 
             this.comboBoxAbonațiProbleme.TabIndex = 0;
         }
@@ -161,25 +176,35 @@ namespace UserInterface
         {
 
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ ÎNTÂRZIEREA ÎMPRUMUTULUI
-            _connectionToClientBackend.SendRequest("getAbonatiProbleme", $"\n");
-            string response = _connectionToClientBackend.ReceiveResponse();
+            _connectionToClientBackend.SendRequest("searchSubscribers", $"\n");
+            string []response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
-            if (response != "Successful")
+            if (response[0] == "No subscribers found with restrictions or blocked.")
             {
                 MessageBox.Show("Nu există niciun abonat cu probleme.");
                 return;
             }
 
             comboBoxAbonațiProbleme.Items.Clear();
-            // adaugare
 
-            if(comboBoxAbonațiProbleme.Items.Count == 0)
+            foreach (string item in response)
             {
-                MessageBox.Show("Nu există niciun abonat cu probleme.");
-                return;
+                string[] abonat = item.Split('~');
+                if (abonat.Length < 7)
+                {
+                    continue; // dacă nu avem toate informațiile despre abonat, trecem la următorul
+                }
+                string idAbonat = abonat[0];
+                string numeAbonat = abonat[1];
+                string prenumeAbonat = abonat[2];
+                string adresaAbonat = abonat[3];
+                string telefonAbonat = abonat[4];
+                string emailAbonat = abonat[5];
+                string statusAbonat = abonat[6];
+                string limitaCartiAbonat = abonat[7];
+                comboBoxAbonațiProbleme.Items.Add($"{idAbonat}, {numeAbonat}, {prenumeAbonat}, {telefonAbonat}, {emailAbonat}, {statusAbonat}, {limitaCartiAbonat}");
             }
-
-            // intoarce nume, prenume, și împrumutul cu întârzierea cea mai mare 
+            
             this.buttonGestiuneValidare.Enabled = true;
             this.radioButtonGestiuneA.Enabled = true;
             this.radioButtonGestiuneB.Enabled = true;
@@ -198,65 +223,59 @@ namespace UserInterface
             if (radioButtonAfișareAbonați.Checked)
             {
                 // Extragem obiectul de tip abonat din lista de abonați problematici
-                string abonat = comboBoxAbonațiProbleme.SelectedItem.ToString();
-                this._abonatId = int.Parse(abonat.Split(' ')[0]); // presupunem că id-ul este primul element din string
+                string []abonat = comboBoxAbonațiProbleme.SelectedItem.ToString().Split(',');
+                this._abonatId = int.Parse(abonat[0].Trim());
             }
             else if (radioButtonGestiuneAbonați.Checked)
             {
-                // Extragem obiectul de tip abonat din cautarea dupa numar de telefon - implementat deja
-               
+                string []abonat = textBoxGestiuneDate.Text.Split('\n');
+                this._abonatId = int.Parse(abonat[0].Split(':')[1].Trim());
             }
 
-            // avem un obiect abonat rezultat
+            string status = "";
+
             if(radioButtonGestiuneA.Checked)
             {
-                // aplicare restricții
-                // TODO: IMPLEMENTEAZĂ ACEST REQUEST: APLICA RESTRICȚII (SCHIMBĂ STATUS ÎN "restrictionat")
-                _connectionToClientBackend.SendRequest("applyRestrictions", $"{_abonatId}\n");
-
-                string response = _connectionToClientBackend.ReceiveResponse();
-                if (response == "Successful")
-                {
-                    MessageBox.Show("Restricții aplicate cu succes!");
-                }
-                else
-                {
-                    MessageBox.Show("Eroare la aplicarea restricțiilor: " + response);
-                    return;
-                }
+                // blocare abonat
+                status = "cu restrictii";
             }
             if (radioButtonGestiuneB.Checked)
             {
-                // eliminare restricții
-                // TODO: IMPLEMENTEAZĂ ACEST REQUEST: ELIMINARE RESTRICȚII (SCHIMBĂ STATUS ÎN "fara restrictii")
-                _connectionToClientBackend.SendRequest("removeRestrictions", $"{_abonatId}\n");
-                string response = _connectionToClientBackend.ReceiveResponse();
-                if (response == "Successful")
-                {
-                    MessageBox.Show("Restricții eliminate cu succes!");
-                }
-                else
-                {
-                    MessageBox.Show("Eroare la eliminarea restricțiilor: " + response);
-                    return;
-                }
+                
+                status = "blocat";
             }
             if (radioButtonGestiuneE.Checked)
-            {
-                // blocare abonat
-                // TODO: IMPLEMENTEAZĂ ACEST REQUEST: BLOCARE ABONAT (SCHIMBĂ STATUS ÎN "blocat")
-                _connectionToClientBackend.SendRequest("blockAbonat", $"{_abonatId}\n");
-                string response = _connectionToClientBackend.ReceiveResponse();
-                if (response == "Successful")
-                {
-                    MessageBox.Show("Abonat blocat cu succes!");
-                }
-                else
-                {
-                    MessageBox.Show("Eroare la blocarea abonatului: " + response);
-                    return;
-                }
+            {   
+                // eliminare restricții
+                status = "fara restrictii";
             }
+
+            if (string.IsNullOrEmpty(status))
+            {
+                MessageBox.Show("Selectați o opțiune de modificare a statusului abonatului.");
+                return;
+            }
+
+            _connectionToClientBackend.SendRequest("updateStatus", $"{this._abonatId}|{status}\n");
+            string response = _connectionToClientBackend.ReceiveResponse();
+            if (response == "Status updated successful.")
+            {
+                MessageBox.Show("Statusul abonatului a fost actualizat cu succes!");
+            }
+            else
+            {
+                MessageBox.Show("Nu s-a reușit actualizarea statusului abonatului!");
+                return;
+            }
+            // Resetăm câmpurile
+            textBoxGestiuneDate.Clear();
+            textBoxGestiuneTelefon.Clear();
+            comboBoxAbonațiProbleme.Items.Clear();
+            comboBoxAbonațiProbleme.SelectedItem = null;
+            radioButtonGestiuneA.Checked = false;
+            radioButtonGestiuneB.Checked = false;
+            radioButtonGestiuneE.Checked = false;
+
         }
 
         /// <summary>

@@ -79,7 +79,7 @@ namespace UserInterface
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
             string r = _connectionToClientBackend.ReceiveResponse();
             MessageBox.Show(r);
-            string[] response = r.Split('|');//_connectionToClientBackend.ReceiveResponse().Split('|');
+            string[] response = r.Split('|');
 
             if (response[0] != "Subscriber Login successful")
             {
