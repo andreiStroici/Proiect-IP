@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -132,6 +133,41 @@ namespace ClientBackend
                             string response = loginSubscriber(parts[1]);
                             writer.WriteLine(response);
                             break;
+                        case "searchBooks":
+                            Console.WriteLine("Search books request received.");
+                            if (parts.Length == 3)
+                            {
+                                string title = parts[1];
+                                string author = parts[2];
+                                Console.WriteLine($"Searching attempt for books with Title: {title} and Author: {author}");
+                                response = getBooks(title, author);
+
+                                if (response != "No books found.")
+                                {
+
+                                    List<string> lines = response.Split('|').ToList();
+                                    lines.RemoveAt(lines.Count - 1); // Remove the last empty line if exists1
+
+                                    var books = lines.Select(line => line.Split('~')).Select(part => (part[0], part[1], part[2]));
+                                    books = books.OrderBy(x => x.Item2)
+                                        .ThenBy(x => x.Item3)
+                                        .ThenBy(x => x.Item1);
+                                    response = string.Join("|", books.Select(b => $"{b.Item1}~{b.Item2}~{b.Item3}"));
+                                    Console.WriteLine("Books found: " + response);
+                                    writer.WriteLine(response);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No books found.");
+                                    writer.WriteLine("No books found.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid searchBooks format. Use: searchBooks|title|author");
+                                writer.WriteLine("Invalid searchBooks format. Use: searchBooks|title|author");
+                            }
+                            break;
                     }
                 }
             }
@@ -236,6 +272,25 @@ namespace ClientBackend
                 data = data
             };
 
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
+        }
+
+        private string getBooks(string title, string author)
+        {
+            Console.WriteLine($"Searching for books with Title: {title} and Author: {author}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "title", title }, { "author", author } }
+            };
+            var obj = new
+            {
+                operation = "searchBooks",
+                data = data
+            };
             string json = JsonConvert.SerializeObject(obj);
             sendMessage(json);
             string response = WaitForMessage();

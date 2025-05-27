@@ -105,6 +105,7 @@ namespace UserInterface
             // tot aici vom trimite către comboboxul de returnare cărți toate acele împrumuturi nefinalizate (cărți nereturnate)
             _connectionToClientBackend.SendRequest("getLoans", $"{this._abonatId}\n");
 
+
             //response = "";
             //if(response != "Successul")
             //{
@@ -130,7 +131,7 @@ namespace UserInterface
             string telefon = textBoxAbonatTelefon.Text;
             string email = textBoxAbonatEmail.Text;
 
-            string patternEmail = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            string patternEmail = @"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
             string patternTelefon = @"^07\d{8}$";
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(adresa) ||
                 string.IsNullOrEmpty(telefon) || string.IsNullOrEmpty(email))
@@ -177,8 +178,8 @@ namespace UserInterface
         {
             string titlu = textBoxImprumutTitlu.Text;
             string autor = textBoxImprumutAutor.Text;
-
-            if(string.IsNullOrEmpty(titlu) && string.IsNullOrEmpty(autor))
+            comboBoxSugestii.Items.Clear();
+            if (string.IsNullOrEmpty(titlu) && string.IsNullOrEmpty(autor))
             {
                 MessageBox.Show("Vă rugăm să introduceți un titlu sau un autor!");
                 return;
@@ -187,28 +188,36 @@ namespace UserInterface
             // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ CĂRȚILE DISPONIBILE ÎN FUNCȚIE DE TITLU SAU AUTOR (RETURNEAZĂ O LISTĂ)
             _connectionToClientBackend.SendRequest("searchBooks", $"{titlu}|{autor}\n");
 
-            string response = ""; // response = _connectionToClientBackend.ReceiveResponse();
+            string []response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
-            if (response != "Successul")
+            // 1~Moarte pe Nil~Agatha Cristie
+            if (response[0] == "No books found.")
             {
                 MessageBox.Show("Nu am găsit nicio carte disponibilă!");
                 return;
             }
 
-            int count = 0; // reținem numărul de cărți găsite
-            comboBoxSugestii.Items.Clear();
-            //comboBoxSugestii.Items.Add("Căutare după titlu");
-
-            if (count == 0)
+            int count = response.Length; // reținem numărul de cărți găsite
+            
+            foreach (var r in response)
             {
-                MessageBox.Show("Nu am găsit nicio carte disponibilă!");
-                return;
+                string []book = r.Split('~');
+                if (book.Length < 3)
+                {
+                    continue; // dacă nu avem toate informațiile despre carte, trecem la următoarea
+                }
+                string idCarte = book[0];
+                string titluCarte = book[1];
+                string autorCarte = book[2];
+                comboBoxSugestii.Items.Add($"{titluCarte}, {autorCarte}, {idCarte}"); // adăugăm cartea în comboBox
             }
 
             // Activează interfața pentru căutarea cărților disponibile (se efectuează căutări parțiale)
             labelImprumutSugestii.Enabled = true;
             comboBoxSugestii.Enabled = true;
             buttonImprumutValidare.Enabled = true;
+            radioButtonImprumutSalaLectura.Enabled = true;
+            radioButtonÎmprumutAcasă.Enabled = true;
 
         }
 
@@ -241,9 +250,9 @@ namespace UserInterface
                 return;
             }
 
-            string carte = comboBoxSugestii.SelectedItem.ToString();
-            string idCarte = carte.Split('|')[0];
-            string locatie = "";
+            string []selectedBook = comboBoxSugestii.SelectedItem.ToString().Split(',');
+            int idBook = int.Parse(selectedBook[2].Trim());
+            string selectedLocation = "";
 
             if(!radioButtonImprumutSalaLectura.Checked && !radioButtonÎmprumutAcasă.Checked)
             {
@@ -252,32 +261,31 @@ namespace UserInterface
             }
             if (radioButtonImprumutSalaLectura.Checked)
             {
-                locatie = "sala de lectura";
+                selectedLocation = "sala de lectura";
             }
             else
             {
-                locatie = "acasa";
+                selectedLocation = "acasa";
             }
 
-            // TODO: TRIMITE ÎMPRUMUTUL CĂTRE SERVER ȘI INDISPONIBILIZEAZĂ CARTEA ÎMPRUMUTATĂ
-            _connectionToClientBackend.SendRequest("imprumut", $"{this._abonatId}|{idCarte}|{locatie}\n");
-            string response = "";
-            if(response == "Successful")
-            {
-                MessageBox.Show("Împrumutul a fost efectuat cu succes!");
-            }
-            else
-            {
-                MessageBox.Show("Împrumutul nu a fost efectuat!");
-                return;
-            }
+            _connectionToClientBackend.SendRequest("insertLoan", $"{this._abonatId}|{idBook}|{selectedLocation}\n");
+            //string response = "";
+            //if(response == "Successful")
+            //{
+            //    MessageBox.Show("Împrumutul a fost efectuat cu succes!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Împrumutul nu a fost efectuat!");
+            //    return;
+            //}
 
-            textBoxImprumutTitlu.Clear();
-            textBoxImprumutAutor.Clear();
-            comboBoxSugestii.Items.Clear();
-            radioButtonImprumutSalaLectura.Checked = false;
-            radioButtonÎmprumutAcasă.Checked = false;
-            panelServiciuReturnare.Enabled = true;
+            //textBoxImprumutTitlu.Clear();
+            //textBoxImprumutAutor.Clear();
+            //comboBoxSugestii.Items.Clear();
+            //radioButtonImprumutSalaLectura.Checked = false;
+            //radioButtonÎmprumutAcasă.Checked = false;
+            //panelServiciuReturnare.Enabled = true;
         }
 
         /// <summary>
