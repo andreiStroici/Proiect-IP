@@ -1168,5 +1168,10 @@ namespace Database
                 return false;
             }
         }
+
+        public void Close()
+        {
+            _connection.Close();
+        }
     }
 }
