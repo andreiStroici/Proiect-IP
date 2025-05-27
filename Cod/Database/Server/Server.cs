@@ -152,6 +152,28 @@ namespace Server
                                 writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}");
                             }
                             break;
+                        case "searchBooks":
+                            Console.WriteLine($"Cautare carti");
+                            List<Carte> books = _database.CautareCartiPartial(receivedObj.data[0]["title"], receivedObj.data[0]["author"]);
+                            Console.WriteLine($"Found {books.Count} books.");
+                            if (books.Count == 0)
+                            {
+                                Console.WriteLine("No books found.");
+                                writer.WriteLine("No books found.");
+                            }
+                            else
+                            {
+                                string response = "";
+                                foreach (var item in books)
+                                {
+                                    response = item.IdCarte + "~" + item.Titlu + "~" + item.Autor + "|";
+                                }
+                                Console.WriteLine(response);
+                                writer.WriteLine(response);
+                            }
+                            break;
+                        case "":
+                            break;
                     }
 
                 }
