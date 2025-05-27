@@ -60,12 +60,12 @@ namespace UserInterface
 
             if (radioButtonAdministrator.Checked)
             {
-                rol = "Administrator";
+                rol = "administrator";
                 radioButtonAdministrator.Checked = false;
             }
             else if (radioButtonBibliotecar.Checked)
             {
-                rol = "Bibliotecar";
+                rol = "bibliotecar";
                 radioButtonBibliotecar.Checked = false;
             }
             else
@@ -88,7 +88,7 @@ namespace UserInterface
                 //string response = "Login successful";
                 if (response == "Login successful")
                 {
-                    if (rol == "Bibliotecar")
+                    if (rol == "bibliotecar")
                     {
                         //MessageBox.Show("Autentificare reușită ca Bibliotecar!");
                         // Deschideți fereastra corespunzătoare pentru bibliotecar
@@ -105,7 +105,7 @@ namespace UserInterface
                         formBibliotecar.FormClosed += (s, args) => this.Close();
 
                     }
-                    else if (rol == "Administrator")
+                    else if (rol == "administrator")
                     {
                         //MessageBox.Show("Autentificare reușită ca Administrator!");
                         // Deschideți fereastra corespunzătoare pentru administrator

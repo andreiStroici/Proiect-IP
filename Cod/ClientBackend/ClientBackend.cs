@@ -168,6 +168,91 @@ namespace ClientBackend
                                 writer.WriteLine("Invalid searchBooks format. Use: searchBooks|title|author");
                             }
                             break;
+                        case "insertLoan":
+                            Console.WriteLine("Insert loan request received.");
+                            if (parts.Length == 4)
+                            {
+                                int subscriberId = int.Parse(parts[1]);
+                                int bookId = int.Parse(parts[2]);
+                                string selectedLocation = parts[3];
+
+                                Console.WriteLine($"Insert loan attempt for Subscriber ID: {subscriberId}, Book ID: {bookId}, Location: {selectedLocation}");
+                                bool success = insertLoan(subscriberId, bookId, selectedLocation);
+                                writer.WriteLine(success ? "Inserted Loan successful." : "Inserted Loan failed.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid insertLoan format. Use: insertLoan|subscriberId|bookId|selectedLocation");
+                                writer.WriteLine("Invalid insertLoan format. Use: insertLoan|subscriberId|bookId|selectedLocation");
+                            }
+                            break;
+                        case "getLoans":
+                            Console.WriteLine("Get loans request received.");
+                            if(parts.Length == 2)
+                            {
+                                int subscriberId = int.Parse(parts[1]);
+                                Console.WriteLine($"Get loans attempt for Subscriber ID: {subscriberId}");
+                                response = getLoans(subscriberId);
+
+                                if (response != "No loans found.")
+                                {
+
+                                    List<string> lines = response.Split('|').ToList();
+                                    lines.RemoveAt(lines.Count - 1); // Remove the last empty line if exists1
+
+                                    var books = lines.Select(line => line.Split('~')).Select(part => (part[0], part[1], part[2]));
+                                    books = books.OrderBy(x => x.Item2)
+                                        .ThenBy(x => x.Item3)
+                                        .ThenBy(x => x.Item1);
+                                    response = string.Join("|", books.Select(b => $"{b.Item1}~{b.Item2}~{b.Item3}"));
+                                    Console.WriteLine("Loans found: " + response);
+                                    writer.WriteLine(response);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No loans found.");
+                                    writer.WriteLine("No loans found.");
+                                }
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid getLoans format. Use: getLoans|subscriberId");
+                                writer.WriteLine("Invalid getLoans format. Use: getLoans|subscriberId");
+                            }
+                            break;
+                        case "returnBook":
+                            Console.WriteLine("Return book request received.");
+                            if(parts.Length == 3)
+                            {
+                                int subscriberId = int.Parse(parts[1].Trim());
+                                int bookId = int.Parse(parts[2].Trim());
+                                Console.WriteLine($"Return book attempt for Subscriber ID: {subscriberId}, Book ID: {bookId}");
+                                bool success = returnBook(subscriberId, bookId);
+                                writer.WriteLine(success ? "Return successful." : "Return failed.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid returnBook format. Use: returnBook|subscriberId|bookId");
+                                writer.WriteLine("Invalid returnBook format. Use: returnBook|subscriberId|bookId");
+                            }
+                            break;
+                        case "getStatusClient":
+                            Console.WriteLine("Get status client request received.");
+                            if (parts.Length == 2)
+                            {
+                                int subscriberId = int.Parse(parts[1].Trim());
+                                Console.WriteLine($"Get status client attempt for Subscriber ID: {subscriberId}");
+                                response = getStatusClient(subscriberId);
+
+                                writer.WriteLine(response);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid getStatusClient format. Use: getStatusClient|subscriberId");
+                                writer.WriteLine("Invalid getStatusClient format. Use: getStatusClient|subscriberId");
+                            }
+                            break;
                     }
                 }
             }
@@ -289,6 +374,96 @@ namespace ClientBackend
             var obj = new
             {
                 operation = "searchBooks",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
+        }
+
+        private bool insertLoan(int subscriberId, int bookId, string selectedLocation)
+        {
+            Console.WriteLine($"Inserting Loan with SubscriberId: {subscriberId}, bookId: {bookId} and selected location: {selectedLocation}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "subscriberId", subscriberId.ToString() }, { "bookId", bookId.ToString() }, { "selectedLocation", selectedLocation } }
+            };
+            var obj = new
+            {
+                operation = "insertLoan",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+
+            string response = WaitForMessage();
+            if (response.Trim() == "Inserted Loan successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private string getLoans(int subscriberId)
+        {
+            Console.WriteLine($"Getting loans for SubscriberId: {subscriberId}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "subscriberId", subscriberId.ToString() } }
+            };
+            var obj = new
+            {
+                operation = "getLoans",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            return response;
+        }
+
+        private bool returnBook(int subscriberId, int bookId)
+        {
+            Console.WriteLine($"Returning book with SubscriberId: {subscriberId}, BookId: {bookId}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "subscriberId", subscriberId.ToString() }, { "bookId", bookId.ToString() } }
+            };
+            var obj = new
+            {
+                operation = "returnBook",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            if (response.Trim() == "Book returned successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private string getStatusClient(int subscriberId)
+        {
+            Console.WriteLine($"Getting status for SubscriberId: {subscriberId}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "subscriberId", subscriberId.ToString() } }
+            };
+            var obj = new
+            {
+                operation = "getStatusClient",
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
