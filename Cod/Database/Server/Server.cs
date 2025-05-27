@@ -172,7 +172,77 @@ namespace Server
                                 writer.WriteLine(response);
                             }
                             break;
-                        case "":
+                        case "insertLoan":
+                            Console.WriteLine($"Inserting loan");
+                            Console.WriteLine($"{receivedObj.data[0]["subscriberId"]}\t" +
+                                $"{receivedObj.data[0]["bookId"]}" +
+                                $"{receivedObj.data[0]["selectedLocation"]}");
+                            int idAbonat = int.Parse(receivedObj.data[0]["subscriberId"].Trim());
+                            int idCarte = int.Parse(receivedObj.data[0]["bookId"].Trim());
+                            string selectedLocation = receivedObj.data[0]["selectedLocation"].Trim();
+                            bool insertResult = _database.InsertLoan(idAbonat, idCarte, selectedLocation);
+                            if (insertResult)
+                            {
+                                Console.WriteLine("Loan inserted successfully.");
+                                writer.WriteLine("Inserted Loan successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Loan insertion failed.");
+                                writer.WriteLine("Inserted Loan failed.");
+                            }
+                            break;
+                        case "getLoans":
+                            Console.WriteLine($"Getting loans for subscriber {receivedObj.data[0]["subscriberId"]}");
+                            int subscriberId = int.Parse(receivedObj.data[0]["subscriberId"].Trim());
+                            List<Carte> loans = _database.GetLoanedBooks(subscriberId);
+                            if (loans.Count == 0)
+                            {
+                                Console.WriteLine("No loans found for this subscriber.");
+                                writer.WriteLine("No loans found.");
+                            }
+                            else
+                            {
+                                string response = "";
+                                foreach (var item in loans)
+                                {
+                                    response += $"{item.IdCarte}~{item.Titlu}~{item.Autor}|";
+                                }
+                                Console.WriteLine($"Loans found: {response}");
+                                writer.WriteLine(response);
+                            }
+                            break;
+                        case "returnBook":
+                            Console.WriteLine($"{receivedObj.data[0]["subscriberId"]}\t" +
+                                $"{receivedObj.data[0]["bookId"]}");
+                            int subscriberIdReturn = int.Parse(receivedObj.data[0]["subscriberId"].Trim());
+                            int bookIdReturn = int.Parse(receivedObj.data[0]["bookId"].Trim());
+                            bool returnResult = _database.ReturnBook(subscriberIdReturn, bookIdReturn);
+                            if (returnResult) 
+                            {
+                                Console.WriteLine("Book returned successful.");
+                                writer.WriteLine("Book returned successful.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Book return failed.");
+                                writer.WriteLine("Book return failed.");
+                            }
+                            break;
+                        case "getStatusClient":
+                            Console.WriteLine($"{receivedObj.data[0]["subcriberId"]}");
+                            int subscriberIdStatus = int.Parse(receivedObj.data[0]["subcriberId"].Trim());
+                            string abonatStatus = _database.GetStatusAbonat(subscriberIdStatus);
+                            if (abonatStatus != null) 
+                            {
+                                Console.WriteLine("Status found: " + abonatStatus);
+                                writer.WriteLine($"Status found: {abonatStatus}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Status not found.");
+                                writer.WriteLine("Status not found.");
+                            }
                             break;
                     }
 
