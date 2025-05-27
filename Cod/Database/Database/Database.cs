@@ -413,85 +413,43 @@ namespace Database
 
 
         /// <summary>
-        /// obtinerea id_abonat pe baza numarului de telefon care este unic
-        /// </summary>
-        /// <param name="telefon"></param>
-        /// <returns></returns>
-        public int getIdClientByPhone(string telefon)
-        {
-
-            try
-            {
-
-                string query = "SELECT id_abonat FROM Abonat WHERE telefon = @telefon";
-                using (var cmd = new SQLiteCommand(query, _connection))
-                {
-                    cmd.Parameters.AddWithValue("@telefon", telefon);
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != null && int.TryParse(result.ToString(), out int idAbonat))
-                    {
-                        return idAbonat;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea abonatului prin telefon: " + ex.Message);
-                return -1;
-            }
-
-        }
-
-
-        /// <summary>
         /// obtinerea abonatului dupa telefon
         /// </summary>
         /// <param name="telefon"></param>
         /// <returns></returns>
         public Abonat GetAbonatByPhone(string telefon)
         {
-            try
-            {
-                string query = @"SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
+            string query = @"SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
                                 FROM Abonat WHERE telefon = @telefon";
 
-                using (var cmd = new SQLiteCommand(query, _connection))
+            using (var cmd = new SQLiteCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@telefon", telefon);
+
+                using (var reader = cmd.ExecuteReader())
                 {
-                    cmd.Parameters.AddWithValue("@telefon", telefon);
-
-                    using (var reader = cmd.ExecuteReader())
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            int idAbonat = Convert.ToInt32(reader["id_abonat"]);
-                            string nume = (string)reader["nume"];
-                            string prenume = (string)reader["prenume"];
-                            string adresa = (string)reader["adresa"];
-                            string telefonDb = (string)reader["telefon"];
-                            string email = (string)reader["email"];
-                            int limita = Convert.ToInt32(reader["limita"]);
-                            string status = (string)reader["status"];
+                        int idAbonat = Convert.ToInt32(reader["id_abonat"]);
+                        string nume = (string)reader["nume"];
+                        string prenume = (string)reader["prenume"];
+                        string adresa = (string)reader["adresa"];
+                        string telefonDb = (string)reader["telefon"];
+                        string email = (string)reader["email"];
+                        int limita = Convert.ToInt32(reader["limita"]);
+                        string status = (string)reader["status"];
 
-                            Console.WriteLine("Abonat gasit cu succes dupa telefon");
-                            return new Abonat(idAbonat, nume, prenume, adresa, telefonDb, email, limita, status);
-                        }
-                        else
-                        {
-                            return null; 
-                        }
+                        Console.WriteLine("Abonat gasit cu succes dupa telefon");
+                        return new Abonat(idAbonat, nume, prenume, adresa, telefonDb, email, limita, status);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Eroare la cautarea abonatului prin telefon");
+                        return null; 
                     }
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea abonatului prin telefon: " + ex.Message);
-                return null;
-            }
+            
         }
 
         /// <summary>
@@ -604,46 +562,6 @@ namespace Database
         }
 
 
-
-        /// <summary>
-        /// obtinerea id_carte pe baza autorului si a titlului
-        /// </summary>
-        /// <param name="autor"></param>
-        /// <param name="titlu"></param>
-        /// <returns></returns>
-        public int getIdBookByAuthorTitle(string autor, string titlu)
-        {
-            try
-            {
-
-                string query = @"
-                                SELECT Carte.id_carte 
-                                FROM Carte
-                                JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
-                                WHERE Isbn.titlu = @titlu AND Isbn.autor = @autor LIMIT 1";
-                using (var cmd = new SQLiteCommand(query, _connection))
-                {
-                    cmd.Parameters.AddWithValue("@titlu", titlu);
-                    cmd.Parameters.AddWithValue("@autor", autor);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != null && int.TryParse(result.ToString(), out int idCarte))
-                    {
-                        return idCarte;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea cartii prin titlu si autor: " + ex.Message);
-                return -1;
-            }
-        }
 
 
         /// <summary>
@@ -925,27 +843,43 @@ namespace Database
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Abonat> CautareIntarziati() // returneaza abonatii cu imprumuturi intarziate si cei cu statusul cu restrictii
+        public List<Abonat> CautareIntarziati()
         {
-            var listaAbonati = new List<Abonat>();
+            var lista = new List<Abonat>();
 
             string query = @"
-                            SELECT DISTINCT a.id_abonat, a.nume, a.prenume, a.adresa, a.telefon, a.email, a.limita, a.status
-                            FROM Imprumut i
-                            JOIN Abonat a ON i.id_abonat = a.id_abonat
-                            WHERE i.data_restituire IS NULL AND i.deadline < @azi
-                          ";
+                            SELECT 
+                                a.id_abonat, a.nume, a.prenume, a.adresa, a.telefon, a.email, a.limita, a.status,
+                                MIN(i.deadline) AS cel_mai_vechi_deadline
+                            FROM Abonat a
+                            LEFT JOIN Imprumut i ON i.id_abonat = a.id_abonat AND i.data_restituire IS NULL
+                            GROUP BY a.id_abonat
+                            HAVING a.status = 'cu restrictii' 
+                                OR (MIN(i.deadline) IS NOT NULL AND MIN(i.deadline) < @azi)
+                            ";
 
             try
             {
                 using (var cmd = new SQLiteCommand(query, _connection))
                 {
-                    cmd.Parameters.AddWithValue("@azi", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@azi", DateTime.Today);
 
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            int zileIntarziere = 0;
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("cel_mai_vechi_deadline")))
+                            {
+                                DateTime deadline = Convert.ToDateTime(reader["cel_mai_vechi_deadline"]);
+
+                                if (deadline < DateTime.Today)
+                                {
+                                    zileIntarziere = (DateTime.Today - deadline).Days;
+                                }
+                            }
+
                             var abonat = new Abonat(
                                 Convert.ToInt32(reader["id_abonat"]),
                                 reader["nume"].ToString(),
@@ -954,19 +888,20 @@ namespace Database
                                 reader["telefon"].ToString(),
                                 reader["email"].ToString(),
                                 Convert.ToInt32(reader["limita"]),
-                                reader["status"].ToString()
+                                reader["status"].ToString(),
+                                zileIntarziere
                             );
 
-                            listaAbonati.Add(abonat);
+                            lista.Add(abonat);
                         }
                     }
                 }
 
-                return listaAbonati;
+                return lista;
             }
             catch (SQLiteException ex)
             {
-                Console.WriteLine("Eroare la cautarea abonatilor intarziati: " + ex.Message);
+                Console.WriteLine("Eroare la cautarea abonatilor intarziati sau cu restrictii: " + ex.Message);
                 return null;
             }
         }
@@ -1186,8 +1121,14 @@ namespace Database
         /// <returns></returns>
         public bool DeleteUser(string nume)
         {
-            string query = "DELETE FROM Utilizator WHERE nume_user = @nume";
-
+            string query = @"
+                            DELETE FROM Utilizator 
+                            WHERE nume_user = @nume
+                              AND EXISTS (
+                                  SELECT 1 FROM Rol 
+                                  WHERE Rol.id_rol = Utilizator.id_rol 
+                                    AND Rol.nume_rol <> 'administrator'
+                              );";
             try
             {
                 using (var cmd = new SQLiteCommand(query, _connection))
@@ -1198,7 +1139,7 @@ namespace Database
 
                     if (affected == 0)
                     {
-                        Console.WriteLine("Utilizatorul nu a fost gasit sau a fost deja sters.");
+                        Console.WriteLine("Utilizatorul nu a fost gasit sau a fost deja sters sau este administrator.");
                         return false;
                     }
                     else
@@ -1215,12 +1156,21 @@ namespace Database
             }
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Close()
         {
             if (_connection.State == System.Data.ConnectionState.Open)
                 _connection.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Open()
         {
             if (_connection.State != System.Data.ConnectionState.Open)

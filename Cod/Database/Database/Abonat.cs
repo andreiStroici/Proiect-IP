@@ -33,6 +33,7 @@ namespace Database
         private string _email;
         private string _status;  // blocat (nu poate imprumuta nimic) / cu restrictii (nu imprumuta acasa) / fara restrictii (cat ii permite limita)
         private int _limitaCarti;
+        private int _zileIntarziate;
 
         public int IdAbonat { get; set; }
         public string Nume { get; set; }
@@ -46,7 +47,9 @@ namespace Database
 
         public int LimitaCarti { get; set; }
 
-        public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii")
+        public int ZileIntarziate { get; set; }
+
+        public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii", int zileIntarziate = 0)
         {
             IdAbonat = idAbonat;
             Nume = nume;
@@ -58,7 +61,7 @@ namespace Database
             LimitaCarti = limitaCarti;
         }
 
-        public Abonat(string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii")
+        public Abonat(string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii", int zileIntarziate = 0)
         {
             Nume = nume;
             Prenume = prenume;
@@ -83,7 +86,7 @@ namespace Database
 
         public override string ToString()
         {
-            return $"ID: {IdAbonat} Nume: {Nume} Prenume: {Prenume}, Adresa: {Adresa}, Telefon: {Telefon}, Email: {Email}, LimitaCarti: {LimitaCarti} , Status : {Status}";
+            return $"ID: {IdAbonat} Nume: {Nume} Prenume: {Prenume}, Adresa: {Adresa}, Telefon: {Telefon}, Email: {Email}, LimitaCarti: {LimitaCarti} , Status: {Status}, Zile Intarziate: {ZileIntarziate}";
         }
     }
 }
