@@ -317,7 +317,7 @@ namespace UserInterface
             string autor = textBoxAddCarteAutor.Text;
             string editura = textBoxAddCarteEditura.Text;
             string gen = textBoxAddCarteGen.Text;
-            string pattern = "^97[89]\\d{ 10}$";
+            string pattern = "^97[89]\\d{10}$";
             if (string.IsNullOrEmpty(ISBN) || string.IsNullOrEmpty(titlu) || string.IsNullOrEmpty(autor) || string.IsNullOrEmpty(editura) || string.IsNullOrEmpty(gen))
             {
                 MessageBox.Show("Introduceti toate datele cărții.");
@@ -333,14 +333,14 @@ namespace UserInterface
             // TODO: Trimiteți datele cărții către server pentru a fi adăugate în baza de date, cu verificare dacă există deja o carte cu acel ISBN
             _connectionToClientBackend.SendRequest("addBook", $"{ISBN}|{titlu}|{autor}|{editura}|{gen}\n");
             
-            string response = "";
-            if (response == "Successful")
+            string response = _connectionToClientBackend.ReceiveResponse();
+            if (response == "Book added successful.")
             {
                 MessageBox.Show("Carte adăugată cu succes!");
             }
             else
             {
-                MessageBox.Show("Eroare la adăugarea cărții: " + response);
+                MessageBox.Show("Nu s-a reușit adăgarea cărții!");
                 return;
             }
             textBoxAddCarteISBN.Clear();
@@ -361,7 +361,7 @@ namespace UserInterface
             comboBoxStergereCarti.Items.Clear();
             string ISBN = textBoxDeleteIDCarte.Text;
 
-            string pattern = "^97[89]\\d{ 10}$";
+            string pattern = "^97[89]\\d{10}$";
             if (string.IsNullOrEmpty(ISBN))
             {
                 MessageBox.Show("Introduceti un ISBN valid.");
@@ -374,26 +374,30 @@ namespace UserInterface
                 return;
             }
 
-            // TODO: Trimiteți cererea de căutare a cărților cu ISBN-ul introdus către server și obțineți lista de cărți pentru a le adăuga în comboBoxStergereCarti
             _connectionToClientBackend.SendRequest("searchBook", $"{ISBN}\n");
-            // listează toate cărțile cu ISBN-ul introdus
 
-            string response = "";
-            if (response == "Successful")
-            {
-                // Adăugați cărțile găsite în comboBoxStergereCarti
+            string []response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
-                if(comboBoxStergereCarti.Items.Count == 0)
-                {
-                    MessageBox.Show("Nu s-au găsit cărți cu acest ISBN.");
-                    return;
-                }
-            }
-            else
+            if (response[0] == "No books found.")
             {
-                MessageBox.Show("Eroare la căutarea cărților: " + response);
+                MessageBox.Show("Nu s-au găsit cărți cu acest ISBN.");
                 return;
             }
+
+            foreach (var r in response)
+            {
+                string[] book = r.Split('~');
+                if (book.Length < 4)
+                {
+                    continue; // dacă nu avem toate informațiile despre carte, trecem la următoarea
+                }
+                string idCarte = book[0];
+                string titluCarte = book[1];
+                string autorCarte = book[2];
+                string edituraCarte = book[3];
+                comboBoxStergereCarti.Items.Add($"{titluCarte}, {autorCarte}, {edituraCarte}, {idCarte}"); // adăugăm cartea în comboBox
+            }
+
             buttonDeleteCarte.Enabled = true;
             comboBoxStergereCarti.Enabled = true;
         }
@@ -413,21 +417,22 @@ namespace UserInterface
                 return;
             }
 
-            string carte = comboBoxStergereCarti.SelectedItem.ToString();
-            string carteId = carte.Split(' ')[0]; // presupunem că id-ul este primul element din string
+            string []carte = comboBoxStergereCarti.SelectedItem.ToString().Split(',');
+            int carteId = int.Parse(carte[3].Trim());
 
-            // TODO: Trimiteți cererea de ștergere a cărții cu id-ul selectat către server
             _connectionToClientBackend.SendRequest("deleteBook", $"{carteId}\n");
-            string response = "";
-            if(response == "Successful")
+            string response = _connectionToClientBackend.ReceiveResponse();
+            if (response == "Book deleted successful.")
             {
                 MessageBox.Show("Carte ștearsă cu succes!");
             }
             else
             {
-                MessageBox.Show("Eroare la ștergerea cărții: " + response);
+                MessageBox.Show("Nu s-a reușit ștergerea cărții selectate!");
                 return;
             }
+            comboBoxStergereCarti.SelectedItem = null;
+            comboBoxStergereCarti.Items.Clear();
         }
 
         private void buttonAngajatDelete_Click(object sender, EventArgs e)
