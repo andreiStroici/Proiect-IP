@@ -45,7 +45,7 @@ namespace UserInterface
             {
                 if (delay)
                 {
-                    System.Threading.Thread.Sleep(13000); // wait for the client backend to start
+                    System.Threading.Thread.Sleep(26000); // wait for the client backend to start
                 }
                 _client = new TcpClient("127.0.0.1", 8081); // IP-ul și portul serverului
                 _stream = _client.GetStream();

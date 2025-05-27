@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using Microsoft.SqlServer.Server;
 using Newtonsoft.Json;
 
 namespace ClientBackend
@@ -30,7 +31,7 @@ namespace ClientBackend
                     Console.WriteLine($"Trying to connect to {ip} on port {port}...");
                     _server = new TcpClient();
                     var task = _server.ConnectAsync(ip, port);
-                    if (task.Wait(50))
+                    if (task.Wait(100))
                     {
                         Console.WriteLine($"Server found at IP: {ip}");
                         break;
@@ -253,6 +254,73 @@ namespace ClientBackend
                                 writer.WriteLine("Invalid getStatusClient format. Use: getStatusClient|subscriberId");
                             }
                             break;
+                        case "registerEmployee":
+                            Console.WriteLine("Register employee request received.");
+                            if (parts.Length == 4)
+                            {
+                                username = parts[1];
+                                string password = parts[2];
+                                string role = parts[3];
+                                Console.WriteLine("Register employee attempt for Username: " + username + ", Password: " + password + ", Role: " + role);
+                                bool success = register(username, password, role);
+                                if (success)
+                                {
+                                    Console.WriteLine("Employee Register successful.");
+                                    writer.WriteLine("Employee Register successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Employee Register failed.");
+                                    writer.WriteLine("Employee Register failed.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid registerEmployee format. Use: registerEmployee|username|password|role");
+                                writer.WriteLine("Invalid registerEmployee format. Use: registerEmployee|username|password|role");
+                            }
+                            break;
+                        case "deleteEmployee":
+                            Console.WriteLine("Delete employee request received.");
+                            if (parts.Length == 2)
+                            {
+                                username = parts[1];
+                                Console.WriteLine("Delete employee attempt for Username: " + username);
+
+                                bool success = deleteEmployee(username);
+
+                                if(success)
+                                {
+                                    Console.WriteLine("Librarian deleted successful.");
+                                    writer.WriteLine("Librarian deleted successful.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Librarian deletion failed.");
+                                    writer.WriteLine("Librarian deletion failed.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid deleteEmployee format. Use: deleteEmployee|username");
+                                writer.WriteLine("Invalid deleteEmployee format. Use: deleteEmployee|username");
+                            }
+                            break;
+
+                        case "addBook":
+                            Console.WriteLine("Add book request received");
+                            if (parts.Length == 6)
+                            {
+                                string ISBN = parts[1];
+                                string title = parts[2];
+                                string author = parts[3];
+                                string publisher = parts[4];
+                                string genre = parts[5];
+                                Console.WriteLine($"Add book attempt for ISBN: {ISBN}, title: {title}, author: {author}, publisher: {publisher}, genre: {genre}");
+                                bool success = addBook(ISBN, title, author, publisher, genre);
+                            }
+
+                            break;
                     }
                 }
             }
@@ -304,6 +372,31 @@ namespace ClientBackend
             sendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Login successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool register(string username, string password, string role)
+        {
+            Console.WriteLine($"Registering user: {username} with password: {password} and role: {role}");
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "username", username }, { "password", password }, { "role", role } }
+            };
+            var obj = new
+            {
+                operation = "registerEmployee",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            if (response.Trim() == "Employee registered successful.")
             {
                 return true;
             }
@@ -471,6 +564,51 @@ namespace ClientBackend
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             return response;
+        }
+
+        private bool deleteEmployee(string username)
+        {
+            Console.WriteLine("Deleting employee with Username: " + username);
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "username", username } }
+            };
+
+            var obj = new
+            {
+                operation = "deleteLibrarian",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            Console.WriteLine("Response from server: " + response);
+            if (response.Trim() == "Librarian deleted successful.")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool addBook(string isbn, string title, string author, string publisher, string genre)
+        {
+            Console.WriteLine("Adding book with ISBN: " + isbn + ", Title: " + title + ", Author: " + author + ", Publisher: " + publisher + ", Genre: " + genre);
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "isbn", isbn }, { "title", title }, { "author", author }, { "publisher", publisher }, { "genre", genre } }
+            };
+            var obj = new
+            {
+                operation = "addBook",
+                data = data
+            };
+            string json = JsonConvert.SerializeObject(obj);
+            sendMessage(json);
+            string response = WaitForMessage();
+            return true;
         }
     }
 }

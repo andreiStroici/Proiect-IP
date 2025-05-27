@@ -282,26 +282,27 @@ namespace UserInterface
                 return;
             }
 
-            string rol = radioButtonAngajatAdministrator.Checked ? "Administrator" : "Bibliotecar";
+            string rol = radioButtonAngajatAdministrator.Checked ? "administrator" : "bibliotecar";
 
-            // TODO: Trimiteți datele angajatului către server pentru a fi înregistrate cu verificare dacă există deja un angajat cu acel nume de utilizator
+            
             _connectionToClientBackend.SendRequest("registerEmployee", $"{username}|{password}|{rol}\n");
 
-
-            string response = "";
-            if (response == "Successful")
+            string response = _connectionToClientBackend.ReceiveResponse();
+            if (response == "Employee Register successful.")
             {
                 MessageBox.Show("Angajat înregistrat cu succes!");
+                textBoxAngajatUsername.Clear();
+                textBoxAngajatParola.Clear();
+                radioButtonAngajatAdministrator.Checked = false;
+                radioButtonAngajatBibliotecar.Checked = false;
             }
             else
             {
-                MessageBox.Show("Eroare la înregistrarea angajatului: " + response);
+                MessageBox.Show(response);
+                return;
             }
-            textBoxAngajatUsername.Clear();
-            textBoxAngajatParola.Clear();
-            radioButtonAngajatAdministrator.Checked = false;
-            radioButtonAngajatBibliotecar.Checked = false;
-        }
+
+     }
 
         /// <summary>
         /// Acest eveniment se declanșează atunci când administratorul adaugă o carte
@@ -438,18 +439,15 @@ namespace UserInterface
                 return;
             }
 
-            // TODO: Trimiteți cererea de ștergere a angajatului cu numele de utilizator introdus către server
-            // VERIFICAȚI SĂ FIE BIBLIOTECAR
-
             _connectionToClientBackend.SendRequest("deleteEmployee", $"{username}\n");
-            string response = "";
-            if (response == "Successful")
+            string response = _connectionToClientBackend.ReceiveResponse();
+            if (response == "Librarian deleted successful.")
             {
                 MessageBox.Show("Angajat șters cu succes!");
             }
             else
             {
-                MessageBox.Show("Eroare la ștergerea angajatului: " + response);
+                MessageBox.Show("Nu s-a reușit ștergerea angajatului!");
                 return;
             }
 
