@@ -79,18 +79,17 @@ namespace UserInterface
                 return;
             }
 
-            //Console.WriteLine("rol: " + rol);
             if (rol != string.Empty)
             {
                 _connectionToClientBackend.SendRequest("login", $"{rol}|{username}|{password}\n");
                 string response = _connectionToClientBackend.ReceiveResponse();
                 Console.WriteLine("response:" + response);
-                //string response = "Login successful";
+
                 if (response == "Login successful")
                 {
                     if (rol == "bibliotecar")
                     {
-                        //MessageBox.Show("Autentificare reușită ca Bibliotecar!");
+
                         // Deschideți fereastra corespunzătoare pentru bibliotecar
                         Form formBibliotecar = new BibliotecarView(this);
                         formBibliotecar.Show();
@@ -100,14 +99,11 @@ namespace UserInterface
                             MessageBox.Show("Autentificare reușită ca Bibliotecar!");
                         });
 
-                        this.Hide();
-
                         formBibliotecar.FormClosed += (s, args) => this.Close();
-
+                        this.Hide();
                     }
                     else if (rol == "administrator")
                     {
-                        //MessageBox.Show("Autentificare reușită ca Administrator!");
                         // Deschideți fereastra corespunzătoare pentru administrator
                         Form formAdmin = new AdminView(this);
                         formAdmin.Show();
@@ -118,13 +114,12 @@ namespace UserInterface
                         });
 
                         formAdmin.FormClosed += (s, args) => this.Close();
-
                         this.Hide();
                     }
                 }
                 else
                 {
-                    MessageBox.Show($"Autentificare eșuată.{response}");
+                    MessageBox.Show($"Autentificare eșuată: {response}");
                 }
             }
             else
