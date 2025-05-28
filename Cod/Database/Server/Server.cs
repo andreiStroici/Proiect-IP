@@ -1,4 +1,20 @@
-﻿using System;
+﻿/*************************************************************************
+ *                                                                       *
+ *  File:        Server.cs                                               *
+ *  Copyright:   (c) 2025, S. Andrei                                     *
+ *                                                                       *
+ *  Description: Aplicația care face legătura dintre interfață și Server.*
+ *                                                                       *
+ *                                                                       *
+ *                                                                       *
+ *  This code and information is provided "as is" without warranty of    *
+ *  any kind, either expressed or implied, including but not limited     *
+ *  to the implied warranties of merchantability or fitness for a        *
+ *  particular purpose. You are free to use this source code in your     *
+ *  applications as long as the original copyright notice is included.   *
+ *                                                                       *      
+ ************************************************************************ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -13,6 +29,9 @@ using System.Diagnostics.Contracts;
 
 namespace Server
 {
+    /// <summary>
+    /// Represents a message structure for communication between the server and clients.
+    /// </summary>
     public class Message
     {
         public string operation { get; set; }
@@ -20,6 +39,9 @@ namespace Server
 
     }
 
+    /// <summary>
+    /// Represents a server that listens for client connections and handles requests.
+    /// </summary>
     public class Server
     {
         private TcpListener _listener;
@@ -30,6 +52,11 @@ namespace Server
         private Database.Database _database;
         volatile private Dictionary<string, string> connectedClients = new Dictionary<string, string>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Server"/> class with the specified IP address and port.
+        /// </summary>
+        /// <param name="ipAddress"></param>
+        /// <param name="port"></param>
         public Server(IPAddress ipAddress, int port)
         {
             _ipAddress = ipAddress;
@@ -38,6 +65,9 @@ namespace Server
             _database = Database.Database.GetDatabase();
         }
 
+        /// <summary>
+        /// Starts the server and begins listening for client connections.
+        /// </summary>
         public void Start()
         {
             _listener.Start();
@@ -53,6 +83,10 @@ namespace Server
             }
         }
 
+        /// <summary>
+        /// Handles the client connection, reading messages and processing requests.
+        /// </summary>
+        /// <param name="client"></param>
         private void HandleClient(TcpClient client)
         {
             NetworkStream stream = client.GetStream();
