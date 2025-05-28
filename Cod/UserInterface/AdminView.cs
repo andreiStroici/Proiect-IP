@@ -156,7 +156,11 @@ namespace UserInterface
 
             this.textBoxGestiuneDate.Enabled = true;
 
-            this.textBoxGestiuneDate.Text = $"ID: {this._abonatId}\nNume: {nume}\n Prenume: {prenume}\n Status: {status}\n Limită număr de cărți împrumutate simultan: {limitaCarti}";
+            this.textBoxGestiuneDate.Text = $"ID: {this._abonatId}\t" +
+                                $"Nume: {nume}\t" +
+                                $"Prenume: {prenume}\t" +
+                                $"Status: {status}\t" +
+                                $"Limită număr de cărți împrumutate simultan: {limitaCarti}";
             
             this.buttonGestiuneValidare.Enabled = true;
             this.radioButtonGestiuneA.Enabled = true;

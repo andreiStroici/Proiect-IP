@@ -628,6 +628,7 @@
             this.textBoxGestiuneDate.Multiline = true;
             this.textBoxGestiuneDate.Name = "textBoxGestiuneDate";
             this.textBoxGestiuneDate.ReadOnly = true;
+            this.textBoxGestiuneDate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxGestiuneDate.Size = new System.Drawing.Size(342, 143);
             this.textBoxGestiuneDate.TabIndex = 57;
             // 
