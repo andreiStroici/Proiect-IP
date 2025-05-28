@@ -480,7 +480,7 @@ namespace Database
                 string query = @"
                         SELECT COUNT(*)
                         FROM Carte c
-                        WHERE c.idCarte = @idCarte AND c.status = 'disponibil'";
+                        WHERE c.id_carte = @idCarte AND c.status = 'disponibil'";
 
                 try
                 {
