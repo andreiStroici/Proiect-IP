@@ -28,6 +28,7 @@ namespace Database
         private static Database _database;
         private SQLiteConnection _connection;
         private string _filename;
+        private static readonly object _staticLock = new object();
 
         /// <summary>
         /// 
@@ -73,39 +74,41 @@ namespace Database
         /// <returns></returns>
         public bool InsertIsbn(Carte carte)
         {
-
-            string query1 = "SELECT COUNT(*) FROM Isbn WHERE id_isbn = @id_isbn;";
-            using (var cmd = new SQLiteCommand(query1, _connection))
+            lock (_staticLock)
             {
-                cmd.Parameters.AddWithValue("@id_isbn", carte.Isbn);
-                long count = (long)cmd.ExecuteScalar();
-                if (count > 0)
-                {
-                    Console.WriteLine("Isbn-ul exista deja");
-                    return true;
-                }
-            }
-            try
-            {
-                string query2 = "INSERT INTO Isbn (id_isbn, titlu, autor, editura, gen) VALUES (@id_isbn, @titlu, @autor, @editura, @gen);";
-                using (var cmd = new SQLiteCommand(query2, _connection))
+                string query1 = "SELECT COUNT(*) FROM Isbn WHERE id_isbn = @id_isbn;";
+                using (var cmd = new SQLiteCommand(query1, _connection))
                 {
                     cmd.Parameters.AddWithValue("@id_isbn", carte.Isbn);
-                    cmd.Parameters.AddWithValue("@titlu", carte.Titlu);
-                    cmd.Parameters.AddWithValue("@autor", carte.Autor);
-                    cmd.Parameters.AddWithValue("@editura", carte.Editura);
-                    cmd.Parameters.AddWithValue("@gen", carte.Gen);
-
-                    cmd.ExecuteNonQuery();
+                    long count = (long)cmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        Console.WriteLine("Isbn-ul exista deja");
+                        return true;
+                    }
                 }
+                try
+                {
+                    string query2 = "INSERT INTO Isbn (id_isbn, titlu, autor, editura, gen) VALUES (@id_isbn, @titlu, @autor, @editura, @gen);";
+                    using (var cmd = new SQLiteCommand(query2, _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id_isbn", carte.Isbn);
+                        cmd.Parameters.AddWithValue("@titlu", carte.Titlu);
+                        cmd.Parameters.AddWithValue("@autor", carte.Autor);
+                        cmd.Parameters.AddWithValue("@editura", carte.Editura);
+                        cmd.Parameters.AddWithValue("@gen", carte.Gen);
 
-                Console.WriteLine("Noul isbn a fost adaugat cu succes.");
-                return true;
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la inserarea in tabela Isbn: " + ex.Message);
-                return false;
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    Console.WriteLine("Noul isbn a fost adaugat cu succes.");
+                    return true;
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la inserarea in tabela Isbn: " + ex.Message);
+                    return false;
+                }
             }
 
         }
@@ -119,84 +122,46 @@ namespace Database
         /// <returns></returns>
         public int InsertBook(Carte carte)
         {
-            if (!InsertIsbn(carte))
-                return -1;
-
-            try
+            lock (_staticLock)
             {
+                if (!InsertIsbn(carte))
+                    return -1;
 
-                using (var transaction = _connection.BeginTransaction(System.Data.IsolationLevel.Serializable))
+                try
                 {
-                   
-                    string insertQuery = "INSERT INTO Carte (id_isbn, status) VALUES (@id_isbn, @status)";
-                    using (var cmd = new SQLiteCommand(insertQuery, _connection, transaction))
-                    {
-                        cmd.Parameters.AddWithValue("@status", carte.StatusDisponibilitate);
-                        cmd.Parameters.AddWithValue("@id_isbn", carte.Isbn);
-                        cmd.ExecuteNonQuery();
-                    }
 
-                    
-                    string idQuery = "SELECT last_insert_rowid()";
-                    using (var cmd = new SQLiteCommand(idQuery, _connection, transaction))
+                    using (var transaction = _connection.BeginTransaction(System.Data.IsolationLevel.Serializable))
                     {
-                        long id = (long)cmd.ExecuteScalar();
-                        transaction.Commit();
-                        Console.WriteLine("Carte adaugata cu succes."); 
-                        return (int)id;
+
+                        string insertQuery = "INSERT INTO Carte (id_isbn, status) VALUES (@id_isbn, @status)";
+                        using (var cmd = new SQLiteCommand(insertQuery, _connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@status", carte.StatusDisponibilitate);
+                            cmd.Parameters.AddWithValue("@id_isbn", carte.Isbn);
+                            cmd.ExecuteNonQuery();
+                        }
+
+
+                        string idQuery = "SELECT last_insert_rowid()";
+                        using (var cmd = new SQLiteCommand(idQuery, _connection, transaction))
+                        {
+                            long id = (long)cmd.ExecuteScalar();
+                            transaction.Commit();
+                            Console.WriteLine("Carte adaugata cu succes.");
+                            return (int)id;
+                        }
                     }
                 }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la adaugarea unei carti in baza de date: " + ex.Message);
+                    return -1;
+                }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la adaugarea unei carti in baza de date: " + ex.Message);
-                return -1;
-            }
+            
         }
 
 
-
-        /// <summary>
-        /// obtinerea cartilor din tabela Carte
-        /// </summary>
-        /// <returns></returns>
-        public List<Carte> GetCarteList()
-        {
-            var listaCarti = new List<Carte>();
-
-            string query = @"
-                            SELECT Carte.id_carte, Isbn.id_isbn, titlu, autor, gen, editura, status
-                            FROM Carte
-                            JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn";
-
-            try
-            {
-                using (var cmd = new SQLiteCommand(query, _connection))
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var carte = new Carte(
-                            Convert.ToInt32(reader["id_carte"]),
-                            reader["id_isbn"].ToString(),
-                            reader["titlu"].ToString(),
-                            reader["autor"].ToString(),
-                            reader["gen"].ToString(),
-                            reader["editura"].ToString(),
-                            reader["status"].ToString()
-                        );
-
-                        listaCarti.Add(carte);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la extragerea cartilor: " + ex.Message);
-            }
-
-            return listaCarti;
-        }
 
         /// <summary>
         /// obtinerea listei de carti dupa isbn
@@ -205,9 +170,11 @@ namespace Database
         /// <returns></returns>
         public List<Carte> GetCartiByIsbn(string isbn)
         {
-            List<Carte> carti = new List<Carte>();
+            lock (_staticLock)
+            {
+                List<Carte> carti = new List<Carte>();
 
-            string query = @"
+                string query = @"
                             SELECT 
                                 Carte.id_carte,
                                 Isbn.id_isbn,
@@ -220,37 +187,39 @@ namespace Database
                             JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
                             WHERE Isbn.id_isbn = @isbn";
 
-            try
-            {
-                using (var cmd = new SQLiteCommand(query, _connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@isbn", isbn);
-
-                    using (var reader = cmd.ExecuteReader())
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        while (reader.Read())
-                        {
-                            int idCarte = reader.GetInt32(0);
-                            string idIsbn = reader.GetString(1);
-                            string titlu = reader.GetString(2);
-                            string autor = reader.GetString(3);
-                            string gen = reader.GetString(4);
-                            string editura = reader.GetString(5);
-                            string status = reader.GetString(6);
+                        cmd.Parameters.AddWithValue("@isbn", isbn);
 
-                            var carte = new Carte(idCarte, idIsbn, titlu, autor, gen, editura, status);
-                            carti.Add(carte);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int idCarte = reader.GetInt32(0);
+                                string idIsbn = reader.GetString(1);
+                                string titlu = reader.GetString(2);
+                                string autor = reader.GetString(3);
+                                string gen = reader.GetString(4);
+                                string editura = reader.GetString(5);
+                                string status = reader.GetString(6);
+
+                                var carte = new Carte(idCarte, idIsbn, titlu, autor, gen, editura, status);
+                                carti.Add(carte);
+                            }
                         }
                     }
                 }
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la obtinerea cartilor prin ISBN: " + ex.Message);
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la obtinerea cartilor prin ISBN: " + ex.Message);
+                }
+
+
+                return carti;
             }
             
-
-            return carti;
         }
 
 
@@ -262,74 +231,38 @@ namespace Database
         /// <returns></returns>
         public bool DeleteBook(int idCarte)
         {
-            try
+            lock(_staticLock)
             {
-                string query = "DELETE FROM Carte WHERE id_carte = @idCarte;";
-                using (var cmd = new SQLiteCommand(query, _connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@idCarte", idCarte);
-
-                    int rowsDeleted = cmd.ExecuteNonQuery();
-
-                    if (rowsDeleted > 0)
+                    string query = "DELETE FROM Carte WHERE id_carte = @idCarte;";
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        Console.WriteLine("Cartea a fost stearsa.");
-                        return true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nu a fost gasita nicio carte cu acest id.");
-                        return false;
+                        cmd.Parameters.AddWithValue("@idCarte", idCarte);
+
+                        int rowsDeleted = cmd.ExecuteNonQuery();
+
+                        if (rowsDeleted > 0)
+                        {
+                            Console.WriteLine("Cartea a fost stearsa.");
+                            return true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nu a fost gasita nicio carte cu acest id.");
+                            return false;
+                        }
                     }
                 }
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la stergerea cartii: " + ex.Message);
-                return false;
-            }
-        }
-
-
-
-        /// <summary>
-        /// actualizeaza statusul unei carti disponibil/indisponibil
-        /// </summary>
-        /// <param name="isbn"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        public bool UpdateStatusBook(Carte carte, string status)
-        {
-            try
-            {
-
-                string query = "UPDATE Carte SET status = @status WHERE id_carte = @idCarte";
-
-                using (var cmd = new SQLiteCommand(query, _connection))
+                catch (SQLiteException ex)
                 {
-                    cmd.Parameters.AddWithValue("@status", status);
-                    cmd.Parameters.AddWithValue("@idCarte", carte.IdCarte);
-
-                    int rowsUpdated = cmd.ExecuteNonQuery();
-
-                    if (rowsUpdated > 0)
-                    {
-                        Console.WriteLine("Statusul cartii a fost actualizat.");
-                        return true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nu a fost gasita nicio carte cu id-ul dat.");
-                        return false;
-                    }
+                    Console.WriteLine("Eroare la stergerea cartii: " + ex.Message);
+                    return false;
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la actualizarea statusului cartii: " + ex.Message);
-                return false;
-            }
+            
         }
+
 
 
 
@@ -340,112 +273,36 @@ namespace Database
         /// <returns></returns>
         public bool InsertClient(Abonat abonat)
         {
-
-            try
+            lock(_staticLock)
             {
-
-                string query = "INSERT INTO Abonat (nume, prenume, adresa, telefon, email, limita, status) VALUES (@nume, @prenume, @adresa, @telefon, @email, @limita, @status)";
-                using (var cmd = new SQLiteCommand(query, _connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@nume", abonat.Nume);
-                    cmd.Parameters.AddWithValue("@prenume", abonat.Prenume);
-                    cmd.Parameters.AddWithValue("@adresa", abonat.Adresa);
-                    cmd.Parameters.AddWithValue("@telefon", abonat.Telefon);
-                    cmd.Parameters.AddWithValue("@email", abonat.Email);
-                    cmd.Parameters.AddWithValue("@limita", abonat.LimitaCarti);
-                    cmd.Parameters.AddWithValue("@status", abonat.Status);
-           
 
-                    cmd.ExecuteNonQuery();
-                }
-                return true;
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la adaugarea unui abonat in baza de date: " + ex.Message);
-                return false;
-            }
-        }
-
-
-        /// <summary>
-        /// obtinerea tuturor abonatilor din tabela Abonat
-        /// </summary>
-        /// <returns></returns>
-        public List<Abonat> GetAbonatList()
-        {
-            var listaAbonati = new List<Abonat>();
-
-            string query = @"
-                            SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
-                            FROM Abonat";
-
-            try
-            {
-                using (var cmd = new SQLiteCommand(query, _connection))
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
+                    string query = "INSERT INTO Abonat (nume, prenume, adresa, telefon, email, limita, status) VALUES (@nume, @prenume, @adresa, @telefon, @email, @limita, @status)";
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        var abonat = new Abonat(
-                            Convert.ToInt32(reader["id_abonat"]),
-                            reader["nume"].ToString(),
-                            reader["prenume"].ToString(),
-                            reader["adresa"].ToString(),
-                            reader["telefon"].ToString(),
-                            reader["email"].ToString(),
-                            Convert.ToInt32(reader["limita"]),
-                            reader["status"].ToString()
-                        );
+                        cmd.Parameters.AddWithValue("@nume", abonat.Nume);
+                        cmd.Parameters.AddWithValue("@prenume", abonat.Prenume);
+                        cmd.Parameters.AddWithValue("@adresa", abonat.Adresa);
+                        cmd.Parameters.AddWithValue("@telefon", abonat.Telefon);
+                        cmd.Parameters.AddWithValue("@email", abonat.Email);
+                        cmd.Parameters.AddWithValue("@limita", abonat.LimitaCarti);
+                        cmd.Parameters.AddWithValue("@status", abonat.Status);
 
-                        listaAbonati.Add(abonat);
+
+                        cmd.ExecuteNonQuery();
                     }
+                    return true;
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la adaugarea unui abonat in baza de date: " + ex.Message);
+                    return false;
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la extragerea abonatilor: " + ex.Message);
-            }
-
-            return listaAbonati;
+            
         }
 
-
-
-        /// <summary>
-        /// obtinerea id_abonat pe baza numarului de telefon care este unic
-        /// </summary>
-        /// <param name="telefon"></param>
-        /// <returns></returns>
-        public int getIdClientByPhone(string telefon)
-        {
-
-            try
-            {
-
-                string query = "SELECT id_abonat FROM Abonat WHERE telefon = @telefon";
-                using (var cmd = new SQLiteCommand(query, _connection))
-                {
-                    cmd.Parameters.AddWithValue("@telefon", telefon);
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != null && int.TryParse(result.ToString(), out int idAbonat))
-                    {
-                        return idAbonat;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea abonatului prin telefon: " + ex.Message);
-                return -1;
-            }
-
-        }
 
 
         /// <summary>
@@ -455,7 +312,7 @@ namespace Database
         /// <returns></returns>
         public Abonat GetAbonatByPhone(string telefon)
         {
-            try
+            lock (_staticLock)
             {
                 string query = @"SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
                                 FROM Abonat WHERE telefon = @telefon";
@@ -482,16 +339,14 @@ namespace Database
                         }
                         else
                         {
-                            return null; 
+                            Console.WriteLine("Eroare la cautarea abonatului prin telefon");
+                            return null;
                         }
                     }
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea abonatului prin telefon: " + ex.Message);
-                return null;
-            }
+            
+            
         }
 
         /// <summary>
@@ -501,11 +356,13 @@ namespace Database
         /// <returns></returns>
         public List<Carte> GetLoanedBooks(int idAbonat)
         {
-            var books = new List<Carte>();
+            lock(_staticLock)
+            {
+                var books = new List<Carte>();
 
-          
 
-            string query = @"
+
+                string query = @"
                             SELECT Carte.id_carte, Isbn.id_isbn, Isbn.titlu, Isbn.autor, Isbn.gen, Isbn.editura, Carte.status
                             FROM Carte
                             JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
@@ -513,37 +370,39 @@ namespace Database
                             WHERE Imprumut.data_restituire IS NULL AND Imprumut.id_abonat = @id_abonat
                         ";
 
-            try
-            {
-                using (var cmd = new SQLiteCommand(query, _connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@id_abonat", idAbonat);
-
-                    using (var reader = cmd.ExecuteReader())
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@id_abonat", idAbonat);
+
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            var carte = new Carte(
-                                Convert.ToInt32(reader["id_carte"]),
-                                reader["id_isbn"].ToString(),
-                                reader["titlu"].ToString(),
-                                reader["autor"].ToString(),
-                                reader["gen"].ToString(),
-                                reader["editura"].ToString(),
-                                reader["status"].ToString()
-                            );
-                            books.Add(carte);
+                            while (reader.Read())
+                            {
+                                var carte = new Carte(
+                                    Convert.ToInt32(reader["id_carte"]),
+                                    reader["id_isbn"].ToString(),
+                                    reader["titlu"].ToString(),
+                                    reader["autor"].ToString(),
+                                    reader["gen"].ToString(),
+                                    reader["editura"].ToString(),
+                                    reader["status"].ToString()
+                                );
+                                books.Add(carte);
+                            }
                         }
                     }
-                }
 
-                return books;
+                    return books;
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la extragerea cartilor imprumutate: " + ex.Message);
+                    return null;
+                }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la extragerea cartilor imprumutate: " + ex.Message);
-                return null;
-            }
+            
         }
 
 
@@ -556,94 +415,56 @@ namespace Database
         /// <returns></returns>
         public List<Carte> CautareCartiPartial(string titluPartial = "", string autorPartial = "")
         {
-            try
+            lock (_staticLock)
             {
+                try
+                {
 
-                string query = @"SELECT Carte.id_carte, Isbn.id_isbn, Isbn.titlu, Isbn.autor, Isbn.gen, Isbn.editura, Carte.status
+                    string query = @"SELECT Carte.id_carte, Isbn.id_isbn, Isbn.titlu, Isbn.autor, Isbn.gen, Isbn.editura, Carte.status
                                 FROM Carte
                                 JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
                                 WHERE Isbn.titlu LIKE @cuvantTitlu 
                                   AND Isbn.autor LIKE @cuvantAutor
                                   AND Carte.status = 'disponibil'";
 
-                var listaCarti = new List<Carte>();
-                using (var cmd = new SQLiteCommand(query, _connection))
-                {
-                    cmd.Parameters.AddWithValue("@cuvantTitlu", "%" + titluPartial + "%");
-                    cmd.Parameters.AddWithValue("@cuvantAutor", "%" + autorPartial + "%");
-
-                    using (var reader = cmd.ExecuteReader())
+                    var listaCarti = new List<Carte>();
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@cuvantTitlu", "%" + titluPartial + "%");
+                        cmd.Parameters.AddWithValue("@cuvantAutor", "%" + autorPartial + "%");
+
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            var carte = new Carte(
-                                Convert.ToInt32(reader["id_carte"]),
-                                reader["id_isbn"].ToString(),
-                                reader["titlu"].ToString(),
-                                reader["autor"].ToString(),
-                                reader["gen"].ToString(),
-                                reader["editura"].ToString(),
-                                "disponibil"
-                            );
-                            if (IsCartedisponibil(carte.IdCarte))
+                            while (reader.Read())
                             {
+                                var carte = new Carte(
+                                    Convert.ToInt32(reader["id_carte"]),
+                                    reader["id_isbn"].ToString(),
+                                    reader["titlu"].ToString(),
+                                    reader["autor"].ToString(),
+                                    reader["gen"].ToString(),
+                                    reader["editura"].ToString(),
+                                    "disponibil"
+                                );
                                 listaCarti.Add(carte);
+                                
+
                             }
-                            
                         }
                     }
+
+                    return listaCarti;
                 }
-
-                return listaCarti;
-            }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare extragerea listei cu sugestii de carti: " + ex.Message);
-                return null;
-            }
-        }
-
-
-
-        /// <summary>
-        /// obtinerea id_carte pe baza autorului si a titlului
-        /// </summary>
-        /// <param name="autor"></param>
-        /// <param name="titlu"></param>
-        /// <returns></returns>
-        public int getIdBookByAuthorTitle(string autor, string titlu)
-        {
-            try
-            {
-
-                string query = @"
-                                SELECT Carte.id_carte 
-                                FROM Carte
-                                JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
-                                WHERE Isbn.titlu = @titlu AND Isbn.autor = @autor LIMIT 1";
-                using (var cmd = new SQLiteCommand(query, _connection))
+                catch (SQLiteException ex)
                 {
-                    cmd.Parameters.AddWithValue("@titlu", titlu);
-                    cmd.Parameters.AddWithValue("@autor", autor);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != null && int.TryParse(result.ToString(), out int idCarte))
-                    {
-                        return idCarte;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
+                    Console.WriteLine("Eroare extragerea listei cu sugestii de carti: " + ex.Message);
+                    return null;
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea cartii prin titlu si autor: " + ex.Message);
-                return -1;
-            }
+           
         }
+
+
 
 
         /// <summary>
@@ -653,28 +474,32 @@ namespace Database
         /// <returns></returns>
         private bool IsCartedisponibil(int idCarte)
         {
-            string query = @"
+            lock(_staticLock)
+            {
+                string query = @"
                             SELECT COUNT(*) 
                             FROM Carte c
                             WHERE c.status = 'disponibil'";
 
-            try
-            {
-                using (var cmd = new SQLiteCommand(query, _connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@idCarte", idCarte);
-                    var result = cmd.ExecuteScalar();
-                    if (result != null && Convert.ToInt32(result) > 0)
-                        return true;
-                    else
-                        return false;
+                    using (var cmd = new SQLiteCommand(query, _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idCarte", idCarte);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null && Convert.ToInt32(result) > 0)
+                            return true;
+                        else
+                            return false;
+                    }
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la verificarea statusului cartii: " + ex.Message);
+                    return false;
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la verificarea statusului cartii: " + ex.Message);
-                return false;
-            }
+            
 
         }
 
@@ -685,20 +510,24 @@ namespace Database
         /// <returns></returns>
         private bool isIdClientValid(int idClient)
         {
-            string query = @"
+            lock (_staticLock)
+            {
+                string query = @"
                             SELECT COUNT(*) 
                             FROM Abonat c
                             WHERE c.id_abonat = @idClient";
 
-            using (var cmd = new SQLiteCommand(query, _connection))
-            {
-                cmd.Parameters.AddWithValue("@idClient", idClient);
-                var result = cmd.ExecuteScalar();
-                if (result != null && Convert.ToInt32(result) > 0)
-                    return true;
-                else
-                    return false;
+                using (var cmd = new SQLiteCommand(query, _connection))
+                {
+                    cmd.Parameters.AddWithValue("@idClient", idClient);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && Convert.ToInt32(result) > 0)
+                        return true;
+                    else
+                        return false;
+                }
             }
+            
         }
 
         /// <summary>
@@ -708,38 +537,28 @@ namespace Database
         /// <returns></returns>
         public string GetStatusAbonat(int idAbonat)
         {
-            string query = "SELECT status FROM Abonat WHERE id_abonat = @idAbonat";
-            using (var cmd = new SQLiteCommand(query, _connection))
+            lock (_staticLock)
             {
-                cmd.Parameters.AddWithValue("@idAbonat", idAbonat);
-                var result = cmd.ExecuteScalar();
-                if (result != null)
+                string query = "SELECT status FROM Abonat WHERE id_abonat = @idAbonat";
+                using (var cmd = new SQLiteCommand(query, _connection))
                 {
-                    return result.ToString().ToLower(); // status = 'blocat', 'cu restrictii', 'fara restrictii'
+                    cmd.Parameters.AddWithValue("@idAbonat", idAbonat);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return result.ToString().ToLower(); // status = 'blocat', 'cu restrictii', 'fara restrictii'
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
                 }
-                else
-                {
-                    return null; 
-                }
-                 
             }
+           
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="idAbonat"></param>
-        /// <returns></returns>
-        public int GetLimitaAbonat(int idAbonat)
-        {
-            string query = "SELECT limita FROM Abonat WHERE id_abonat = @idAbonat";
-            using (var cmd = new SQLiteCommand(query, _connection))
-            {
-                cmd.Parameters.AddWithValue("@idAbonat", idAbonat);
-                var result = cmd.ExecuteScalar();
-                return result != null ? Convert.ToInt32(result) : 0;
-            }
-        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -768,61 +587,65 @@ namespace Database
         /// <returns></returns>
         public bool InsertLoan(int idAbonat, int idCarte, string locatie)
         {
-            if(!IsCartedisponibil(idCarte))
+            lock(_staticLock)
             {
-                Console.WriteLine("Cartea nu este disponibila pentru imprumut.");
-                return false;
-            }
-
-            if(!isIdClientValid(idAbonat))
-            {
-                Console.WriteLine("Id ul abonatului nu este valid");
-                return false;
-            }
-            
-            using (var transaction = _connection.BeginTransaction())
-            {
-                try
+                if (!IsCartedisponibil(idCarte))
                 {
-                    DateTime deadline = locatie.ToLower() == "acasa"
-                        ? DateTime.Now.AddDays(14)
-                        : DateTime.Now;
-
-                    string insertQuery = "INSERT INTO Imprumut (id_abonat, id_carte, deadline) " +
-                                         "VALUES (@idAbonat, @idCarte, @deadline)";
-                    using (var cmdInsert = new SQLiteCommand(insertQuery, _connection))
-                    {
-                        cmdInsert.Parameters.AddWithValue("@idAbonat", idAbonat);
-                        cmdInsert.Parameters.AddWithValue("@idCarte", idCarte);
-                        cmdInsert.Parameters.AddWithValue("@deadline", deadline.ToString("yyyy-MM-dd"));
-                        cmdInsert.ExecuteNonQuery();
-                    }
-
-
-                    string updateCarte = "UPDATE Carte SET status = 'indisponibil' WHERE id_carte = @idCarte";
-                    using (var cmdCarte = new SQLiteCommand(updateCarte, _connection))
-                    {
-                        cmdCarte.Parameters.AddWithValue("@idCarte", idCarte);
-                        cmdCarte.ExecuteNonQuery();
-                    }
-
-                    string updateAbonat = "UPDATE Abonat SET limita = limita - 1 WHERE id_abonat = @idAbonat";
-                    using (var cmdAbonat = new SQLiteCommand(updateAbonat, _connection))
-                    {
-                        cmdAbonat.Parameters.AddWithValue("@idAbonat", idAbonat);
-                        cmdAbonat.ExecuteNonQuery();
-                    }
-
-                    transaction.Commit();
-                    return true;
-                }
-                catch (SQLiteException ex)
-                {
-                    Console.WriteLine("Eroare la inregistrarea imprumutului: " + ex.Message);
-                    transaction.Rollback();
+                    Console.WriteLine("Cartea nu este disponibila pentru imprumut.");
                     return false;
                 }
+
+                if (!isIdClientValid(idAbonat))
+                {
+                    Console.WriteLine("Id ul abonatului nu este valid");
+                    return false;
+                }
+
+                using (var transaction = _connection.BeginTransaction())
+                {
+                    try
+                    {
+                        DateTime deadline = locatie.ToLower() == "acasa"
+                            ? DateTime.Now.AddDays(14)
+                            : DateTime.Now;
+
+                        string insertQuery = "INSERT INTO Imprumut (id_abonat, id_carte, deadline) " +
+                                             "VALUES (@idAbonat, @idCarte, @deadline)";
+                        using (var cmdInsert = new SQLiteCommand(insertQuery, _connection))
+                        {
+                            cmdInsert.Parameters.AddWithValue("@idAbonat", idAbonat);
+                            cmdInsert.Parameters.AddWithValue("@idCarte", idCarte);
+                            cmdInsert.Parameters.AddWithValue("@deadline", deadline.ToString("yyyy-MM-dd"));
+                            cmdInsert.ExecuteNonQuery();
+                        }
+
+
+                        string updateCarte = "UPDATE Carte SET status = 'indisponibil' WHERE id_carte = @idCarte";
+                        using (var cmdCarte = new SQLiteCommand(updateCarte, _connection))
+                        {
+                            cmdCarte.Parameters.AddWithValue("@idCarte", idCarte);
+                            cmdCarte.ExecuteNonQuery();
+                        }
+
+                        string updateAbonat = "UPDATE Abonat SET limita = limita - 1 WHERE id_abonat = @idAbonat";
+                        using (var cmdAbonat = new SQLiteCommand(updateAbonat, _connection))
+                        {
+                            cmdAbonat.Parameters.AddWithValue("@idAbonat", idAbonat);
+                            cmdAbonat.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        Console.WriteLine("Eroare la inregistrarea imprumutului: " + ex.Message);
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
             }
+            
         }
 
 
@@ -835,140 +658,164 @@ namespace Database
         /// <returns></returns>
         public bool ReturnBook(int idAbonat, int idCarte)
         {
-            
-            using (var transaction = _connection.BeginTransaction())
+            lock(_staticLock)
             {
-                try
+                using (var transaction = _connection.BeginTransaction())
                 {
-                    
-                    string selectImprumut = @"
+                    try
+                    {
+
+                        string selectImprumut = @"
                                 SELECT id_imprumut, deadline 
                                 FROM Imprumut 
                                 WHERE id_abonat = @idAbonat AND id_carte = @idCarte ";
 
-                    int idImprumut = -1;
-                    DateTime deadline;
-                    using (var cmdSelect = new SQLiteCommand(selectImprumut, _connection))
-                    {
-                        cmdSelect.Parameters.AddWithValue("@idAbonat", idAbonat);
-                        cmdSelect.Parameters.AddWithValue("@idCarte", idCarte);
-
-                        using (var reader = cmdSelect.ExecuteReader())
+                        int idImprumut = -1;
+                        DateTime deadline;
+                        using (var cmdSelect = new SQLiteCommand(selectImprumut, _connection))
                         {
-                            if (reader.Read())
+                            cmdSelect.Parameters.AddWithValue("@idAbonat", idAbonat);
+                            cmdSelect.Parameters.AddWithValue("@idCarte", idCarte);
+
+                            using (var reader = cmdSelect.ExecuteReader())
                             {
-                                idImprumut = Convert.ToInt32(reader["id_imprumut"]);
-                                deadline = DateTime.Parse(reader["deadline"].ToString()).Date;
-                                Console.WriteLine("deadline: " + deadline);
-                                Console.WriteLine("DateTime.Now: " + DateTime.Now.Date);
-                                if (DateTime.Now.Date > deadline)
+                                if (reader.Read())
                                 {
-                                    Console.WriteLine("Cartea a fost returnata cu intarziere.");
+                                    idImprumut = Convert.ToInt32(reader["id_imprumut"]);
+                                    deadline = DateTime.Parse(reader["deadline"].ToString()).Date;
+                                    Console.WriteLine("deadline: " + deadline);
+                                    Console.WriteLine("DateTime.Now: " + DateTime.Now.Date);
+                                    if (DateTime.Now.Date > deadline)
+                                    {
+                                        Console.WriteLine("Cartea a fost returnata cu intarziere.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Cartea a fost returnata la timp.");
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Cartea a fost returnata la timp.");
+                                    Console.WriteLine("Nu exista un imprumut activ pentru aceasta carte.");
+                                    transaction.Rollback();
+                                    return false;
                                 }
                             }
-                            else
-                            {
-                                Console.WriteLine("Nu exista un imprumut activ pentru aceasta carte.");
-                                transaction.Rollback();
-                                return false;
-                            }
                         }
-                    }
 
-                    string updateImprumut = @"
+                        string updateImprumut = @"
                                             UPDATE Imprumut 
                                             SET data_restituire = DATE('now') 
                                             WHERE id_imprumut = @idImprumut";
 
-                    using (var cmdUpdate = new SQLiteCommand(updateImprumut, _connection))
-                    {
-                        cmdUpdate.Parameters.AddWithValue("@idImprumut", idImprumut);
-                        cmdUpdate.ExecuteNonQuery();
+                        using (var cmdUpdate = new SQLiteCommand(updateImprumut, _connection))
+                        {
+                            cmdUpdate.Parameters.AddWithValue("@idImprumut", idImprumut);
+                            cmdUpdate.ExecuteNonQuery();
+                        }
+
+
+                        string updateCarte = "UPDATE Carte SET status = 'disponibil' WHERE id_carte = @idCarte";
+                        using (var cmd3 = new SQLiteCommand(updateCarte, _connection))
+                        {
+
+                            cmd3.Parameters.AddWithValue("@idCarte", idCarte);
+                            cmd3.ExecuteNonQuery();
+                        }
+
+
+
+                        string updateLimita = "UPDATE Abonat SET limita = limita + 1 WHERE id_abonat = @idAbonat";
+                        using (var cmd4 = new SQLiteCommand(updateLimita, _connection))
+                        {
+                            cmd4.Parameters.AddWithValue("@idAbonat", idAbonat);
+                            cmd4.ExecuteNonQuery();
+                        }
+
+
+                        transaction.Commit();
+                        return true;
                     }
-
-                    
-                    string updateCarte = "UPDATE Carte SET status = 'disponibil' WHERE id_carte = @idCarte";
-                    using (var cmd3 = new SQLiteCommand(updateCarte, _connection))
+                    catch (SQLiteException ex)
                     {
-                        
-                        cmd3.Parameters.AddWithValue("@idCarte", idCarte);
-                        cmd3.ExecuteNonQuery();
+                        Console.WriteLine("Eroare la returnarea cartii: " + ex.Message);
+                        transaction.Rollback();
+                        return false;
                     }
-
-                   
-                    
-                     string updateLimita = "UPDATE Abonat SET limita = limita + 1 WHERE id_abonat = @idAbonat";
-                     using (var cmd4 = new SQLiteCommand(updateLimita, _connection))
-                     {
-                           cmd4.Parameters.AddWithValue("@idAbonat", idAbonat);
-                           cmd4.ExecuteNonQuery();
-                     }
-                
-
-                    transaction.Commit();
-                    return true;
-                }
-                catch (SQLiteException ex)
-                {
-                    Console.WriteLine("Eroare la returnarea cartii: " + ex.Message);
-                    transaction.Rollback();
-                    return false;
                 }
             }
+            
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Abonat> CautareIntarziati() // returneaza abonatii cu imprumuturi intarziate si cei cu statusul cu restrictii
+        public List<Abonat> CautareIntarziati()
         {
-            var listaAbonati = new List<Abonat>();
-
-            string query = @"
-                            SELECT DISTINCT a.id_abonat, a.nume, a.prenume, a.adresa, a.telefon, a.email, a.limita, a.status
-                            FROM Imprumut i
-                            JOIN Abonat a ON i.id_abonat = a.id_abonat
-                            WHERE i.data_restituire IS NULL AND i.deadline < @azi
-                          ";
-
-            try
+            lock (_staticLock)
             {
-                using (var cmd = new SQLiteCommand(query, _connection))
+                var lista = new List<Abonat>();
+
+                string query = @"
+                            SELECT 
+                                a.id_abonat, a.nume, a.prenume, a.adresa, a.telefon, a.email, a.limita, a.status,
+                                MIN(i.deadline) AS cel_mai_vechi_deadline
+                            FROM Abonat a
+                            LEFT JOIN Imprumut i ON i.id_abonat = a.id_abonat AND i.data_restituire IS NULL
+                            GROUP BY a.id_abonat
+                            HAVING a.status = 'cu restrictii' 
+                                OR (MIN(i.deadline) IS NOT NULL AND MIN(i.deadline) < date(@azi))
+                            ";
+
+                try
                 {
-                    cmd.Parameters.AddWithValue("@azi", DateTime.Now);
-
-                    using (var reader = cmd.ExecuteReader())
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        while (reader.Read())
-                        {
-                            var abonat = new Abonat(
-                                Convert.ToInt32(reader["id_abonat"]),
-                                reader["nume"].ToString(),
-                                reader["prenume"].ToString(),
-                                reader["adresa"].ToString(),
-                                reader["telefon"].ToString(),
-                                reader["email"].ToString(),
-                                Convert.ToInt32(reader["limita"]),
-                                reader["status"].ToString()
-                            );
+                        cmd.Parameters.AddWithValue("@azi", DateTime.Today);
 
-                            listaAbonati.Add(abonat);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int zileIntarziere = 0;
+
+                                if (!reader.IsDBNull(reader.GetOrdinal("cel_mai_vechi_deadline")))
+                                {
+                                    DateTime deadline = Convert.ToDateTime(reader["cel_mai_vechi_deadline"]);
+
+                                    if (deadline < DateTime.Today)
+                                    {
+                                        zileIntarziere = (DateTime.Today - deadline).Days;
+                                    }
+                                }
+
+                                var abonat = new Abonat(
+                                    Convert.ToInt32(reader["id_abonat"]),
+                                    reader["nume"].ToString(),
+                                    reader["prenume"].ToString(),
+                                    reader["adresa"].ToString(),
+                                    reader["telefon"].ToString(),
+                                    reader["email"].ToString(),
+                                    zileIntarziere,
+                                    Convert.ToInt32(reader["limita"]),
+                                    reader["status"].ToString()
+                                );
+
+                                lista.Add(abonat);
+                            }
                         }
                     }
-                }
 
-                return listaAbonati;
+                    return lista;
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la cautarea abonatilor intarziati sau cu restrictii: " + ex.Message);
+                    return null;
+                }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la cautarea abonatilor intarziati: " + ex.Message);
-                return null;
-            }
+           
         }
 
 
@@ -981,27 +828,31 @@ namespace Database
         /// <returns></returns>
         public bool UpdateStatusAbonat(int idAbonat, string mesaj)
         {
-            try
+            lock(_staticLock)
             {
-
-                string updateStatus = "UPDATE Abonat SET status = @status WHERE id_abonat = @idAbonat";
-                using (var cmd = new SQLiteCommand(updateStatus, _connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@status", mesaj.ToLower());
-                    cmd.Parameters.AddWithValue("@idAbonat", idAbonat);
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+
+                    string updateStatus = "UPDATE Abonat SET status = @status WHERE id_abonat = @idAbonat";
+                    using (var cmd = new SQLiteCommand(updateStatus, _connection))
                     {
-                        Console.WriteLine("Statusul abonatului a fost modificat cu succes");
+                        cmd.Parameters.AddWithValue("@status", mesaj.ToLower());
+                        cmd.Parameters.AddWithValue("@idAbonat", idAbonat);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Statusul abonatului a fost modificat cu succes");
+                        }
+                        return rowsAffected > 0;
                     }
-                    return rowsAffected > 0;
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la actualizarea statusului abonatului: " + ex.Message);
+                    return false;
                 }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la actualizarea statusului abonatului: " + ex.Message);
-                return false;
-            }
+           
         }
 
 
@@ -1042,35 +893,39 @@ namespace Database
         /// <returns></returns>
         public List<Abonat> GetAbonatiCuRestrictiiSauBlocati()
         {
-            List<Abonat> abonati = new List<Abonat>();
+            lock(_staticLock)
+            {
+                List<Abonat> abonati = new List<Abonat>();
 
-            string query = @"SELECT *
+                string query = @"SELECT *
                             FROM Abonat
                             WHERE status IN ('cu restrictii', 'blocat')";
 
-            using (var cmd = new SQLiteCommand(query, _connection))
-            using (var reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
+                using (var cmd = new SQLiteCommand(query, _connection))
+                using (var reader = cmd.ExecuteReader())
                 {
-                    Abonat abonat = new Abonat(
-                    
-                        Convert.ToInt32(reader["id_abonat"]),
-                        reader["nume"].ToString(),
-                        reader["prenume"].ToString(),
-                        reader["adresa"].ToString(),
-                        reader["telefon"].ToString(),
-                        reader["email"].ToString(),
-                        Convert.ToInt32(reader["limita"]),
-                        reader["status"].ToString()
-                        
-                    );
+                    while (reader.Read())
+                    {
+                        Abonat abonat = new Abonat(
 
-                    abonati.Add(abonat);
+                            Convert.ToInt32(reader["id_abonat"]),
+                            reader["nume"].ToString(),
+                            reader["prenume"].ToString(),
+                            reader["adresa"].ToString(),
+                            reader["telefon"].ToString(),
+                            reader["email"].ToString(),
+                            Convert.ToInt32(reader["limita"]),
+                            reader["status"].ToString()
+
+                        );
+
+                        abonati.Add(abonat);
+                    }
                 }
-            }
 
-            return abonati;
+                return abonati;
+            }
+            
         }
 
         /// <summary>
@@ -1080,7 +935,9 @@ namespace Database
         /// <returns></returns>
         public bool Login(Utilizator utilizator)
         {
-            string query = @"
+            lock(_staticLock)
+            {
+                string query = @"
                         SELECT COUNT(*)
                         FROM Utilizator U
                         JOIN Rol R ON U.id_rol = R.id_rol
@@ -1090,39 +947,41 @@ namespace Database
                                                 ";
 
 
-            if (_connection.State != System.Data.ConnectionState.Open)
-            {
-                Console.WriteLine("Conexiunea nu este deschisa. O deschid...");
-                _connection.Open();
-            }
-
-            using (var command = new SQLiteCommand(query, _connection))
-            {
-
-                Console.WriteLine("Parola: " + utilizator.HashParola);
-                Console.WriteLine("Rol: " + utilizator.Rol);
-                Console.WriteLine("Nume: " + utilizator.Nume);
-
-                command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
-                command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
-                command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
-
-                long count = (long)command.ExecuteScalar();
-                Console.WriteLine("count: " + count);
-
-                if (count == 1)
+                if (_connection.State != System.Data.ConnectionState.Open)
                 {
-                      Console.WriteLine("Utilizator autentificat cu succes");
-                      return true;
-                }
-                else
-                {
-                      Console.WriteLine("Utilizator nu a reusit sa se autentifice");
-                      return false;
+                    Console.WriteLine("Conexiunea nu este deschisa. O deschid...");
+                    _connection.Open();
                 }
 
-                
+                using (var command = new SQLiteCommand(query, _connection))
+                {
+
+                    Console.WriteLine("Parola: " + utilizator.HashParola);
+                    Console.WriteLine("Rol: " + utilizator.Rol);
+                    Console.WriteLine("Nume: " + utilizator.Nume);
+
+                    command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
+                    command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
+                    command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
+
+                    long count = (long)command.ExecuteScalar();
+                    Console.WriteLine("count: " + count);
+
+                    if (count == 1)
+                    {
+                        Console.WriteLine("Utilizator autentificat cu succes");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Utilizator nu a reusit sa se autentifice");
+                        return false;
+                    }
+
+
+                }
             }
+            
         }
 
         /// <summary>
@@ -1131,8 +990,8 @@ namespace Database
         /// <param name="utilizator"></param>
         public bool InsertUser(Utilizator utilizator)
         {
-            
-               
+            lock(_staticLock)
+            {
                 string getRoleIdQuery = "SELECT id_rol FROM Rol WHERE nume_rol = @rol";
                 int idRol;
 
@@ -1146,7 +1005,7 @@ namespace Database
                         Console.WriteLine("Rolul specificat nu exista in baza de date");
                         return false;
                     }
-                        
+
 
                     idRol = Convert.ToInt32(result);
                 }
@@ -1171,9 +1030,12 @@ namespace Database
                 }
                 catch (SQLiteException e)
                 {
-                    Console.WriteLine("Eroare la inserarea utilizatorului in baza de date: "+ e.Message);
+                    Console.WriteLine("Eroare la inserarea utilizatorului in baza de date: " + e.Message);
                     return false;
                 }
+            }
+               
+               
                 
                 
             
@@ -1186,41 +1048,60 @@ namespace Database
         /// <returns></returns>
         public bool DeleteUser(string nume)
         {
-            string query = "DELETE FROM Utilizator WHERE nume_user = @nume";
-
-            try
+            lock (_staticLock)
             {
-                using (var cmd = new SQLiteCommand(query, _connection))
+                string query = @"
+                            DELETE FROM Utilizator 
+                            WHERE nume_user = @nume
+                              AND EXISTS (
+                                  SELECT 1 FROM Rol 
+                                  WHERE Rol.id_rol = Utilizator.id_rol 
+                                    AND Rol.nume_rol <> 'administrator'
+                              );";
+                try
                 {
-                    cmd.Parameters.AddWithValue("@nume", nume);
-
-                    int affected = cmd.ExecuteNonQuery();
-
-                    if (affected == 0)
+                    using (var cmd = new SQLiteCommand(query, _connection))
                     {
-                        Console.WriteLine("Utilizatorul nu a fost gasit sau a fost deja sters.");
-                        return false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Stergere cu succes");
-                        return true;
+                        cmd.Parameters.AddWithValue("@nume", nume);
+
+                        int affected = cmd.ExecuteNonQuery();
+
+                        if (affected == 0)
+                        {
+                            Console.WriteLine("Utilizatorul nu a fost gasit sau a fost deja sters sau este administrator.");
+                            return false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Stergere cu succes");
+                            return true;
+                        }
                     }
                 }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la stergerea utilizatorului: " + ex.Message);
+                    return false;
+                }
             }
-            catch (SQLiteException ex)
-            {
-                Console.WriteLine("Eroare la stergerea utilizatorului: " + ex.Message);
-                return false;
-            }
+           
         }
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Close()
         {
             if (_connection.State == System.Data.ConnectionState.Open)
                 _connection.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Open()
         {
             if (_connection.State != System.Data.ConnectionState.Open)

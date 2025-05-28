@@ -33,6 +33,7 @@ namespace Database
         private string _email;
         private string _status;  // blocat (nu poate imprumuta nimic) / cu restrictii (nu imprumuta acasa) / fara restrictii (cat ii permite limita)
         private int _limitaCarti;
+        private int _zileIntarziate;
 
         public int IdAbonat { get; set; }
         public string Nume { get; set; }
@@ -46,6 +47,8 @@ namespace Database
 
         public int LimitaCarti { get; set; }
 
+        public int ZileIntarziate { get; set; }
+
         public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii")
         {
             IdAbonat = idAbonat;
@@ -56,6 +59,19 @@ namespace Database
             Email = email;
             Status = status;
             LimitaCarti = limitaCarti;
+        }
+
+        public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int zileIntarziate, int limitaCarti = 5, string status = "fara restrictii")
+        {
+            IdAbonat = idAbonat;
+            Nume = nume;
+            Prenume = prenume;
+            Adresa = adresa;
+            Telefon = telefon;
+            Email = email;
+            Status = status;
+            LimitaCarti = limitaCarti;
+            ZileIntarziate = zileIntarziate;
         }
 
         public Abonat(string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii")
@@ -69,7 +85,7 @@ namespace Database
             LimitaCarti = limitaCarti;
         }
 
-        public Abonat(Abonat other) 
+        public Abonat(Abonat other)
         {
             IdAbonat = other.IdAbonat;
             Nume = other.Nume;
@@ -83,7 +99,7 @@ namespace Database
 
         public override string ToString()
         {
-            return $"ID: {IdAbonat} Nume: {Nume} Prenume: {Prenume}, Adresa: {Adresa}, Telefon: {Telefon}, Email: {Email}, LimitaCarti: {LimitaCarti} , Status : {Status}";
+            return $"ID: {IdAbonat} Nume: {Nume} Prenume: {Prenume}, Adresa: {Adresa}, Telefon: {Telefon}, Email: {Email}, LimitaCarti: {LimitaCarti} , Status: {Status}, Zile Intarziate: {ZileIntarziate}";
         }
     }
 }
