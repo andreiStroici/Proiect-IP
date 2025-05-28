@@ -49,7 +49,7 @@ namespace Database
 
         public int ZileIntarziate { get; set; }
 
-        public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii", int zileIntarziate = 0)
+        public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii")
         {
             IdAbonat = idAbonat;
             Nume = nume;
@@ -61,7 +61,20 @@ namespace Database
             LimitaCarti = limitaCarti;
         }
 
-        public Abonat(string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii", int zileIntarziate = 0)
+        public Abonat(int idAbonat, string nume, string prenume, string adresa, string telefon, string email, int zileIntarziate, int limitaCarti = 5, string status = "fara restrictii")
+        {
+            IdAbonat = idAbonat;
+            Nume = nume;
+            Prenume = prenume;
+            Adresa = adresa;
+            Telefon = telefon;
+            Email = email;
+            Status = status;
+            LimitaCarti = limitaCarti;
+            ZileIntarziate = zileIntarziate;
+        }
+
+        public Abonat(string nume, string prenume, string adresa, string telefon, string email, int limitaCarti = 5, string status = "fara restrictii")
         {
             Nume = nume;
             Prenume = prenume;
@@ -72,7 +85,7 @@ namespace Database
             LimitaCarti = limitaCarti;
         }
 
-        public Abonat(Abonat other) 
+        public Abonat(Abonat other)
         {
             IdAbonat = other.IdAbonat;
             Nume = other.Nume;
