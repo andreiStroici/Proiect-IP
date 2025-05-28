@@ -233,7 +233,7 @@ namespace UserInterface
             }
             else if (radioButtonGestiuneAbonați.Checked)
             {
-                string []abonat = textBoxGestiuneDate.Text.Split('\n');
+                string []abonat = textBoxGestiuneDate.Text.Split('\t');
                 this._abonatId = int.Parse(abonat[0].Split(':')[1].Trim());
             }
 
