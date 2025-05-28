@@ -78,7 +78,7 @@ namespace UserInterface
 
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
             string r = _connectionToClientBackend.ReceiveResponse();
-            MessageBox.Show(r);
+            //MessageBox.Show(r);
             string[] response = r.Split('|');
 
             if (response[0] != "Subscriber Login successful")
@@ -177,6 +177,7 @@ namespace UserInterface
             string titlu = textBoxImprumutTitlu.Text;
             string autor = textBoxImprumutAutor.Text;
             comboBoxSugestii.Items.Clear();
+
             if (string.IsNullOrEmpty(titlu) && string.IsNullOrEmpty(autor))
             {
                 MessageBox.Show("Vă rugăm să introduceți un titlu sau un autor!");
@@ -187,7 +188,6 @@ namespace UserInterface
 
             string []response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
-            // 1~Moarte pe Nil~Agatha Cristie
             if (response[0] == "No books found.")
             {
                 MessageBox.Show("Nu am găsit nicio carte disponibilă!");
@@ -323,7 +323,7 @@ namespace UserInterface
             }
             else
             {
-                MessageBox.Show("Returnarea nu a fost efectuată!");
+                MessageBox.Show("Returnarea nu a fost efectuată: " + response);
                 return;
             }
 
@@ -331,6 +331,11 @@ namespace UserInterface
             comboBoxReturnare.Items.Clear();
         }
 
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de căutare a împrumuturilor active
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonReturCautare_Click(object sender, EventArgs e)
         {
             // vom trimite către comboboxul de returnare cărți toate acele împrumuturi nefinalizate (cărți nereturnate)

@@ -24,7 +24,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 namespace UserInterface
 {
@@ -44,10 +43,7 @@ namespace UserInterface
             InitializeComponent();
             _connectionToClientBackend = new ConnectionToClientBackend(false);
             this._mainView = mainView;
-
-
         }
-
         /// <summary>
         /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de delogare
         /// </summary>
@@ -62,7 +58,6 @@ namespace UserInterface
             this.Hide();
             this.Controls.Clear();
         }
-
         /// <summary>
         /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
         /// </summary>
@@ -109,7 +104,6 @@ namespace UserInterface
                 textBoxGestiuneDate.Enabled = false;
             }
         }
-
         /// <summary>
         /// Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
         /// </summary>
@@ -134,7 +128,7 @@ namespace UserInterface
 
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
             string r = _connectionToClientBackend.ReceiveResponse();
-            MessageBox.Show(r);
+            //MessageBox.Show(r);
             string[] response = r.Split('|');
 
             if (response[0] != "Subscriber Login successful")
@@ -178,8 +172,6 @@ namespace UserInterface
         /// <param name="e"></param>
         private void buttonAfișareAbonațiCăutare_Click(object sender, EventArgs e)
         {
-
-            // TODO: IMPLEMENTEAZĂ ACEST REQUEST: CAUTĂ ABONAT DUPĂ ÎNTÂRZIEREA ÎMPRUMUTULUI
             _connectionToClientBackend.SendRequest("searchSubscribers", $"\n");
             string []response = _connectionToClientBackend.ReceiveResponse().Split('|');
 
@@ -224,7 +216,6 @@ namespace UserInterface
         /// <param name="e"></param>
         private void buttonGestiuneValidare_Click(object sender, EventArgs e)
         {
-            
             if (radioButtonAfișareAbonați.Checked)
             {
                 // Extragem obiectul de tip abonat din lista de abonați problematici
@@ -280,7 +271,6 @@ namespace UserInterface
             radioButtonGestiuneA.Checked = false;
             radioButtonGestiuneB.Checked = false;
             radioButtonGestiuneE.Checked = false;
-
         }
 
         /// <summary>
@@ -308,7 +298,6 @@ namespace UserInterface
 
             string rol = radioButtonAngajatAdministrator.Checked ? "administrator" : "bibliotecar";
 
-            
             _connectionToClientBackend.SendRequest("registerEmployee", $"{username}|{password}|{rol}\n");
 
             string response = _connectionToClientBackend.ReceiveResponse();
@@ -325,7 +314,6 @@ namespace UserInterface
                 MessageBox.Show(response);
                 return;
             }
-
      }
 
         /// <summary>
@@ -353,8 +341,6 @@ namespace UserInterface
                 MessageBox.Show("Nu este acceptat acest format de ISBN!");
                 return;
             }
-
-            // TODO: Trimiteți datele cărții către server pentru a fi adăugate în baza de date, cu verificare dacă există deja o carte cu acel ISBN
             _connectionToClientBackend.SendRequest("addBook", $"{ISBN}|{titlu}|{autor}|{editura}|{gen}\n");
             
             string response = _connectionToClientBackend.ReceiveResponse();
@@ -373,8 +359,6 @@ namespace UserInterface
             textBoxAddCarteEditura.Clear();
             textBoxAddCarteGen.Clear();
         }
-
-
         /// <summary>
         /// Acest eveniment se declanșează atunci când administratorul caută cărți de șters după ISBN
         /// </summary>
@@ -458,7 +442,11 @@ namespace UserInterface
             comboBoxStergereCarti.SelectedItem = null;
             comboBoxStergereCarti.Items.Clear();
         }
-
+        /// <summary>
+        /// Acest eveniment se declanșează atunci când administratorul șterge un angajat (bibliotecar)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAngajatDelete_Click(object sender, EventArgs e)
         {
             string username = textBoxAngajatStergereUsername.Text;
@@ -479,7 +467,6 @@ namespace UserInterface
                 MessageBox.Show("Nu s-a reușit ștergerea angajatului!");
                 return;
             }
-
         }
     }
 }
