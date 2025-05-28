@@ -175,17 +175,19 @@ namespace Database
                 List<Carte> carti = new List<Carte>();
 
                 string query = @"
-                            SELECT 
-                                Carte.id_carte,
-                                Isbn.id_isbn,
-                                Isbn.titlu,
-                                Isbn.autor,
-                                Isbn.gen,
-                                Isbn.editura,
-                                Carte.status
-                            FROM Carte
-                            JOIN Isbn ON Carte.id_isbn = Isbn.id_isbn
-                            WHERE Isbn.id_isbn = @isbn";
+                                SELECT 
+                                    c.id_carte,
+                                    i.id_isbn,
+                                    i.titlu,
+                                    i.autor,
+                                    i.gen,
+                                    i.editura,
+                                    c.status
+                                FROM Carte c
+                                JOIN Isbn i ON c.id_isbn = i.id_isbn
+                                WHERE i.id_isbn = @isbn
+                                  AND c.status = 'disponibil'";
+
 
                 try
                 {
@@ -216,11 +218,10 @@ namespace Database
                     Console.WriteLine("Eroare la obtinerea cartilor prin ISBN: " + ex.Message);
                 }
 
-
                 return carti;
             }
-            
         }
+
 
 
 
@@ -474,12 +475,12 @@ namespace Database
         /// <returns></returns>
         private bool IsCartedisponibil(int idCarte)
         {
-            lock(_staticLock)
+            lock (_staticLock)
             {
                 string query = @"
-                            SELECT COUNT(*) 
-                            FROM Carte c
-                            WHERE c.status = 'disponibil'";
+                        SELECT COUNT(*)
+                        FROM Carte c
+                        WHERE c.idCarte = @idCarte AND c.status = 'disponibil'";
 
                 try
                 {
@@ -487,10 +488,7 @@ namespace Database
                     {
                         cmd.Parameters.AddWithValue("@idCarte", idCarte);
                         var result = cmd.ExecuteScalar();
-                        if (result != null && Convert.ToInt32(result) > 0)
-                            return true;
-                        else
-                            return false;
+                        return result != null && Convert.ToInt32(result) > 0;
                     }
                 }
                 catch (SQLiteException ex)
@@ -499,9 +497,8 @@ namespace Database
                     return false;
                 }
             }
-            
-
         }
+
 
         /// <summary>
         /// 
