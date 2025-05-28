@@ -202,7 +202,8 @@ namespace UserInterface
                 string emailAbonat = abonat[5];
                 string statusAbonat = abonat[6];
                 string limitaCartiAbonat = abonat[7];
-                comboBoxAbonațiProbleme.Items.Add($"{idAbonat}, {numeAbonat}, {prenumeAbonat}, {telefonAbonat}, {emailAbonat}, {statusAbonat}, {limitaCartiAbonat}");
+                string zileIntarziere = abonat[8];
+                comboBoxAbonațiProbleme.Items.Add($"{idAbonat}, {numeAbonat}, {prenumeAbonat}, {telefonAbonat}, {emailAbonat}, {statusAbonat}, {limitaCartiAbonat}, {zileIntarziere}");
             }
             
             this.buttonGestiuneValidare.Enabled = true;
@@ -366,7 +367,7 @@ namespace UserInterface
             textBoxAddCarteTitlu.Clear();
             textBoxAddCarteAutor.Clear();
             textBoxAddCarteEditura.Clear();
-            textBoxAddCarteEditura.Clear();
+            textBoxAddCarteGen.Clear();
         }
 
 

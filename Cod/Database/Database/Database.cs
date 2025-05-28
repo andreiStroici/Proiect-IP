@@ -446,10 +446,8 @@ namespace Database
                                     reader["editura"].ToString(),
                                     "disponibil"
                                 );
-                                if (IsCartedisponibil(carte.IdCarte))
-                                {
-                                    listaCarti.Add(carte);
-                                }
+                                listaCarti.Add(carte);
+                                
 
                             }
                         }
@@ -767,7 +765,7 @@ namespace Database
                             LEFT JOIN Imprumut i ON i.id_abonat = a.id_abonat AND i.data_restituire IS NULL
                             GROUP BY a.id_abonat
                             HAVING a.status = 'cu restrictii' 
-                                OR (MIN(i.deadline) IS NOT NULL AND MIN(i.deadline) < @azi)
+                                OR (MIN(i.deadline) IS NOT NULL AND MIN(i.deadline) < date(@azi))
                             ";
 
                 try
@@ -799,9 +797,9 @@ namespace Database
                                     reader["adresa"].ToString(),
                                     reader["telefon"].ToString(),
                                     reader["email"].ToString(),
+                                    zileIntarziere,
                                     Convert.ToInt32(reader["limita"]),
-                                    reader["status"].ToString(),
-                                    zileIntarziere
+                                    reader["status"].ToString()
                                 );
 
                                 lista.Add(abonat);

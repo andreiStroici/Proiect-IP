@@ -168,7 +168,7 @@ namespace Server
                                 string response = "";
                                 foreach (var item in books)
                                 {
-                                    response = item.IdCarte + "~" + item.Titlu + "~" + item.Autor + "|";
+                                    response += item.IdCarte + "~" + item.Titlu + "~" + item.Autor + "|";
                                 }
                                 Console.WriteLine(response);
                                 writer.WriteLine(response);
@@ -333,7 +333,7 @@ namespace Server
                             break;
                         case "searchSubscribers":
                             Console.WriteLine("Searching subscriber: ");
-                            List<Abonat> abonati = _database.GetAbonatiCuRestrictiiSauBlocati();
+                            List<Abonat> abonati = _database.CautareIntarziati();   
                             if (abonati.Count == 0)
                             {
                                 Console.WriteLine("No subscribers found with restrictions or blocked.");
@@ -345,7 +345,7 @@ namespace Server
                                 foreach (var item in abonati)
                                 {
                                     responseAbonati += $"{item.IdAbonat}~{item.Nume}~{item.Prenume}~" +
-                                        $"{item.Adresa}~{item.Telefon}~{item.Email}~{item.Status}~{item.LimitaCarti}|";
+                                        $"{item.Adresa}~{item.Telefon}~{item.Email}~{item.Status}~{item.LimitaCarti}~{item.ZileIntarziate}|";
                                 }
                                 Console.WriteLine($"Found {abonati.Count} subscribers with restrictions or blocked.");
                                 writer.WriteLine(responseAbonati);
