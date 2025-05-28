@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*************************************************************************
+ *                                                                       *
+ *  File:        ClientBackend.cs                                        *
+ *  Copyright:   (c) 2025, S. Andrei, A. Denisa                          *
+ *                                                                       *
+ *  Description: Aplicația care face legătura dintre interfață și Server.*
+ *                                                                       *
+ *                                                                       *
+ *                                                                       *
+ *  This code and information is provided "as is" without warranty of    *
+ *  any kind, either expressed or implied, including but not limited     *
+ *  to the implied warranties of merchantability or fitness for a        *
+ *  particular purpose. You are free to use this source code in your     *
+ *  applications as long as the original copyright notice is included.   *
+ *                                                                       *      
+ ************************************************************************ */
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -12,11 +29,17 @@ using Newtonsoft.Json;
 
 namespace ClientBackend
 {
+    /// <summary>
+    /// Această clasă va gestiona comunicarea dintre client (Interfața cu utilizatorul) și server.
+    /// </summary>
     public class ClientBackend
     {
         private TcpListener _port;
         private TcpClient _server;
 
+        /// <summary>
+        /// Constructorul clasei ClientBackend. Caută adresa IP și portul pentru conectarea cu server-ul.
+        /// </summary>
         public ClientBackend()
         {
             _port = new TcpListener(System.Net.IPAddress.Any, 8081);
@@ -43,7 +66,9 @@ namespace ClientBackend
                 }
             }
         }
-
+        /// <summary>
+        /// Acceptă conexiunea de la client și începe să asculte pentru mesaje.
+        /// </summary>
         public void AcceptConnection()
         {
             _port.Start();
@@ -55,7 +80,10 @@ namespace ClientBackend
                 thread.Start();
             }
         }
-
+        /// <summary>
+        /// Această metodă va gestiona comunicarea cu clientul conectat.
+        /// </summary>
+        /// <param name="client"></param>
         private void HandleClient(TcpClient client)
         {
             NetworkStream stream = client.GetStream();
@@ -437,14 +465,20 @@ namespace ClientBackend
                 Console.WriteLine("Client connection closed.");
             }
         }
-
+        /// <summary>
+        /// Trimite un mesaj către server.
+        /// </summary>
+        /// <param name="message"></param>
         private void sendMessage(string message)
         {
             NetworkStream stream = _server.GetStream();
             StreamWriter writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true };
             writer.WriteLine(message);
         }
-
+        /// <summary>
+        /// Așteaptă un mesaj de la server și îl returnează.
+        /// </summary>
+        /// <returns></returns>
         private string WaitForMessage()
         {
             NetworkStream stream = _server.GetStream();
@@ -454,8 +488,13 @@ namespace ClientBackend
 
             return message;
         }
-
-
+        /// <summary>
+        /// Această metodă va gestiona logarea utilizatorului.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         private bool login(string username, string password, string role)
         {
             // Implement your login logic here
@@ -483,7 +522,13 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va gestiona înregistrarea unui nou utilizator (angajat). 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         private bool register(string username, string password, string role)
         {
             Console.WriteLine($"Registering user: {username} with password: {password} and role: {role}");
@@ -508,7 +553,15 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va înregistra un nou abonat (cititor) în sistem.
+        /// </summary>
+        /// <param name="lastname"></param>
+        /// <param name="firstname"></param>
+        /// <param name="address"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         private bool registerSubscriber(string lastname, string firstname, string address, string phoneNumber, string email)
         {
             Console.WriteLine($"Register subscriber with info: Lastname: {lastname}, Firstname: {firstname}, Address: {address}, PhoneNumber: {phoneNumber}, Email: {email}");
@@ -537,7 +590,11 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va gestiona logarea unui abonat (cititor) în sistem.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         private string loginSubscriber(string username)
         {
             Console.WriteLine($"Logging in subscriber: {username}");
@@ -559,7 +616,12 @@ namespace ClientBackend
             Console.WriteLine("Response from server: " + response);
             return response;
         }
-
+        /// <summary>
+        /// Această metodă va căuta cărți în baza de date după titlu și/sau autor (se efectuează căutări parțiale).
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="author"></param>
+        /// <returns></returns>
         private string getBooks(string title, string author)
         {
             Console.WriteLine($"Searching for books with Title: {title} and Author: {author}");
@@ -578,7 +640,13 @@ namespace ClientBackend
             Console.WriteLine("Response from server: " + response);
             return response;
         }
-
+        /// <summary>
+        /// Această metodă va insera un nou împrumut în baza de date.
+        /// </summary>
+        /// <param name="subscriberId"></param>
+        /// <param name="bookId"></param>
+        /// <param name="selectedLocation"></param>
+        /// <returns></returns>
         private bool insertLoan(int subscriberId, int bookId, string selectedLocation)
         {
             Console.WriteLine($"Inserting Loan with SubscriberId: {subscriberId}, bookId: {bookId} and selected location: {selectedLocation}");
@@ -604,7 +672,11 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va obține toate împrumuturile pentru un anumit abonat (cititor) din baza de date.
+        /// </summary>
+        /// <param name="subscriberId"></param>
+        /// <returns></returns>
         private string getLoans(int subscriberId)
         {
             Console.WriteLine($"Getting loans for SubscriberId: {subscriberId}");
@@ -624,7 +696,12 @@ namespace ClientBackend
             Console.WriteLine("Response from server: " + response);
             return response;
         }
-
+        /// <summary>
+        /// Această metodă va returna o carte împrumutată de către un abonat (cititor) în baza de date.
+        /// </summary>
+        /// <param name="subscriberId"></param>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
         private bool returnBook(int subscriberId, int bookId)
         {
             Console.WriteLine($"Returning book with SubscriberId: {subscriberId}, BookId: {bookId}");
@@ -649,7 +726,11 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va obține statusul unui abonat (cititor) din baza de date.
+        /// </summary>
+        /// <param name="subscriberId"></param>
+        /// <returns></returns>
         private string getStatusClient(int subscriberId)
         {
             Console.WriteLine($"Getting status for SubscriberId: {subscriberId}");
@@ -668,7 +749,11 @@ namespace ClientBackend
             Console.WriteLine("Response from server: " + response);
             return response;
         }
-
+        /// <summary>
+        /// Această metodă va șterge un angajat (bibliotecar) din baza de date.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         private bool deleteEmployee(string username)
         {
             Console.WriteLine("Deleting employee with Username: " + username);
@@ -695,7 +780,15 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va adăuga o nouă carte în baza de date.
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <param name="title"></param>
+        /// <param name="author"></param>
+        /// <param name="publisher"></param>
+        /// <param name="genre"></param>
+        /// <returns></returns>
         private bool addBook(string isbn, string title, string author, string publisher, string genre)
         {
             Console.WriteLine("Adding book with ISBN: " + isbn + ", Title: " + title + ", Author: " + author + ", Publisher: " + publisher + ", Genre: " + genre);
@@ -720,7 +813,11 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va căuta o carte în baza de date după ISBN.
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <returns></returns>
         private string searchBook(string isbn)
         {
             Console.WriteLine("Searching book with ISBN: " + isbn);
@@ -739,7 +836,11 @@ namespace ClientBackend
             Console.WriteLine("Response from server: " + response);
             return response;
         }
-
+        /// <summary>
+        /// Această metodă va șterge o carte din baza de date după ID-ul acesteia.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool deleteBook(int id)
         {
             Console.WriteLine("Deleting book with ID: " + id);
@@ -764,7 +865,10 @@ namespace ClientBackend
                 return false;
             }
         }
-
+        /// <summary>
+        /// Această metodă va căuta toți abonații (cititorii) din baza de date.
+        /// </summary>
+        /// <returns></returns>
         private string searchSubscribers()
         {
             Console.WriteLine("Searching subscribers");
@@ -780,7 +884,12 @@ namespace ClientBackend
             Console.WriteLine("Response from server: " + response);
             return response;
         }
-
+        /// <summary>
+        /// Această metodă va actualiza statusul unui abonat (cititor) în baza de date.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         private bool updateStatus(int id, string status)
         {
             Console.WriteLine($"Updating status for SubscriberId: {id} to Status: {status}");
