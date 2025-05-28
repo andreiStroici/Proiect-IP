@@ -38,6 +38,9 @@ namespace UnitTestProjectForDatabaseBiblioteca
             Assert.IsTrue(result);
             StringAssert.Contains(consoleOutput, "Utilizator adaugat cu succes");
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
+
+
+            _database.DeleteUser("TestUser");
         }
 
         [TestMethod]
@@ -51,6 +54,8 @@ namespace UnitTestProjectForDatabaseBiblioteca
             Assert.IsTrue(result);
             StringAssert.Contains(consoleOutput, "Utilizator adaugat cu succes");
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
+
+            _database.DeleteUser("TestUser");
         }
         [TestMethod]
         public void InsertUserRoleNotFound()
@@ -83,7 +88,8 @@ namespace UnitTestProjectForDatabaseBiblioteca
         [TestMethod]
         public void InsertIsbnSuccsessfully()
         {
-            Carte testCarte = new Carte(0,"0000000001","Carte de test", "Autor de Test", "Gen de test", "Teste pentru toti");
+            //isbn-s for test -- 0000000000000, 0000000000007
+            Carte testCarte = new Carte(6, "0000000000006", "Carte de test", "Autor de Test", "Gen de test", "Teste pentru toti");
             var output = new StringWriter();
             Console.SetOut(output);
             bool result = _database.InsertIsbn(testCarte);
@@ -91,7 +97,6 @@ namespace UnitTestProjectForDatabaseBiblioteca
             Assert.IsTrue(result);
             StringAssert.Contains(consoleOutput, "Noul isbn a fost adaugat cu succes.");
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
-
         }
 
         [TestMethod]
@@ -101,6 +106,7 @@ namespace UnitTestProjectForDatabaseBiblioteca
             var output = new StringWriter();
             Console.SetOut(output);
             bool result = _database.InsertIsbn(testCarte);
+            result = _database.InsertIsbn(testCarte);
             string consoleOutput = output.ToString();
             Assert.IsTrue(result);
             StringAssert.Contains(consoleOutput, "Isbn-ul exista deja");
@@ -124,7 +130,10 @@ namespace UnitTestProjectForDatabaseBiblioteca
         [TestMethod]
         public void InsertBookSuccessfully()
         {
-
+            Carte testCarte = new Carte(0, "0000000000020", "Carte Test Insert", "Autor Insert", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            Assert.IsTrue(idCarte > 0);
+            _database.DeleteBook(idCarte);
         }
 
 
@@ -132,72 +141,121 @@ namespace UnitTestProjectForDatabaseBiblioteca
         [TestMethod]
         public void InsertBookSqlError()
         {
-            //de precizat daca in InsertLoan trebuie verificat si ca userul exista
+            Carte testCarte = new Carte(0, "000000000X", null, "Autor Test", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            Assert.AreEqual(-1, idCarte);
 
         }
 
         [TestMethod]
         public void GetCartiByIsbnIsbnValid()
         {
-
+            Carte testCarte = new Carte(0, "0000000000021", "Carte Valid ISBN", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            var lista = _database.GetCartiByIsbn("0000000000021");
+            Assert.IsTrue(lista.Count > 0);
+            Assert.IsTrue(lista.Exists(c => c.Titlu == "Carte Valid ISBN"));
+            _database.DeleteBook(idCarte);
         }
 
         [TestMethod]
         public void GetCartiByIsbnIsbnInvalid()
         {
-
+            var lista = _database.GetCartiByIsbn("ISBNINEXISTENT");
+            Assert.IsTrue(lista.Count == 0);
         }
 
 
         [TestMethod]
-        public void IsCarteDisponibilaTrue()
+        public void IsCarteDisponibilaTrueCarte()
         {
-
+            Carte testCarte = new Carte(0, "0000000000022", "Carte Disponibila", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            var method = typeof(Database.Database).GetMethod("IsCartedisponibil", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            bool result = (bool)method.Invoke(_database, new object[] { idCarte });
+            Assert.IsTrue(result);
+            _database.DeleteBook(idCarte);
         }
 
         [TestMethod]
         public void IsCarteDisponibilaFalse()
         {
-
+            
+            Carte testCarte = new Carte(0, "0000000000023", "Carte Indisponibila", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            Abonat abonat = new Abonat(0, "Indisponibil", "Abonat", "Adresa", "0711222333", "indisponibil@test.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0711222333");
+            bool loanResult = _database.InsertLoan(abonatDb.IdAbonat, idCarte, "acasa");
+            Assert.IsTrue(loanResult);
+            var method = typeof(Database.Database).GetMethod("IsCartedisponibil", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            bool result = (bool)method.Invoke(_database, new object[] { idCarte });
+            Assert.IsFalse(result);
+            _database.ReturnBook(abonatDb.IdAbonat, idCarte);
+            _database.DeleteBook(idCarte);
         }
 
         [TestMethod]
         public void IsCarteDisponibilaIdInvalid()
         {
-
+            var method = typeof(Database.Database).GetMethod("IsCartedisponibil", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            bool result = (bool)method.Invoke(_database, new object[] { -12345 });
+            Assert.IsFalse(result);
         }
 
 
         [TestMethod]
         public void InsertLoanSuccessfully()
         {
-
+            Carte testCarte = new Carte(0, "0000000000024", "Carte imprumutabila", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            Abonat abonat = new Abonat(0, "NumeLoan", "PrenumeLoan", "Adresa", "0700123456", "loan@email.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700123456");
+            bool result = _database.InsertLoan(abonatDb.IdAbonat, idCarte, "acasa");
+            Assert.IsTrue(result);
+            _database.ReturnBook(abonatDb.IdAbonat, idCarte);
+            _database.DeleteBook(idCarte);
         }
 
         [TestMethod]
         public void InsertLoanCarteIndisponibila()
         {
-
+            Carte testCarte = new Carte(0, "0000000000025", "Carte Indisp. Loan", "Autor", "Gen", "Editura", "indisponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            Abonat abonat = new Abonat(0, "NumeLoan2", "PrenumeLoan2", "Adresa", "0700123457", "loan2@email.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700123457");
+            bool result = _database.InsertLoan(abonatDb.IdAbonat, idCarte, "acasa");
+            result = _database.InsertLoan(abonatDb.IdAbonat, idCarte, "acasa");
+            Assert.IsFalse(result);
+            _database.DeleteBook(idCarte);
         }
 
 
         [TestMethod]
         public void InsertLoanAbonatInexistent()
         {
-
+            Carte testCarte = new Carte(0, "0000000000026", "Carte Loan Ab Inexist.", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            bool result = _database.InsertLoan(-12345, idCarte, "acasa");
+            Assert.IsFalse(result);
+            _database.DeleteBook(idCarte);
         }
 
         [TestMethod]
         public void InsertLoanSqlError()
         {
-
+            bool result = _database.InsertLoan(-1, -1, "acasa");
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void DeleteUserSuccessfully()
         {
-            Utilizator testUser = new Utilizator("TestUser", "parola", "bibliotecar");
-            bool result = _database.DeleteUser(testUser.Nume);
+            Utilizator testUser = new Utilizator("TestUser2", "parola", "bibliotecar");
+            bool result = _database.InsertUser(testUser);
+            result = _database.DeleteUser(testUser.Nume);
             Assert.IsTrue(result);
         }
 
@@ -220,7 +278,15 @@ namespace UnitTestProjectForDatabaseBiblioteca
         [TestMethod]
         public void DeleteUserSqlError()
         {
-            //refacere metoda dupa adaugare imprumut pentru acest user
+            Utilizator testUser = new Utilizator("TestAdminDelete", "parola", "administrator");
+            _database.InsertUser(testUser);
+            var output = new StringWriter();
+            Console.SetOut(output);
+            bool result = _database.DeleteUser(testUser.Nume);
+            string consoleOutput = output.ToString();
+            Assert.IsFalse(result);
+            StringAssert.Contains(consoleOutput, "Utilizatorul nu a fost gasit sau a fost deja sters");
+            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
 
 
         }
@@ -228,135 +294,166 @@ namespace UnitTestProjectForDatabaseBiblioteca
         [TestMethod]
         public void DeteleBookSuccessfully()
         {
-
+            Carte testCarte = new Carte(0, "0000000000027", "Carte De Sters", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            bool result = _database.DeleteBook(idCarte);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void DeleteBookInvalidId()
         {
-
+            var output = new StringWriter();
+            Console.SetOut(output);
+            bool result = _database.DeleteBook(-77777);
+            string consoleOutput = output.ToString();
+            Assert.IsFalse(result);
+            StringAssert.Contains(consoleOutput, "Nu a fost gasita nicio carte cu acest id.");
+            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
         }
 
         [TestMethod]
         public void DeleteBookSqlError()
         {
-            //cartea face parte dintr-un imprumut
+            Carte testCarte = new Carte(0, "0000000000028", "Carte blocata imprumut", "Autor", "Gen", "Editura", "disponibil");
+            int idCarte = _database.InsertBook(testCarte);
+            Abonat abonat = new Abonat(0, "Blocat", "Book", "Adresa", "0777999999", "block@book.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0777999999");
+            _database.InsertLoan(abonatDb.IdAbonat, idCarte, "acasa");
+            var output = new StringWriter();
+            Console.SetOut(output);
+            bool result = _database.DeleteBook(idCarte);
+            string consoleOutput = output.ToString();
+            Assert.IsFalse(result);
+            StringAssert.Contains(consoleOutput, "Eroare la stergerea cartii:");
+            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
         }
 
         [TestMethod]
         public void GetAbonatByPhoneValidPhone()
         {
-
+            Abonat abonat = new Abonat(0, "NumeValid", "PrenumeValid", "Adresa", "0700765432", "abonat@valid.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700765432");
+            Assert.IsNotNull(abonatDb);
+            Assert.AreEqual("NumeValid", abonatDb.Nume);
         }
 
         [TestMethod]
         public void GetAbonatByPhoneInvalidPhone()
         {
-
+            var abonatDb = _database.GetAbonatByPhone("TELEFONINEXISTENT");
+            Assert.IsNull(abonatDb);
         }
 
         [TestMethod]
         public void GetAbonatByPhoneSqlError()
         {
-            //?
+            var abonatDb = _database.GetAbonatByPhone(null);
+            Assert.IsNull(abonatDb);
         }
 
         [TestMethod]
         public void UpdateStatusAbonatAbonatValidMesajValid()
         {
-
+            Abonat abonat = new Abonat(0, "NumeUpdate", "PrenumeUpdate", "Adresa", "0700111111", "update@abonat.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700111111");
+            bool result = _database.UpdateStatusAbonat(abonatDb.IdAbonat, "cu restrictii");
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void UpdateStatusAbonatAbonatValidMesajInvalid()
         {
-
+            Abonat abonat = new Abonat(0, "NumeUpdate2", "PrenumeUpdate2", "Adresa", "0700222222", "update2@abonat.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700222222");
+            bool result = _database.UpdateStatusAbonat(abonatDb.IdAbonat, "statusInexistent");
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void UpdateStatusAbonatAbonatInvalid()
         {
-            
+            bool result = _database.UpdateStatusAbonat(-88888, "cu restrictii");
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void UnrestrictAbonatAbonatValid()
         {
-            
+            Abonat abonat = new Abonat(0, "Unrestrict", "Abonat", "Adresa", "0700999888", "unrestrict@abonat.com", 5, "cu restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700999888");
+            bool result = _database.UnRestrictAbonat(abonatDb.IdAbonat);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void UnrestrictAbonatAbonatInvalid()
         {
-            
+            bool result = _database.UnRestrictAbonat(-99999);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void BlocareAbonatAbonatValid()
         {
-
+            Abonat abonat = new Abonat(0, "Blocare", "Abonat", "Adresa", "0700666777", "blocare@abonat.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700666777");
+            bool result = _database.BlocareAbonat(abonatDb.IdAbonat);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void BlocareAbonatAbonatInvalid()
         {
-            
+            bool result = _database.BlocareAbonat(-77777);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void RestrictAbonatAbonatValid()
         {
-            
+            Abonat abonat = new Abonat(0, "Restrict", "Abonat", "Adresa", "0700333444", "restrict@abonat.com", 5, "fara restrictii");
+            _database.InsertClient(abonat);
+            var abonatDb = _database.GetAbonatByPhone("0700333444");
+            bool result = _database.RestrictAbonat(abonatDb.IdAbonat);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void RestrictAbonatAbonatInvalid()
         {
-
+            bool result = _database.RestrictAbonat(-33333);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void LoginSuccessfully()
         {
-            //Utilizator    
+            Utilizator testUser = new Utilizator("TestLogin", "parola", "bibliotecar");
+            _database.InsertUser(testUser);
+            bool result = _database.Login(testUser);
+            Assert.IsTrue(result);
+            _database.DeleteUser(testUser.Nume);
         }
 
 
         [TestMethod]
         public void LoginUnsuccessfully()
         {
-
+            Utilizator testUser = new Utilizator("TestFailLogin", "gresit", "bibliotecar");
+            bool result = _database.Login(testUser);
+            Assert.IsFalse(result);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
-
-
-            /*
-             * [TestCleanup]
-            public void CleanUp()
-            {
-                // Golește toate tabelele
-                string[] tabele = { "Utilizator", "Abonat", "Carte", "Imprumut", "Isbn", "Rol" };
-                foreach (var tbl in tabele)
-                {
-                    try
-                    {
-                        using (var cmd = new SQLiteCommand($"DELETE FROM {tbl};", _database.Connection))
-                        {
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    catch { ignore dacă nu există tabela în testul respectiv 
-                    }
-                }
-                _database.Close();
-            }
-
-            //de decuplat testele intre ele la final
-
-          **/
            _database.Close();
         }
     }
