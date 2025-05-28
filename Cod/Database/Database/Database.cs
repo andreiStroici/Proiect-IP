@@ -236,7 +236,7 @@ namespace Database
             {
                 try
                 {
-                    string query = "DELETE FROM Carte WHERE id_carte = @idCarte;";
+                    string query = "DELETE FROM Carte WHERE id_carte = @idCarte AND status = 'disponibil'";
                     using (var cmd = new SQLiteCommand(query, _connection))
                     {
                         cmd.Parameters.AddWithValue("@idCarte", idCarte);
