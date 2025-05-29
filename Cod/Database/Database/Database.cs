@@ -3,7 +3,7 @@
 *  File:        Database.cs                                             *
 *  Copyright:   (c) 2025, B. Andreea                                    *
 *                                                                       *
-*  Description: Gestionează conexiunea si operatiile CRUD               *
+*  Description: Gestioneaza conexiunea si operatiile CRUD               *
 *               asupra tabelelor din baza de date                       *
 *                                                                       *
 *                                                                       *
@@ -31,7 +31,7 @@ namespace Database
         private static readonly object _staticLock = new object();
 
         /// <summary>
-        /// 
+        /// constructorul clasei
         /// </summary>
         /// <param name="filename"></param>
         private Database(string filename = "Data Source=biblioteca.db;Version=3;")
@@ -53,7 +53,7 @@ namespace Database
         }
 
         /// <summary>
-        /// 
+        /// getter pentru instanta statica privata
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
@@ -501,7 +501,7 @@ namespace Database
 
 
         /// <summary>
-        /// 
+        /// validare idClinet 
         /// </summary>
         /// <param name="idClient"></param>
         /// <returns></returns>
@@ -528,7 +528,7 @@ namespace Database
         }
 
         /// <summary>
-        /// 
+        /// obtinerea statusului abonatului pe baza id-ului
         /// </summary>
         /// <param name="idAbonat"></param>
         /// <returns></returns>
@@ -557,7 +557,7 @@ namespace Database
 
 
         /// <summary>
-        /// 
+        /// verificarea daca un abonat este blocat
         /// </summary>
         /// <param name="idAbonat"></param>
         /// <returns></returns>
@@ -566,7 +566,7 @@ namespace Database
             return GetStatusAbonat(idAbonat) == "blocat";
         }
         /// <summary>
-        /// 
+        /// verificarea daca un abonat este restrictionat
         /// </summary>
         /// <param name="idAbonat"></param>
         /// <returns></returns>
@@ -745,7 +745,7 @@ namespace Database
         }
 
         /// <summary>
-        /// 
+        /// returneaza lista de abonati cu probleme
         /// </summary>
         /// <returns></returns>
         public List<Abonat> CautareIntarziati()
@@ -854,7 +854,7 @@ namespace Database
 
 
         /// <summary>
-        /// 
+        /// elimina restrictiile unui abonat
         /// </summary>
         /// <param name="abonat"></param>
         /// <returns></returns>
@@ -864,7 +864,7 @@ namespace Database
         }
 
         /// <summary>
-        /// 
+        /// blocheaza un abonat
         /// </summary>
         /// <param name="abonat"></param>
         /// <returns></returns>
@@ -874,7 +874,7 @@ namespace Database
         }
 
         /// <summary>
-        /// 
+        /// aplica restrictii unui abonat
         /// </summary>
         /// <param name="abonat"></param>
         /// <returns></returns>
@@ -883,47 +883,6 @@ namespace Database
             return UpdateStatusAbonat(idAbonat, "cu restrictii");
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Abonat> GetAbonatiCuRestrictiiSauBlocati()
-        {
-            lock(_staticLock)
-            {
-                List<Abonat> abonati = new List<Abonat>();
-
-                string query = @"SELECT *
-                            FROM Abonat
-                            WHERE status IN ('cu restrictii', 'blocat')";
-
-                using (var cmd = new SQLiteCommand(query, _connection))
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Abonat abonat = new Abonat(
-
-                            Convert.ToInt32(reader["id_abonat"]),
-                            reader["nume"].ToString(),
-                            reader["prenume"].ToString(),
-                            reader["adresa"].ToString(),
-                            reader["telefon"].ToString(),
-                            reader["email"].ToString(),
-                            Convert.ToInt32(reader["limita"]),
-                            reader["status"].ToString()
-
-                        );
-
-                        abonati.Add(abonat);
-                    }
-                }
-
-                return abonati;
-            }
-            
-        }
 
         /// <summary>
         /// metoda care verifica daca utilizatorul exista in baza de date
@@ -1088,7 +1047,7 @@ namespace Database
 
 
         /// <summary>
-        /// 
+        /// inchidere conexiunii cu baza de date
         /// </summary>
         public void Close()
         {
@@ -1097,7 +1056,7 @@ namespace Database
         }
 
         /// <summary>
-        /// 
+        /// deschide conexiunea cu baza de date
         /// </summary>
         public void Open()
         {
