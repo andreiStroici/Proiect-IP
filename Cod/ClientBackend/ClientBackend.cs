@@ -34,8 +34,8 @@ namespace ClientBackend
     /// </summary>
     public class ClientBackend
     {
-        private TcpListener _port;
-        private TcpClient _server;
+        private readonly TcpListener _port;
+        private readonly TcpClient _server;
 
         /// <summary>
         /// Constructorul clasei ClientBackend. Caută adresa IP și portul pentru conectarea cu server-ul.
@@ -110,9 +110,9 @@ namespace ClientBackend
                                 string role = parts[1];
                                 username = parts[2];
                                 string password = parts[3];
-                                bool success = login(username, password, role);
+                                bool isSucceeded = Login(username, password, role);
                                 Console.WriteLine($"Login attempt for user: {username} with password: {password}");
-                                writer.WriteLine(success ? "Login successful" : "Login failed");
+                                writer.WriteLine(isSucceeded ? "Login successful" : "Login failed");
                             }
                             else
                             {
@@ -133,7 +133,7 @@ namespace ClientBackend
                                 data = logoutData
                             };
                             string json = JsonConvert.SerializeObject(obj);
-                            sendMessage(json);
+                            SendMessage(json);
                             break;
                         case "registerSubscriber":
                             Console.WriteLine("Register subscriber request received");
@@ -144,9 +144,9 @@ namespace ClientBackend
                                 string address = parts[3];
                                 string phoneNumber = parts[4];
                                 string email = parts[5];
-                                bool success = registerSubscriber(lastname, firstname, address, phoneNumber, email);
+                                bool isSucceeded = RegisterSubscriber(lastname, firstname, address, phoneNumber, email);
                                 Console.WriteLine($"Register subscriber attempt for: {lastname} {firstname}, Address: {address}, Phone: {phoneNumber}, Email: {email}");
-                                writer.WriteLine(success ? "Subscriber Register successful" : "Subscriber Register failed");
+                                writer.WriteLine(isSucceeded ? "Subscriber Register successful" : "Subscriber Register failed");
                             }
                             else
                             {
@@ -156,7 +156,7 @@ namespace ClientBackend
                             Console.WriteLine("Finalizare inregistrare abonat");
                             break;
                         case "loginSubscriber":
-                            string response = loginSubscriber(parts[1]);
+                            string response = LoginSubscriber(parts[1]);
                             writer.WriteLine(response);
                             break;
                         case "searchBooks":
@@ -166,7 +166,7 @@ namespace ClientBackend
                                 string title = parts[1];
                                 string author = parts[2];
                                 Console.WriteLine($"Searching attempt for books with Title: {title} and Author: {author}");
-                                response = getBooks(title, author);
+                                response = GetBooks(title, author);
 
                                 if (response != "No books found.")
                                 {
@@ -203,8 +203,8 @@ namespace ClientBackend
                                 string selectedLocation = parts[3];
 
                                 Console.WriteLine($"Insert loan attempt for Subscriber ID: {subscriberId}, Book ID: {bookId}, Location: {selectedLocation}");
-                                bool success = insertLoan(subscriberId, bookId, selectedLocation);
-                                writer.WriteLine(success ? "Inserted Loan successful." : "Inserted Loan failed.");
+                                bool isSucceeded = InsertLoan(subscriberId, bookId, selectedLocation);
+                                writer.WriteLine(isSucceeded ? "Inserted Loan successful." : "Inserted Loan failed.");
                             }
                             else
                             {
@@ -218,7 +218,7 @@ namespace ClientBackend
                             {
                                 int subscriberId = int.Parse(parts[1]);
                                 Console.WriteLine($"Get loans attempt for Subscriber ID: {subscriberId}");
-                                response = getLoans(subscriberId);
+                                response = GetLoans(subscriberId);
 
                                 if (response != "No loans found.")
                                 {
@@ -254,8 +254,8 @@ namespace ClientBackend
                                 int subscriberId = int.Parse(parts[1].Trim());
                                 int bookId = int.Parse(parts[2].Trim());
                                 Console.WriteLine($"Return book attempt for Subscriber ID: {subscriberId}, Book ID: {bookId}");
-                                bool success = returnBook(subscriberId, bookId);
-                                writer.WriteLine(success ? "Return successful." : "Return failed.");
+                                bool isSucceeded = ReturnBook(subscriberId, bookId);
+                                writer.WriteLine(isSucceeded ? "Return successful." : "Return failed.");
                             }
                             else
                             {
@@ -269,7 +269,7 @@ namespace ClientBackend
                             {
                                 int subscriberId = int.Parse(parts[1].Trim());
                                 Console.WriteLine($"Get status client attempt for Subscriber ID: {subscriberId}");
-                                response = getStatusClient(subscriberId);
+                                response = GetStatusClient(subscriberId);
 
                                 writer.WriteLine(response);
                             }
@@ -287,8 +287,8 @@ namespace ClientBackend
                                 string password = parts[2];
                                 string role = parts[3];
                                 Console.WriteLine("Register employee attempt for Username: " + username + ", Password: " + password + ", Role: " + role);
-                                bool success = register(username, password, role);
-                                if (success)
+                                bool isSucceeded = Register(username, password, role);
+                                if (isSucceeded)
                                 {
                                     Console.WriteLine("Employee Register successful.");
                                     writer.WriteLine("Employee Register successful.");
@@ -312,9 +312,9 @@ namespace ClientBackend
                                 username = parts[1];
                                 Console.WriteLine("Delete employee attempt for Username: " + username);
 
-                                bool success = deleteEmployee(username);
+                                bool isSucceeded = DeleteEmployee(username);
 
-                                if(success)
+                                if(isSucceeded)
                                 {
                                     Console.WriteLine("Librarian deleted successful.");
                                     writer.WriteLine("Librarian deleted successful.");
@@ -341,8 +341,8 @@ namespace ClientBackend
                                 string publisher = parts[4];
                                 string genre = parts[5];
                                 Console.WriteLine($"Add book attempt for ISBN: {ISBN}, title: {title}, author: {author}, publisher: {publisher}, genre: {genre}");
-                                bool success = addBook(ISBN, title, author, publisher, genre);
-                                if (success)
+                                bool isSucceeded = AddBook(ISBN, title, author, publisher, genre);
+                                if (isSucceeded)
                                 {
                                     Console.WriteLine("Book added successful.");
                                     writer.WriteLine("Book added successful.");
@@ -366,7 +366,7 @@ namespace ClientBackend
                                 string isbn = parts[1];
                                 
                                 Console.WriteLine($"Searching attempt for book with ISBN: {isbn}");
-                                response = searchBook(isbn);
+                                response = SearchBook(isbn);
 
                                 if (response != "No books found with the given ISBN.")
                                 {
@@ -402,8 +402,8 @@ namespace ClientBackend
                                 int idBook = int.Parse(parts[1]);
                                 Console.WriteLine($"Delete book attempt for ID: {idBook}");
 
-                                bool success = deleteBook(idBook);
-                                if (success)
+                                bool isSucceeded = DeleteBook(idBook);
+                                if (isSucceeded)
                                 {
                                     Console.WriteLine("Book deleted successful.");
                                     writer.WriteLine("Book deleted successful.");
@@ -423,7 +423,7 @@ namespace ClientBackend
                             break;
                         case "searchSubscribers":
                             Console.WriteLine("Search subscribers request received.");
-                            response = searchSubscribers();
+                            response = SearchSubscribers();
                             writer.WriteLine(response);
                             break;
                         case "updateStatus":
@@ -433,8 +433,8 @@ namespace ClientBackend
                                 int subscriberId = int.Parse(parts[1]);
                                 string status = parts[2];
 
-                                bool success = updateStatus(subscriberId, status);
-                                if (success)
+                                bool isSucceeded = UpdateStatus(subscriberId, status);
+                                if (isSucceeded)
                                 {
                                     Console.WriteLine("Status updated successful.");
                                     writer.WriteLine("Status updated successful.");
@@ -469,7 +469,7 @@ namespace ClientBackend
         /// Trimite un mesaj către server.
         /// </summary>
         /// <param name="message"></param>
-        private void sendMessage(string message)
+        private void SendMessage(string message)
         {
             NetworkStream stream = _server.GetStream();
             StreamWriter writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true };
@@ -495,7 +495,7 @@ namespace ClientBackend
         /// <param name="password"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        private bool login(string username, string password, string role)
+        private bool Login(string username, string password, string role)
         {
             // Implement your login logic here
             Console.WriteLine($"Logging in user: {username} with password: {password}");
@@ -511,7 +511,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Login successful.")
             {
@@ -529,7 +529,7 @@ namespace ClientBackend
         /// <param name="password"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        private bool register(string username, string password, string role)
+        private bool Register(string username, string password, string role)
         {
             Console.WriteLine($"Registering user: {username} with password: {password} and role: {role}");
             var data = new List<Dictionary<string, string>>
@@ -542,7 +542,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Employee registered successful.")
             {
@@ -562,7 +562,7 @@ namespace ClientBackend
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        private bool registerSubscriber(string lastname, string firstname, string address, string phoneNumber, string email)
+        private bool RegisterSubscriber(string lastname, string firstname, string address, string phoneNumber, string email)
         {
             Console.WriteLine($"Register subscriber with info: Lastname: {lastname}, Firstname: {firstname}, Address: {address}, PhoneNumber: {phoneNumber}, Email: {email}");
 
@@ -579,7 +579,7 @@ namespace ClientBackend
 
             string json = JsonConvert.SerializeObject(obj);
             Console.WriteLine(json);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Subscriber Register successful.")
             {
@@ -595,7 +595,7 @@ namespace ClientBackend
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
-        private string loginSubscriber(string username)
+        private string LoginSubscriber(string username)
         {
             Console.WriteLine($"Logging in subscriber: {username}");
 
@@ -611,7 +611,7 @@ namespace ClientBackend
             };
 
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             return response;
@@ -622,7 +622,7 @@ namespace ClientBackend
         /// <param name="title"></param>
         /// <param name="author"></param>
         /// <returns></returns>
-        private string getBooks(string title, string author)
+        private string GetBooks(string title, string author)
         {
             Console.WriteLine($"Searching for books with Title: {title} and Author: {author}");
             var data = new List<Dictionary<string, string>>
@@ -635,7 +635,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             return response;
@@ -647,7 +647,7 @@ namespace ClientBackend
         /// <param name="bookId"></param>
         /// <param name="selectedLocation"></param>
         /// <returns></returns>
-        private bool insertLoan(int subscriberId, int bookId, string selectedLocation)
+        private bool InsertLoan(int subscriberId, int bookId, string selectedLocation)
         {
             Console.WriteLine($"Inserting Loan with SubscriberId: {subscriberId}, bookId: {bookId} and selected location: {selectedLocation}");
             var data = new List<Dictionary<string, string>>
@@ -660,7 +660,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
 
             string response = WaitForMessage();
             if (response.Trim() == "Inserted Loan successful.")
@@ -677,7 +677,7 @@ namespace ClientBackend
         /// </summary>
         /// <param name="subscriberId"></param>
         /// <returns></returns>
-        private string getLoans(int subscriberId)
+        private string GetLoans(int subscriberId)
         {
             Console.WriteLine($"Getting loans for SubscriberId: {subscriberId}");
             var data = new List<Dictionary<string, string>>
@@ -690,7 +690,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
 
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
@@ -702,7 +702,7 @@ namespace ClientBackend
         /// <param name="subscriberId"></param>
         /// <param name="bookId"></param>
         /// <returns></returns>
-        private bool returnBook(int subscriberId, int bookId)
+        private bool ReturnBook(int subscriberId, int bookId)
         {
             Console.WriteLine($"Returning book with SubscriberId: {subscriberId}, BookId: {bookId}");
             var data = new List<Dictionary<string, string>>
@@ -715,7 +715,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Book returned successful.")
             {
@@ -731,7 +731,7 @@ namespace ClientBackend
         /// </summary>
         /// <param name="subscriberId"></param>
         /// <returns></returns>
-        private string getStatusClient(int subscriberId)
+        private string GetStatusClient(int subscriberId)
         {
             Console.WriteLine($"Getting status for SubscriberId: {subscriberId}");
             var data = new List<Dictionary<string, string>>
@@ -744,7 +744,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             return response;
@@ -754,7 +754,7 @@ namespace ClientBackend
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
-        private bool deleteEmployee(string username)
+        private bool DeleteEmployee(string username)
         {
             Console.WriteLine("Deleting employee with Username: " + username);
             var data = new List<Dictionary<string, string>>
@@ -768,7 +768,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             if (response.Trim() == "Librarian deleted successful.")
@@ -789,7 +789,7 @@ namespace ClientBackend
         /// <param name="publisher"></param>
         /// <param name="genre"></param>
         /// <returns></returns>
-        private bool addBook(string isbn, string title, string author, string publisher, string genre)
+        private bool AddBook(string isbn, string title, string author, string publisher, string genre)
         {
             Console.WriteLine("Adding book with ISBN: " + isbn + ", Title: " + title + ", Author: " + author + ", Publisher: " + publisher + ", Genre: " + genre);
             var data = new List<Dictionary<string, string>>
@@ -802,7 +802,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if (response == "Book added successful.")
             {
@@ -818,7 +818,7 @@ namespace ClientBackend
         /// </summary>
         /// <param name="isbn"></param>
         /// <returns></returns>
-        private string searchBook(string isbn)
+        private string SearchBook(string isbn)
         {
             Console.WriteLine("Searching book with ISBN: " + isbn);
             var data = new List<Dictionary<string, string>>
@@ -831,7 +831,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             return response;
@@ -841,7 +841,7 @@ namespace ClientBackend
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        private bool deleteBook(int id)
+        private bool DeleteBook(int id)
         {
             Console.WriteLine("Deleting book with ID: " + id);
             var data = new List<Dictionary<string, string>>
@@ -854,7 +854,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if(response == "Book deleted successful.")
             {
@@ -869,7 +869,7 @@ namespace ClientBackend
         /// Această metodă va căuta toți abonații (cititorii) din baza de date.
         /// </summary>
         /// <returns></returns>
-        private string searchSubscribers()
+        private string SearchSubscribers()
         {
             Console.WriteLine("Searching subscribers");
             var data = new List<Dictionary<string, string>>();
@@ -879,7 +879,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             Console.WriteLine("Response from server: " + response);
             return response;
@@ -890,7 +890,7 @@ namespace ClientBackend
         /// <param name="id"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        private bool updateStatus(int id, string status)
+        private bool UpdateStatus(int id, string status)
         {
             Console.WriteLine($"Updating status for SubscriberId: {id} to Status: {status}");
             var data = new List<Dictionary<string, string>>
@@ -903,7 +903,7 @@ namespace ClientBackend
                 data = data
             };
             string json = JsonConvert.SerializeObject(obj);
-            sendMessage(json);
+            SendMessage(json);
             string response = WaitForMessage();
             if (response.Trim() == "Status updated successful.")
             {
