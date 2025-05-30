@@ -745,7 +745,7 @@ namespace Database
         }
 
         /// <summary>
-        /// returneaza lista de abonati cu probleme
+        /// returneaza lista de abonati cu probleme (abonati cu inprumuturi active intarziate si/sau cei restrictionati)
         /// </summary>
         /// <returns></returns>
         public List<Abonat> CautareIntarziati()
@@ -762,7 +762,7 @@ namespace Database
                             LEFT JOIN Imprumut i ON i.id_abonat = a.id_abonat AND i.data_restituire IS NULL
                             GROUP BY a.id_abonat
                             HAVING a.status = 'cu restrictii' 
-                                OR (MIN(i.deadline) IS NOT NULL AND MIN(i.deadline) < date(@azi))
+                                OR MIN(i.deadline) < date(@azi)
                             ";
 
                 try
@@ -814,6 +814,67 @@ namespace Database
             }
            
         }
+
+        /// <summary>
+        /// returneaza o lista cu abonatii care au imprumuturi active intarziate
+        /// </summary>
+        /// <returns></returns>
+        public List<Abonat> CautareDoarIntarziati()
+        {
+            lock (_staticLock)
+            {
+                var lista = new List<Abonat>();
+
+                string query = @"
+                    SELECT 
+                        a.id_abonat, a.nume, a.prenume, a.adresa, a.telefon, a.email, a.limita, a.status,
+                        MIN(i.deadline) AS cel_mai_vechi_deadline
+                    FROM Abonat a
+                    LEFT JOIN Imprumut i ON i.id_abonat = a.id_abonat AND i.data_restituire IS NULL
+                    GROUP BY a.id_abonat
+                    HAVING MIN(i.deadline) < date(@azi)
+                    ";
+
+                try
+                {
+                    using (var cmd = new SQLiteCommand(query, _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@azi", DateTime.Today);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DateTime deadline = Convert.ToDateTime(reader["cel_mai_vechi_deadline"]);
+                                int zilePanaLaDeadline = (DateTime.Today - deadline).Days;
+
+                                var abonat = new Abonat(
+                                    Convert.ToInt32(reader["id_abonat"]),
+                                    reader["nume"].ToString(),
+                                    reader["prenume"].ToString(),
+                                    reader["adresa"].ToString(),
+                                    reader["telefon"].ToString(),
+                                    reader["email"].ToString(),
+                                    zilePanaLaDeadline,
+                                    Convert.ToInt32(reader["limita"]),
+                                    reader["status"].ToString()
+                                );
+
+                                lista.Add(abonat);
+                            }
+                        }
+                    }
+
+                    return lista;
+                }
+                catch (SQLiteException ex)
+                {
+                    Console.WriteLine("Eroare la cautarea abonatilor cu deadline viitor: " + ex.Message);
+                    return null;
+                }
+            }
+        }
+
 
 
 
