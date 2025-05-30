@@ -34,7 +34,7 @@ namespace UserInterface
     /// </summary>
     public partial class MainView : Form
     {
-        private ConnectionToClientBackend _connectionToClientBackend;
+        private readonly ConnectionToClientBackend _connectionToClientBackend;
         /// <summary>
         /// Constructorul pentru MainView
         /// </summary>
@@ -49,7 +49,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void ButtonLogin_Click(object sender, EventArgs e)
         {
             // Verificare autentificare
             string username = textBoxUsername.Text;

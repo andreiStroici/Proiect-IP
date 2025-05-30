@@ -144,7 +144,7 @@
             this.buttonAbonatRegister.TabIndex = 16;
             this.buttonAbonatRegister.Text = "Înregistrare";
             this.buttonAbonatRegister.UseVisualStyleBackColor = true;
-            this.buttonAbonatRegister.Click += new System.EventHandler(this.buttonAbonatRegister_Click);
+            this.buttonAbonatRegister.Click += new System.EventHandler(this.ButtonAbonatRegister_Click);
             // 
             // buttonAbonatLogin
             // 
@@ -154,7 +154,7 @@
             this.buttonAbonatLogin.TabIndex = 15;
             this.buttonAbonatLogin.Text = "Conectare";
             this.buttonAbonatLogin.UseVisualStyleBackColor = true;
-            this.buttonAbonatLogin.Click += new System.EventHandler(this.buttonAbonatLogin_Click);
+            this.buttonAbonatLogin.Click += new System.EventHandler(this.ButtonAbonatLogin_Click);
             // 
             // labelAutentificareTelefon
             // 
@@ -255,7 +255,7 @@
             this.buttonDelogare.Size = new System.Drawing.Size(134, 34);
             this.buttonDelogare.TabIndex = 57;
             this.buttonDelogare.Text = "Delogare";
-            this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
+            this.buttonDelogare.Click += new System.EventHandler(this.ButtonDelogare_Click);
             // 
             // labelAbonati
             // 
@@ -323,7 +323,7 @@
             this.buttonReturnareValidare.TabIndex = 52;
             this.buttonReturnareValidare.Text = "Validare";
             this.buttonReturnareValidare.UseVisualStyleBackColor = true;
-            this.buttonReturnareValidare.Click += new System.EventHandler(this.buttonRetur_Click);
+            this.buttonReturnareValidare.Click += new System.EventHandler(this.ButtonRetur_Click);
             // 
             // groupBoxServicii
             // 
@@ -404,7 +404,7 @@
             this.buttonImprumutCautare.TabIndex = 54;
             this.buttonImprumutCautare.Text = "Căutare";
             this.buttonImprumutCautare.UseVisualStyleBackColor = true;
-            this.buttonImprumutCautare.Click += new System.EventHandler(this.buttonImprumutCautare_Click);
+            this.buttonImprumutCautare.Click += new System.EventHandler(this.ButtonImprumutCautare_Click);
             // 
             // labelServicii
             // 
@@ -470,7 +470,7 @@
             this.buttonImprumutValidare.Size = new System.Drawing.Size(124, 34);
             this.buttonImprumutValidare.TabIndex = 48;
             this.buttonImprumutValidare.Text = "Validare";
-            this.buttonImprumutValidare.Click += new System.EventHandler(this.buttonImprumutValidare_Click);
+            this.buttonImprumutValidare.Click += new System.EventHandler(this.ButtonImprumutValidare_Click);
             // 
             // buttonReturCautare
             // 
@@ -480,7 +480,7 @@
             this.buttonReturCautare.TabIndex = 59;
             this.buttonReturCautare.Text = "Căutare";
             this.buttonReturCautare.UseVisualStyleBackColor = true;
-            this.buttonReturCautare.Click += new System.EventHandler(this.buttonReturCautare_Click);
+            this.buttonReturCautare.Click += new System.EventHandler(this.ButtonReturCautare_Click);
             // 
             // BibliotecarView
             // 

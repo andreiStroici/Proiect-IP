@@ -130,7 +130,7 @@
             this.buttonAngajatRegister.TabIndex = 16;
             this.buttonAngajatRegister.Text = "Înregistrare";
             this.buttonAngajatRegister.UseVisualStyleBackColor = true;
-            this.buttonAngajatRegister.Click += new System.EventHandler(this.buttonAngajatRegister_Click);
+            this.buttonAngajatRegister.Click += new System.EventHandler(this.ButtonAngajatRegister_Click);
             // 
             // textBoxAngajatUsername
             // 
@@ -219,7 +219,7 @@
             this.buttonAngajatDelete.TabIndex = 63;
             this.buttonAngajatDelete.Text = "Eliminare";
             this.buttonAngajatDelete.UseVisualStyleBackColor = true;
-            this.buttonAngajatDelete.Click += new System.EventHandler(this.buttonAngajatDelete_Click);
+            this.buttonAngajatDelete.Click += new System.EventHandler(this.ButtonAngajatDelete_Click);
             // 
             // textBoxAngajatStergereUsername
             // 
@@ -297,7 +297,7 @@
             this.buttonȘtergereCarteCăutare.TabIndex = 36;
             this.buttonȘtergereCarteCăutare.Text = "Căutare";
             this.buttonȘtergereCarteCăutare.UseVisualStyleBackColor = true;
-            this.buttonȘtergereCarteCăutare.Click += new System.EventHandler(this.buttonȘtergereCarteCăutare_Click);
+            this.buttonȘtergereCarteCăutare.Click += new System.EventHandler(this.ButtonȘtergereCarteCăutare_Click);
             // 
             // comboBoxStergereCarti
             // 
@@ -323,7 +323,7 @@
             this.buttonDeleteCarte.TabIndex = 28;
             this.buttonDeleteCarte.Text = "Șterge";
             this.buttonDeleteCarte.UseVisualStyleBackColor = true;
-            this.buttonDeleteCarte.Click += new System.EventHandler(this.buttonDeleteCarte_Click);
+            this.buttonDeleteCarte.Click += new System.EventHandler(this.ButtonDeleteCarte_Click);
             // 
             // textBoxDeleteIDCarte
             // 
@@ -415,7 +415,7 @@
             this.buttonAdaugaCarte.TabIndex = 17;
             this.buttonAdaugaCarte.Text = "Adaugă";
             this.buttonAdaugaCarte.UseVisualStyleBackColor = true;
-            this.buttonAdaugaCarte.Click += new System.EventHandler(this.buttonAdaugaCarte_Click);
+            this.buttonAdaugaCarte.Click += new System.EventHandler(this.ButtonAdaugaCarte_Click);
             // 
             // labelAddCarte
             // 
@@ -520,7 +520,7 @@
             this.radioButtonAfișareAbonați.TabStop = true;
             this.radioButtonAfișareAbonați.Text = "Afișare abonați";
             this.radioButtonAfișareAbonați.UseVisualStyleBackColor = true;
-            this.radioButtonAfișareAbonați.CheckedChanged += new System.EventHandler(this.radioButtonAfișareAbonați_CheckedChanged);
+            this.radioButtonAfișareAbonați.CheckedChanged += new System.EventHandler(this.RadioButtonAfișareAbonați_CheckedChanged);
             // 
             // radioButtonGestiuneAbonați
             // 
@@ -533,7 +533,7 @@
             this.radioButtonGestiuneAbonați.TabStop = true;
             this.radioButtonGestiuneAbonați.Text = "Selectare abonat";
             this.radioButtonGestiuneAbonați.UseVisualStyleBackColor = true;
-            this.radioButtonGestiuneAbonați.CheckedChanged += new System.EventHandler(this.radioButtonGestiuneAbonați_CheckedChanged);
+            this.radioButtonGestiuneAbonați.CheckedChanged += new System.EventHandler(this.RadioButtonGestiuneAbonați_CheckedChanged);
             // 
             // buttonAfișareAbonațiCăutare
             // 
@@ -544,7 +544,7 @@
             this.buttonAfișareAbonațiCăutare.TabIndex = 64;
             this.buttonAfișareAbonațiCăutare.Text = "Căutare";
             this.buttonAfișareAbonațiCăutare.UseVisualStyleBackColor = true;
-            this.buttonAfișareAbonațiCăutare.Click += new System.EventHandler(this.buttonAfișareAbonațiCăutare_Click);
+            this.buttonAfișareAbonațiCăutare.Click += new System.EventHandler(this.ButtonAfișareAbonațiCăutare_Click);
             // 
             // comboBoxAbonațiProbleme
             // 
@@ -580,7 +580,7 @@
             this.buttonGestiuneValidare.Size = new System.Drawing.Size(124, 34);
             this.buttonGestiuneValidare.TabIndex = 61;
             this.buttonGestiuneValidare.Text = "Validare";
-            this.buttonGestiuneValidare.Click += new System.EventHandler(this.buttonGestiuneValidare_Click);
+            this.buttonGestiuneValidare.Click += new System.EventHandler(this.ButtonGestiuneValidare_Click);
             // 
             // radioButtonGestiuneB
             // 
@@ -652,7 +652,7 @@
             this.buttonGestiuneCautare.TabIndex = 55;
             this.buttonGestiuneCautare.Text = "Căutare";
             this.buttonGestiuneCautare.UseVisualStyleBackColor = true;
-            this.buttonGestiuneCautare.Click += new System.EventHandler(this.buttonGestiuneCautare_Click);
+            this.buttonGestiuneCautare.Click += new System.EventHandler(this.ButtonGestiuneCautare_Click);
             // 
             // labelGestiuneAbonațiTelefon
             // 
@@ -692,7 +692,7 @@
             this.buttonDelogare.Size = new System.Drawing.Size(134, 34);
             this.buttonDelogare.TabIndex = 58;
             this.buttonDelogare.Text = "Delogare";
-            this.buttonDelogare.Click += new System.EventHandler(this.buttonDelogare_Click);
+            this.buttonDelogare.Click += new System.EventHandler(this.ButtonDelogare_Click);
             // 
             // AdminView
             // 

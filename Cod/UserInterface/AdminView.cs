@@ -32,8 +32,8 @@ namespace UserInterface
     /// </summary>
     public partial class AdminView : Form
     {
-        private Form _mainView;
-        private ConnectionToClientBackend _connectionToClientBackend;
+        private readonly Form _mainView;
+        private readonly ConnectionToClientBackend _connectionToClientBackend;
         private int _abonatId;
         /// <summary>
         /// Constructorul pentru AdminView
@@ -49,7 +49,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonDelogare_Click(object sender, EventArgs e)
+        private void ButtonDelogare_Click(object sender, EventArgs e)
         {
             // Delogare și revenire la pagina principală
             _connectionToClientBackend.SendRequest("logout", "\n");
@@ -63,7 +63,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonGestiuneAbonați_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonGestiuneAbonați_CheckedChanged(object sender, EventArgs e)
         {
             // Activăm interfața pentru gestiunea abonaților după numărul de telefon
             if (radioButtonGestiuneAbonați.Checked)
@@ -86,7 +86,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonAfișareAbonați_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonAfișareAbonați_CheckedChanged(object sender, EventArgs e)
         {
             // Activăm interfața pentru listarea abonaților problematici
             if (radioButtonAfișareAbonați.Checked)
@@ -109,7 +109,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonGestiuneCautare_Click(object sender, EventArgs e)
+        private void ButtonGestiuneCautare_Click(object sender, EventArgs e)
         {
             textBoxGestiuneDate.Clear();
             string numarTelefon = textBoxGestiuneTelefon.Text;
@@ -143,9 +143,6 @@ namespace UserInterface
             string status = response[2];
             string nume = response[3];
             string prenume = response[4];
-            string adresa = response[5];
-            string email = response[6];
-            string telefon = response[7];
             string limitaCarti = response[8];
 
             this.textBoxGestiuneDate.Enabled = true;
@@ -170,7 +167,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAfișareAbonațiCăutare_Click(object sender, EventArgs e)
+        private void ButtonAfișareAbonațiCăutare_Click(object sender, EventArgs e)
         {
             _connectionToClientBackend.SendRequest("searchSubscribers", $"\n");
             string []response = _connectionToClientBackend.ReceiveResponse().Split('|');
@@ -193,7 +190,6 @@ namespace UserInterface
                 string idAbonat = abonat[0];
                 string numeAbonat = abonat[1];
                 string prenumeAbonat = abonat[2];
-                string adresaAbonat = abonat[3];
                 string telefonAbonat = abonat[4];
                 string emailAbonat = abonat[5];
                 string statusAbonat = abonat[6];
@@ -214,7 +210,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonGestiuneValidare_Click(object sender, EventArgs e)
+        private void ButtonGestiuneValidare_Click(object sender, EventArgs e)
         {
             if (radioButtonAfișareAbonați.Checked)
             {
@@ -279,7 +275,7 @@ namespace UserInterface
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void buttonAngajatRegister_Click(object sender, EventArgs e)
+        private void ButtonAngajatRegister_Click(object sender, EventArgs e)
         {
             string username = textBoxAngajatUsername.Text;
             string password = textBoxAngajatParola.Text;
@@ -322,7 +318,7 @@ namespace UserInterface
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void buttonAdaugaCarte_Click(object sender, EventArgs e)
+        private void ButtonAdaugaCarte_Click(object sender, EventArgs e)
         {
             string ISBN = textBoxAddCarteISBN.Text;
             string titlu = textBoxAddCarteTitlu.Text;
@@ -364,7 +360,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonȘtergereCarteCăutare_Click(object sender, EventArgs e)
+        private void ButtonȘtergereCarteCăutare_Click(object sender, EventArgs e)
         {
             comboBoxStergereCarti.Items.Clear();
             string ISBN = textBoxDeleteIDCarte.Text;
@@ -417,7 +413,7 @@ namespace UserInterface
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void buttonDeleteCarte_Click(object sender, EventArgs e)
+        private void ButtonDeleteCarte_Click(object sender, EventArgs e)
         {
             if(comboBoxStergereCarti.SelectedItem == null)
             {
@@ -447,7 +443,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAngajatDelete_Click(object sender, EventArgs e)
+        private void ButtonAngajatDelete_Click(object sender, EventArgs e)
         {
             string username = textBoxAngajatStergereUsername.Text;
             if (string.IsNullOrEmpty(username))

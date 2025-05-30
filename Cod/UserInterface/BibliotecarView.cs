@@ -35,8 +35,8 @@ namespace UserInterface
     /// </summary>    
     public partial class BibliotecarView : Form
     {
-        private ConnectionToClientBackend _connectionToClientBackend;
-        private Form _mainView;
+        private readonly ConnectionToClientBackend _connectionToClientBackend;
+        private readonly Form _mainView;
         private int _abonatId;
         private string _abonatStatus;
         /// <summary>
@@ -53,7 +53,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAbonatLogin_Click(object sender, EventArgs e)
+        private void ButtonAbonatLogin_Click(object sender, EventArgs e)
         {
             panelServiciuReturnare.Enabled = false;
             groupBoxServicii.Enabled = false;
@@ -78,7 +78,7 @@ namespace UserInterface
 
             _connectionToClientBackend.SendRequest("loginSubscriber", $"{numarTelefon}\n");
             string r = _connectionToClientBackend.ReceiveResponse();
-            //MessageBox.Show(r);
+
             string[] response = r.Split('|');
 
             if (response[0] != "Subscriber Login successful")
@@ -98,18 +98,15 @@ namespace UserInterface
                 panelServiciuReturnare.Enabled = true;
                 return;
             }
-
             else if (response[2] == "cu restrictii")
             {
                 MessageBox.Show("Abonatul are restricții! Nu poate împrumuta cărți acasă.");
                 _abonatStatus = "restrictionat";
             }
-
             else
             {
                 _abonatStatus = "fara restrictii";
             }
-
 
             // Activează interfața pentru gestiunea serviciilor de împrumut și retur
             groupBoxServicii.Enabled = true;
@@ -121,7 +118,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAbonatRegister_Click(object sender, EventArgs e)
+        private void ButtonAbonatRegister_Click(object sender, EventArgs e)
         {
             string name = textBoxAbonatNume.Text;
             string password = textBoxAbonatPrenume.Text;
@@ -172,7 +169,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonImprumutCautare_Click(object sender, EventArgs e)
+        private void ButtonImprumutCautare_Click(object sender, EventArgs e)
         {
             string titlu = textBoxImprumutTitlu.Text;
             string autor = textBoxImprumutAutor.Text;
@@ -203,25 +200,24 @@ namespace UserInterface
                 radioButtonÎmprumutAcasă.Enabled = false;
             }
 
-                foreach (var r in response)
-                {
-                    string[] book = r.Split('~');
-                    if (book.Length < 3)
-                    {
-                        continue; // dacă nu avem toate informațiile despre carte, trecem la următoarea
-                    }
-                    string idCarte = book[0];
-                    string titluCarte = book[1];
-                    string autorCarte = book[2];
-                    comboBoxSugestii.Items.Add($"{titluCarte}, {autorCarte}, {idCarte}"); // adăugăm cartea în comboBox
-                }
+            foreach (var r in response)
+            {
+                string[] book = r.Split('~');
+            if (book.Length < 3)
+            {
+                continue; // dacă nu avem toate informațiile despre carte, trecem la următoarea
+            }
+                string idCarte = book[0];
+                string titluCarte = book[1];
+                string autorCarte = book[2];
+                comboBoxSugestii.Items.Add($"{titluCarte}, {autorCarte}, {idCarte}"); // adăugăm cartea în comboBox
+            }
 
             // Activează interfața pentru căutarea cărților disponibile (se efectuează căutări parțiale)
             labelImprumutSugestii.Enabled = true;
             comboBoxSugestii.Enabled = true;
             buttonImprumutValidare.Enabled = true;
             radioButtonImprumutSalaLectura.Enabled = true;
-
         }
 
         /// <summary>
@@ -229,7 +225,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonDelogare_Click(object sender, EventArgs e)
+        private void ButtonDelogare_Click(object sender, EventArgs e)
         {
             // Delogare și revenire la pagina principală
             _connectionToClientBackend.SendRequest("logout", "\n");
@@ -245,7 +241,7 @@ namespace UserInterface
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void buttonImprumutValidare_Click(object sender, EventArgs e)
+        private void ButtonImprumutValidare_Click(object sender, EventArgs e)
         {
             if (comboBoxSugestii.SelectedItem == null)
             {
@@ -255,13 +251,12 @@ namespace UserInterface
 
             string []selectedBook = comboBoxSugestii.SelectedItem.ToString().Split(',');
             int idBook = int.Parse(selectedBook[2].Trim());
-            string selectedLocation = "";
-
-            if(!radioButtonImprumutSalaLectura.Checked && !radioButtonÎmprumutAcasă.Checked)
+            if (!radioButtonImprumutSalaLectura.Checked && !radioButtonÎmprumutAcasă.Checked)
             {
                 MessageBox.Show("Vă rugăm să selectați o opțiune de împrumut!");
                 return;
             }
+            string selectedLocation;
             if (radioButtonImprumutSalaLectura.Checked)
             {
                 selectedLocation = "sala de lectura";
@@ -297,7 +292,7 @@ namespace UserInterface
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void buttonRetur_Click(object sender, EventArgs e)
+        private void ButtonRetur_Click(object sender, EventArgs e)
         {
             if(comboBoxReturnare.Items.Count == 0)
             {
@@ -336,7 +331,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonReturCautare_Click(object sender, EventArgs e)
+        private void ButtonReturCautare_Click(object sender, EventArgs e)
         {
             // vom trimite către comboboxul de returnare cărți toate acele împrumuturi nefinalizate (cărți nereturnate)
             comboBoxReturnare.SelectedItem = null;
