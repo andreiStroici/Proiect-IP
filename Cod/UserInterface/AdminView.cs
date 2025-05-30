@@ -307,7 +307,7 @@ namespace UserInterface
             }
             else
             {
-                MessageBox.Show(response);
+                MessageBox.Show("Încercare de înregistrare angajat eșuată.");
                 return;
             }
      }
