@@ -129,27 +129,39 @@ namespace Server
                         case "login":
                             // Handle login
                             Database.Utilizator utilizator = new Database.Utilizator(
-                                receivedObj.data[0]["username"], receivedObj.data[0]["password"],
+                                receivedObj.data[0]["username"],
+                                receivedObj.data[0]["password"],
                                 receivedObj.data[0]["role"]);
+
                             username = receivedObj.data[0]["username"];
-                            bool r = _database.Login(utilizator);
-                            Console.WriteLine("r: " + r);
-                            if (r)
+
+                            try
                             {
-                                if (connectedClients.ContainsKey(utilizator.Nume) == false)
+                                bool ok = _database.Login(utilizator);
+
+                                if (ok)
                                 {
-                                    Console.WriteLine("Login successful.");
-                                    writer.WriteLine("Login successful.");
-                                    connectedClients[utilizator.Nume] = utilizator.Rol;
-                                }
-                                else
-                                {
-                                    writer.WriteLine("Login failed.");
+                                    if (connectedClients.ContainsKey(utilizator.Nume) == false)
+                                    {
+                                        Console.WriteLine("Login successful.");
+                                        writer.WriteLine("Login successful.");
+                                        connectedClients[utilizator.Nume] = utilizator.Rol;
+                                    }
+                                    else
+                                    {
+
+                                        writer.WriteLine("Login failed.");
+                                    }
                                 }
                             }
-                            else
+                            catch (InvalidUserDataException ex)
                             {
-                                Console.WriteLine("Login failed.");
+                                Console.WriteLine("Eroare de autentificare angajat: " + ex.Message);
+                                writer.WriteLine("Login failed. Invalid data.");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error: " + ex.Message);
                                 writer.WriteLine("Login failed.");
                             }
                             break;
@@ -181,7 +193,7 @@ namespace Server
                                 receivedObj.data[0]["email"]
                             );
 
-                            r = _database.InsertClient(abonat);
+                            bool r = _database.InsertClient(abonat);
                             Console.WriteLine("r: " + r);
                             if (r)
                             {
@@ -195,18 +207,24 @@ namespace Server
                             }
                             break;
                         case "loginSubscriber":
-                            abonat = _database.GetAbonatByPhone(receivedObj.data[0]["username"]);
-                            if (abonat == null)
+                            try
                             {
-                                Console.WriteLine("Subscriber not found.");
-                                writer.WriteLine("Subscriber Login failed");
-                            }
-                            else
-                            {
+                                abonat = _database.GetAbonatByPhone(receivedObj.data[0]["username"]);
+
                                 Console.WriteLine("Subscriber found.");
                                 writer.WriteLine($"Subscriber Login successful|{abonat.IdAbonat}|{abonat.Status}|" +
                                     $"{abonat.Nume}|{abonat.Prenume}|{abonat.Adresa}|{abonat.Email}|{abonat.Telefon}|" +
                                     $"{abonat.LimitaCarti}");
+                            }
+                            catch (ClientNotFoundException ex)
+                            {
+                                Console.WriteLine("Eroare de autentificare abonat: " + ex.Message);
+                                writer.WriteLine("Subscriber Login failed");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error: " + ex.Message);
+                                writer.WriteLine("Subscriber Login failed");
                             }
                             break;
                         case "searchBooks":

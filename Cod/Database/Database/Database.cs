@@ -307,7 +307,7 @@ namespace Database
 
 
         /// <summary>
-        /// obtinerea abonatului dupa telefon
+        /// obtinerea abonatului dupa telefon, arunca o exceptie in caz contrar
         /// </summary>
         /// <param name="telefon"></param>
         /// <returns></returns>
@@ -316,7 +316,7 @@ namespace Database
             lock (_staticLock)
             {
                 string query = @"SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
-                                FROM Abonat WHERE telefon = @telefon";
+                         FROM Abonat WHERE telefon = @telefon";
 
                 using (var cmd = new SQLiteCommand(query, _connection))
                 {
@@ -335,19 +335,16 @@ namespace Database
                             int limita = Convert.ToInt32(reader["limita"]);
                             string status = (string)reader["status"];
 
-                            Console.WriteLine("Abonat gasit cu succes dupa telefon");
+                            Console.WriteLine("Abonat gasit cu succes dupa telefon.");
                             return new Abonat(idAbonat, nume, prenume, adresa, telefonDb, email, limita, status);
                         }
                         else
                         {
-                            Console.WriteLine("Eroare la cautarea abonatului prin telefon");
-                            return null;
+                            throw new ClientNotFoundException($"Nu a fost gasit niciun abonat cu telefonul: {telefon}");
                         }
                     }
                 }
             }
-            
-            
         }
 
         /// <summary>
@@ -946,43 +943,34 @@ namespace Database
 
 
         /// <summary>
-        /// metoda care verifica daca utilizatorul exista in baza de date
+        /// metoda care verifica daca utilizatorul exista in baza de date, in caz contrat arunca o exceptie
         /// </summary>
         /// <param name="utilizator"></param>
         /// <returns></returns>
         public bool Login(Utilizator utilizator)
         {
-            lock(_staticLock)
+            lock (_staticLock)
             {
                 string query = @"
-                        SELECT COUNT(*)
-                        FROM Utilizator U
-                        JOIN Rol R ON U.id_rol = R.id_rol
-                        WHERE U.nume_user = @nume_user
-                          AND U.hash_parola = @hash_parola
-                          AND R.nume_rol = @nume_rol;
-                                                ";
+                SELECT COUNT(*)
+                FROM Utilizator U
+                JOIN Rol R ON U.id_rol = R.id_rol
+                WHERE U.nume_user = @nume_user
+                  AND U.hash_parola = @hash_parola
+                  AND R.nume_rol = @nume_rol;
+                                        ";
 
-
-                if (_connection.State != System.Data.ConnectionState.Open)
-                {
-                    Console.WriteLine("Conexiunea nu este deschisa. O deschid...");
-                    _connection.Open();
-                }
+              
 
                 using (var command = new SQLiteCommand(query, _connection))
                 {
-
-                    Console.WriteLine("Parola: " + utilizator.HashParola);
-                    Console.WriteLine("Rol: " + utilizator.Rol);
-                    Console.WriteLine("Nume: " + utilizator.Nume);
 
                     command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
                     command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
                     command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
 
                     long count = (long)command.ExecuteScalar();
-                    Console.WriteLine("count: " + count);
+                   
 
                     if (count == 1)
                     {
@@ -991,15 +979,13 @@ namespace Database
                     }
                     else
                     {
-                        Console.WriteLine("Utilizator nu a reusit sa se autentifice");
-                        return false;
+                        throw new InvalidUserDataException("Datele de autentificare sunt invalide pentru utilizatorul: " + utilizator.Nume);
                     }
-
-
                 }
             }
-            
         }
+
+        
 
         /// <summary>
         /// insereaza un utilizator in baza de date verificand rolul acestuia pentru a corespunde cu rolurile disponibile
