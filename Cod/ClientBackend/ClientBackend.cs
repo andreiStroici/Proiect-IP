@@ -455,7 +455,7 @@ namespace ClientBackend
                     }
                 }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Client disconnected: " + ex.Message);
             }
