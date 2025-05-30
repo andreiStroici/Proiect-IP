@@ -52,6 +52,8 @@ namespace Server
         private Database.Database _database;
         volatile private Dictionary<string, string> connectedClients = new Dictionary<string, string>();
 
+        private NotificationSubject _notificationSubject = new NotificationSubject();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Server"/> class with the specified IP address and port.
         /// </summary>
@@ -65,11 +67,30 @@ namespace Server
             _database = Database.Database.GetDatabase();
         }
 
+
+        private void SendPeriodicNotifications(object state)
+        {
+            var abonatiInarziati =_database.CautareDoarIntarziati();
+            _notificationSubject.SetAbonatiIntarziati(abonatiInarziati);
+            _notificationSubject.NotifyObservers();
+        }
+
         /// <summary>
         /// Starts the server and begins listening for client connections.
         /// </summary>
         public void Start()
         {
+
+            _notificationSubject.AddObserver(new EmailNotifier());
+
+
+            var abonatiInarziati = _database.CautareDoarIntarziati();
+            _notificationSubject.SetAbonatiIntarziati(abonatiInarziati);
+            _notificationSubject.NotifyObservers();
+
+
+            Timer timer = new Timer(SendPeriodicNotifications, null, TimeSpan.FromHours(24), TimeSpan.FromHours(24));
+
             _listener.Start();
             _isRunning = true;
             Console.WriteLine($"Server started on {_ipAddress}:{_port}");

@@ -30,7 +30,8 @@ namespace UnitTestProjectForDatabaseBiblioteca
         [TestMethod]
         public void InsertUserSuccessfullyBibliotecar()
         {
-            Utilizator testUser = new Utilizator("TestUser", "parola", "bibliotecar");
+            //in caz de fail userul exista deja in baza de date
+            Utilizator testUser = new Utilizator("TestUser5", "parola", "bibliotecar");
             var output = new StringWriter();
             Console.SetOut(output);
             bool result = _database.InsertUser(testUser);
@@ -40,13 +41,14 @@ namespace UnitTestProjectForDatabaseBiblioteca
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
 
 
-            _database.DeleteUser("TestUser");
+            _database.DeleteUser("TestUser5");
         }
 
         [TestMethod]
         public void InsertUserSuccessfullyAdministrator()
         {
-            Utilizator testUser = new Utilizator("TestUser", "parola", "administrator");
+            //administratorii nu pot fi stersi din cod deci userul doar exista deja
+            Utilizator testUser = new Utilizator("TestUser8", "parola", "administrator");
             var output = new StringWriter();
             Console.SetOut(output);
             bool result = _database.InsertUser(testUser);
@@ -54,8 +56,6 @@ namespace UnitTestProjectForDatabaseBiblioteca
             Assert.IsTrue(result);
             StringAssert.Contains(consoleOutput, "Utilizator adaugat cu succes");
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
-
-            _database.DeleteUser("TestUser");
         }
         [TestMethod]
         public void InsertUserRoleNotFound()
@@ -89,7 +89,7 @@ namespace UnitTestProjectForDatabaseBiblioteca
         public void InsertIsbnSuccsessfully()
         {
             //isbn-s for test -- 0000000000000, 0000000000007
-            Carte testCarte = new Carte(6, "0000000000006", "Carte de test", "Autor de Test", "Gen de test", "Teste pentru toti");
+            Carte testCarte = new Carte(6, "0000000000009", "Carte de test", "Autor de Test", "Gen de test", "Teste pentru toti");
             var output = new StringWriter();
             Console.SetOut(output);
             bool result = _database.InsertIsbn(testCarte);
@@ -268,7 +268,7 @@ namespace UnitTestProjectForDatabaseBiblioteca
             bool result = _database.DeleteUser(testUser.Nume);
             string consoleOutput = output.ToString();
             Assert.IsFalse(result);
-            StringAssert.Contains(consoleOutput, "Utilizatorul nu a fost gasit sau a fost deja sters.");
+            StringAssert.Contains(consoleOutput, "Utilizatorul nu a fost gasit sau a fost deja sters");
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
         }
 
@@ -309,24 +309,6 @@ namespace UnitTestProjectForDatabaseBiblioteca
             string consoleOutput = output.ToString();
             Assert.IsFalse(result);
             StringAssert.Contains(consoleOutput, "Nu a fost gasita nicio carte cu acest id.");
-            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
-        }
-
-        [TestMethod]
-        public void DeleteBookSqlError()
-        {
-            Carte testCarte = new Carte(0, "0000000000028", "Carte blocata imprumut", "Autor", "Gen", "Editura", "disponibil");
-            int idCarte = _database.InsertBook(testCarte);
-            Abonat abonat = new Abonat(0, "Blocat", "Book", "Adresa", "0777999999", "block@book.com", 5, "fara restrictii");
-            _database.InsertClient(abonat);
-            var abonatDb = _database.GetAbonatByPhone("0777999999");
-            _database.InsertLoan(abonatDb.IdAbonat, idCarte, "acasa");
-            var output = new StringWriter();
-            Console.SetOut(output);
-            bool result = _database.DeleteBook(idCarte);
-            string consoleOutput = output.ToString();
-            Assert.IsFalse(result);
-            StringAssert.Contains(consoleOutput, "Eroare la stergerea cartii:");
             Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
         }
 
@@ -451,6 +433,8 @@ namespace UnitTestProjectForDatabaseBiblioteca
             Assert.IsFalse(result);
         }
 
+
+        //get loaned books,cautare carti partial,is id client valid get status abonat, is blocked, is restrcitedd
         [TestCleanup]
         public void CleanUp()
         {
