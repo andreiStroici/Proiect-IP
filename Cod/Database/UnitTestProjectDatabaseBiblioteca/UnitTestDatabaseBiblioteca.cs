@@ -22,6 +22,9 @@ using System.IO;
 
 namespace UnitTestProjectForDatabaseBiblioteca
 {
+    /// <summary>
+    /// Clasa care implementeaza testele pentru operatiile asupra bazei de date
+    /// </summary>
      [TestClass]
     public class UnitTestDatabaseBiblioteca
     {

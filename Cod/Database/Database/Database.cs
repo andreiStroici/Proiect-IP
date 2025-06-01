@@ -23,6 +23,9 @@ using System.Text.RegularExpressions;
 
 namespace Database
 {
+    /// <summary>
+    /// Clasa care prezinta operatiile CRUD asupra unei baze de date
+    /// </summary>
     public class Database
     {
         private static Database _database;
@@ -66,6 +69,92 @@ namespace Database
             return _database;
         }
 
+
+
+        /// <summary>
+        /// obtinerea abonatului dupa telefon, arunca o exceptie in caz contrar
+        /// </summary>
+        /// <param name="telefon"></param>
+        /// <returns></returns>
+        public Abonat GetAbonatByPhone(string telefon)
+        {
+            lock (_staticLock)
+            {
+                string query = @"SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
+                         FROM Abonat WHERE telefon = @telefon";
+
+                using (var cmd = new SQLiteCommand(query, _connection))
+                {
+                    cmd.Parameters.AddWithValue("@telefon", telefon);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int idAbonat = Convert.ToInt32(reader["id_abonat"]);
+                            string nume = (string)reader["nume"];
+                            string prenume = (string)reader["prenume"];
+                            string adresa = (string)reader["adresa"];
+                            string telefonDb = (string)reader["telefon"];
+                            string email = (string)reader["email"];
+                            int limita = Convert.ToInt32(reader["limita"]);
+                            string status = (string)reader["status"];
+
+                            Console.WriteLine("Abonat gasit cu succes dupa telefon.");
+                            return new Abonat(idAbonat, nume, prenume, adresa, telefonDb, email, limita, status);
+                        }
+                        else
+                        {
+                            throw new ClientNotFoundException($"Nu a fost gasit niciun abonat cu telefonul: {telefon}");
+
+                        }
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// metoda care verifica daca utilizatorul exista in baza de date, in caz contrat arunca o exceptie
+        /// </summary>
+        /// <param name="utilizator"></param>
+        /// <returns></returns>
+        public bool Login(Utilizator utilizator)
+        {
+            lock (_staticLock)
+            {
+                string query = @"
+                SELECT COUNT(*)
+                FROM Utilizator U
+                JOIN Rol R ON U.id_rol = R.id_rol
+                WHERE U.nume_user = @nume_user
+                  AND U.hash_parola = @hash_parola
+                  AND R.nume_rol = @nume_rol;
+                                        ";
+
+
+
+                using (var command = new SQLiteCommand(query, _connection))
+                {
+
+                    command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
+                    command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
+                    command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
+
+                    long count = (long)command.ExecuteScalar();
+
+
+                    if (count == 1)
+                    {
+                        Console.WriteLine("Utilizator autentificat cu succes");
+                        return true;
+                    }
+                    else
+                    {
+                        throw new InvalidUserDataException("Datele de autentificare sunt invalide pentru utilizatorul: " + utilizator.Nume);
+
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// insereaza o inregistrare in tabela Isbn verificand formatul isbn-ului si daca acesta nu exista deja in tabela
@@ -228,7 +317,7 @@ namespace Database
         /// <summary>
         /// stergerea unei carti din tabela Carte
         /// </summary>
-        /// <param name="carte"></param>
+        /// <param name="idCarte"></param>
         /// <returns></returns>
         public bool DeleteBook(int idCarte)
         {
@@ -306,52 +395,11 @@ namespace Database
 
 
 
-        /// <summary>
-        /// obtinerea abonatului dupa telefon, arunca o exceptie in caz contrar
-        /// </summary>
-        /// <param name="telefon"></param>
-        /// <returns></returns>
-        public Abonat GetAbonatByPhone(string telefon)
-        {
-            lock (_staticLock)
-            {
-                string query = @"SELECT id_abonat, nume, prenume, adresa, telefon, email, limita, status
-                         FROM Abonat WHERE telefon = @telefon";
-
-                using (var cmd = new SQLiteCommand(query, _connection))
-                {
-                    cmd.Parameters.AddWithValue("@telefon", telefon);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            int idAbonat = Convert.ToInt32(reader["id_abonat"]);
-                            string nume = (string)reader["nume"];
-                            string prenume = (string)reader["prenume"];
-                            string adresa = (string)reader["adresa"];
-                            string telefonDb = (string)reader["telefon"];
-                            string email = (string)reader["email"];
-                            int limita = Convert.ToInt32(reader["limita"]);
-                            string status = (string)reader["status"];
-
-                            Console.WriteLine("Abonat gasit cu succes dupa telefon.");
-                            return new Abonat(idAbonat, nume, prenume, adresa, telefonDb, email, limita, status);
-                        }
-                        else
-                        {
-                            throw new ClientNotFoundException($"Nu a fost gasit niciun abonat cu telefonul: {telefon}");
-                           
-                        }
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// returneaza lista cu cartile nereturnate ale unui abonat
         /// </summary>
-        /// <param name="telefon"></param>
+        /// <param name="idAbonat"></param>
         /// <returns></returns>
         public List<Carte> GetLoanedBooks(int idAbonat)
         {
@@ -577,8 +625,9 @@ namespace Database
         /// <summary>
         /// insereaza o inregistrare in tabela Imprumut
         /// </summary>
-        /// <param name="abonat"></param>
-        /// <param name="carte"></param>
+        /// <param name="idAbonat"></param>
+        /// <param name="idCarte"></param>
+        /// <param name="locatie"></param>
         /// <returns></returns>
         public bool InsertLoan(int idAbonat, int idCarte, string locatie)
         {
@@ -648,8 +697,8 @@ namespace Database
         /// <summary>
         /// returnarea unei carti de catre un abonat (verificare inatrziere si actualizare data_restituire)
         /// </summary>
-        /// <param name="carte"></param>
-        /// <param name="abonat"></param>
+        /// <param name="idCarte"></param>
+        /// <param name="idAbonat"></param>
         /// <returns></returns>
         public bool ReturnBook(int idAbonat, int idCarte)
         {
@@ -879,7 +928,7 @@ namespace Database
         /// <summary>
         /// actualizeaza statusul unui abonat blocat/cu rescrictii/fara restrictii
         /// </summary>
-        /// <param name="abonat"></param>
+        /// <param name="idAbonat"></param>
         /// <param name="mesaj"></param>
         /// <returns></returns>
         public bool UpdateStatusAbonat(int idAbonat, string mesaj)
@@ -915,7 +964,7 @@ namespace Database
         /// <summary>
         /// elimina restrictiile unui abonat
         /// </summary>
-        /// <param name="abonat"></param>
+        /// <param name="idAbonat"></param>
         /// <returns></returns>
         public bool UnRestrictAbonat(int idAbonat)
         {
@@ -925,7 +974,7 @@ namespace Database
         /// <summary>
         /// blocheaza un abonat
         /// </summary>
-        /// <param name="abonat"></param>
+        /// <param name="idAbonat"></param>
         /// <returns></returns>
         public bool BlocareAbonat(int idAbonat)
         {
@@ -935,57 +984,13 @@ namespace Database
         /// <summary>
         /// aplica restrictii unui abonat
         /// </summary>
-        /// <param name="abonat"></param>
+        /// <param name="idAbonat"></param>
         /// <returns></returns>
         public bool RestrictAbonat(int idAbonat)
         {
             return UpdateStatusAbonat(idAbonat, "cu restrictii");
         }
 
-
-        /// <summary>
-        /// metoda care verifica daca utilizatorul exista in baza de date, in caz contrat arunca o exceptie
-        /// </summary>
-        /// <param name="utilizator"></param>
-        /// <returns></returns>
-        public bool Login(Utilizator utilizator)
-        {
-            lock (_staticLock)
-            {
-                string query = @"
-                SELECT COUNT(*)
-                FROM Utilizator U
-                JOIN Rol R ON U.id_rol = R.id_rol
-                WHERE U.nume_user = @nume_user
-                  AND U.hash_parola = @hash_parola
-                  AND R.nume_rol = @nume_rol;
-                                        ";
-
-              
-
-                using (var command = new SQLiteCommand(query, _connection))
-                {
-
-                    command.Parameters.AddWithValue("@nume_user", utilizator.Nume);
-                    command.Parameters.AddWithValue("@hash_parola", utilizator.HashParola);
-                    command.Parameters.AddWithValue("@nume_rol", utilizator.Rol);
-
-                    long count = (long)command.ExecuteScalar();
-                   
-
-                    if (count == 1)
-                    {
-                        Console.WriteLine("Utilizator autentificat cu succes");
-                        return true;
-                    }
-                    else
-                    {
-                       throw new InvalidUserDataException("Datele de autentificare sunt invalide pentru utilizatorul: " + utilizator.Nume);
-                     
-                    }
-                }
-            }
-        }
 
         
 

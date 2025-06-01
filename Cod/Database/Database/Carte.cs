@@ -24,6 +24,9 @@ using System.Threading.Tasks;
 
 namespace Database
 {
+    /// <summary>
+    /// Clasa care incapsuleaza proprietatile unei carti
+    /// </summary>
     public class Carte
     {
         private int _idCarte;

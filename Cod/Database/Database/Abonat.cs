@@ -23,6 +23,9 @@ using System.Threading.Tasks;
 
 namespace Database
 {
+    /// <summary>
+    /// Clasa care incapsuleaza proprietatile unei abonat
+    /// </summary>
     public class Abonat
     {
         private int _idAbonat;

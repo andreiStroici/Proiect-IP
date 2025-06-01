@@ -24,6 +24,9 @@ using System.Threading.Tasks;
 
 namespace Database
 {
+    /// <summary>
+    /// Clasa care incapsuleaza proprietatile unui imprumut
+    /// </summary>
     public class Imprumut
     {
         private int _idImprumut;

@@ -23,6 +23,9 @@ using System.Threading.Tasks;
 
 namespace Database
 {
+    /// <summary>
+    /// Clasa care incapsuleaza proprietatile unui angajat
+    /// </summary>
     public class Utilizator
     {
         private string _nume;

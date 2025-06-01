@@ -34,7 +34,13 @@ namespace Server
     /// </summary>
     public class Message
     {
+        /// <summary>
+        /// Getter/Setter
+        /// </summary>
         public string operation { get; set; }
+        /// <summary>
+        /// Getter/Setter
+        /// </summary>
         public List<Dictionary<string, string>> data { get; set; }
 
     }
