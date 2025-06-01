@@ -341,6 +341,7 @@ namespace Database
                         else
                         {
                             throw new ClientNotFoundException($"Nu a fost gasit niciun abonat cu telefonul: {telefon}");
+                           
                         }
                     }
                 }
@@ -502,7 +503,7 @@ namespace Database
         /// </summary>
         /// <param name="idClient"></param>
         /// <returns></returns>
-        private bool isIdClientValid(int idClient)
+        private bool IsIdClientValid(int idClient)
         {
             lock (_staticLock)
             {
@@ -589,7 +590,7 @@ namespace Database
                     return false;
                 }
 
-                if (!isIdClientValid(idAbonat))
+                if (!IsIdClientValid(idAbonat))
                 {
                     Console.WriteLine("Id ul abonatului nu este valid");
                     return false;
@@ -979,7 +980,8 @@ namespace Database
                     }
                     else
                     {
-                        throw new InvalidUserDataException("Datele de autentificare sunt invalide pentru utilizatorul: " + utilizator.Nume);
+                       throw new InvalidUserDataException("Datele de autentificare sunt invalide pentru utilizatorul: " + utilizator.Nume);
+                     
                     }
                 }
             }

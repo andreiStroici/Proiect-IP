@@ -67,6 +67,20 @@ namespace Server
             _database = Database.Database.GetDatabase();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Server"/> class with the specified IP address,port and connection string for database
+        /// </summary>
+        /// <param name="ipAddress"></param>
+        /// <param name="port"></param>
+        /// <param name="connectionString"></param>
+        public Server(IPAddress ipAddress, int port, string connectionString)
+        {
+            _ipAddress = ipAddress;
+            _port = port;
+            _listener = new TcpListener(_ipAddress, _port);
+            _database = Database.Database.GetDatabase(connectionString);
+        }
+
 
         private void SendPeriodicNotifications(object state)
         {
@@ -154,7 +168,7 @@ namespace Server
                                     }
                                 }
                             }
-                            catch (InvalidUserDataException ex)
+                            catch (InvalidUserDataException ex)//InvalidUserDataException ex
                             {
                                 Console.WriteLine("Eroare de autentificare angajat: " + ex.Message);
                                 writer.WriteLine("Login failed. Invalid data.");
@@ -216,7 +230,7 @@ namespace Server
                                     $"{abonat.Nume}|{abonat.Prenume}|{abonat.Adresa}|{abonat.Email}|{abonat.Telefon}|" +
                                     $"{abonat.LimitaCarti}");
                             }
-                            catch (ClientNotFoundException ex)
+                            catch (ClientNotFoundException ex)//ClientNotFoundException ex
                             {
                                 Console.WriteLine("Eroare de autentificare abonat: " + ex.Message);
                                 writer.WriteLine("Subscriber Login failed");
