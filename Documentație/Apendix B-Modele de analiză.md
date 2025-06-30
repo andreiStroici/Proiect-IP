@@ -120,8 +120,7 @@ subject.SetAbonatiIntarziati(lateList);
 Acest apel declanşează automat Notify(...)
 ```
 în EmailNotifier, fără ca NotificationSubject să cunoască detalii despre cum anume e trimisă notificarea.
-
-
+###### [Apendix C - Elemente de cod relevante](/Documentație/Apendix%20C-Elemente%20de%20cod%20relevante.md)
 
 
 

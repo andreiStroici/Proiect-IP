@@ -45,3 +45,5 @@
 ### [6.2	Cerințe privind baza de date](/Documentație/6%20Alte%20cerințe/6.2%20Cerințe%20privind%20baza%20de%20date.md)
 ## [Apendix A: Glosar](Apendix%20A-Glosar)
 ## [Apendix B: Modele de analiză](Apendix%20B-Modele%20de%20analiză.md)
+## [Apendix C - Elemente de cod relevante](/Documentație/Apendix%20C-Elemente%20de%20cod%20relevante.md)
+## [Apendix D: Cazuri de testare >](/Documentație/Apendix%20D-Cazuri%20de%20testare.md)
