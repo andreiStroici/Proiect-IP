@@ -41,6 +41,7 @@
 ### [5.6 Reguli de business](5%20Alte%20cerințe%20nefuncționale/5.6%20Reguli%20de%20business.md)
 
 ## [6 Alte cerințe](6%20Alte%20cerințe/6.0%20Overview.md)
-
+### [6.1	Notificare clienți retur](/Documentație/6%20Alte%20cerințe/6.1%20Notificare%20clienți%20retur.md)
+### [6.2	Cerințe privind baza de date](/Documentație/6%20Alte%20cerințe/6.2%20Cerințe%20privind%20baza%20de%20date.md)
 ## [Apendix A: Glosar](Apendix%20A-Glosar)
 ## [Apendix B: Modele de analiză](Apendix%20B-Modele%20de%20analiză.md)
