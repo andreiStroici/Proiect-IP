@@ -30,22 +30,6 @@ using System.Diagnostics.Contracts;
 namespace Server
 {
     /// <summary>
-    /// Represents a message structure for communication between the server and clients.
-    /// </summary>
-    public class Message
-    {
-        /// <summary>
-        /// Getter/Setter
-        /// </summary>
-        public string operation { get; set; }
-        /// <summary>
-        /// Getter/Setter
-        /// </summary>
-        public List<Dictionary<string, string>> data { get; set; }
-
-    }
-
-    /// <summary>
     /// Represents a server that listens for client connections and handles requests.
     /// </summary>
     public class Server

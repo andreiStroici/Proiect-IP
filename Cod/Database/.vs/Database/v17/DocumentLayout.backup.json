@@ -1,14 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\",
+  "WorkspaceRootPath": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0B62D4FC-0DD1-4FC2-9A29-434F09654090}|UnitTestProjectDatabaseBiblioteca\\UnitTestProjectForDatabaseBiblioteca.csproj|e:\\anul iii\\semestrul ii\\ip\\proiect\\github\\cod\\database\\unittestprojectdatabasebiblioteca\\unittestdatabasebiblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B62D4FC-0DD1-4FC2-9A29-434F09654090}|UnitTestProjectDatabaseBiblioteca\\UnitTestProjectForDatabaseBiblioteca.csproj|solutionrelative:unittestprojectdatabasebiblioteca\\unittestdatabasebiblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\database\\invaliduserdataexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\invaliduserdataexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\database\\clientnotfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3D63E3D-BAB7-4D43-A4D9-4558ACCC277A}|Database\\Database.csproj|solutionrelative:database\\clientnotfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\server\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5A82798-E2BB-40BA-B0F7-6AE8C1CF8D1F}|Server\\Server.csproj|solutionrelative:server\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B62D4FC-0DD1-4FC2-9A29-434F09654090}|UnitTestProjectDatabaseBiblioteca\\UnitTestProjectForDatabaseBiblioteca.csproj|g:\\anul iii\\semestrul ii\\ip\\proiect\\proiect-ip\\cod\\database\\unittestprojectdatabasebiblioteca\\unittestdatabasebiblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B62D4FC-0DD1-4FC2-9A29-434F09654090}|UnitTestProjectDatabaseBiblioteca\\UnitTestProjectForDatabaseBiblioteca.csproj|solutionrelative:unittestprojectdatabasebiblioteca\\unittestdatabasebiblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +34,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitTestDatabaseBiblioteca.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
-              "RelativeDocumentMoniker": "UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
-              "RelativeToolTip": "UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAAAKMAAAAUAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "InvalidUserDataException.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\InvalidUserDataException.cs",
+              "RelativeDocumentMoniker": "Database\\InvalidUserDataException.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\InvalidUserDataException.cs",
+              "RelativeToolTip": "Database\\InvalidUserDataException.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T15:10:08.389Z",
+              "WhenOpened": "2025-06-02T08:27:28.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ClientNotFoundException.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\ClientNotFoundException.cs",
+              "RelativeDocumentMoniker": "Database\\ClientNotFoundException.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\ClientNotFoundException.cs",
+              "RelativeToolTip": "Database\\ClientNotFoundException.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T08:27:23.298Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Server.cs",
-              "DocumentMoniker": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
-              "RelativeDocumentMoniker": "Server\\Server.cs",
-              "ToolTip": "E:\\Anul III\\Semestrul II\\IP\\Proiect\\Github\\Cod\\Database\\Server\\Server.cs",
-              "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAswKgAAAA7AAAAAAAAAA==",
+              "Title": "Database.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+              "RelativeDocumentMoniker": "Database\\Database.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Database\\Database.cs",
+              "RelativeToolTip": "Database\\Database.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwD4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T19:12:58.317Z"
+              "WhenOpened": "2025-06-02T08:07:36.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Message.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Message.cs",
+              "RelativeDocumentMoniker": "Server\\Message.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Message.cs",
+              "RelativeToolTip": "Server\\Message.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAUAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T07:52:01.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UnitTestDatabaseBiblioteca.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
+              "RelativeDocumentMoniker": "UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
+              "RelativeToolTip": "UnitTestProjectDatabaseBiblioteca\\UnitTestDatabaseBiblioteca.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAIAywIIAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T07:34:25.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Server.cs",
+              "DocumentMoniker": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
+              "RelativeDocumentMoniker": "Server\\Server.cs",
+              "ToolTip": "G:\\Anul III\\Semestrul II\\IP\\Proiect\\Proiect-IP\\Cod\\Database\\Server\\Server.cs",
+              "RelativeToolTip": "Server\\Server.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAmwNMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T19:12:58.317Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

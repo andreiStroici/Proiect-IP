@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailNotifier.cs" />
+    <Compile Include="INotificationObserver.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="NotificationSubject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />

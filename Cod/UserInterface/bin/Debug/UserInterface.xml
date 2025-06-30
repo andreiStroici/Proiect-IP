@@ -59,7 +59,7 @@
             Constructorul pentru MainView
             </summary>
         </member>
-        <member name="M:UserInterface.MainView.buttonLogin_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.MainView.ButtonLogin_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare
             </summary>
@@ -93,35 +93,35 @@
             Constructorul pentru BibliotecarView
             </summary>        
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonAbonatLogin_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.ButtonAbonatLogin_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de autentificare a unui abonat
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonAbonatRegister_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.ButtonAbonatRegister_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de înregistrare a unui abonat
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonImprumutCautare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.ButtonImprumutCautare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de căutare parțială
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonDelogare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.ButtonDelogare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de delogare
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonImprumutValidare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.ButtonImprumutValidare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de validare a împrumutului
             </summary>
@@ -129,13 +129,20 @@
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:UserInterface.BibliotecarView.buttonRetur_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.BibliotecarView.ButtonRetur_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de validare a returului
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:UserInterface.BibliotecarView.ButtonReturCautare_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când utilizatorul face clic pe butonul de căutare a împrumuturilor active
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="F:UserInterface.BibliotecarView.components">
             <summary>
@@ -164,49 +171,49 @@
             Constructorul pentru AdminView
             </summary>
         </member>
-        <member name="M:UserInterface.AdminView.buttonDelogare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonDelogare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul face clic pe butonul de delogare
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.radioButtonGestiuneAbonați_CheckedChanged(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.RadioButtonGestiuneAbonați_CheckedChanged(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.radioButtonAfișareAbonați_CheckedChanged(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.RadioButtonAfișareAbonați_CheckedChanged(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților problematici
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.buttonGestiuneCautare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonGestiuneCautare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.buttonAfișareAbonațiCăutare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonAfișareAbonațiCăutare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul face clic pe butonul de căutare a abonaților cu probleme
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.buttonGestiuneValidare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonGestiuneValidare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul face clic pe butonul de validare a modificării statusului unui abonat
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.buttonAngajatRegister_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonAngajatRegister_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul înregistrează un nou angajat
             </summary>
@@ -214,7 +221,7 @@
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:UserInterface.AdminView.buttonAdaugaCarte_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonAdaugaCarte_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul adaugă o carte
             </summary>
@@ -222,20 +229,27 @@
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:UserInterface.AdminView.buttonȘtergereCarteCăutare_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonȘtergereCarteCăutare_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul caută cărți de șters după ISBN
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:UserInterface.AdminView.buttonDeleteCarte_Click(System.Object,System.EventArgs)">
+        <member name="M:UserInterface.AdminView.ButtonDeleteCarte_Click(System.Object,System.EventArgs)">
             <summary>
             Acest eveniment se declanșează atunci când administratorul validează ștergerea
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:UserInterface.AdminView.ButtonAngajatDelete_Click(System.Object,System.EventArgs)">
+            <summary>
+            Acest eveniment se declanșează atunci când administratorul șterge un angajat (bibliotecar)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="F:UserInterface.AdminView.components">
             <summary>
